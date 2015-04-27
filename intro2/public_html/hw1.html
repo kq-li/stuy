@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>profound thoughts</title>
+  </head>
+  <body>
+    <center>
+      <h1>Deep Title</h1>
+    </center>
+    Some interesting introduction sentence. 
+    <br>
+    A thought-provoking statement about the meaning of life. 
+    <br><br>
+    A list about the possible fates of humankind.
+    <ol>
+      <li>The first of this list, documenting the starvation of humankind.</li>
+      <li>The second of this list, speaking of the nuclear devastation wrought upon the Earth by those we entrusted with nuclear weapons.</li>
+      <li>The third of this list, recording all of human history up until the sun goes nova, at which point the home planet is destroyed.</li>
+      <li>
+        <a href="https://www.google.com/?gws_rd=ssl#q=what+is+the+answer+to+the+life+the+universe+and+everything">
+          The fourth of this list, providing a link to a page that contains all of the knowledge collected by the human race until their mysterious demise.
+        </a>
+      </li>
+    </ol>
+    <br>
+    <table border=5>
+      <tr style="color:red;">
+        <td>This</td>
+        <td>is</td>
+        <td>a</td>
+      </tr>
+      <tr style="color:blue;">
+        <td>table</td>
+        <td>about</td>
+        <td>some</td>
+      </tr>
+      <tr style="color:green;">
+        <td>seemingly</td>
+        <td>boring</td>
+        <td>statistic</td>
+      </tr>
+      <tr style="color:orange;">
+        <td>that</td>
+        <td>is</td>
+        <td>crucial</td>
+      <tr style="color:purple;">
+        <td>to</td>
+        <td>the</td>
+        <td>survival</td>
+      </tr>
+      <tr style="color:white;">
+        <td>of</td>
+        <td>humanity</td>
+        <td>itself.</td>
+      </tr>
+    </table>
+    <br>
+    <img src="http://imgs.xkcd.com/comics/regular_expressions.png">
+    <div id="blarg" style="visibility:hidden">
+      <button onclick="blarg()">blarg</button> <button onclick="reset()">reset</button>
+      <br>
+    </div>
+  </body>
+  <script type="text/javascript">
+    function reset() {
+      document.getElementById("blarg").innerHTML = "<button onclick='blarg()'>blarg</button> <button onclick='reset()'>reset</button><br>";
+    }
+    function blarg() {
+      var container = document.getElementById("blarg");
+      var blargEl = document.createElement("a");
+      blargEl.href = "http://redvsblue.com";
+      blargEl.appendChild(document.createTextNode("blarg"));
+      container.appendChild(blargEl);
+      container.appendChild(document.createElement("br"));
+    }
+  </script>
+</html>
