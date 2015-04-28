@@ -1,0 +1,13 @@
+html, body {
+  font-family: Corbel;
+}
+
+.header {
+  text-align: center;
+}
+
+.problem {
+  width: 40%;
+  padding-left: 20px;
+  padding-right: 20px;
+}

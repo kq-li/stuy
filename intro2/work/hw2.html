@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Homework 2
+    </title>
+    <style>
+      html, body {
+        font-family: Corbel;
+      }
+      
+      h1 {
+        text-align: center;
+      }
+      
+      table {
+        border-spacing: 0;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+      }
+      
+      td {
+        
+      }
+      
+      .code {
+        width: 20%;
+      }
+
+      .examples {
+        width: 20%;
+      }
+      
+      .header {
+        text-align: center;
+      }
+      
+      .problem {
+        width: 60%;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      Python in HTML
+    </h1>
+    <table border=5>
+      <tr>
+        <td class='header' colspan=3>
+          Python Exercises:
+        </td>
+      </tr>
+      <tr>
+        <td class='problem'>
+          Problem 1: <br>
+          Create a function called div23(n) which will take a single non-negative 
+          integer and return True if it's evenly divisible by both 2 and 3, and 
+          False otherwise.
+        </td>
+        <td class='code'>
+          <pre>
+            <code>
+    def div23(n):
+      if n % 2 == 0 and n % 3 == 0:
+        return True
+      return False
+            </code>
+          </pre>
+        </td>
+        <td class='examples'>
+          <pre>
+            <code> 
+    div23(4492738) -> False
+            </code> 
+          </pre>
+        </td>
+      </tr>
+      <tr>
+        <td class='problem'>
+          Problem 2: <br>
+          Create the function div23_between(low,high) that will be given 2 non-
+          negative integers, with low &lt;= high and will return the number of 
+          integers between low and high (including low and high) that are 
+          divisible by both 2 and 3. 
+        </td>
+        <td class='code'>
+          <pre>
+            <code>
+    def div23_between(low, high):
+      c = low
+      num = 0
+      while c <= high:
+        if div23(c):
+          num += 1
+        c += 1
+      return num 
+            </code>
+          </pre>
+        </td>
+        <td class='examples'>
+          <pre>
+            <code>
+    div23_between(0, 399154) -> 66526
+            </code>
+          </pre>
+        </td>
+      </tr>
+      <tr>
+        <td class='problem'>
+          Problem 3: <br>
+          Create the function sum_dig(n) that adds up the digits of n, where n 
+          is a non-negative number less than 1,000.
+        </td>
+        <td class='code'>
+          <pre>
+            <code>
+    def sum_dig(n):
+      c = n
+      sum = 0
+      while c > 0:
+          sum += c % 10
+          c /= 10
+      return sum
+            </code>
+          </pre>
+        </td>
+        <td class='examples'>
+          <pre>
+            <code>
+    sum_dig(667) -> 19
+            </code>
+          </pre>
+        </td>
+      </tr>
+      <tr>
+        <td class='problem'>
+          Problem 4: <br>
+          How many integers between 0 and 999 have the following property: that 
+          the sum of its digits is evenly divisible by 11?
+        </td>
+        <td class='code'>          
+          <pre>
+            <code>
+    def how_many_11():
+      c = 0
+      ans = 0
+      while c <= 999:
+          if sum_dig(c) % 11 == 0:
+              ans += 1
+          c += 1
+      return ans
+            </code>
+          </pre>
+        </td>
+        <td class='examples'>
+          <pre>
+            <code>
+    how_many_11() -> 91
+            </code>
+          </pre>
+        </td>
+      </tr>
+      <tr>
+        <td class='problem'>
+          Challenge Problem: <br>
+          Create the function is_prime(n) that will be given an integer greater
+          than 1, and will return True if it's a prime number and False if not.  
+        </td>
+        <td class='code'>
+          <pre>
+            <code>
+    def is_prime(n):
+      c = 2
+      while c <= n ** 0.5:
+          print n, c
+          if n % c == 0:
+              return False
+          c += 1
+      return True
+            </code>
+          </pre>
+        </td>
+        <td class='examples'>
+          <pre>
+            <code>
+    is_prime(12343) -> True
+            </code>
+          </pre>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

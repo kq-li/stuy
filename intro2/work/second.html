@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>blarg</title>
+  </head>
+  <body>
+    <center>
+      <font size="16">
+        Mr. Brooks is 
+        <i>
+          very 
+          <b>
+            <font style="color:red;font-size:100px">
+              cool!
+            </font>
+          </b>
+        </i>
+      </font>
+      <table border=5>
+        <tr>
+          <td>Harry</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>Ron</td>
+        </tr>
+      </table> 
+      Have fun
+    </center>
+    <div id="blarg">
+      <button onclick="blarg()">blarg</button>
+      <button onclick="reset()">reset</button>
+      <br>
+    </div>
+    <script type="text/javascript">
+      function reset() {
+        document.getElementById("blarg").innerHTML = 
+          "<button onclick=blarg()>blarg</button> <button onclick=reset()>reset</button><br>";
+      }
+      function blarg() {
+        var container = document.getElementById("blarg");
+        var blargEl = document.createElement("a");
+        blargEl.href = "http://redvsblue.com";
+        blargEl.appendChild(document.createTextNode("blarg"));
+        container.appendChild(blargEl);
+        container.appendChild(document.createElement("br"));
+      }
+    </script>
+  </body>
+</html>

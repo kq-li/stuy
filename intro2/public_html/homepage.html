@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>interactivity</title>
+    <link rel='stylesheet' type='text/css' href='style/homepage.css' /> 
+  </head>
+  <body>
+    <div id='container'>
+      <div id='enter'>
+        <h1>enter</h1>
+      </div>
+      <div id='content' style='display:none'>
+        <br>
+        <div id='display-text'>
+          welcome.
+          <br>
+          choose a path.
+        </div>
+        <br><br>
+        <div id='path1' class='path'>
+          <div id='path1-text' class='path-text'>tranquility</div>
+        </div>
+        <br><br>
+        <div id='path2' class='path'>
+          <div id='path2-text' class='path-text'>intensity</div>
+        </div>
+        <br><br>
+        <div id='path3' class='path'>
+          <div id='path3-text' class='path-text'>antiquity</div>
+        </div>
+        <br><br>
+      </div>
+      <div id='credits' style='display:none'>
+        <h1>credits</h1>
+        <br><br>
+        html: kenneth li, w3schools
+        <br><br>
+        css: kenneth li, w3schools
+        <br><br>
+        javascript: kenneth li, various users of stackoverflow
+      </div>
+    </div>
+    <div id='footer'>
+      <div id='nav-home' class='nav-link'>home</div>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <div id='nav-pause' class='nav-link'>pause all</div>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <div id='nav-credits' class='nav-link'>credits</div>
+      <script type='text/javascript' src='script/homepage.js'></script>
+      <script type='text/javascript'>
+        window.onload = initialize;
+      </script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+html, body {
+  font-family: Corbel;
+  color: #ffffff;
+  margin: 0px;
+}
+
+.audio-div {
+  width: 100%;
+  height: 50px;
+  margin-top: 50px;
+  display: inline-block;
+}
+
+.audio-div audio {
+  opacity: inherit;
+}
+
+#container {
+  width: 100%;
+  min-height: 100%;
+  margin-bottom: -30px;
+  background-image: linear-gradient(#000000, #202020);
+  position: absolute;
+  text-align: center;
+  overflow: hidden;
+}
+
+#content {
+  position: relative;
+  font-size: 20px;
+}
+
+#credits {
+  position: absolute;
+  background-image: linear-gradient(#202020, #505050);
+  font-size: 20px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  z-index: 2;
+}
+
+#display-text {
+  font-size: 30px;
+}
+
+#enter {
+  position: relative;
+  display: inline-block;
+  z-index: 1;
+  color: #ffffff;
+}
+
+#enter:hover, .path-text:hover, .nav-link:hover {
+  cursor: pointer;
+  cursor: hand;
+  color: #3399ff;
+  
+  -webkit-transition: color 250ms;
+  -moz-transition: color 250ms;
+  -ms-transition: color 250ms;
+  -o-transition: color 250ms;
+  transition: color 250ms;
+}
+
+#footer {
+  position: fixed;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background-color: #000000;
+  text-align: center;
+  bottom: 0%;
+  z-index: 3;
+}
+
+#footer a {
+  font-size: 15px;
+  color: #d0d0d0;
+  text-decoration: none;
+}
+
+.nav-link {
+  display: inline;
+}
+
+.path-pic {
+  display: block
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
