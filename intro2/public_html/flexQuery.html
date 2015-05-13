@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      SAT Query Page
+    </title>
+  </head>
+  <body>
+    <center>
+      <h1>
+        SAT Query Page
+      </h1><br>
+      <form action='script/flexQuery.py' method='GET'>
+        Score section:
+        <select name='column' size=1>
+          <option value=3 selected>Reading</option>
+          <option value=4>Math</option>
+          <option value=5>Writing</option>
+          <option value=6>Total</option>
+        </select><br><br>
+        Number of schools to display:
+        <input type='number' name='count' min=1 max=396 value=5><br><br>
+        Display highest scores? (Check for highest, uncheck for lowest):
+        <input type='checkbox' name='is_top' checked><br><br><br>
+        <input type='submit' value='Submit'>
+      </form>
+    </center>
+  </body>
+</html>
