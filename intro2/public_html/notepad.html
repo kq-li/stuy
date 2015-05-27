@@ -2,18 +2,19 @@
 <html>
   <head>
     <title>
-    
+      PasteNote BinPad
     </title>
+    <link rel='stylesheet' type='text/css' href='style/notepad.css'>
   </head>
   <body>
-    <h1>Read a note</h1><br>
+    <h1>Read a note</h1>
     <form action='script/notepad.py' method='post'>
-      <input type='text' name='filename'>
+      <input type='text' name='filename'><br><br>
       <input type='submit' name='read' value='Read'>
-    </form><br><br>
-    <h1>Create a note</h1><br>
+    </form><br>
+    <h1>Create a note</h1>
     <form action='script/notepad.py' method='post'>
-      <input type='text' name='text'>
+      <textarea id='create' name='text' placeholder='Type note here...'></textarea><br><br>
       <input type='submit' name='write' value='Write'>
     </form>
   </body>
