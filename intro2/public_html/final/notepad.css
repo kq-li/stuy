@@ -1,0 +1,9 @@
+html, body {
+    background-color: #FFF3E7;
+}
+
+#input, #output {
+    width: 1500px;
+    height: 500px;
+}
+
