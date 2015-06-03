@@ -1,6 +1,8 @@
 #! /usr/bin/python
 
 import cgi
+import Cookie
+import datetime
 import hashlib
 import os
 import random
@@ -12,7 +14,25 @@ __import__('cgitb').enable()
 directory = 'notes/'
 alphanum = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
 noteNames = os.listdir(directory)
-users = dict([tuple(line.split(' ')) for line in open('users', 'r').read().split('\n')[:-1]])
+try:
+  users = dict([line.split(' ') for line in open('users', 'r').read().split('\n')[:-1]])
+except:
+  users = {}
+sessions = {users[i]: i for i in users}
+output = ''
+cookie = Cookie.SimpleCookie()
+
+
+def auth(username, password):
+  global output, cookie
+  if username in users and users[username] == hashlib.md5(username + password).hexdigest():
+    expires = datetime.datetime.now() + datetime.timedelta(weeks=1)
+    cookie['session'] = hashlib.md5(username + password).hexdigest()
+    cookie['session']['expires'] = expires.strftime("%a, %d-%b-%Y %H:%M:%S PST")
+    output += 'Successfully logged in!<br>'
+  else:
+    output += 'Incorrect username/password.<br>'
+  output += '<a href=notepad.py>Back to Main</a>'
 
 def genName(n):
   name = ''
@@ -21,7 +41,9 @@ def genName(n):
   return name
 
 def header():
-  print 'Content-Type: text/html\n\n'
+  print 'Content-Type: text/html'
+  print cookie
+  print '\n'
   print '<html><head>'
   print '<title>PasteNote BinPad</title>'
   print '<link rel=stylesheet type=text/css href=notepad.css>'
@@ -30,16 +52,10 @@ def header():
 def footer():
   print '</body></html>'
 
-def auth(username, password):
-  if username in users and users[username] == password:
-    print 'Successfully logged in!<br>'
-  else:
-    print 'Incorrect username/password.<br>'
-  print '<a href=notepad.py>Back to Main</a>'
-
 def login():
 
-  print '''
+  global output
+  output += '''
 <h1>Login</h1>
 <form action=notepad.py method=post>
   Username:&nbsp;
@@ -61,15 +77,22 @@ def login():
 </form><br>
   '''
   
-
 def note(text, mode):
 
+  global output
   if mode == 'read':
     filename = directory + text
-    print '<h1>Note ' + text + '</h1><br>'
-    print '<textarea id=output name=text readonly wrap=hard>'
-    print open(filename, 'r').read()
-    print '</textarea><br><br>'
+    if text.isalpha():
+      try:
+        s = open(filename, 'r').read()
+        output += '<h1>Note ' + text + '</h1><br>'
+        output += '<textarea id=output name=text readonly wrap=hard>'
+        output += s
+        output += '</textarea><br>'
+      except:
+        output += 'Invalid filename!<br>'
+    else:
+      output += 'Invalid filename!<br>'
   elif mode == 'write':
     name = genName(6)
     while name in noteNames:
@@ -79,50 +102,94 @@ def note(text, mode):
     f = open(filename, 'w')
     f.write(text)
     f.close()
-    print 'Note ' + name + ' created!<br>'
+    output += 'Note ' + name + ' created!<br>'
 
-  print '<a href=notepad.py>Back to Main</a>'
+  output += '<a href=notepad.py>Back to Main</a>'
 
 def query():
   
-  print '''
+  global output
+  output += '''
 <h1>Read a note</h1>
 <form action=notepad.py method=post>
   <input type=text name=text><br><br>
-  <input type=submit name=read value=Read>
+  <input type=submit name=mode value=Read>
 </form><br>
 
 <h1>Create a note</h1>
 <form action=notepad.py method=post>
-  <textarea id=input name=text placeholder=Type note here... wrap=hard></textarea><br><br>
-  <input type=submit name=write value=Write>
+  <textarea id=input name=text placeholder=\'Type note here...\' wrap=hard></textarea><br><br>
+  <input type=submit name=mode value=Write>
 </form>
   '''
 
 def register(username, password, confirm):
+
+  global output
   if password != confirm:
-    print 'Passwords do not match!<br>'
+    output += 'Passwords do not match!<br>'
+  elif username in users:
+    output += 'Username already in use!<br>'
   else:
-    users[username] = password
-    open('users', 'w').write(username + ' ' + password + '\n')
-    print 'Successfully registered!<br>'
+    users[username] = hashlib.md5(password).hexdigest()
+    open('users', 'a').write(username + ' ' + hashlib.md5(username + password).hexdigest() + '\n')
+    output += 'Successfully registered!<br>'
   
-  print '<a href=notepad.py>Back to Main</a>'
+  output += '<a href=notepad.py>Back to Main</a>'
 
 def main():
 
-  header()
+  global output
+
   elements = cgi.FieldStorage()
-  if elements.has_key('login'):
-    auth(elements.getvalue('user'), elements.getvalue('pass'))
-  elif elements.has_key('register'):
-    register(elements.getvalue('user'), elements.getvalue('pass'), elements.getvalue('confirm'))
-  elif elements.has_key('read'):
-    note(elements.getvalue('text'), 'read')
-  elif elements.has_key('write'):
-    note(elements.getvalue('text'), 'write')
+
+  if 'HTTP_COOKIE' in os.environ:
+    cookie = Cookie.SimpleCookie(os.environ['HTTP_COOKIE'])
+    if 'session' in cookie and cookie['session'].value in sessions:
+      if 'mode' in elements and 'text' in elements:
+        note(elements.getfirst('text'), elements.getfirst('mode').lower())
+      else:
+        query()
+    else:
+      output += 'Please log in or register.<br>'
   else:
-    login()
+    if 'login' in elements:
+      auth(elements.getfirst('user'), elements.getfirst('pass'))
+    elif 'register' in elements:
+      register(elements.getfirst('user'), elements.getfirst('pass'), elements.getfirst('confirm'))
+    else:
+      login()
+
+  header()
+  print output
   footer()
 
 main()
+
+def main_local():
+
+  global output, cookie
+#  elements = {'register': 'Register', 'user': 'admin', 'pass': 'password', 'confirm': 'password'}
+  elements = {'login': 'Login', 'user': 'admin', 'pass': 'password'}
+  cookie['session'] = 'e3274be5c857fb42ab72d786e281b4b8'
+  if cookie != Cookie.SimpleCookie():
+    if 'session' in cookie and cookie['session'].value in sessions:
+      if 'mode' in elements and 'text' in elements:
+        note(elements['text'], elements['mode'].lower())
+      else:
+        query()
+    else:
+        output += 'Please log in or register.<br>'
+  else:
+    if 'login' in elements:
+      auth(elements['user'], elements['pass'])
+    elif 'register' in elements:
+      register(elements['user'], elements['pass'], elements['confirm'])
+    else:
+      login()
+
+  header()
+  print output
+  footer()
+
+#main_local()
