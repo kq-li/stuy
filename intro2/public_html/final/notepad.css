@@ -1,5 +1,14 @@
 html, body {
     background-color: #FFF3E7;
+    font-family: "Open Sans", sans;
+    margin: 0;
+    padding: 0;
+}
+
+#content {
+    line-height: 40px;
+    padding-top: 17px;
+    padding-left: 37px;
 }
 
 #input, #output {
@@ -7,6 +16,80 @@ html, body {
     height: 500px;
 }
 
-.navbar-button {
-    
+#navbar {
+    background-color: #DC5A5A;
+    height: 50px;
+    width: 100%;
 }
+
+#navbar-left {
+    box-sizing: border-box;
+    padding-left: 20px;
+    float: left;
+    text-align: left;
+    height: 50px;
+    width: 50%;
+}
+
+#navbar-right {
+    box-sizing: border-box;
+    padding-right: 20px;
+    float: right;
+    text-align: right;
+    height: 50px;
+    width: 50%;
+}
+
+.link-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    font-family: "Open Sans", sans;
+    font-size: 16px;
+    cursor: pointer;
+    color: #6699FF;
+    text-decoration: underline;
+}
+
+.navbar-btn {
+    background-color: #DC5A5A;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    font-family: "Open Sans", sans;
+    height: 100%;
+    border: none;
+    border-top: medium solid #DC5A5A;
+    cursor: pointer;
+}
+
+.navbar-btn:hover {
+    background-color: #843636;
+    border-top: medium solid #FFFFFF;
+    transition: all 0.2s;
+}
+
+.navbar-btn-left {
+    font-size: 20px;
+    width: 200px;
+}
+
+.navbar-btn-right {
+    font-size: 13px;
+    width: 70px;
+}
+
+.submit-btn {
+    background-color: #DC5A5A;
+    border: thin ridge #843636;
+    cursor: pointer;
+    color: #FFFFFF;
+    width: 100px;
+    height: 30px;
+    font-size: 16px;
+}
+
+.submit-btn:hover {
+    background-color: #843636;
+    transition: all 0.2s;
+}
+

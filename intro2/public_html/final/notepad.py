@@ -11,14 +11,17 @@ import sys
 
 __import__('cgitb').enable()
 
-directory = 'notes/'
+directory = '../../final/'
+noteDir = directory + 'notes/'
 alphanum = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'
-noteNames = os.listdir(directory)
+noteNames = os.listdir(noteDir)
 try:
-  users = dict([line.split(' ') for line in open('users', 'r').read().split('\n')[:-1]])
+  users = dict([line.split(' ') for line in open(directory + 'users', 'r').read().split('\n')[:-1]])
 except:
   users = {}
 sessions = {users[i]: i for i in users}
+admin = tuple(open(directory + 'admin', 'r').read().split('\n')[:-1])
+loggedIn = False
 output = ''
 cookie = Cookie.SimpleCookie()
 
@@ -29,41 +32,52 @@ def genName(n):
   return name
 
 def footer():
-  print '</body></html>'
+  print '</div></body></html>'
 
 def header():
   print 'Content-Type: text/html'
   print cookie
   print '\n'
   print '<html><head>'
-  print '<title>PasteNote BinPad</title>'
+  print '<link rel=stylesheet type=text/css href=http://fonts.googleapis.com/css?family=Open+Sans>'
   print '<link rel=stylesheet type=text/css href=notepad.css>'
+  print '<title>PasteNote BinPad</title>'
   print '</head><body>'
 
 def home():
 
   global output
   output += '''
-Welcome to PasteNote BinPad!<br>
-Please <a href=#login>login</a> or <a href=#register>register</a> to proceed.<br>
+<form action=notepad.py method=post>
+  Welcome!<br>
+  Please 
+  <input type=submit class=link-btn name=login value=login>
+  or 
+  <input type=submit class=link-btn name=register value=register>
+  to proceed.<br>
+</form>
   '''
 
 def login():
 
   global output
   output += '''
-<h1>Login</h1>
 <form action=notepad.py method=post>
-  Username:&nbsp;
+  <h1>Login</h1>
+  Username:<br>
   <input type=text name=user placeholder=Username><br>
-  Password:&nbsp;
-  <input type=password name=pass placeholder=Password><br>
-  <input type=submit name=login value=Login><br>
-</form><br>
+  Password:<br>
+  <input type=password name=pass placeholder=Password><br><br>
+  <input type=submit class=submit-btn name=login value=Login><br><br>
+</form>
+
+<form action=notepad.py method=post>
+  <input type=submit class=link-btn value=Home>
+</form>
   '''
   
 def loginUser(username, password):
-  global output, cookie
+  global output, cookie, loggedIn
   username = cgi.escape(username)
   password = cgi.escape(password)
   if username in users and users[username] == md5(username + password):
@@ -71,18 +85,31 @@ def loginUser(username, password):
     cookie['session'] = md5(username + password)
     cookie['session']['expires'] = expires.strftime('%a, %d-%b-%Y %H:%M:%S EST')
     output += 'Successfully logged in!<br>'
+    loggedIn = True
   else:
     output += 'Incorrect username/password.<br>'
+  output += '''
+<form action=notepad.py method=post>
+  <input type=submit class=link-btn value=Home>
+</form>
+  '''
 
+    
 def logout():
   
-  global output, cookie
+  global output, cookie, loggedIn
   if 'session' in cookie:
     expires = datetime.datetime.now() - datetime.timedelta(weeks=1)
     cookie['session']['expires'] = expires.strftime('%a, %d-%b-%Y %H:%M:%S EST')
     output += 'Successfully logged out!<br>'
+    loggedIn = False
   else:
     output += 'Please log in.<br>'
+  output += '''
+<form action=notepad.py method=post>
+  <input type=submit class=link-btn value=Home>
+</form>
+  '''
 
 def md5(plain):
   return hashlib.md5(plain).hexdigest()
@@ -91,17 +118,18 @@ def read():
 
   global output
   output += '''
-<h1>Read a note</h1>
 <form action=notepad.py method=post>
+  <h1>Read a note</h1>
   <input type=text name=text placeholder=\'Note ID\'><br><br>
-  <input type=submit name=read value=Read><br><br>
+  <input type=submit class=submit-btn name=read value=Read><br><br>
+  <input type=submit class=link-btn value=Home>
 </form>
   '''
 
 def readNote(text):
 
   global output
-  filename = directory + text
+  filename = noteDir + text
   if text.isalnum():
     try:
       s = re.split('<br>|\n', open(filename, 'r').read())
@@ -110,28 +138,38 @@ def readNote(text):
         output += 'Created by ' + sessions[s[1]] + '<br><br>'
         output += '<textarea id=output name=text readonly wrap=hard>'
         output += ''.join(s[2:])
-        output += '</textarea><br>'
+        output += '</textarea><br><br>'
       else:
         output += 'Invalid filename!<br>'
     except:
       output += 'Invalid filename!<br>'
   else:
     output += 'Invalid filename!<br>'
+  output += '''
+<form action=notepad.py method=post>
+  <input type=submit class=link-btn name=read value=Back><br>
+  <input type=submit class=link-btn value=Home>
+</form>
+  '''
 
 def register():
 
-  global output
+  global output, cookie
   output += '''
-<h1>Register</h1>
 <form action=notepad.py method=post>
-  Username:&nbsp;
+  <h1>Register</h1>
+  Username:<br>
   <input type=text name=user placeholder=Username><br>
-  Password:&nbsp;
+  Password:<br>
   <input type=password name=pass placeholder=Password><br>
-  Confirm:&nbsp;
-  <input type=password name=confirm placeholder=Password><br>
-  <input type=submit name=register value=Register><br>
-</form><br>
+  Confirm Password:<br>
+  <input type=password name=confirm placeholder=Password><br><br>
+  <input type=submit class=submit-btn name=register value=Register><br><br>
+</form>
+
+<form action=notepad.py method=post>
+  <input type=submit class=link-btn value=Home>
+</form>
   '''
 
 def registerUser(username, password, confirm):
@@ -141,22 +179,31 @@ def registerUser(username, password, confirm):
   password = cgi.escape(password)
   confirm = cgi.escape(confirm)
   users[username] = md5(password)
-  open('users', 'a').write(username + ' ' + md5(username + password) + '\n')
+  open(directory + 'users', 'a').write(username + ' ' + md5(username + password) + '\n')
   output += 'Successfully registered!<br>'
+  output += '''
+<form action=notepad.py method=post>
+  <input type=submit class=link-btn value=Home>
+</form>
+  '''
 
 def write():
 
   global output
   output += '''
-<h1>Write a note</h1>
 <form action=notepad.py method=post>
+  <h1>Write a note</h1>
   <textarea id=input name=text placeholder=\'Type note here...\' wrap=hard></textarea><br><br>
   Visibility:&nbsp;&nbsp;
   <select name=mode>
     <option value=public>Public</option>
     <option value=private>Private</option>
   </select><br><br>
-  <input type=submit name=write value=Write><br><br>
+  <input type=submit class=submit-btn name=write value=Write><br><br>
+</form>
+
+<form action=notepad.py method=post>
+  <input type=submit class=link-btn value=Home>
 </form>
   '''
 
@@ -167,30 +214,38 @@ def writeNote(text, mode):
   while name in noteNames:
     name = genName(6)
   noteNames.append(name)
-  filename = directory + name
+  filename = noteDir + name
   f = open(filename, 'w')
   data = mode + '\n' + cookie['session'].value + '\n' + cgi.escape(text)
   f.write(data)
   f.close()
   output += 'Note ' + name + ' created!<br>'
+  output += '''
+<form action=notepad.py method=post>
+  <input type=submit class=link-btn name=write value=Back>
+  <input type=submit class=link-btn value=Home>
+</form>
+  '''
 
 def main():
 
-  global output, cookie
+  global output, cookie, loggedIn
+  navbar = '''
+<form action=notepad.py method=post>
+  <div id=navbar>
+    <div id=navbar-left>
+      <input type=submit class='navbar-btn navbar-btn-left' id=home value='PasteNote BinPad'>
+    </div>
+    <div id=navbar-right>
+  '''
+    
+  output += '<div id=content>'
   elements = cgi.FieldStorage()
-  output += '<div id=navbar>'
 
   if 'HTTP_COOKIE' in os.environ:
-    output += '''
-<form action=notepad.py method=post>
-  <input type=submit class=navbar-button id=home value=Home>
-  <input type=submit class=navbar-button id=read name=read value=Read>
-  <input type=submit class=navbar-button id=write name=write value=Write>
-  <input type=submit class=navbar-button id=logout name=logout value=Logout>
-</form>
-    '''
     cookie = Cookie.SimpleCookie(os.environ['HTTP_COOKIE'])
     if 'session' in cookie and cookie['session'].value in sessions:
+      loggedIn = True
       if 'read' in elements:
         if 'text' in elements:
           readNote(elements.getfirst('text'))
@@ -210,19 +265,27 @@ def main():
       elif 'logout' in elements:
         logout()
       else:
-        output += '<a href=#read>Read</a> or <a href=#write>write</a> a note.'
+        output += 'Welcome ' + sessions[cookie['session'].value] + '!<br>'
+        output += '''
+<form action=notepad.py method=post>
+  Follow the links here or in the navigation bar above to  
+  <input type=submit class=link-btn name=read value=read>
+  or 
+  <input type=submit class=link-btn name=write value=write>
+  a note.<br>
+</form>
+
+<form action=notepad.py method=post>
+  <input type=submit class=link-btn name=logout value=Logout>
+</form>
+        '''
     else:
+      loggedIn = False
+      expires = datetime.datetime.now() - datetime.timedelta(weeks=1)
+      cookie['session']['expires'] = expires.strftime('%a, %d-%b-%Y %H:%M:%S EST')
       output += 'Please log in or register.<br>'
   else:
-
-    output += '''
-<form action=notepad.py method=post>
-  <input type=submit class=navbar-button value=Home>
-  <input type=submit class=navbar-button id=login name=login value=Login>
-  <input type=submit class=navbar-button id=register name=register value=Register>
-</form>
-    '''
-
+    loggedIn = False
     if 'login' in elements:
       if 'user' in elements and 'pass' in elements:
         loginUser(elements.getfirst('user'), elements.getfirst('pass'))
@@ -250,54 +313,25 @@ def main():
     else:
       home()
 
+  output += '</div>'
+      
+  if loggedIn:
+    navbar += '''
+<input type=submit class='navbar-btn navbar-btn-right' id=read name=read value=Read>
+<input type=submit class='navbar-btn navbar-btn-right' id=write name=write value=Write>
+<input type=submit class='navbar-btn navbar-btn-right' id=logout name=logout value=Logout>
+    '''
+  else:
+    navbar += '''
+<input type=submit class='navbar-btn navbar-btn-right' id=login name=login value=Login>
+<input type=submit class='navbar-btn navbar-btn-right' id=register name=register value=Register>
+    '''
+
+  navbar += '</div></div></form>'
+  
   header()
+  print navbar
   print output
   footer()
 
 main()
-
-def main_local():
-
-  global output, cookie
-#  elements = {'register': 'Register', 'user': 'admin', 'pass': 'password', 'confirm': 'password'}
-  elements = {'login': 'Login', 'user': 'admin', 'pass': 'password'}
-  cookie['session'] = 'e3274be5c857fb42ab72d786e281b4b8'
-  if cookie != Cookie.SimpleCookie():
-    if 'session' in cookie and cookie['session'].value in sessions:
-      if 'mode' in elements and 'text' in elements:
-        note(elements['text'], elements['mode'].lower())
-      elif 'logout' in elements:
-        logout()
-      else:
-        query()
-    else:
-      output += 'Please log in or register.<br>'
-  else:
-    if 'login' in elements:
-      if 'user' in elements and 'pass' in elements:
-        auth(elements['user'], elements['pass'])
-      else:
-        output += 'Please complete all fields.<br>'
-        login()
-    elif 'register' in elements:
-      if 'user' in elements and 'pass' in elements and 'confirm' in elements:
-        if elements['pass'] == elements['confirm']:
-          if not elements['user'] in users:
-            register(elements['user'], elements['pass'], elements['confirm'])
-          else:
-            output += 'Username already in use!<br>'
-            login()
-        else:
-          output += 'Passwords must match!<br>'
-          login()
-      else:
-        output += 'Please complete all fields.<br>'
-        login()
-    else:
-      login()
-
-  header()
-  print output
-  footer()
-
-#main_local()
