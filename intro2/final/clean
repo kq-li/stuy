@@ -1,0 +1,12 @@
+#! /bin/bash
+
+rm -f notes/*
+rm users
+rm noteData
+
+cp admin users
+touch noteData
+
+chmod 777 admin
+chmod 777 users
+chmod 777 noteData
