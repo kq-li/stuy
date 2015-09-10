@@ -5,8 +5,6 @@ public class UseArgument {
     Scanner scanner = new Scanner(System.in);
     System.out.print("Please enter your name: ");
     String line = scanner.nextLine();
-    System.out.print("Hi ");
-    System.out.println(line);
-    
+    System.out.println("Hi " + line);
   }
 }
