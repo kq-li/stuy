@@ -1,0 +1,16 @@
+Due: 10/30
+
+1. Exam 10/30
+	Topics to focus on:
+	    a. Matrix Multiplication
+            b. One and Two Dimensional Arrays
+
+2. Here's a link to the paper regarding Planet Poker:
+       https://www.cigital.com/papers/download/developer_gambling.php
+
+3. In the classwork folder look at:
+       a. BooleanMatrixMult.java
+       b. GeneralMatrixMult.java
+
+4. Due Mon. 11/02
+   From section 1.5 in Sedgewick and Wayne, exercises #6 and #7.

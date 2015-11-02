@@ -1,0 +1,19 @@
+Due: Monday 9/21
+
+1. First Test: 9/25
+
+2. Read chapter 1 in ThinkJava.
+
+3. Complete the QuadSolver.java program that we started in class.
+   The program should read the 3 coefficients from the command line
+   then output the roots of the quadratic equation.
+
+   quadratic equation : ax*x + bx + c = 0
+   
+   ex. If the quadratic is, x*x + x - 2 = 0 then the roots will be
+       -2.0 and 1.0.
+
+    Sample run:
+    > java QuadSolver 1.0 1.0 -2.0
+      roots: -2.0, 1.0
+

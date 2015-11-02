@@ -1,0 +1,16 @@
+Due: Tues., Oct. 19
+
+1. Next Exam: 10/30
+
+2. In the Exam2 Folder, review the following files:
+    a. Hurricane.java
+    b. Gcd.java
+    c. FivePerLine.java
+
+
+3. Complete the following programs from the book website.
+
+   a. Music Shuffling (Creative exercise #24).
+   b. Coupon Collector (Creative exercise #36).
+
+   Have your solutions available in class.

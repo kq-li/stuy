@@ -1,0 +1,12 @@
+Due: Fri. 10/16
+
+1. Look in the Classwork folder and review:
+    a. DiceSim.java
+    b. LongestPlateau.java
+
+2. At the book site : http://introcs.cs.princeton.edu/java/14array/
+
+    Read the Programming with arrays section. Stop and the Shuffling
+    and Sampling section.
+
+    Complete exercies #8 and #9.

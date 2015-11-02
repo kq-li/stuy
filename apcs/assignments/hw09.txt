@@ -1,0 +1,24 @@
+Exam: Fri. 10/09
+
+1. In the classwork folder review the most upto date versions of Factors.java and LetsMakeADeal.java.
+
+2. Write a class to simulate the gambler's ruin problem.
+   
+   Assume a gambler makes a series of $1 fair bets at a casino. The gambler begins the gambling session
+   with an initial stake and a goal in mind. The gambler will bet until either the goal is reached or 
+   all cash is exhausted (bust).
+
+   For instance, say the stake is $20 and the goal is $100. The gambler will bet until they have $100 or $0.
+   
+   Keep track of the number of bets taken during a session.
+  
+   Verify the following theorems in probability:
+     1. The probability of reaching the goal is equal to the ratio of the stake to the goal.
+        For the above case, the gambler has a 20% chance of hitting the goal.
+
+     2. The expected number of bets to reach the goal or go bust is equal to the product of the expected gain
+        and the initial stake. ( Expect an average of 1600 bets for the above case.)
+
+   Read three arguments from the command line,
+    $ java GamblerRuin stake goal trials   
+   

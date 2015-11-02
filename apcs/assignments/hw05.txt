@@ -1,0 +1,7 @@
+Due: Tues., 10/29
+
+1. Read section 3.1 to 3.4 in ThinkApJava.
+2. Write the program RandomInt.java, that
+   takes a nonnegative integer,n, from the terminal
+   and prints a uniformally distributed random integer
+   from [0,n).

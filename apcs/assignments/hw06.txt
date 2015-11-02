@@ -1,0 +1,10 @@
+Due: Wed. 9/30
+===
+
+
+Write FlipCoin.java to simulate flipping a fair coin.
+The output should be either "heads" or "tails".
+
+Trying writing 2 versions.
+Version 1: use just an if form 
+Version 2: use an if else. 

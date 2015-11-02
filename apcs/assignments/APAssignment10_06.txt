@@ -1,0 +1,72 @@
+Due: Wed. 10/07
+Do not email me your solutions to the problems below. We will
+discuss the solutions in class.
+
+**** Exam is 10/09 ****
+
+1. Review the solution to DivisorPatterns.
+
+   public class DivisorPatterns{
+
+
+    public static void main(String [] args){
+	int n = Integer.parseInt(args[0]);
+
+	for (int i = 1 ; i <= n; i++){
+	    for (int j = 1; j <= n; j++){
+		if (i % j == 0 || j % i == 0)
+		    System.out.print("*");
+		else
+		    System.out.print(" ");
+	    }
+	    System.out.println(i);
+	}
+    }
+   }
+   
+
+
+2. Write the program PrimeFactors.java that prints the prime factors of
+   a number.
+
+   ex. $java PrimeFactors 144
+       $prime factors of 144 : 2 2 2 2 3 3
+       $java PrimeFactors 15: 3 5
+
+   In the PrimeFactors class have the free method
+   public static void primeFactors(int n) print the factors to the screen.
+
+   Your main function should look like this.
+
+   public static void main(String [] args){
+      primeFactors(Integer.parseInt(args[0]));
+   }
+
+
+
+3. Modify PrimeFactors.java to read 2 integer values from the terminal and
+   produces the following:
+
+   $java PrimeFactors 2 10
+   $prime factors of 2 : 2
+   $prime factors of 3 : 3
+   $prime factors of 4 : 2 2
+   $prime factors of 5 : 5
+   $prime factors of 6 : 2 3
+   $prime factors of 7 : 7
+   $prime factors of 8 : 2 2 2
+   $prime factors of 9 : 3 3
+
+
+4. Game simulation. In the 1970s game show called "Let's Make a Deal",
+   a contestant is presented with three doors. Behind one door is a valuable
+   prize, behind the other two are gag gifts. After the contestant chooses a
+   door, the host opens up one of the other two doors (never revealing the
+   prize, of course). The contestant is then given the opportunity to switch
+   to the other unopened door. Should the contestant do so? Intuitively, it
+   might seem that the contestant's initial choice door and the other unopened
+   door are equally likely to contain the prize, so there would be no incentive
+   to switch. Write a program MonteHall.java to test this intuition by
+   simulation. Your program should take a command line parameter N, play
+   the game N times using each of the two strategies (switch or don't switch)
+   and print the chance of success for each strategy. 

@@ -1,0 +1,13 @@
+Due: Thursday, Oct. 29
+
+1. Exam 10/30
+   - includes one and two dimensional arrays
+   - no input output will be tested.
+
+2. From the classwork folder review:
+   a. TablePayments.java
+   b. Rumors.java
+
+3. From the Sedgewick and Wayne BookSite 
+   a. sec. 1.4 Creative Exercise #23 Bad Shuffling
+   b. sec. 1.5 Exercise #2

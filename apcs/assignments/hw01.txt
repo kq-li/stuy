@@ -1,0 +1,18 @@
+Due: Thursday 9/20
+
+1. Review IntOps.java.
+2. Read the preface of ThinkJava.
+3. Write the program MinChange.java. It should read an argument
+   from the command line that represents cents then print the minimum
+   number of coins to comprise the cents. Assume the coins are
+   quarters, nickels, dimes and pennies.
+
+   Here is a sample run.
+   > java MinChange 108
+     # quarters : 4
+     # dimes : 0
+     # nickels : 1
+     # pennies: 3
+     minimum coins : 8
+
+Email the solution to yourself.

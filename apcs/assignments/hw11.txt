@@ -1,0 +1,11 @@
+
+Due: Thurs. 10/15
+
+
+ On the website :
+
+    http://introcs.cs.princeton.edu/java/14array/
+
+   1. Exercise #4,#5.
+
+   2. Complete Longest Plateau problem ( Creative Exercise #21.)

@@ -1,0 +1,157 @@
+Part I
+--------
+
+What is the value of i after the following confusing code is executed?
+int i = 10; // i = 10
+i = i++; // i = 10
+i = ++i; // i = 11
+i = i++ + ++i; // i = 11 + 13 = 24
+Moral: don't write code like this.
+
+
+Part II
+--------
+
+Write a program Sort3.java with three if statements (and no loops) that reads
+in three integers a, b, and c from the command line and prints them out in 
+ascending order.
+
+if (a > b) swap a and b
+if (a > c) swap a and c
+if (b > c) swap b and c
+
+public class Sort3 {
+  public static void main(String[] args) {
+    int a = Integer.parseInt(args[0]);
+    int b = Integer.parseInt(args[1]);
+    int c = Integer.parseInt(args[2]);
+    int temp;
+    if (a > b) {
+      temp = a;
+      a = b;
+      b = temp;
+    }
+    if (a > c) {
+      temp = a;
+      a = c;
+      c = temp;
+    }
+    if (b > c) {
+      temp = b;
+      b = c;
+      c = temp;
+    }
+    System.out.println(a + " " + b + " " + c);
+  }
+}
+
+
+Part III
+----------
+
+2D random walk. A two dimensional random walk simulates the behavior of a 
+particle moving in a grid of points. At each step, the random walker moves 
+north, south, east, or west with probability 1/4, independently of previous
+moves. Determine how far away (on average) the random walker is from the
+starting point after N steps. (Theoretical answer: on the order of sqrt(N).)
+
+public class RandomWalk {
+  public static void main(String[] args) {
+    int steps = Integer.parseInt(args[0]);
+    int trials = Integer.parseInt(args[1]);
+    int x, y;
+    double rand, distance = 0;
+    for (int i = 0; i < trials; i++) {
+      x = 0;
+      y = 0;
+      for (int j = 0; j < steps; j++) {
+        rand = Math.random();
+        if (rand < 0.25)
+          x++;
+        else if (rand < 0.5)
+          x--;
+        else if (rand < 0.75)
+          y++;
+        else
+          y--;
+      }
+      distance += Math.sqrt(x * x + y * y);
+    }
+    System.out.println("Distance: " + distance / trials);
+  }
+}
+
+
+Part IV
+--------
+
+Write a program GamblerPlot.java that traces a gambler's ruin simulation by 
+printing a line after each bet that has one asterisk corresponding to each
+dollar held by the gambler. Accomplish this with the following function:
+
+  // precondition: n > 0
+  // postcondition: showCash(5) prints *****     
+  public static void showCash(int n){
+  	 // your code goes here
+  }
+
+public class GamblerPlot {
+  public static void main(String[] args) {
+    int stake = Integer.parseInt(args[0]);
+    int goal = Integer.parseInt(args[1]);
+    int money = stake;
+    while (money >= 0) {
+      if (money >= goal)
+        break;
+      if (Math.random() < 0.5)
+        money++;
+      else
+        money--;
+      showCash(money);
+    }
+  }
+
+  public static void showCash(int n) {
+    for (int i = 0; i < n; i++) {
+      System.out.print("*");
+    }
+    System.out.println();
+  }
+}
+
+
+Part V
+------
+
+Ramanujan's taxi. S. Ramanujan was an Indian mathematician who became famous 
+for his intuition for numbers. When the English mathematician G. H. Hardy came
+to visit him in the hospital one day, Hardy remarked that the number of his 
+taxi was 1729, a rather dull number. To which Ramanujan replied, "No, Hardy!
+No, Hardy! It is a very interesting number. It is the smallest number 
+expressible as the sum of two cubes in two different ways." Verify this claim 
+by writing a program Ramanujan.java that takes a command line argument N and 
+prints out all integers less than or equal to N that can be expressed as the
+sum of two cubes in two different ways - find distinct positive integers
+a, b, c, and d such that a3 + b3 = c3 + d3. Use four nested for loops.
+
+public class Ramanujan {
+  public static void main(String[] args) {
+    int N = Integer.parseInt(args[0]);
+    int cube1, cube2;
+    for (int a = 1; a * a * a < N; a++) {
+      for (int b = a; a * a * a + b * b * b < N; b++) {
+        cube1 = a * a * a + b * b * b;
+        for (int c = a; c * c * c < N; c++) {
+          if (c != a) {
+            for (int d = c; c * c * c + d * d * d < N; d++) {
+              cube2 = c * c * c + d * d * d;
+              if (cube1 == cube2) {
+                System.out.println(a + "^3 + " + b + "^3 = " + c + "^3 +" + d + "^3 = " + cube1);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

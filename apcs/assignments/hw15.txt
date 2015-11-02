@@ -1,0 +1,12 @@
+Due: Friday 10/23
+
+1. In the classwork folder review:
+    a. MusicShuffling.java
+    b. CouponCollectorTrials.java
+
+2. Write code to swap the first and last columns
+   of an NxN matrix.
+
+3. Write code to transpose a NxN matrix,i.e reflect
+   the entries across the diagonal. Do not use an
+   auxiliary array.

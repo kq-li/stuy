@@ -1,0 +1,67 @@
+Due: Mon. 10/26
+
+1. Exam #3 10/30
+
+2. In the MatrixMatrixMult class below,
+   complete the code to accomplish matrix
+   multiplication of 2 square matrices.
+   Matrix Multiplication, say AB = C,
+   is defined as:
+
+    c[i][j] = (Row i of A)(dot product)(column j of B).
+   
+
+   In the code below, AB should produce a matrix
+   where the first and last columns of A are swapped.
+
+   The desired output is given below.
+
+   A
+   1 2 3
+   4 5 6
+   7 8 9
+   B
+   0 0 1
+   0 1 0
+   1 0 0
+   AB
+   3 2 1
+   6 5 4
+   9 8 7
+
+
+public class MatrixMatrixMult{
+
+  public static void print(int[][] a){
+	  for (int i = 0; i < a.length; i++){
+	    for (int j = 0; j < a.length; j++)
+		    System.out.print(a[i][j] + " ");
+	    System.out.println();
+	  }
+  }
+
+
+
+  public static void main(String [] args){
+    int [][] a = {{1,2,3},{4,5,6},{7,8,9}};
+    int [][] b = {{0,0,1},{0,1,0},{1,0,0}};
+    int N = a.length;
+    int [][] c = new int[N][N];
+
+
+    System.out.println("A");
+    print(a);
+    System.out.println("B");
+    print(b);
+    // matrix multiplication: AB = C
+    // **********************************
+    for (int i = 0; i < N; i++)
+      for (int j = 0; j < N; j++)
+        for (int k = 0; k < N; k++)
+          c[i][j] += a[i][k] * b[k][j];
+          
+    //***********************************
+    System.out.println("AB");
+    print(c);
+  }
+}

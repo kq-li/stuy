@@ -1,0 +1,6 @@
+Due: Tues., 10/06
+
+1. Exam #2: Friday, 10/09
+2. Finish the DivisorPatterns program.
+3. In ThinkJava, read sections 3.5 - 3.10.
+

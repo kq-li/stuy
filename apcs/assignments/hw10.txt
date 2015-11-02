@@ -1,0 +1,11 @@
+
+Due: Wed. 10/14
+
+
+ On the website :
+
+    http://introcs.cs.princeton.edu/java/14array/
+
+   1. Read the Q + A section.
+
+   2. Complete exercises 1 - 3.

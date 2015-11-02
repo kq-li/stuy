@@ -1,0 +1,19 @@
+1. Write FencePosts.java that reads a positive integer and prints out 
+   a fence. Use "|" as a post and "---" as the chain.
+
+   Examples:
+
+	  $ java FencePosts 1
+          $ |
+	  $ java FencePosts 2
+          $ |---|
+          $ java FencePosts 3
+          $ |---|---|
+
+
+2. Write TossWeightedDie.java that simulates tossing a weighted die N times.
+   Use these probabilities:
+     P(1) = P(6) = 10%
+     P(2) = P(5) = 15%
+     P(3) = P(4) = 25%	
+

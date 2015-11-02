@@ -1,0 +1,32 @@
+Due: Friday 9 / 18
+
+Here's a short lesson on Two's Complement Notation:
+  http://www.cs.cornell.edu/~tomf/notes/cps104/twoscomp.html
+
+Answer the following questions:
+
+1. Convert the following binary numbers into a decimal numbers.
+
+   a.  00101 = 5
+   b.  01101 = 13
+
+
+2. Add the following 3 bit binary numbers.
+
+   a. 001 + 011 = 100
+   b. 011 + 101 = 000
+
+
+3. Write the following decimal numbers in two's complement notation.
+   Assume you have 4 bits.
+
+   a. 5 = 0101
+   b. -5 = 1010
+
+4. Given 4 bit two complement notation, what are the maximum and minimum decimal numbers represented?
+max = 7
+min: -8
+
+
+
+
