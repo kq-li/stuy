@@ -1,8 +1,5 @@
 public class Problem1 {
-
-
   public static void main(String[] args) {
-
     double linkProb = Double.parseDouble(args[0]) / 100;    // probability of using a link
     double jumpProb = Double.parseDouble(args[1]) / 100;    // probability of jumping randomly
       
@@ -18,7 +15,6 @@ public class Problem1 {
       counts[i][j]++; 
     } 
     StdOut.println(N + " " + N); 
-
 
     // Print probability distribution for row i. 
     for (int i = 0; i < N; i++)  {
