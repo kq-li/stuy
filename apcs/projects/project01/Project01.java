@@ -142,8 +142,10 @@ public class Project01 {
     }
   }
 
-  public static void problem01(double linkProb, double jumpProb, String filename) {
-    try (Scanner fIn = new Scanner(new File(filename))) {    
+  public static void problem01(double linkProb, double jumpProb, String filename) {   
+    try (Scanner fIn = new Scanner(new File(filename))) {
+      StdOut.printf("Transition matrix of %s using linkProb %.2f and jumpProb %.2f:\n\n",
+                    filename, linkProb, jumpProb);
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
       
@@ -161,8 +163,9 @@ public class Project01 {
     }
   }
 
-  public static void problem02(String filename) {
+  public static void problem02(String filename) {    
     try (Scanner fIn = new Scanner(new File(filename))) {
+      StdOut.printf("Transition matrix of %s ignoring duplicate links:\n\n", filename);
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
       
@@ -182,8 +185,9 @@ public class Project01 {
     }
   }
 
-  public static void problem03(String filename) {
+  public static void problem03(String filename) {    
     try (Scanner fIn = new Scanner(new File(filename))) {
+      StdOut.printf("Transition matrix of %s compensating for pages with no links:\n\n", filename);
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
       int[] outDegree = new int[N];
@@ -194,7 +198,7 @@ public class Project01 {
         outDegree[i]++;
         counts[i][j]++;
       }
-      
+
       StdOut.println(N + " " + N);
       double[][] trans = transition(counts, 0.90, 0.10);
       
@@ -258,10 +262,10 @@ public class Project01 {
   public static void problem11() {
     String filename = "8pages.txt";
     int moves = 1000000;
-    StdOut.printf("Running java Transition < %s | java RandomSurfer %d returns:\n\n",
-                  filename, moves);
     
-    try (Scanner fIn = new Scanner(new File(filename))) {    
+    try (Scanner fIn = new Scanner(new File(filename))) {
+      StdOut.printf("Page rankings of %s through %d iterations of RandomSurfer:\n\n",
+                    filename, moves);
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
 
@@ -283,10 +287,10 @@ public class Project01 {
   public static void problem12() {
     String filename = "8pages.txt";
     int moves = 100;
-    StdOut.printf("Running java Transition < %s | java Markov %d returns:\n\n",
-                  filename, moves);
     
     try (Scanner fIn = new Scanner(new File(filename))) {    
+      StdOut.printf("Page rankings of %s through %d iterations of Markov:\n\n",
+                    filename, moves);
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
 
@@ -306,7 +310,8 @@ public class Project01 {
   }
 
   public static void problem13(String filename) {
-    try (Scanner fIn = new Scanner(new File(filename))) {    
+    try (Scanner fIn = new Scanner(new File(filename))) {
+      StdOut.printf("Page rankings of %s using repeated squaring:\n\n", filename);
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
 
@@ -335,7 +340,7 @@ public class Project01 {
         }
         a = copy(b);
       }
-
+      
       format1DArray(a[0]);
     } catch (FileNotFoundException e) {
       StdOut.printf("File %s not found!\n", filename);
@@ -343,6 +348,7 @@ public class Project01 {
   }
   
   public static void problem14(int pages, int links) {
+    StdOut.printf("Random page network with %d pages and %d links:\n\n", pages, links);
     int[][] counts = generate(pages, links);
     printLinks(counts);
   }
@@ -350,8 +356,8 @@ public class Project01 {
   public static void problem15(int basePages, int baseLinks, int hubs, int auths) {
     StdOut.println("Hubs, which come right after basePages and before authorities, seem to rank " +
                   "higher than authorities due to the fact that hubs generate self-traffic, " +
-                   "while authorities mainly generate traffic for other pages.");
-    StdOut.printf("Base pages: %d-%d\nHubs: %d-%d\nAuthorities: %d-%d\n",
+                   "while authorities mainly generate traffic for other pages.\n");
+    StdOut.printf("Base pages: %d-%d\nHubs: %d-%d\nAuthorities: %d-%d\n\n",
                   0, basePages - 1,
                   basePages, basePages + hubs - 1,
                   basePages + hubs, basePages + hubs + auths - 1);
@@ -400,11 +406,15 @@ public class Project01 {
     double[][] trans = transition(web, 0.90, 0.10);
     double[] rank = markov(trans, 100);
     printLinks(web);
+    StdOut.println();
     format1DArray(rank);
   }
 
-  public static void problem17(String filename, int surferTrials, int markovTrials) {
+  public static void problem17(String filename, int surferTrials, int markovTrials) {    
     try (Scanner fIn = new Scanner(new File(filename))) {
+      StdOut.printf("Average hitting time of a random surfer in %s over %d moves compared " +
+                     "to reciprocal of page ranks through %d iterations of Markov:\n\n",
+                     filename, surferTrials, markovTrials);
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
 
@@ -444,8 +454,9 @@ public class Project01 {
         meaHitTimes[i] = (double) moves[i] / surferTrials;
         expHitTimes[i] = 1.0 / rank[i];
       }
-        
+      StdOut.println("Random surfer hit times:");
       format1DArray(meaHitTimes);
+      StdOut.println("Calculated hit times:");
       format1DArray(expHitTimes);
     } catch (FileNotFoundException e) {
       StdOut.printf("File %s not found!\n", filename);
@@ -454,6 +465,8 @@ public class Project01 {
 
   public static void problem18(String filename, int trials) {
     try (Scanner fIn = new Scanner(new File(filename))) {
+      StdOut.printf("Average moves before crossing path in %s over %d random surfs: ",
+                    filename, trials);
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
 
@@ -487,7 +500,7 @@ public class Project01 {
         }
       }
 
-      StdOut.printf("Average moves: %.1f\n", (double) moves / trials);      
+      StdOut.printf("%.1f\n", (double) moves / trials);      
     } catch (FileNotFoundException e) {
       StdOut.printf("File %s not found!\n", filename);
     }
@@ -495,6 +508,8 @@ public class Project01 {
 
   public static void problem19(String filename, int trials) {
     try (Scanner fIn = new Scanner(new File(filename))) {
+      StdOut.printf("Circles representing page ranks in %s over %d iterations of Markov:\n",
+                     filename, trials);
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
 
@@ -509,17 +524,18 @@ public class Project01 {
       double[][] coords = new double[N][2];
 
       for (int i = 0; i < N; i++) {
-        coords[i][0] = 0.2 * (i % 5) + 0.1;
-        coords[i][1] = 0.9 - 0.2 * (i / 5);
+        coords[i][0] = 0.1 * (i % 10) + 0.05;
+        coords[i][1] = 0.95 - 0.1 * (i / 10);
       }
      
       for (int i = 0; i < N; i++) {
-        double r = rank[i] * N / 30;
+        double r = rank[i] * N / 75;
         if (i % 2 == 0)
           StdDraw.setPenColor(StdDraw.BLUE);
         else
           StdDraw.setPenColor(StdDraw.RED);
         StdDraw.filledCircle(coords[i][0], coords[i][1], r);
+        StdOut.printf("%d  %.2f %.2f %.2f\n", i, coords[i][0], coords[i][1], r);
       }
       
     } catch (FileNotFoundException e) {
