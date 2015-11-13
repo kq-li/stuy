@@ -181,24 +181,28 @@ public class Project01 {
 
   public static void problem07(String[] args) {
     StdOut.printf("\nAdding links to page 23 from all other pages in medium.txt (see " +
-                  "medium7.txt) results in a higher rank for page 23 due to higher " +
-                  "likelihood of moving to page 23 from any other page, increasing " +
-                  "the fraction of links to page 23.\n\n");
+                  "medium7.txt) results in a higher rank for page 23 due to higher likelihood" +
+                  "of moving to page 23 from any other page, increasing the fraction of links" +
+                  "to page 23.\n\n");
   }
 
   public static void problem08(String[] args) {
     StdOut.printf("\nAdding links from page 23 to all other pages in medium.txt (see " +
-                  "medium7.txt) results in a lower rank for page 23 due to higher " +
-                  "likelihood of moving to any other page from page 23, diluting " +
-                  "the links so that a smaller fraction link to page 23.\n\n");
+                  "medium8.txt) results in a lower rank for page 23 due to higher likelihood " +
+                  "of moving to any other page from page 23, diluting the links so that a " +
+                  "smaller fraction link to page 23.\n\n");
   }
 
   public static void problem09(String[] args) {
-    
+    StdOut.printf("\nAdding a link from 23 to 13, 30, or 47 increases the page rank of 23 " +
+                  "because page 13 also links to 23, increasing the chances of navigating " +
+                  "back to 23.\n\n");
   }
 
   public static void problem10(String[] args) {
-
+    StdOut.printf("\nAdding a link from 23 to any page that is not 13, 30, or 47 decreases " +
+                  "the page rank of 23 because these pages do not link back to 23, decreasing " +
+                  "the chances of navigating back to 23 on that step.\n\n");
   }
 
   public static void problem11(String[] args) {
