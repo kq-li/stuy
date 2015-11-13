@@ -1,0 +1,30 @@
+
+Due: Friday 11/13
+
+Groups: The minimum size is 1. The maximum is 4.
+	Groups must be organized by 11/4. Groups may
+        not be disbanded or altered.
+
+
+Topic: Complete the 1.6 case study from the book site.
+       
+       Complete exercises 1 - 19.
+
+       Submit all code and files to rick.platek@stuycs.org.
+
+       Hand in type written summary on 11/13.
+
+       This summary should include the following:
+           1. each group member's name.
+           2. Your answers to questions found in the exercises. 
+	   3. Instructions on how to run and test your code.
+           4. A commentary on the results obtained in each exercise. 
+           5. Explain any difficulties encountered.
+
+Lab Days
+ Only the 5th and 6th of November will be granted to work on the project
+ in class.
+
+Plagarism.
+  You must do your own work. If a group plagarizes then the entire group
+  will be penalized. 

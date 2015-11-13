@@ -1,246 +1,536 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.lang.Exception;
 import java.util.Arrays;
+import java.util.Scanner;
+import java.util.InputMismatchException;
 
-public class Project01 {  
+public class Project01 { 
   public static void main(String[] args) {
-    if (args.length == 0 || args[0].equals("-h") || "-h-n".indexOf(args[0]) == -1) {
-      StdOut.printf("Usage: java Project01.java [flags]\n");
-      StdOut.printf("Flags:\n");
-      StdOut.printf("\t-h\t\t\t\t\t\tDisplay this message (default)\n");
-      StdOut.printf("\t-n [problem-number] [args] [pipe file]\t\tOutput solution to problem-number\n");
-    } else if (args[0].equals("-n")) {
-      String[] pargs = Arrays.copyOfRange(args, 2, args.length);
-      switch (Integer.parseInt(args[1])) {
-      case 1:
-        problem01(pargs);
-        break;
-      case 2:
-        problem02(pargs);
-        break;
-      case 3:
-        problem03(pargs);
-        break;
-      case 4:
-        problem04(pargs);
-        break;
-      case 5:
-        problem05(pargs);
-        break;
-      case 6:
-        problem06(pargs);
-        break;
-      case 7:
-        problem07(pargs);
-        break;
-      case 8:
-        problem08(pargs);
-        break;
-      case 9:
-        problem09(pargs);
-        break;
-      case 10:
-        problem10(pargs);
-        break;
-      case 11:
-        problem11(pargs);
-        break;
-      case 12:
-        problem12(pargs);
-        break;
-      case 13:
-        problem13(pargs);
-        break;
-      case 14:
-        problem14(pargs);
-        break;
-      case 15:
-        problem15(pargs);
-        break;
-      case 16:
-        problem16(pargs);
-        break;
-      case 17:
-        problem17(pargs);
-        break;
-      case 18:
-        problem18(pargs);
-        break;
-      case 19:
-        problem19(pargs);
-        break;
+    try (Scanner stdIn = new Scanner(System.in)) {
+      while (true) {
+        StdOut.println();
+        StdOut.printf("Problem number (q to quit): ");
+        String next = stdIn.next();
+        if (next.equals("q")) {
+          break;
+        }
+        int probNum = Integer.parseInt(next);
+        String filename;
+        int pages, links;
+        switch (probNum) {
+        case 1:
+          StdOut.printf("Probability of following link in percent: ");
+          double linkProb = stdIn.nextDouble() / 100;
+          StdOut.printf("Probability of jumping randomly in percent (should be 100 - linkProb): ");
+          double jumpProb = stdIn.nextDouble() / 100;
+          StdOut.printf("Data file: ");
+          filename = stdIn.next();
+          StdOut.println();
+          problem01(linkProb, jumpProb, filename);
+          break;
+        case 2:
+          StdOut.printf("Data file: ");
+          filename = stdIn.next();
+          StdOut.println();
+          problem02(filename);
+          break;
+        case 3:
+          StdOut.printf("Data file: ");
+          filename = stdIn.next();
+          StdOut.println();
+          problem03(filename);
+          break;
+        case 4:
+          StdOut.println();
+          problem04();
+          break;
+        case 5:
+          StdOut.println();
+          problem05();
+          break;
+        case 6:
+          StdOut.println();
+          problem06();
+          break;
+        case 7:
+          StdOut.println();
+          problem07();
+          break;
+        case 8:
+          StdOut.println();
+          problem08();
+          break;
+        case 9:
+          StdOut.println();
+          problem09();
+          break;
+        case 10:
+          StdOut.println();
+          problem10();
+          break;
+        case 11:
+          StdOut.println();
+          problem11();
+          break;
+        case 12:
+          StdOut.println();
+          problem12();
+          break;
+        case 13:
+          StdOut.printf("Data file: ");
+          filename = stdIn.next();
+          StdOut.println();
+          problem13(filename);
+          break;
+        case 14:
+          StdOut.printf("Page count: ");
+          pages = stdIn.nextInt();
+          StdOut.printf("Link count: ");
+          links = stdIn.nextInt();
+          StdOut.println();
+          problem14(pages, links);
+          break;
+        case 15:
+          StdOut.printf("Page count: ");
+          pages = stdIn.nextInt();
+          StdOut.printf("Link count: ");
+          links = stdIn.nextInt();
+          StdOut.printf("Hub count: ");
+          int hubs = stdIn.nextInt();
+          StdOut.printf("Authorities count: ");
+          int auths = stdIn.nextInt();
+          StdOut.println();
+          problem15(pages, links, hubs, auths);
+          break;
+        case 16:
+          StdOut.println();
+          problem16();
+          break;
+        case 17:
+          StdOut.println();
+          problem17();
+          break;
+        case 18:
+          StdOut.println();
+          problem18();
+          break;
+        case 19:
+          StdOut.println();
+          problem19();
+          break;
+        }
       }
+    } catch (Exception e) {
+      StdOut.println("Invalid input!");
+      e.printStackTrace();
+    } finally {
+      StdOut.println();
     }
   }
 
-  public static void problem01(String[] args) {
-    double linkProb = Double.parseDouble(args[0]) / 100;    // probability of using a link
-    double jumpProb = Double.parseDouble(args[1]) / 100;    // probability of jumping randomly
-   
-    int N = StdIn.readInt();           // number of pages
-    int[][] counts = new int[N][N];    // counts[i][j] = # links from page i to page j
-    int[] outDegree = new int[N];      // outDegree[i] = # links from page i to anywhere
-
-    // Accumulate link counts.  
-    while (!StdIn.isEmpty())  {
-      int i = StdIn.readInt(); 
-      int j = StdIn.readInt(); 
-      outDegree[i]++; 
-      counts[i][j]++; 
-    } 
-    StdOut.println(N + " " + N); 
-
-    // Print probability distribution for row i. 
-    for (int i = 0; i < N; i++)  {
-
-      // Print probability for column j. 
-      for (int j = 0; j < N; j++) {
-        double p = linkProb * counts[i][j] / outDegree[i] + jumpProb / N; 
-        StdOut.printf("%7.5f ", p); 
+  public static void problem01(double linkProb, double jumpProb, String filename) {
+    try (Scanner fIn = new Scanner(new File(filename))) {    
+      int N = fIn.nextInt();
+      int[][] counts = new int[N][N];
+      int[] outDegree = new int[N];
+      
+      while (fIn.hasNextInt())  {
+        int i = fIn.nextInt(); 
+        int j = fIn.nextInt(); 
+        outDegree[i]++; 
+        counts[i][j]++; 
       }
-      StdOut.println(); 
-    } 
+      
+      StdOut.println(N + " " + N);
+      double[][] trans = transition(counts, outDegree, linkProb, jumpProb);
+      print2DArray(trans);
+    } catch (FileNotFoundException e) {
+      StdOut.printf("File %s not found!", filename);
+      StdOut.println();
+    }
   }
 
-  public static void problem02(String[] args) {
-    int N = StdIn.readInt();           // number of pages
-    int[][] counts = new int[N][N];    // counts[i][j] = # links from page i to page j
-    int[] outDegree = new int[N];      // outDegree[i] = # links from page i to anywhere
+  public static void problem02(String filename) {
+    try (Scanner fIn = new Scanner(new File(filename))) {
+      int N = fIn.nextInt();
+      int[][] counts = new int[N][N];
+      int[] outDegree = new int[N];
+      
+      while (fIn.hasNextInt()) {
+        int i = fIn.nextInt();
+        int j = fIn.nextInt();
+        if (counts[i][j] == 0) {
+          outDegree[i]++;
+          counts[i][j]++;
+        }
+      }
+      
+      StdOut.println(N + " " + N);
+      double[][] trans = transition(counts, outDegree, 0.90, 0.10);
+      print2DArray(trans);
+    } catch (FileNotFoundException e) {
+      StdOut.printf("File %s not found!", filename);
+      StdOut.println();
+    }
+  }
 
-    // Accumulate link counts.
-    while (!StdIn.isEmpty()) {
-      int i = StdIn.readInt();
-      int j = StdIn.readInt();
-      if (counts[i][j] == 0) {         // if there are no links between page i and page j
+  public static void problem03(String filename) {
+    try (Scanner fIn = new Scanner(new File(filename))) {
+      int N = fIn.nextInt();
+      int[][] counts = new int[N][N];
+      int[] outDegree = new int[N];
+      
+      while (fIn.hasNextInt()) {
+        int i = fIn.nextInt();
+        int j = fIn.nextInt();
         outDegree[i]++;
         counts[i][j]++;
       }
-    }
-    StdOut.println(N + " " + N);
-
-    // Print probability distribution for row i.
-    for (int i = 0; i < N; i++) {
-
-      // Print probability for column j.
-      for (int j = 0; j < N; j++) {
-        double p = 0.90 * counts[i][j] / outDegree[i] + 0.10 / N;
-        StdOut.printf("%7.5f ", p);
-      }
+      
+      StdOut.println(N + " " + N);
+      double[][] trans = transition(counts, outDegree, 0.90, 0.10);
+      
+      for (int i = 0; i < N; i++)
+        if (outDegree[i] == 0)
+          for (int j = 0; j < N; j++)
+            trans[i][j] = 1.0 / N;
+      print2DArray(trans);
+    } catch (FileNotFoundException e) {
+      StdOut.printf("File %s not found!", filename);
       StdOut.println();
     }
   }
 
-  public static void problem03(String[] args) {
-    int N = StdIn.readInt();           // number of pages
-    int[][] counts = new int[N][N];    // counts[i][j] = # links from page i to page j
-    int[] outDegree = new int[N];      // outDegree[i] = # links from page i to anywhere
-
-    // Accumulate link counts.
-    while (!StdIn.isEmpty()) {
-      int i = StdIn.readInt();
-      int j = StdIn.readInt();
-      outDegree[i]++;
-      counts[i][j]++;
-    }
-    StdOut.println(N + " " + N);
-
-    // Print probability distribution for row i.
-    for (int i = 0; i < N; i++) {
-        
-      // Print probability for column j.
-      for (int j = 0; j < N; j++) {
-        double p;
-        if (outDegree[i] == 0) {
-          p = 1.0 / N;
-        } else {
-          p = 0.90 * counts[i][j] / outDegree[i] + 0.10 / N;
-        }
-        StdOut.printf("%7.5f ", p);
-      }
-      StdOut.println();
-    }
-  }
-
-  public static void problem04(String[] args) {
-    StdOut.printf("\nRandomSurfer.java fails if the probabilities in p[page] do not sum to 1. " +
+  public static void problem04() {
+    StdOut.println("RandomSurfer.java fails if the probabilities in p[page] do not sum to 1. " +
                   "This problem occurs due to the possibility of Math.random() returning a " +
                   "number greater than the sum of p[page], resulting in page defaulting to 0. " +
                   "This behavior can be rectified by calculating the sum of the probabilities " +
-                  "in p[page] and adding p[page][j] divided by that sum to the sum counter.\n\n");
+                  "in p[page] and adding p[page][j] divided by that sum to the sum counter.");
   }
 
-  public static void problem05(String[] args) {
-    StdOut.printf("\nRandomSurfer.java requires 10,000 iterations to calculate page ranks to " +
+  public static void problem05() {
+    StdOut.printf("RandomSurfer.java requires 10,000 iterations to calculate page ranks to " +
                   "four decimal places and 100,000 iterations to calculate page ranks to five " +
-                  "decimal places for tiny.txt.\n\n");
+                  "decimal places for tiny.txt.\n");
   }
 
-  public static void problem06(String[] args) {
-    StdOut.printf("\nMarkov.java requires 2 iterations to calculate page ranks to 3 decimal " +
+  public static void problem06() {
+    StdOut.println("Markov.java requires 2 iterations to calculate page ranks to 3 decimal " +
                   "places, 3 iterations to calculate page ranks to 4 decimal places, and 8 " +
-                  "iterations to calculate page ranks to 10 decimal places.\n\n");
+                  "iterations to calculate page ranks to 10 decimal places.");
   }
 
-  public static void problem07(String[] args) {
-    StdOut.printf("\nAdding links to page 23 from all other pages in medium.txt (see " +
+  public static void problem07() {
+    StdOut.println("Adding links to page 23 from all other pages in medium.txt (see " +
                   "medium7.txt) results in a higher rank for page 23 due to higher likelihood" +
                   "of moving to page 23 from any other page, increasing the fraction of links" +
-                  "to page 23.\n\n");
+                  "to page 23.");
   }
 
-  public static void problem08(String[] args) {
-    StdOut.printf("\nAdding links from page 23 to all other pages in medium.txt (see " +
+  public static void problem08() {
+    StdOut.println("Adding links from page 23 to all other pages in medium.txt (see " +
                   "medium8.txt) results in a lower rank for page 23 due to higher likelihood " +
                   "of moving to any other page from page 23, diluting the links so that a " +
-                  "smaller fraction link to page 23.\n\n");
+                  "smaller fraction link to page 23.");
   }
 
-  public static void problem09(String[] args) {
-    StdOut.printf("\nAdding a link from 23 to 13, 30, or 47 increases the page rank of 23 " +
-                  "because page 13 also links to 23, increasing the chances of navigating " +
-                  "back to 23.\n\n");
+  public static void problem09() {
+    StdOut.println("Adding a link from 23 to any page that links back to 23 in any number of " +
+                   "steps increases the page rank of 23 because the probability of 23 being " +
+                   "accessed through links therefore increases (medium09.txt has extra link " +
+                   "23 12).");
   }
 
-  public static void problem10(String[] args) {
-    StdOut.printf("\nAdding a link from 23 to any page that is not 13, 30, or 47 decreases " +
-                  "the page rank of 23 because these pages do not link back to 23, decreasing " +
-                  "the chances of navigating back to 23 on that step.\n\n");
+  public static void problem10() {
+    StdOut.println("Adding a link from 23 to any page increases the page rank of that page " +
+                   "because the concentration of links, and therefore the probability of " +
+                   "navigating to that page, increases (medium10.txt has extra link 23 22).");
   }
 
-  public static void problem11(String[] args) {
+  public static void problem11() {
+    StdOut.println("Running java Transition < 8pages.txt | java RandomSurfer 100000 returns:");
+    StdOut.println();      
+    String filename = "8pages.txt";
+    int moves = 1000000;
+    
+    try (Scanner fIn = new Scanner(new File(filename))) {    
+      int N = fIn.nextInt();
+      int[][] counts = new int[N][N];
+      int[] outDegree = new int[N];
+
+      while (fIn.hasNextInt())  {
+        int i = fIn.nextInt(); 
+        int j = fIn.nextInt(); 
+        outDegree[i]++; 
+        counts[i][j]++; 
+      }
+      
+      StdOut.println(N + " " + N);
+      double[][] trans = transition(counts, outDegree, 0.90, 0.10);
+      double[] rank = randomSurfer(trans, moves);
+      format1DArray(rank);
+    } catch (FileNotFoundException e) {
+      StdOut.printf("File %s not found!", filename);
+      StdOut.println();
+    }
+  }
+
+  public static void problem12() {
+    StdOut.println("Running java Transition < 8pages.txt | java Markov 100 returns:");
+    StdOut.println();
+    String filename = "8pages.txt";
+    int moves = 100;
+    
+    try (Scanner fIn = new Scanner(new File(filename))) {    
+      int N = fIn.nextInt();
+      int[][] counts = new int[N][N];
+      int[] outDegree = new int[N];
+
+      while (fIn.hasNextInt())  {
+        int i = fIn.nextInt(); 
+        int j = fIn.nextInt(); 
+        outDegree[i]++; 
+        counts[i][j]++; 
+      }
+
+      StdOut.println(N + " " + N);
+      double[][] trans = transition(counts, outDegree, 0.90, 0.10);
+      double[] rank = markov(trans, moves);
+      format1DArray(rank);
+    } catch (FileNotFoundException e) {
+      StdOut.printf("File %s not found!", filename);
+      StdOut.println();
+    }    
+  }
+
+  public static void problem13(String filename) {
+    try (Scanner fIn = new Scanner(new File(filename))) {    
+      int N = fIn.nextInt();
+      int[][] counts = new int[N][N];
+      int[] outDegree = new int[N];
+
+      while (fIn.hasNextInt())  {
+        int i = fIn.nextInt(); 
+        int j = fIn.nextInt(); 
+        outDegree[i]++; 
+        counts[i][j]++; 
+      }
+
+      StdOut.println(N + " " + N);
+      double[][] a = transition(counts, outDegree, 0.90, 0.10);
+      double[][] b;
+      boolean done = false;
+      while (!done) {
+        b = square(a);
+        for (int i = 0; i < N; i++) {
+          if (done)
+            break;
+          for (int j = 0; j < N; j++) {
+            if (done)
+              break;
+            if ((long) (a[i][j] * 10000000000.0) == (long) (b[i][j] * 10000000000.0)) {
+              done = true;
+            }
+          }
+        }
+        a = copy(b);
+      }
+
+      format1DArray(a[0]);
+    } catch (FileNotFoundException e) {
+      StdOut.printf("File %s not found!", filename);
+      StdOut.println();
+    }    
+  }
+  
+  public static void problem14(int pages, int links) {
+    int[][] counts = generate(pages, links);
+    for (int i = 0; i < pages; i++) {
+      for (int j = 0; j < pages; j++) {
+        for (int k = 0; k < counts[i][j]; k++) {
+          StdOut.printf("%2d %2d   ", i, j);
+        }
+      }
+      StdOut.println();
+    }
+  }
+
+  public static void problem15(int basePages, int baseLinks, int hubs, int auths) {
+    StdOut.println("Hubs, which come right after basePages and before authorities, seem to rank " +
+                  "higher than auths due to the fact that hubs generate self-traffic, while " +
+                   "authorities mainly generate traffic for other pages.");
+    int[][] counts = generate(basePages, baseLinks);
+    int pages = basePages + hubs + auths;
+    int[][] web = new int[pages][pages];
+    
+    for (int i = 0; i < basePages; i++)
+      for (int j = 0; j < basePages; j++)
+        web[i][j] = counts[i][j];
+    
+    for (int i = basePages; i < basePages + hubs; i++) {
+      for (int j = 0; j < basePages / 10; j++) {
+        int page = (int) (Math.random() * basePages);
+        web[page][i]++;
+      }
+    }
+
+    for (int i = basePages + hubs; i < pages; i++) {
+      for (int j = 0; j < basePages / 10; j++) {
+        int page = (int) (Math.random() * basePages);
+        web[i][page]++;
+      }
+    }
+  
+    int[] outDegree = new int[pages];
+    for (int i = 0; i < pages; i++)
+      for (int j = 0; j < pages; j++)
+        outDegree[i] += web[i][j];
+
+    double[][] trans = transition(web, outDegree, 0.90, 0.10);
+    double[] rank = markov(trans, 100);
+    format1DArray(rank);
+  }
+
+  public static void problem16() {
 
   }
 
-  public static void problem12(String[] args) {
+  public static void problem17() {
 
   }
 
-  public static void problem13(String[] args) {
+  public static void problem18() {
 
   }
 
-  public static void problem14(String[] args) {
+  public static void problem19() {
 
   }
 
-  public static void problem15(String[] args) {
+  public static int[][] generate(int pages, int links) {
+    int[][] web = new int[pages][pages];
+    for (int i = 0; i < links; i++) {
+      int src = (int) (Math.random() * pages);
+      int dst;
+      do {
+        dst = (int) (Math.random() * pages);
+      } while (dst == src);
+      web[src][dst]++;
+    }
+    return web;
+  }
+  
+  public static double[][] transition(int[][] counts, int[] outDegree,
+                                      double linkProb, double jumpProb) {
+    int N = counts.length;
+    double[][] prob = new double[N][N];
+    for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
+        if (outDegree[i] == 0)
+          prob[i][j] = jumpProb / N;
+        else
+          prob[i][j] = linkProb * counts[i][j] / outDegree[i] + jumpProb / N;
+      }
+    }
 
+    return prob;
   }
 
-  public static void problem16(String[] args) {
+  public static double[] randomSurfer(double[][] transition, int moves) {
+    int N = transition.length;
+    int[] freq = new int[N];
+    int page = 0;
 
+    for (int t = 0; t < moves; t++) {
+      double r = Math.random();
+      double sum = 0.0;
+      for (int i = 0; i < N; i++) {
+        sum += transition[page][i];
+        if (r < sum) {
+          page = i;
+          break;
+        }
+      }
+      freq[page]++;
+    }
+    
+    double[] rank = new double[N];
+    
+    for (int i = 0; i < N; i++)
+      rank[i] = (double) freq[i] / moves;
+    
+    return rank;
   }
 
-  public static void problem17(String[] args) {
+  public static double[] markov(double[][] transition, int iterations) {
+    int N = transition.length;
+    double[] rank = new double[N];
+    rank[0] = 1.0;
 
+    for (int t = 0; t < iterations; t++) {
+      double[] newRank = new double[N];
+      
+      for (int i = 0; i < N; i++)
+        for (int j = 0; j < N; j++)
+          newRank[i] += rank[j] * transition[j][i];
+      
+      rank = newRank;
+    }
+    
+    return rank;
+  }
+  
+  public static double[][] square(double[][] a) {
+    int N = a.length;
+    double b[][] = new double[N][N];
+    for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
+        for (int k = 0; k < N; k++) {
+          b[i][j] += a[i][k] * a[k][j];
+        }
+      }
+    }
+    return b;
   }
 
-  public static void problem18(String[] args) {
-
+  public static double[][] copy(double[][] a) {
+    int N = a.length;
+    double b[][] = new double[N][N];
+    for (int i = 0; i < N; i++)
+      for (int j = 0; j < N; j++)
+        b[i][j] = a[i][j];
+    return b;
   }
 
-  public static void problem19(String[] args) {
-
+  public static void format1DArray(double[] a) {
+    int N = a.length;
+    for (int i = 0; i < N; i++)
+      StdOut.printf("%2d  %.10f\n", i, a[i]);
+    StdOut.println();
+  }
+  
+  public static void print2DArray(double[][] a) {
+    int N = a.length;
+    int M = a[0].length;
+    for (int i = 0; i < N; i++) {
+      for (int j = 0; j < M; j++) {
+        StdOut.printf("%.10f ", a[i][j]);
+      }
+      StdOut.println();
+    }
   }
 
-
-
+  public static void print2DArray(int[][] a) {
+    int N = a.length;
+    int M = a[0].length;
+    for (int i = 0; i < N; i++) {
+      for (int j = 0; j < M; j++) {
+        StdOut.printf("%2d ", a[i][j]);
+      }
+      StdOut.println();
+    }
+  }
+  
 }
