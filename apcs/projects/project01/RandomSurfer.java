@@ -47,7 +47,7 @@ public class RandomSurfer {
 
         // Print page ranks. 
         for (int i = 0; i < N; i++) {
-            StdOut.printf("%8.5f", (double) freq[i] / T); 
+            StdOut.printf("%.10f ", (double) freq[i] / T); 
         }
         StdOut.println(); 
     }  

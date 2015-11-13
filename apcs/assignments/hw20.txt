@@ -1,0 +1,7 @@
+Due: Thurs 11/12
+
+1. Review MyMath.java in the Classwork folder.
+
+2. Complete exercises 2 and 5 from section 2.1 in Sedgewick and Wayne.
+
+
