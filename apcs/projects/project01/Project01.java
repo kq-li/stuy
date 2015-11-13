@@ -17,12 +17,12 @@ public class Project01 {
         }
         int probNum = Integer.parseInt(next);
         String filename;
-        int pages, links;
+        int pages, links, trials;
         switch (probNum) {
         case 1:
-          StdOut.printf("Probability of following link in percent: ");
+          StdOut.printf("Link prob in percent: ");
           double linkProb = stdIn.nextDouble() / 100;
-          StdOut.printf("Probability of jumping randomly in percent (should be 100 - linkProb): ");
+          StdOut.printf("Jump prob in percent (should be 100 - linkProb): ");
           double jumpProb = stdIn.nextDouble() / 100;
           StdOut.printf("Data file: ");
           filename = stdIn.next();
@@ -108,22 +108,35 @@ public class Project01 {
           problem16();
           break;
         case 17:
+          StdOut.printf("Data file: ");
+          filename = stdIn.next();
+          StdOut.printf("Surfer trials: ");
+          int surferTrials = stdIn.nextInt();
+          StdOut.printf("Markov trials: ");
+          int markovTrials = stdIn.nextInt();
           StdOut.println();
-          problem17();
+          problem17(filename, surferTrials, markovTrials);
           break;
         case 18:
+          StdOut.printf("Data file: ");
+          filename = stdIn.next();
+          StdOut.printf("Trials: ");
+          trials = stdIn.nextInt();
           StdOut.println();
-          problem18();
+          problem18(filename, trials);
           break;
         case 19:
+          StdOut.printf("Data file: ");
+          filename = stdIn.next();
+          StdOut.printf("Trials: ");
+          trials = stdIn.nextInt();
           StdOut.println();
-          problem19();
+          problem19(filename, trials);
           break;
         }
       }
     } catch (Exception e) {
       StdOut.println("Invalid input!");
-      e.printStackTrace();
     } finally {
       StdOut.println();
     }
@@ -133,21 +146,18 @@ public class Project01 {
     try (Scanner fIn = new Scanner(new File(filename))) {    
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
-      int[] outDegree = new int[N];
       
-      while (fIn.hasNextInt())  {
+      while (fIn.hasNextInt()) {
         int i = fIn.nextInt(); 
         int j = fIn.nextInt(); 
-        outDegree[i]++; 
         counts[i][j]++; 
       }
       
       StdOut.println(N + " " + N);
-      double[][] trans = transition(counts, outDegree, linkProb, jumpProb);
+      double[][] trans = transition(counts, linkProb, jumpProb);
       print2DArray(trans);
     } catch (FileNotFoundException e) {
-      StdOut.printf("File %s not found!", filename);
-      StdOut.println();
+      StdOut.printf("File %s not found!\n", filename);
     }
   }
 
@@ -155,23 +165,20 @@ public class Project01 {
     try (Scanner fIn = new Scanner(new File(filename))) {
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
-      int[] outDegree = new int[N];
       
       while (fIn.hasNextInt()) {
         int i = fIn.nextInt();
         int j = fIn.nextInt();
         if (counts[i][j] == 0) {
-          outDegree[i]++;
           counts[i][j]++;
         }
       }
       
       StdOut.println(N + " " + N);
-      double[][] trans = transition(counts, outDegree, 0.90, 0.10);
+      double[][] trans = transition(counts, 0.90, 0.10);
       print2DArray(trans);
     } catch (FileNotFoundException e) {
-      StdOut.printf("File %s not found!", filename);
-      StdOut.println();
+      StdOut.printf("File %s not found!\n", filename);
     }
   }
 
@@ -189,7 +196,7 @@ public class Project01 {
       }
       
       StdOut.println(N + " " + N);
-      double[][] trans = transition(counts, outDegree, 0.90, 0.10);
+      double[][] trans = transition(counts, 0.90, 0.10);
       
       for (int i = 0; i < N; i++)
         if (outDegree[i] == 0)
@@ -197,8 +204,7 @@ public class Project01 {
             trans[i][j] = 1.0 / N;
       print2DArray(trans);
     } catch (FileNotFoundException e) {
-      StdOut.printf("File %s not found!", filename);
-      StdOut.println();
+      StdOut.printf("File %s not found!\n", filename);
     }
   }
 
@@ -211,9 +217,9 @@ public class Project01 {
   }
 
   public static void problem05() {
-    StdOut.printf("RandomSurfer.java requires 10,000 iterations to calculate page ranks to " +
+    StdOut.println("RandomSurfer.java requires 10,000 iterations to calculate page ranks to " +
                   "four decimal places and 100,000 iterations to calculate page ranks to five " +
-                  "decimal places for tiny.txt.\n");
+                  "decimal places for tiny.txt.");
   }
 
   public static void problem06() {
@@ -250,58 +256,52 @@ public class Project01 {
   }
 
   public static void problem11() {
-    StdOut.println("Running java Transition < 8pages.txt | java RandomSurfer 100000 returns:");
-    StdOut.println();      
     String filename = "8pages.txt";
     int moves = 1000000;
+    StdOut.printf("Running java Transition < %s | java RandomSurfer %d returns:\n\n",
+                  filename, moves);
     
     try (Scanner fIn = new Scanner(new File(filename))) {    
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
-      int[] outDegree = new int[N];
 
-      while (fIn.hasNextInt())  {
+      while (fIn.hasNextInt()) {
         int i = fIn.nextInt(); 
         int j = fIn.nextInt(); 
-        outDegree[i]++; 
         counts[i][j]++; 
       }
       
       StdOut.println(N + " " + N);
-      double[][] trans = transition(counts, outDegree, 0.90, 0.10);
+      double[][] trans = transition(counts, 0.90, 0.10);
       double[] rank = randomSurfer(trans, moves);
       format1DArray(rank);
     } catch (FileNotFoundException e) {
-      StdOut.printf("File %s not found!", filename);
-      StdOut.println();
+      StdOut.printf("File %s not found!\n", filename);
     }
   }
 
   public static void problem12() {
-    StdOut.println("Running java Transition < 8pages.txt | java Markov 100 returns:");
-    StdOut.println();
     String filename = "8pages.txt";
     int moves = 100;
+    StdOut.printf("Running java Transition < %s | java Markov %d returns:\n\n",
+                  filename, moves);
     
     try (Scanner fIn = new Scanner(new File(filename))) {    
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
-      int[] outDegree = new int[N];
 
-      while (fIn.hasNextInt())  {
+      while (fIn.hasNextInt()) {
         int i = fIn.nextInt(); 
         int j = fIn.nextInt(); 
-        outDegree[i]++; 
         counts[i][j]++; 
       }
 
       StdOut.println(N + " " + N);
-      double[][] trans = transition(counts, outDegree, 0.90, 0.10);
+      double[][] trans = transition(counts, 0.90, 0.10);
       double[] rank = markov(trans, moves);
       format1DArray(rank);
     } catch (FileNotFoundException e) {
-      StdOut.printf("File %s not found!", filename);
-      StdOut.println();
+      StdOut.printf("File %s not found!\n", filename);
     }    
   }
 
@@ -309,17 +309,15 @@ public class Project01 {
     try (Scanner fIn = new Scanner(new File(filename))) {    
       int N = fIn.nextInt();
       int[][] counts = new int[N][N];
-      int[] outDegree = new int[N];
 
-      while (fIn.hasNextInt())  {
+      while (fIn.hasNextInt()) {
         int i = fIn.nextInt(); 
         int j = fIn.nextInt(); 
-        outDegree[i]++; 
         counts[i][j]++; 
       }
 
       StdOut.println(N + " " + N);
-      double[][] a = transition(counts, outDegree, 0.90, 0.10);
+      double[][] a = transition(counts, 0.90, 0.10);
       double[][] b;
       boolean done = false;
       while (!done) {
@@ -340,27 +338,23 @@ public class Project01 {
 
       format1DArray(a[0]);
     } catch (FileNotFoundException e) {
-      StdOut.printf("File %s not found!", filename);
-      StdOut.println();
+      StdOut.printf("File %s not found!\n", filename);
     }    
   }
   
   public static void problem14(int pages, int links) {
     int[][] counts = generate(pages, links);
-    for (int i = 0; i < pages; i++) {
-      for (int j = 0; j < pages; j++) {
-        for (int k = 0; k < counts[i][j]; k++) {
-          StdOut.printf("%2d %2d   ", i, j);
-        }
-      }
-      StdOut.println();
-    }
+    printLinks(counts);
   }
 
   public static void problem15(int basePages, int baseLinks, int hubs, int auths) {
     StdOut.println("Hubs, which come right after basePages and before authorities, seem to rank " +
-                  "higher than auths due to the fact that hubs generate self-traffic, while " +
-                   "authorities mainly generate traffic for other pages.");
+                  "higher than authorities due to the fact that hubs generate self-traffic, " +
+                   "while authorities mainly generate traffic for other pages.");
+    StdOut.printf("Base pages: %d-%d\nHubs: %d-%d\nAuthorities: %d-%d\n",
+                  0, basePages - 1,
+                  basePages, basePages + hubs - 1,
+                  basePages + hubs, basePages + hubs + auths - 1);
     int[][] counts = generate(basePages, baseLinks);
     int pages = basePages + hubs + auths;
     int[][] web = new int[pages][pages];
@@ -383,49 +377,190 @@ public class Project01 {
       }
     }
   
-    int[] outDegree = new int[pages];
-    for (int i = 0; i < pages; i++)
-      for (int j = 0; j < pages; j++)
-        outDegree[i] += web[i][j];
-
-    double[][] trans = transition(web, outDegree, 0.90, 0.10);
+    double[][] trans = transition(web, 0.90, 0.10);
     double[] rank = markov(trans, 100);
     format1DArray(rank);
   }
 
   public static void problem16() {
-
+    /*
+      data:
+      4
+       0  1    0  1
+       1  2    
+       2  0    
+       3  1    3  2
+     */
+    StdOut.println("The following sequence of links results in page 2 being higher ranked " +
+                   "page 1, despite 4 links pointing to page 1 and only 3 to page 2.");
+    int[][] web = {{0, 2, 0, 0},
+                   {0, 0, 1, 0},
+                   {1, 0, 0, 0},
+                   {0, 1, 1, 0}};
+    double[][] trans = transition(web, 0.90, 0.10);
+    double[] rank = markov(trans, 100);
+    printLinks(web);
+    format1DArray(rank);
   }
 
-  public static void problem17() {
+  public static void problem17(String filename, int surferTrials, int markovTrials) {
+    try (Scanner fIn = new Scanner(new File(filename))) {
+      int N = fIn.nextInt();
+      int[][] counts = new int[N][N];
 
+      while (fIn.hasNextInt()) {
+        int i = fIn.nextInt();
+        int j = fIn.nextInt();
+        counts[i][j]++;
+      }
+      
+      double[][] trans = transition(counts, 0.90, 0.10);
+      double[] rank = markov(trans, markovTrials);
+      
+      int[] moves = new int[N];
+      double[] meaHitTimes = new double[N];
+      double[] expHitTimes = new double[N];
+      int page = 0;
+      
+      for (int i = 0; i < surferTrials; i++) {
+        for (int j = 0; j < N; j++) {
+          while (page != j) {
+            double r = Math.random();
+            double sum = 0.0;
+        
+            for (int k = 0; k < N; k++) {
+              sum += trans[page][k];
+              if (r < sum) {
+                page = k;
+                moves[j]++;
+                break;
+              }
+            }
+          }         
+        }
+      }
+
+      for (int i = 0; i < N; i++) {
+        meaHitTimes[i] = (double) moves[i] / surferTrials;
+        expHitTimes[i] = 1.0 / rank[i];
+      }
+        
+      format1DArray(meaHitTimes);
+      format1DArray(expHitTimes);
+    } catch (FileNotFoundException e) {
+      StdOut.printf("File %s not found!\n", filename);
+    }
   }
 
-  public static void problem18() {
+  public static void problem18(String filename, int trials) {
+    try (Scanner fIn = new Scanner(new File(filename))) {
+      int N = fIn.nextInt();
+      int[][] counts = new int[N][N];
 
+      while (fIn.hasNextInt()) {
+        int i = fIn.nextInt();
+        int j = fIn.nextInt();
+        counts[i][j]++;
+      }
+
+      double[][] trans = transition(counts, 0.90, 0.10);
+      int moves = 0;
+      
+      for (int i = 0; i < trials; i++) {
+        boolean[] visited = new boolean[N];
+        int page = 0;
+        visited[page] = true;
+
+        while (moves < N || find(visited, false) != -1) {
+          double r = Math.random();
+          double sum = 0.0;
+          
+          for (int j = 0; j < N; j++) {
+            sum += trans[page][j];
+            if (r < sum) {
+              page = j;
+              visited[page] = true;
+              moves++;
+              break;
+            }
+          }
+        }
+      }
+
+      StdOut.printf("Average moves: %.1f\n", (double) moves / trials);      
+    } catch (FileNotFoundException e) {
+      StdOut.printf("File %s not found!\n", filename);
+    }
   }
 
-  public static void problem19() {
+  public static void problem19(String filename, int trials) {
+    try (Scanner fIn = new Scanner(new File(filename))) {
+      int N = fIn.nextInt();
+      int[][] counts = new int[N][N];
 
+      while (fIn.hasNextInt()) {
+        int i = fIn.nextInt();
+        int j = fIn.nextInt();
+        counts[i][j]++;
+      }
+
+      double[][] trans = transition(counts, 0.90, 0.10);
+      double[] rank = markov(trans, trials);
+      double[][] coords = new double[N][2];
+
+      for (int i = 0; i < N; i++) {
+        coords[i][0] = 0.2 * (i % 5) + 0.1;
+        coords[i][1] = 0.9 - 0.2 * (i / 5);
+      }
+     
+      for (int i = 0; i < N; i++) {
+        double r = rank[i] * N / 30;
+        if (i % 2 == 0)
+          StdDraw.setPenColor(StdDraw.BLUE);
+        else
+          StdDraw.setPenColor(StdDraw.RED);
+        StdDraw.filledCircle(coords[i][0], coords[i][1], r);
+      }
+      
+    } catch (FileNotFoundException e) {
+      StdOut.printf("File %s not found!\n", filename);
+    }
   }
 
+  public static int find(boolean[] a, boolean x) {
+    for (int i = 0; i < a.length; i++)
+      if (a[i] == x)
+        return i;
+    return -1;
+  }
+  
   public static int[][] generate(int pages, int links) {
     int[][] web = new int[pages][pages];
+
     for (int i = 0; i < links; i++) {
       int src = (int) (Math.random() * pages);
       int dst;
+
       do {
         dst = (int) (Math.random() * pages);
       } while (dst == src);
+      
       web[src][dst]++;
     }
+    
     return web;
   }
   
-  public static double[][] transition(int[][] counts, int[] outDegree,
-                                      double linkProb, double jumpProb) {
+  public static double[][] transition(int[][] counts, double linkProb, double jumpProb) {
     int N = counts.length;
+    int[] outDegree = new int[N];
+    
+    for (int i = 0; i < N; i++)
+      for (int j = 0; j < N; j++)
+        outDegree[i] += counts[i][j];
+    
     double[][] prob = new double[N][N];
+    
     for (int i = 0; i < N; i++) {
       for (int j = 0; j < N; j++) {
         if (outDegree[i] == 0)
@@ -438,12 +573,12 @@ public class Project01 {
     return prob;
   }
 
-  public static double[] randomSurfer(double[][] transition, int moves) {
+  public static double[] randomSurfer(double[][] transition, int trials) {
     int N = transition.length;
     int[] freq = new int[N];
     int page = 0;
 
-    for (int t = 0; t < moves; t++) {
+    for (int t = 0; t < trials; t++) {
       double r = Math.random();
       double sum = 0.0;
       for (int i = 0; i < N; i++) {
@@ -459,17 +594,17 @@ public class Project01 {
     double[] rank = new double[N];
     
     for (int i = 0; i < N; i++)
-      rank[i] = (double) freq[i] / moves;
+      rank[i] = (double) freq[i] / trials;
     
     return rank;
   }
 
-  public static double[] markov(double[][] transition, int iterations) {
+  public static double[] markov(double[][] transition, int trials) {
     int N = transition.length;
     double[] rank = new double[N];
     rank[0] = 1.0;
 
-    for (int t = 0; t < iterations; t++) {
+    for (int t = 0; t < trials; t++) {
       double[] newRank = new double[N];
       
       for (int i = 0; i < N; i++)
@@ -532,5 +667,17 @@ public class Project01 {
       StdOut.println();
     }
   }
-  
+
+  public static void printLinks(int[][] a) {
+    int N = a.length;
+    for (int i = 0; i < N; i++) {
+      for (int j = 0; j < N; j++) {
+        for (int k = 0; k < a[i][j]; k++) {
+          StdOut.printf("%2d %2d   ", i, j);
+        }
+      }
+      StdOut.println();
+    }
+    StdOut.println();
+  }
 }
