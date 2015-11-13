@@ -7,6 +7,6 @@ public class Odd {
   }
 
   public static boolean odd(boolean a, boolean b, boolean c) {
-    return (a && b) && !c || (a && c) && !b || (b && c) && !a;
+    return a ^ b ^ c;
   }
 }
