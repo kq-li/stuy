@@ -1,0 +1,11 @@
+Due: Monday 11/16
+
+1. In the Labs folder, review CheckSumII.txt.
+   It has the solutions to the code we completed in class.
+
+   You may change the return type of randomAccount() to long if you wish.
+   If you do, you may need to explicitly state where the longs are used
+   within your code by placing a L next to the data. For example,
+   3 is an int data type where as 3L is a long.
+
+2. Complete questions 3 and 4 from the lab.
