@@ -1,0 +1,48 @@
+Due: Tues. 11/17
+
+1. In the classwork folder, review CheckSum.java.
+
+   Note the code,
+    String badAccount = 0000400000L + "";
+    The number 0000400000 is stored a long and represents a hexadecimal
+    number that is converted to a String object.
+
+    Also, in boolean checkSum(String acct)
+     acct.substring(0,1).equals("0")  checks if the first character is a zero.
+
+     checkSum("00000000000") will evaluate to false.
+   
+
+2. In the code below, use the String methods to complete
+   the functions below.
+
+
+
+public class ReverseWord{
+    
+    // precondition: word is a String 
+    // postcondition: returns the reverse of the word
+    // reverse("tea") -> "eat
+    public static String reverse(String word){
+      String ans = "";
+      for (int i = word.length() - 1; i >= 0; i++) {
+        ans += word.substring(i, i + 1);
+      }
+      return ans;
+    }
+
+    // postcondition: returns true if word is a palindrome
+    //                false otherwise
+    // isPalindrome("racecar") -> true
+    // isPalindrome("table") -> false
+    public static boolean isPalindrome(String word){
+      return word.equals(reverse(word));
+    }
+   
+    
+    public static void main(String [] args){
+      String w = args[0];
+      System.out.println("reversed: " + reverse(w));
+      System.out.println("Is palindrome: " + isPalindrome(w));
+    }
+}
