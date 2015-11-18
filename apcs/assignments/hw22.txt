@@ -25,7 +25,7 @@ public class ReverseWord{
     // reverse("tea") -> "eat
     public static String reverse(String word){
       String ans = "";
-      for (int i = word.length() - 1; i >= 0; i++) {
+      for (int i = word.length() - 1; i >= 0; i--) {
         ans += word.substring(i, i + 1);
       }
       return ans;
