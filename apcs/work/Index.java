@@ -13,10 +13,17 @@ public class Index {
   }
 
   public static int index3(String a, String b) {
-    if (a.substring(0, b.length()).equals(b) || a.length() == 0)
-      return 0;
     System.out.println(a + " " + b);
-    return 1 + index3(a.substring(1), b); // recursive
+    if (a.substring(0, b.length()).equals(b))
+      return 0;
+    if (a.length() == b.length())
+      return -1;
+    int index = index3(a.substring(1), b);
+    System.out.println(index);
+    if (index < 0)
+      return 0;
+    else
+      return 1 + index;
   }
 
   public static void main(String[] args) {
