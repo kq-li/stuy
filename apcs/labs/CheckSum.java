@@ -8,7 +8,7 @@ public class CheckSum{
   //precondition: 0 <= d < 10
   //postcondition: returns the sum of the digits of 2d
   //         f(7) = 5, f(1) = 2, ...
-  public static int f(int d){
+  public static long f(long d){
     return 2 * d % 10 + d / 5;
   }
 
@@ -20,8 +20,8 @@ public class CheckSum{
   // f(d5) + d6 + f(d7) + d8 + f(d9) + checkDigit
   // is a multiple of 10
   // Note: 0 <= checkDigit < 10
-  public static int checkDigit(int n){
-    int sum = 0;
+  public static int checkDigit(long n){
+    long sum = 0;
     for (int i = 9; i >= 0; i--) {
       if (i % 2 == 1) {
         sum += f(n % 10);
@@ -30,7 +30,7 @@ public class CheckSum{
       }
       n /= 10;
     }
-    return (10 - sum % 10) % 10;
+    return (int) (10 - sum % 10) % 10;
   }
 
 
@@ -50,7 +50,8 @@ public class CheckSum{
   // postcondition: returns an 11 digit number where the 
   // least significant digit is the checkdigit
   public static String createAccount(){
-    return "";
+    long acc = randomAccount();
+    return "" + acc + checkDigit(acc);
   }
 
   // ***************** Question 5 ******************/
@@ -64,6 +65,6 @@ public class CheckSum{
   }
 
   public static void main(String [] args){
-    System.out.println(randomAccount());
+    System.out.println(createAccount());
   }
 }

@@ -1,0 +1,12 @@
+Due: 11/19
+
+
+1. Complete the CaesarCipher.java program.
+
+2. Modify encrpyt(String, int) so by removing the 
+   precondition that shift >= 0.
+
+  encrpyt("apple",3) -> "dssoh"
+  encrypt("dssoh",-3) -> "apple"
+  encrypt("zoo", 3) -> "crr"
+  encrypt("crr",-3) -> "zoo"

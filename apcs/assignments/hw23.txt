@@ -1,0 +1,76 @@
+Hw: Due Wed., 11/18
+
+1. Review the code below.
+
+2. Complete the indexR(String, String) method in three ways.
+
+   In version 1, don't use a loop or recursion.
+
+   In version 2, use a loop.
+
+   In version 3, use recursion. Then state if your function
+   uses an iterative or recursive process.
+
+
+
+public class ReverseWord{
+    
+    // precondition: word is a String 
+    // postcondition: returns the reverse of the word
+    // reverse("tea") -> "aet
+    public static String reverse(String word){
+	String ans = "";
+	for (int i = 0; i < word.length(); i++)
+	    ans =  word.substring(i,i+1) + ans;
+	return ans;
+    }
+
+
+    // recursive version
+    public static String reverseR(String word){
+	if (word.length() < 2) return word;
+	return reverseR(word.substring(1)) + word.substring(0,1);
+    }
+
+    // tail recursive
+    public static String reverseTR(String word){
+	return rIter(word,"");
+      }
+
+    public static String rIter(String word, String ans){
+	if (word.length() == 0)	 return ans;
+	return rIter(word.substring(1),  word.substring(0,1) + ans);
+    }
+
+    // postcondition: returns true if word is a palindrome
+    //                false otherwise
+    // isPalindrome("racecar") -> true
+    // isPalindrome("table") -> false
+    public static boolean isPalindrome(String word){
+	return word.equals(reverse(word));
+    }
+
+
+    // precondition: word != null, sub != null
+    // postcondition: returns the position of the right
+    // most occurrence of sub in word. -1 if sub is not in word.
+    // ex. indexOfR("mississippi","is") -> 4
+    //     indexOfR("java", "a") -> 3
+    //     indexOfR("java", "r") -> -1
+    public static int indexOfR(String word, String sub){
+    	   return  -1;
+    }
+
+
+
+    public static void main(String [] args){
+	String w = args[0];
+	w = null;
+	System.out.println("reversed: " + reverse(w));
+	System.out.println("reversed: " + reverseR(w));
+	System.out.println("reversed: " + reverseTR(w));
+	System.out.println("Is palindrome: " + isPalindrome(w));
+	System.out.println("index of right " + indexOfR(w,"is"));
+	
+ }
+}
