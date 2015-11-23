@@ -1,4 +1,4 @@
-public class EnglishNum { 
+public class NumToEng { 
   public static String numToEng(int num) {
     String[] units = {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"};
     String[] teens = {"ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"};
@@ -35,13 +35,6 @@ public class EnglishNum {
       }
     }
     return ret;
-  }
-
-  public static int find(int[] array, int num) {
-    for (int i = 0; i < array.length; i++)
-      if (array[i] == num)
-        return i;
-    return -1;
   }
 
   public static void main(String[] args) {
