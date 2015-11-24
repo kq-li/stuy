@@ -1,0 +1,46 @@
+Due: Tues. 11/24
+
+1. Exam 12/4
+
+2. Download PigLatin.java.
+
+3. Modifiy beginsWithVowel(String,String) such that 
+   beginsWithVowel(String, null) returns false.
+
+   Test cases:
+   beginsWithVowel("apple","aeiouy") -> true
+   beginsWithVowel("apple", null) -> false
+ 
+
+
+4. Write the function firstVowelPos(String) that returns the index
+   position of the first vowel; or -1 if no vowel appears. You may
+   assume the the argument w does not begin with a vowel.
+
+   Test cases:
+   firstVowelPos("you") -> 1
+   firstVowelPos("quiet") -> 2
+   firstVowelPos("fly") -> 2
+   firstVowelPos("zzz") -> -1
+
+
+   // pre: w != null and w does not begin with a vowel
+   // post: returns the index position of the first vowel.
+   //       assume the vowels are a,e,i,o,u or y.
+   public static int firstVowelPos(String w){
+
+
+5. Complete  pigLatin(String) to translates the word to pig latin.
+
+   // pre: w may be null, an empty String, or a string of lowercase letters.
+   // post: returns the translated word
+   // pigLatin(null) = pigLatin("") -> ""
+   // pigLatin("apple") -> "appleway"
+   // pigLatin("strong") -> "ongstray"
+   // pigLatin("zzz") -> "zzzay"
+   // pigLatin("you") -> "ouyay"
+   // pigLatin("fly") -> "yflay"
+   // pigLatin("cut") -> "utcay"
+   // pigLatin("quiet") -> "ietquay"
+
+    public static String pigLatin(String w){

@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.lang.Exception;
 
 public class PigLatin {
   public static void main(String[] args) {
@@ -13,7 +12,7 @@ public class PigLatin {
 
   public static String pigLatin(String word) {
     if (find(word, "aeiou") == 0)
-      return word + "yay";
+      return word + "way";
     else if (word.indexOf("y") > 0)
       return word.substring(word.indexOf("y")) +
         word.substring(0, word.indexOf("y")) + "ay";
