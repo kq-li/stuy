@@ -5,6 +5,12 @@ public class ArrayIO {
     System.out.println();
   }
 
+  public static void printArray(Object[][] a) {
+    for (int i = 0; i < a.length; i++)
+      printArray(a[i]);
+    System.out.println();
+  }
+  
   public static Object[] asObjArray(Object[] a) {
     return a;
   }
