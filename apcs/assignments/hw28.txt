@@ -1,0 +1,39 @@
+Due: Wed. 12/02
+
+1. Exam 12/04 (Friday)
+
+  Topics:
+   - AP String methods
+   - Recursion
+   - Java methods
+         - mathematical functions
+	 - function side effects
+    - Comparable interface
+          - int compareTo(Comparable)
+    - Sorting
+         - bogoSort
+         - bubbleSort
+         - selectionSort
+         - insertionSort
+
+
+2. In the Classwork folder review the newest versions of :
+        - ArrayIO.java
+        - Stats.java
+        - Sorts.java
+        - SortTester.java
+
+3. Answer the following questions regarding the bubblesort.
+   a. If N is the data size how many comparisons will be performed by the bubblesort.
+	N - 1 + N - 2 + N - 3 + ... + 1 = (N - 1)(N) / 2
+   b. If N is the data size what is the maximum number of swaps performed.
+	(N - 1)(N) / 2
+      When will this occur?
+	When the array is in reverse order
+   c. What is the minimum number of swaps? When will this occur?
+	0
+	When the array is alerady sorted
+   d. Without using the method isSorted(Comparable [] x) write a verison of the bubblesort
+      algorithm that will exit early when the data is sorted. Use the following function heading:
+
+        public static void bubbleSortModified(Comparable [] x);

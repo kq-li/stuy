@@ -1,31 +1,48 @@
 public class SortTester {
   public static void main(String[] args) {
-    String[] names = {"abe", "mary", "betty", "michael"};
-    Integer[] ages = {3, 19, 4, 11};
-    Double[] heights = {0.2, 3.0, 1.2, 1.1};
-    
-    ArrayIO.printArray(names);
-    ArrayIO.printArray(ages);
-    ArrayIO.printArray(heights);
-    System.out.println();
-
-    Sorts.shuffle(names);
-    Sorts.shuffle(ages);
-    Sorts.shuffle(heights);
-
-    ArrayIO.printArray(names);
-    ArrayIO.printArray(ages);
-    ArrayIO.printArray(heights);
-    System.out.println();
-
-    Integer[][] twoD = {{1, 2, 3}, {4, 5, 6}};
-
-    ArrayIO.printArray(twoD);
+    insertionTest(args);
   }
 
-  public static int factorial(int n) {
-    if (n < 2)
-      return 1;
-    return n * factorial(n - 1);
+  public static void bogoTest(String[] args) {
+    int size = Integer.parseInt(args[0]);
+    int trials = Integer.parseInt(args[1]);
+    int successes = 0;
+    int[] shuffles = new int[trials];
+    for (int i = 0; i < trials; i++) {
+      Integer[] a = ArrayIO.intArray(size);
+      Sorts.shuffle(a);
+      shuffles[i] = Sorts.bogoSort(a);
+      if (shuffles[i] == 1)
+        successes++;
+    }
+    System.out.println("Probability of an array of size " + size + " being sorted after 1 shuffle: " + ((double) successes / trials));
+    System.out.println(Stats.mean(shuffles));
+    System.out.println(Stats.variance(shuffles));
+    System.out.println(Stats.stdDeviation(shuffles));
+  }
+
+  public static void bubbleTest(String[] args) {
+    Integer[] a = new Integer[args.length];
+    for (int i = 0; i < args.length; i++)
+      a[i] = Integer.parseInt(args[i]);
+    int swaps = Sorts.bubbleSort(a);
+    ArrayIO.printArray(a);
+    System.out.println(swaps);
+  }
+
+  public static void selectionTest(String[] args) {
+    Integer[] a = new Integer[args.length];
+    for (int i = 0; i < args.length; i++)
+      a[i] = Integer.parseInt(args[i]);
+    Sorts.selectionSort(a);
+    ArrayIO.printArray(a);
+  }
+
+  public static void insertionTest(String[] args) {
+    Integer[] a = new Integer[args.length];
+    for (int i = 0; i < args.length; i++)
+      a[i] = Integer.parseInt(args[i]);
+    Sorts.insertionSort(a);
+    ArrayIO.printArray(a);
   }
 }
