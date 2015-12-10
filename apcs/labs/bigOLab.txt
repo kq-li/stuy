@@ -1,0 +1,70 @@
+Part I
+======
+
+Using the  BigO classifications: 
+     
+    O(1),O(logN),O(N),O(NlogN),O(N^2),O(N^3),O(N!)
+
+to classify the following for both space and time:
+
+a. printing an array: O(N) time, O(1) space
+
+b. printing the first half of an array: O(N) time, O(1) space
+
+c. printing the contents of a 2 dimensional array: O(N^2) time, O(1) space
+
+d. computing the sum of the first 3 numbers in an integer array: O(1) time, O(1) space
+
+e. multiplying two matrices: O(N^3) time, O(N^2) space
+
+
+Part II
+=======
+Write a search function whose expected runtime is O(N) and whose
+additional space is O(1).
+
+Test cases:
+ x = {"cat","hat","mat"};
+ linearSearch(x,"hat") -> 1
+ linearSearch(x,"Hat") -> -1
+
+// precondition: x != null
+// postconditon: returns the index position of the first occurrence of key
+//               returns -1 if not found
+public static int linearSearch(Object[] x, Object key) {
+  for (int i = 0; i < x.length; i++)
+    if (x[i].equals(key))
+      return i;
+  return -1;
+}
+
+
+
+
+Part III.
+========
+
+a. Use BigO notation to classify the runtime of the insertion sort: O(N^2)
+
+
+b. Use BigO notation to classify the runtime of the bogoSort: O(N!)
+
+
+
+
+
+Part IV:
+=======
+Using the definition of big O, find a C and a k to show that your classification
+of the insertion sort is correct.
+  f(n) = C(n) + S(n)
+       = n(n - 1) / 2 + n(n - 1) / 2
+       = n(n - 1)
+       = n^2 - n
+  O(n) runtime
+  
+  n^2 - n < n^2 whenever n > 0
+  Cg(n) = 1n^2 whenever n > 0
+  C = 1, k = 0
+          
+

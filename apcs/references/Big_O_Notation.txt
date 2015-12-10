@@ -1,0 +1,29 @@
+Definition for Big O Notation
+  Let f and g be functions from the set of integers to the set of real numbers. We say f(n) is O(g(n)) if there exist constants C and k such that
+    f(n) <= Cg(n) whenever n > k.
+  This is read as f(n) is on the order of g(n).
+  
+Common Big O Classifications
+  O(1) - constant time *
+  O(log N) - logarithmic (base 2) *
+  O(N) - linear *
+  O(N log N) - linearithmic *
+  O(N^2) - quadratic *
+  O(N^3) - cubic
+  O(N!) - factorial
+  
+Selection Sort with Big O
+  f(n) = C(n) + S(n)
+       = n(n - 1) / 2 + n - 1
+       = n^2 / 2 - n / 2 + n - 1
+       = n^2 / 2 + n / 2 - 1
+         ^ Dominant term => O(n^2) runtime
+                            O(1) additional space
+  
+  Proof:
+    n^2 / 2 + n / 2 - 1 < n^2 / 2 + n / 2 
+                        < n^2 / 2 + n^2 / 2 whenever n > 1
+                        < n^2
+    Cg(n) = 1n^2 whenever n > 1
+    C = 1, k = 1
+                        
