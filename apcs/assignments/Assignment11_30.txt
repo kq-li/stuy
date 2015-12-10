@@ -1,0 +1,46 @@
+1. Test 12/04
+
+2. In ArrayIO.java, add the following method.
+
+ 
+   // precondition: 0 < n
+   // postcondition: returns an array of integers
+   //                {0,1,2,...,n-2,n-1}
+   //                intArray(5) -> {0,1,2,3,4,5}
+   public static Integer[] intArray(int n);
+
+
+
+
+3. In SortTester.java, read from the command line the size of
+   the array,N, and use intArray(N) to create an array.
+
+
+4. Shuffle the array.
+
+5. Sort the array using bogoSort. Start with a small sized array.
+
+   publid static void bogoSort(Comparable[] x){
+      while(!isSorted(x)) shuffle(x);
+    
+    }
+
+6. In SortTester.java, compute and print the probability that
+   an array of size N is sorted after 1 shuffle.
+
+7. Time SortTester.java, by issuing the command $time java SortTester 5.
+
+8. Modify bogoSort(Comparable[]) such that it computes and returns the number
+   of shuffles used to sort the array.
+
+9. Implement the library, Stats.java to include the following methods:
+
+    double mean(int []);
+    double variance(int []);
+    double stdDeviation(int []);
+
+
+10. Compute the mean number of shuffles observed for bobo sorting an array of
+    size 5.
+
+11. Compute the variance and standard deviation.
