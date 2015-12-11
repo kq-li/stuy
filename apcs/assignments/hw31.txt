@@ -1,0 +1,17 @@
+Due: Fri. 12/11
+
+1. Download and review the Point class from classwork folder.
+
+2. Review the equals() method.
+
+3. Read about the instanceof operator.
+
+    https://docs.oracle.com/javase/tutorial/java/nutsandbolts/op2.html
+
+4. Create a client of the Point class, name it PointDemo.java.
+   Write and test the following free method.
+
+
+   // precondition: x != null and y != null
+   // postcondtion: returns the distance between points x and y
+   public static double distance(Point x, Point y)

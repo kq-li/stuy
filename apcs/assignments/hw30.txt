@@ -1,0 +1,92 @@
+Due: Thurs. 12/10
+
+1. Review the Point class below.
+
+2. Implement the methods below:
+
+    public void draw()
+    public boolean equals(Object other)
+    public Point getLocation()
+    public void translate(int dx, int dy)
+    public void setLocation(Point other)
+
+//Create the data type Point that represents a pair of integers (x,y).
+public class Point{
+    private int _x, _y;
+
+
+    public Point(){
+	_x = _y = 0;
+    }
+    public Point (int x, int y){
+	move(x,y);
+    }
+
+    public Point (Point other){
+	this(other.getX(), other.getY());
+    }
+
+
+    // accessor methods
+    public int getX(){
+	return _x;
+    }
+
+
+    public int getY(){
+	return _y;
+    }
+
+    // modifier methods
+    public void move(int x, int y){
+	_x = x;
+	_y = y;
+    }
+
+    // postcondition: use StdDraw.java to draw the point. 
+    //                Use a black circle to represent the point.
+    public void draw(){
+       //***** your code goes here ***** 
+    }
+
+  
+    public String toString(){
+	return "(" + _x + ", " + _y + ")"; 
+        // return "(" + getX() + ", " + getY() + ")";
+    }
+    
+    // postconditon: return true if the points
+    // have equal x and y coordinates.
+    public boolean equals(Object other){
+       //***** your code goes here ***** 
+	return false;
+    }
+
+    //postcondition: returns a copy of the point at the same location
+    public Point getLocation(){
+       //***** your code goes here ***** 
+	return null;
+    }
+    
+    // postcondtion: translates the point by dx and dy
+    //              dx is the change in x
+    //              dy is the change in y
+    public void translate(int dx, int dy){
+       //***** your code goes here *****     
+    }
+
+    // preconditon: other != null
+    // postcondition: sets the location of the point to the specified 
+    //                location
+    public void setLocation(Point other){
+           //***** your code goes here ***** 
+    }
+
+   
+    public static void main(String [] args){
+	Point a = new Point();
+	Point b = new Point(3,5);
+	Point c = new Point(b);
+    }
+
+}

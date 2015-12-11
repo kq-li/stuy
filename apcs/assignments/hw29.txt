@@ -1,0 +1,10 @@
+Due: Wed. 12/9
+
+1. In the classwork folder review the class Point.java.
+
+2. Will the method call a.move() move Point c? Why?
+
+3. Read sections 11.1 - 11.4 in thinkapjava.pdf.
+
+4. Overload the Point constructor, use the heading
+   Point(int x, int y).
