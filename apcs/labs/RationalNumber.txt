@@ -1,0 +1,60 @@
+Implement a data type to represent rational numbers.
+
+1. Declare instance variables to store the numerator and denominator.
+   DO NOT WRITE A CONSTRUCTOR.
+
+2. Overwrite the toString() method and test it. (DON'T WRITE A CONSTRUCTOR.)
+   What value was returned? Why?
+
+
+3. Write a constructor Rational(int n,int d). Assume d != 0.
+
+   ex. Rational(4,8) -> 4/8
+       Rational(-4,-8) -> 4/8
+       Rational(-4,8) -> -4/8
+       Rational(4,-8) -> -4/8
+
+4. Test it.
+
+   What happens?
+
+5. We don't want to allow the denominator to be 0. Let's create a run time
+   exception. Runtime exceptions are Objects in java, so we need to use
+   the new operator. Also, in java exceptions are thrown. The synatax is:
+ 
+     throw new RunTimeException(String).
+
+   In the Java Documentation,
+   https://docs.oracle.com/javase/1.5.0/docs/api/java/lang/RuntimeException.html
+  
+   find an appropriate exception to throw.
+
+   Modify the constructor Rational(int,int) to throw the exception.
+
+
+6. 
+
+6. Implement the constructor Rational(Rational) to create a copy of a rational
+   number. Test it.
+
+
+
+7. Write a method Rational negate(). Just like integers, doubles, and strings,
+   we don't want our Rational numbers to be mutable. So the negate() method
+   returns a new rational number.
+
+    ex. Rational a = new Rational(3,9);
+        Rational b = new Rational(a);
+	System.out.println(a);  // 3/9
+	System.out.println(b); // 3/9
+	b = a.negate();
+	System.out.println(a);  // 3/9
+	System.out.println(b); // -3/9
+
+
+8. Write the accessor method int getNumerator().
+
+9. Write the accessor method int getDenominator().
+
+
+10. Overwrite the equals method.       
