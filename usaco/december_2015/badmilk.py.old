@@ -1,0 +1,63 @@
+#! /usr/bin/python
+
+fin = open('badmilk.in', 'r')
+fout = open('badmilk.out', 'w+')
+
+s = fin.read().split('\n')
+first = s[0].split(' ')
+numPeople = int(first[0])
+numMilks = int(first[1])
+numDrinks = int(first[2])
+numSick = int(first[3])
+
+drinks = {}
+sick = {}
+
+for i in s[1:1 + numDrinks]:
+  i = map(int, i.split(' '))
+  p = i[0] - 1
+  m = i[1] - 1
+  t = i[2]
+  if p in drinks:
+    drinks[p].append((m, t))
+  else:
+    drinks[p] = [(m, t)]
+  
+for i in s[1 + numDrinks: 1 + numDrinks + numSick]:
+  i = map(int, i.split(' '))
+  p = i[0] - 1
+  t = i[1]
+  sick[p] = t
+
+possible = []
+
+for person in sick:
+  for drink in drinks[person]:
+    if drink[1] < sick[person] and drink[0] not in possible:
+      possible.append(drink[0])
+
+for badmilk in possible:
+  allSick = True
+  for person in sick:
+    drankBefore = False
+    for drink in drinks[person]:
+      if drink[0] == badmilk and drink[1] < sick[person]:
+        drankBefore = True
+    if not drankBefore:
+      allSick = False
+  if not allSick:
+    possible.remove(badmilk)
+
+maxCures = numSick
+for badmilk in possible:
+  cures = 0
+  for person in drinks:
+    for drink in drinks[person]:
+      if drink[0] == badmilk:
+        cures += 1
+        break
+  maxCures = max(cures, maxCures)
+  
+fout.write(str(maxCures))
+fout.close()
+fin.close()
