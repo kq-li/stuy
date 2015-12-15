@@ -1,0 +1,35 @@
+Due: Tues., 12/15
+
+1. Test Friday 12/18.
+
+2. Write removeDuplicates(String w) that returns a String with
+   all the duplicate characters removed. Use a loop.
+
+   removeDuplicates("abc") -> "abc"
+   removeDuplicates("abbcba") -> "abc"
+
+   public static String removeDuplicates(String w){
+
+
+
+   }
+
+
+3. Using big O notation classify the runtime performance of removeDuplicates.
+
+
+
+4. Write a recursive version of binarySearch(Comparable [] x).
+
+   public static int binarySearch(Comparable [] x, Comparable key){
+   	 return binarySearchR(0,x.length(),x, key);
+   }
+
+
+   private static int binarySearchR(int low, int upper, Comparable [] x, Comparable key){
+
+
+
+   }
+
+
