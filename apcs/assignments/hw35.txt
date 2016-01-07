@@ -1,0 +1,20 @@
+Due: Thurs., 12/17
+
+1. Exam Friday
+     Topics include:
+       - insertion sort, selection sort
+       - binary search , linear search
+       - complexity (applying big O)
+       - creating your own data type
+       - Comparable interface
+       - Euclidean Algorithm
+     Not on exam:
+       - StdDraw
+       - instanceof
+
+
+2. Review hw34Sol.txt
+
+3. Reveiw Rational.java. Note the complexity of the methods.
+
+4. Complete the constructors and toString for the BarCode class.

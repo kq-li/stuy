@@ -1,0 +1,16 @@
+Due: 1/4
+  
+  Email your programs to : rick.platek@stuycs.org
+
+1. Write a program that models a simple game. It should display three
+   rectangles of the same color (they can be any color but yellow);
+   exactly one of these rectangles , when clicked on, should turn yellow.
+   The user must guess which rectangle is hiding the "gold." Your program
+   should include a rock class that is clicked on and does nothing, and
+   a subclass of that class that turns yellow when clicked on.
+
+2. Write a Snowman class that draws a snowman with a hat. Then make a subclass
+   of Snowman, MeltingSnowman. When you click on it, the melting snowman should
+   melt (i.e., get smaller and smaller) and gradually disappear. Its
+   hat should stay on its head as it melts and eventually be left 
+   sitting on the ground.
