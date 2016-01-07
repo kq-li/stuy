@@ -1,0 +1,101 @@
+Due: Fri. 1/8
+Part I:
+=======
+From the Classwork/List folder download List.java, ArrayList.java, and 
+ListApp.java.
+
+
+Here's the merge method from class:
+  public static List <Integer> merge(List<Integer> x, List<Integer> y){
+  	 List <Integer> ans = new ArrayList<Integer>();
+	 int i = 0;
+	 int j = 0;
+	 while (i < x.size() && j < y.size()){
+	       if (x.get(i) < y.get(j)){
+	       	  ans.add(x.get(i));
+		  i++;
+	       }
+	       else {
+                      ans.add(y.get(j));
+		      j++;
+		   }
+         } 
+	 while (i < x.size()) ans.add(x.get(i++));
+	 while (j < y.size()) ans.add(y.get(j++));
+	 return ans;
+
+  }
+
+
+Part II :
+=======
+Write two verisons of the remove(int) method for our ArrayList class.
+
+
+Version 1 should work directly with _list.
+
+Version 2 should not reference _list, but rather use ArrayList methods
+set(int), get(int).
+
+public E remove(int index) {
+	E ret = this._list[index];
+	for (int i = index; i < this._size - 1; i++)
+		this._list[i] = this._list[i + 1];
+	return ret;
+}
+
+public E remove(int index) {
+	E ret = this.get(index);
+	for (int i = index; i < this._size - 1; i++)
+		this.set(i, this.get(i + 1));
+	return ret;
+}
+
+Part III: Ap style multiple choice (Answers are posted at the end.)
+=======
+
+1. A programmer notices that a method of a subclass has the same signature
+   as a method in its superclass. Which of the following statements best
+   characterizes this situation?
+
+   a. The superclass method is overloaded.
+   b. The superclass method shadows the subclass method.
+  *c. The subclass method overrides  the superclass method.
+   d. The superclass method overrides the subclass method.
+   e. The program will not compile because methods of two classes in the
+      same inheritance hierarchy cannot have the same name.
+
+2. Which of the following statements is true about abstract classes?
+
+   a. Instance fields declared in abstract classes are automatically public.
+   b. Instance fields cannot be declared in abstract classes.
+   c. A subclass that extends an abstract class must override instance variables
+      declared int the abstract class.
+  *d. A subclass that extends an abstract class inherits the instance variables
+      in the abstract class.
+   e. The instance fields declared in an abstract class are automatically
+      static final.
+
+3. Which of the following statements is not true about subclass methods?
+
+   a. A subclass can override methods in a superclass.
+   b. A subclass can define new methods that are not in the superclass.
+   c. A subclass can inherit methods in a superclass.
+  *d. A subclass can access private fields in a superclass.
+   e. A subclass can access public methods of its superclass.
+
+4. Which of the following statements about inheritance is not true?
+   a. A class can be both a subclass and a superclass at the same time.
+   b. Every class is a subclass of the Object class.
+   c. Common features should be located as high in the inheritance hierarchy
+      as possible.
+   d. The toString and equals methods are inherited by all classes.
+  *e. The type of the reference, not the type of the object, is used to 
+      determine which verison of an overridden method is invoked.
+
+Answers:
+ 1. c
+ 2. d
+ 3. d
+ 4. e
+  
