@@ -1,0 +1,7 @@
+Due: Tues. 12/22
+
+1. Download and review BlobApp.java and Blob.java.
+
+2. Read about Abstract methods and classes.
+
+	https://docs.oracle.com/javase/tutorial/java/IandI/abstract.html

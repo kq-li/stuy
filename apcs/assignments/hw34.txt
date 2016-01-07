@@ -1,0 +1,27 @@
+Due: 12/16 Wed.
+
+1. Review hw solutions for hw33. (hwSol.txt)
+
+2. Add the following methods to the Rational class.
+
+  a. Rational subtract (Rational rhs)
+
+
+  b. Rational multiply (Rational rhs)
+
+      // postconditon: invert(a/b) -> b/a
+      // throws an exception if a = 0
+  c.  Rational invert (Rational rhs)
+
+  d.  Rational divide (Rational rhs)
+
+
+3. Given the data : 9,8,5,7,2
+
+   Assume the following sorting algorithms sort data in ascending order.
+
+  a. Draw a trace diagram for the selection sort. 
+
+
+
+  b. Draw a trace diagram for the insertion sort.

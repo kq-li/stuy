@@ -1,0 +1,58 @@
+Here is an AP style question.
+
+
+I. Create a file Flier.java that represents the Flier interface.
+
+   Here's the code.
+
+    public interface Flier{
+    	   void fly();
+    }
+
+   An object that flies  implements this interface such as Birds, Airplanes,
+   etc..
+
+
+II. Create a interface Athlete. Athletes train so include the following method
+    in the interface.
+
+    void train(double hours);
+
+
+III. Create a class SkiJumper. A SkiJumper represents a person who
+     keeps track of their training by recording the number of jumps they've 
+     made and the hours they have trained. 
+     SkiJumper are both fliers and athletes so this
+     class should implement both of the above interfaces. To implement multiple
+     interface the heading of the class should be: 
+
+     public class SkiJumper implements Flier, Athlete 
+
+
+     A SkiJumper has the following instance variables :
+
+       String _firstName, _lastName;
+       double _hoursTraining;
+       int _numberOfJumps;
+
+     a. Create a constructor for SkiJumper that initializes name and sets
+        the training data to 0.
+
+         public SkiJumper(String first, String last)
+
+
+     b. Implement the fly() method that represents a jump.
+
+     c. Implement the train(double) method to record the duration of a training
+        session.
+
+     d. Implement the accessor method getHoursTrained().
+
+     e. Implement the accessor method getJumps().
+
+
+     f. Write a Client class for SkiJumper that tests your code.
+
+     g. Adjust the SkiJumper class so that the Comparable interface is realized
+        by the SkiJumper class. SkiJumper objects are compared by the number
+        of jumps completed.

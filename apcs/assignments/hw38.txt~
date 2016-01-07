@@ -1,0 +1,58 @@
+Due: Wed. 1/6
+=============
+
+Part I:
+=======
+Use the following big o classifications for questions 1 - 7.
+     a. O(1)
+     b. O(log n)
+     c. O(n)
+     d. O(nlog n)
+     e. O(n^2)
+
+
+1. What is the time complexity of the ArrayList method int size()? O(1)
+
+2. What is the time complexity of the ArrayList method E get(int)? O(n)
+
+3. What is the time complexity of the ArrayList method E get(int)? O(n)
+
+
+
+ public static void reverse(ArrayList<Integer> L){
+	for (int i = 0; i < L.size() / 2; i++)
+	    L.set(i, L.set(L.size() - i - 1, L.get(i)));
+
+    }
+4. What is the time complexity of reverse? O(n)
+    
+5. What is the additional space complexity of reverse? O(1)
+    
+
+ public static void reverse2(ArrayList<Integer> L){
+     ArrayList<Integer> temp = new ArrayList<Integer>();
+     for (int i = 0; i < L.size(); i++)
+          temp.add(L.get(i));
+     L = temp;
+ }
+
+6. What is the time complexity of reverse2?
+    
+
+7. What is the additional space complexity of reverse2?
+    
+
+8. What is wrong with reverse2? 
+
+
+
+
+Part III
+========
+Write the function evens(L) that returns a list of the even numbers in 
+   list L.
+
+  public static ArrayList<Integer> evens(ArrayList<Integer> L){
+  	 // your code goes here
+   }
+

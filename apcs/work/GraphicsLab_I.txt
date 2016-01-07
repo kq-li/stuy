@@ -1,0 +1,14 @@
+1. Modify the BlobApp program so that there is a HappyBlob that is a 
+   subclass of TalkativeBlob that always says "I'm so happy!" and a 
+   SadBlob, also a subclass of TalkativeBlob, that always says "I'm sad!"
+
+
+2. Modify the BlobApp program to add a GreedyBlob that gets larger and
+   larger when you click on it.
+
+
+3. Modify the BlobApp program to add a ShyBlob that moves away when you 
+   click on it.
+
+4. Modify the BlobApp program to add a MeltingBlob that gets smaller and 
+   smaller when you click on it.
