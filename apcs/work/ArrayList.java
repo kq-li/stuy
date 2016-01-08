@@ -17,13 +17,22 @@ public class ArrayList<E> implements List<E> {
   }
 
   public boolean add(E x) {
-    if (this._size == this._list.length)
+    while (this._size >= this._list.length)
       this.resize();
     this._list[this._size] = x;
     this._size++;
     return true;
   }
 
+  public boolean add(int index, E x) {
+    if (index < 0 || index >= this._size)
+      throw new IndexOutOfBoundsException();
+    this.add(x);
+    for (int i = this._size - 1; i > index; i--)
+      this.set(i, this.set(i - 1, this.get(i)));
+    return true;
+  }
+  
   public E get(int index) {
     if (index < 0 || index >= this._size)
       throw new IndexOutOfBoundsException();

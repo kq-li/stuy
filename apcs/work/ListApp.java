@@ -9,5 +9,7 @@ public class ListApp {
     names.set(0, "Moe");
     System.out.println(names);
     System.out.println(names.get(1));
+    names.add(1, "Carl");
+    System.out.println(names);
   }
 }
