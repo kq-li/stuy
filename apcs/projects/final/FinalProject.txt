@@ -1,0 +1,38 @@
+Groups: 2 or 3 people.
+======
+
+
+Due Date: End of day 1/25.
+=========
+
+Topic: You have a lot of leeway. You may choose 1 big project or several smaller projects. The Sedgewick and Wayne 
+====== website has a lot of great problems.
+
+Lab Days: 1/19,1/20,1/21,1/22,1/25
+=========
+
+Submission:  1. Hand in the type written report on 1/25. (see below).
+===========  2. Email all source code and libraries as an attachment to rick.platek@stuycs.org 	
+		by the end of the day 1/25.
+
+Requirements:
+=============
+ 1. Type written report that includes the following:
+     a. Describe the project.
+     b. Instructions on how to run the project.
+     c. Describe the design. (Include UML diagrams.)
+
+ 2. Your project must implement the following:
+     a. A class with subclasses.
+     b. An interface.
+     c. An abstract class that includes an abstract method.
+     d. An Arraylist.
+     e. A one and two dimensional array.
+     f. A loop.
+     g. A recursive function.
+     
+ 3. Classify all methods and functions using Big O notation.
+
+ 4. Document each method and function with preconditions and postcondtitions.
+
+ 

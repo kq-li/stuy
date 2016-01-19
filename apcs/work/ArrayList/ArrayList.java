@@ -42,10 +42,21 @@ public class ArrayList<E> implements List<E> {
   public E set(int index, E x) {
     if (index < 0 || index >= this._size)
       throw new IndexOutOfBoundsException();
+    E temp = this._list[index];
     this._list[index] = x;
-    return x;
+    return temp;
   }
 
+  public E remove(int index) {
+    E ret = this.get(index);
+    for (int i = index; i < this._size - 1; i++)
+      this.set(i, this.get(i + 1));
+    this._size--;
+    this._list[this._size] = null;
+    return ret;
+  }
+
+  
   public int size() {
     return this._size;
   }

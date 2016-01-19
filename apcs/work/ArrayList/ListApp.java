@@ -11,5 +11,7 @@ public class ListApp {
     System.out.println(names.get(1));
     names.add(1, "Carl");
     System.out.println(names);
+    names.remove(1);
+    System.out.println(names);
   }
 }
