@@ -1,0 +1,20 @@
+import wheels.users.*;
+import java.awt.Color;
+import java.awt.event.MouseEvent;
+
+public class Toolbar {
+   
+	private int _time;
+	private int _flagged;
+
+	public Toolbar() {
+        Rectangle bg = new Rectangle(0, 0);
+        bg.setSize(700, 100);
+        bg.setColor(Color.red);
+        
+    }
+
+	public int Flagged() {
+		_flagged = Board.getCrctFlags();
+	}
+}

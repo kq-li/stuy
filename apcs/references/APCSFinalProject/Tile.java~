@@ -1,0 +1,149 @@
+import wheels.users.*;
+import java.awt.Color;
+import java.awt.event.MouseEvent;
+
+public class Tile extends Rectangle {
+	
+	private boolean _isFaceUp;
+    private boolean _isFlagged;
+	private boolean _isMine;
+
+	public boolean _isMineAndFlagged; //for use in toolbar to assist with counter for number flagged
+
+
+    private int _adjacentMines;
+    private int _x;
+    private int _y;
+    private TileImage _image;
+
+	private boolean _isFirstClick;
+	
+    //Constructor for mines, no adjacentMines value needed
+    
+	public Tile(int x, int y) {
+		super(x,y);
+        
+        int sideLength = MinesweeperApp._currentBoard._sl;
+		setSize(sideLength,sideLength);
+		setLocation(x,y);
+        setColor(Color.white);
+        
+        _x = x;
+        _y = y;
+        _isMine = true;
+        _isFaceUp = false;
+
+		_isFlagged = false;
+		_isMineAndFlagged = _isMine&&_isFlagged;
+        
+        _image = new TileImage("./images/tile.png", _x, _y);
+        
+    }
+    
+    // Constructor for other tiles
+    
+    public Tile(int x, int y, int adjacentMines) {
+        super(x,y);
+        
+        int sideLength = MinesweeperApp._currentBoard._sl;
+        setSize(sideLength,sideLength);
+        setLocation(x,y);
+        setColor(Color.white);
+        
+        _x = x;
+        _y = y;
+        _isMine = false;
+        _isFaceUp = false;
+
+		_isFlagged = false;
+		_isMineAndFlagged = false;
+
+        _adjacentMines = adjacentMines;
+		_isFirstClick = MinesweeperApp._currentBoard._isFirstClick;
+        
+        _image = new TileImage("./images/tile.png", _x, _y);
+    }
+    
+	//accessor methods
+
+    public int getX() {
+        return _x;
+    }
+    
+    public int getY() {
+        return _y;
+    }
+    
+    public int getAdjMines() {
+        return _adjacentMines;
+    }
+
+	public int getMineAndFlagged(){
+		return _isMineAndFlagged;
+	}
+
+
+	public void setTileImage(String s) {
+		_image = null;
+		_image = new TileImage(s, getX(), getY());
+    }
+
+
+    // This function "flips" tiles by changing the image property. Also checks if tile is flagged.
+	// If it is, do nothing. 
+    public void flipTile() {
+		if (!_isFlagged){
+        	if (!_isFaceUp) {
+            	if (_isMine) {
+           		     _image.hide();
+           		     setTileImage("./images/mine.png");
+           		 } 
+				
+				else {
+	                setTileImage("./images/" + _adjacentMines + ".png");
+	            }
+            _isFaceUp = true;
+    	    }
+    	}
+	}
+    
+    // Same for flagging, except you can toggle.
+    public void flagTile() {
+        if (!_isFlagged && !_isFaceUp) {
+            setTileImage("./images/flag.png");
+            _isFlagged = true;
+        } else if (!_isFaceUp){
+            setTileImage("./images/tile.png");
+            _isFlagged = false;
+        }
+    }
+
+	
+	public void invTile() {
+		if (!_isFaceUp && !_isFlagged)	setTileImage("./images/tile_inv.png");
+		/*
+		if (_isFirstClick) {
+			MinesweeperApp._currentBoard.layout();
+			MinesweeperApp._currentBoard
+		*/
+	}
+
+	//Given tile with value 0 is selected and its coordinates, we can uncover all tiles around it. 
+	//We want to run this in a loop (or recursively) if any surrounding tiles also has the value of 0.
+	
+	/*
+	public void revealEight(x,y){
+		for (int i=0; i<8; i++){
+			Board._Tiles[getX(),]._isFlagged == false;
+			
+			//flip all surrounding tiles based on x,y coordiantes
+			//do we want to call revealEight(x,y) for the tile that has adjacentMines = 0 while in the 				process?
+		}
+		
+	}
+	*/
+	
+
+}
+		
+		
