@@ -1,0 +1,10 @@
+Line 1: Player (X, Y, W, H)
+
+Line 2: Platform overview (N)
+
+Line 3-(N + 2): Platform details (X, Y, W, H, Type)
+- 0: Normal tile
+- 1: Fire tile
+- 2: Bouncy tile
+
+Line (N + 3): Victory platform (X, Y, W, H)

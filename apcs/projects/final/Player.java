@@ -14,7 +14,7 @@ public class Player extends Entity {
   protected Color _hitboxColor;
   
   protected final int MIN_INPUT_TIME;
-  
+
   public Player(double sx, double sy,
                 double min_sx, double min_sy,
                 double max_sx, double max_sy,
@@ -39,7 +39,7 @@ public class Player extends Entity {
 
     MIN_INPUT_TIME = 5;
 
-    _jumpStrength = 150;
+    _jumpStrength = 100;
     _horizontalSpeed = 100;
 
     _hitbox = new Rectangle2D.Double(sx, sy, width, height);
@@ -152,10 +152,15 @@ public class Player extends Entity {
     setIX(0);
   }
 
+  protected boolean touching(Tangible t) {
+    return (_sx <= t._sx + t._width && _sx + _width >= t._sx &&
+            _sy <= t._sy + t._height & _sy + _height >= t._sy);
+  }
+  
   protected boolean onPlatform(Platform p) {
     return (p != null &&
             (_sx + _width >= p._sx && _sx <= p._sx + p._width &&
-             p._sy - (_sy + _height) <= Game.EPSILON && p._sy - (_sy + _height) >= 0));
+             _sy + _height >= p._sy && _sy + _height <= p._sy + p._height));
   }
 
   protected void resetJumps() {

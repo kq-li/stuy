@@ -2,21 +2,21 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
+import java.io.File;
 import javax.swing.*;
 
-public class Game extends JPanel implements MouseListener, MouseMotionListener {
+public class Game extends JPanel {
   protected JFrame _frame;
-  protected int _frameWidth, _frameHeight;
+  protected int _frameWidth, _frameHeight, _currentLevel, _deaths;
   protected boolean _isRunning;
-  protected List<Entity> _entities;
   protected List<Platform> _platforms;
   protected Player _player;
 
-  protected final int GRAVITY = 150;
+  protected final int GRAVITY = 300;
 
-  protected static final double EPSILON = 1;
+  protected final int MAX_LEVEL = 3;
   
   protected static final String TITLE = "Platformer";
   protected static final String FONT_NAME = "Ubuntu Medium";
@@ -26,15 +26,21 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     super();
     _frameWidth = width;
     _frameHeight = height;
+    _currentLevel = 1;
+    _deaths = 0;
+    
     _isRunning = true;
 
-    _entities = new ArrayList<Entity>();
-    _platforms = new ArrayList<Platform>();
-    
+    clearLevel();
     initFrame();
-    initListeners();
+    initKeybinds();
   }
 
+  private void clearLevel() {
+    _platforms = new ArrayList<Platform>();
+    _player = null;
+  }
+  
   private void initFrame() {
     _frame = new JFrame(Game.TITLE);
     _frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,9 +48,7 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     setLayout(new GridBagLayout());    
   }
 
-  private void initListeners() {
-    addMouseListener(this);
-    
+  private void initKeybinds() {
     Action startUp = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
           _player.setUp(true);
@@ -116,16 +120,82 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     getActionMap().put("rightReleased", stopRight);
   }
 
+  private void loadLevel(int level) {
+    try (Scanner scanner = new Scanner(new File("level" + level + ".txt"))) {
+      double[] playerData = new double[4];
+
+      for (int i = 0; i < 4; i++) 
+        playerData[i] = scanner.nextDouble();
+
+      setPlayer(playerData);
+
+      int numPlatforms = scanner.nextInt();
+      double[][] platforms = new double[numPlatforms][5];
+
+      for (int i = 0; i < numPlatforms; i++)
+        for (int j = 0; j < 5; j++) 
+          platforms[i][j] = scanner.nextDouble();
+
+      for (double[] data : platforms) {
+        switch ((int) data[4]) {
+        case 0:
+          addNormalPlatform(data);
+          break;
+        case 1:
+          addFirePlatform(data);
+          break;
+        case 2:
+          addBouncyPlatform(data);
+          break;
+        case 9001:
+          addGoalPlatform(data);
+          break;
+        }
+      }
+    } catch (Exception e) {
+
+    }
+  }
+
   private void setPlayer(Player player) {
-    this._player = player;
+    _player = player;
+  }
+
+  private void setPlayer(double sx, double sy, double width, double height) {
+    _player = new Player(sx, sy, 0, 0, _frameWidth - width, _frameHeight - height,
+                              0, 0,
+                              0, GRAVITY,
+                              width, height,
+                              Color.BLUE);
+  }
+
+  private void setPlayer(double[] data) {
+    setPlayer(data[0], data[1], data[2], data[3]);
+  }
+  
+  private Platform addPlatform(Platform platform) {
+    _platforms.add(platform);
+    return platform;
+  }
+
+  private Platform addNormalPlatform(double[] data) {
+    return addPlatform(new Platform(data[0], data[1], data[2], data[3]));
+  }
+
+  private Platform addFirePlatform(double[] data) {
+    return addPlatform(new FirePlatform(data[0], data[1], data[2], data[3]));
+  }
+
+  private Platform addBouncyPlatform(double[] data) {
+    return addPlatform(new BouncyPlatform(data[0], data[1], data[2], data[3]));
+  }
+  
+  private Platform addGoalPlatform(double[] data) {
+    return addPlatform(new GoalPlatform(data[0], data[1], data[2], data[3]));
   }
   
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
-
-    for (Entity entity : _entities)
-      entity.render(g);
-    
 
     for (Platform platform : _platforms)
       platform.render(g);
@@ -142,17 +212,13 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     _frame.setVisible(true);
   }
 
-  private void addEntity(Entity entity) {
-    _entities.add(entity);
-  }
-
-  private void addPlatform(Platform platform) {
-    _platforms.add(platform);
-  }
-
   private void update(double dt) {
-    for (Entity e : _entities)
-      e.update(dt);
+    boolean won = false;
+    boolean dead = false;
+
+    if (_player._sy >= _player.MAX_SY) {
+      dead = true;
+    }
 
     if (_player._vy + _player._iy < 0) {
       _player._onPlatform = false;
@@ -160,16 +226,53 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
       boolean onPlatform = false;
       
       for (Platform p : _platforms) {
-        if (_player.onPlatform(p)) {
+        if (_player.onPlatform(p))
           onPlatform = true;
+
+        if (p instanceof GoalPlatform && onPlatform)
+          won = true;
+
+        if (p instanceof BouncyPlatform && onPlatform)
+          _player.setVY(-((BouncyPlatform) p)._bounceStrength);
+        
+        if (p instanceof FirePlatform && _player.touching(p))
+          dead = true;
+
+        if (onPlatform || dead || won)
           break;
-        }
       }
 
       _player._onPlatform = onPlatform;
     }
     
     _player.update(dt);
+    
+    if (won) {
+      System.out.println("Victory!");
+      _currentLevel++;
+      
+      if (_currentLevel > MAX_LEVEL) {
+        System.out.print("Congratulations! You have completed the game with " + _deaths);
+        
+        if (_deaths == 1)
+          System.out.println(" death.");
+        else
+          System.out.println(" deaths.");
+        
+        _isRunning = false;
+      } else {
+        System.out.println("Promoted to level " + _currentLevel);
+        clearLevel();
+        loadLevel(_currentLevel);
+      }
+    }
+    
+    if (dead) {
+      _deaths++;
+      System.out.println("Deaths: " + _deaths);
+      clearLevel();
+      loadLevel(_currentLevel);
+    }
   }
 
   private void render() {
@@ -180,11 +283,9 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     final int TARGET_FPS = 240;
     final double FRAME_LENGTH = 1.0 / TARGET_FPS;
 
-    boolean isRunning = true;
-
     double next = System.nanoTime() / 1000000000.0;
         
-    while (isRunning) {
+    while (_isRunning) {
       double now = System.nanoTime() / 1000000000.0;
       
       if (now >= next) {
@@ -205,30 +306,9 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     }
   }
   
-  public void mousePressed(MouseEvent e) {}
-
-  public void mouseReleased(MouseEvent e) {}
-
-  public void mouseEntered(MouseEvent e) {}
-
-  public void mouseExited(MouseEvent e) {}
-
-  public void mouseClicked(MouseEvent e) {}
-
-  public void mouseMoved(MouseEvent e) {}
-
-  public void mouseDragged(MouseEvent e) {}
-  
   public static void main(String[] args) {
     Game game = new Game(600, 400);
-    Player player = new Player(100, game._frameHeight - 50,
-                               0, 0,
-                               game._frameWidth - 50, game._frameHeight - 50,
-                               0, 0,
-                               0, game.GRAVITY,
-                               20, 50, Color.BLUE);
-    game.setPlayer(player);
-    game.addPlatform(new Platform(250, 340, 100, 20, Color.BLACK));
+    game.loadLevel(game._currentLevel);
     game.repaint();
     game.display();
     game.loop();
