@@ -2,15 +2,19 @@ import java.awt.*;
 import java.awt.geom.*;
 import javax.swing.*;
 
-public class Entity extends Rectangle2D.Double {
-  protected double _sx, _sy, _vx, _vy, _ax, _ay, _ix, _iy, _width, _height;
-  protected final double MIN_SX, MIN_SY, MAX_SX, MAX_SY;
-  protected Color _color;
+public abstract class Entity extends Tangible {
+  protected double _sx, _sy, _vx, _vy, _ax, _ay, _width, _height;
   
-  public Entity(double sx, double sy, double min_sx, double min_sy, double max_sx, double max_sy,
-                double vx, double vy, double ax, double ay,
-                double width, double height, Color color) {
+  protected final double MIN_SX, MIN_SY, MAX_SX, MAX_SY;
+
+  public Entity(double sx, double sy,
+                double min_sx, double min_sy,
+                double max_sx, double max_sy,
+                double vx, double vy,
+                double ax, double ay,
+                double width, double height) {
     super(sx, sy, width, height);
+    
     _sx = sx;
     _sy = sy;
     _vx = vx;
@@ -23,20 +27,15 @@ public class Entity extends Rectangle2D.Double {
     MIN_SY = min_sy;
     MAX_SY = max_sy;
 
-    _ix = 0;
-    _iy = 0;
-
     _width = width;
     _height = height;
-    _color = color;
   }
-
+  
   protected void update(double dt) {
     setVX(_vx + _ax * dt);
     setVY(_vy + _ay * dt);
-    setSX(_sx + (_vx + _ix) * dt);
-    setSY(_sy + (_vy + _iy) * dt);
-    setRect(_sx, _sy, _width, _height);
+    setSX(_sx + _vx * dt);
+    setSY(_sy + _vy * dt);
   }
 
   protected void setSX(double sx) {
@@ -75,11 +74,5 @@ public class Entity extends Rectangle2D.Double {
       _vy = vy;
   }
 
-  protected void setIX(double ix) {
-    _ix = ix;
-  }
-
-  protected void setIY(double iy) {
-    _iy = iy;
-  }
+  protected abstract void render(Graphics g);
 }

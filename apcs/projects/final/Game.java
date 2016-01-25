@@ -9,9 +9,15 @@ import javax.swing.*;
 public class Game extends JPanel implements MouseListener, MouseMotionListener {
   protected JFrame _frame;
   protected int _frameWidth, _frameHeight;
+  protected boolean _isRunning;
   protected List<Entity> _entities;
+  protected List<Platform> _platforms;
   protected Player _player;
 
+  protected final int GRAVITY = 150;
+
+  protected static final double EPSILON = 1;
+  
   protected static final String TITLE = "Platformer";
   protected static final String FONT_NAME = "Ubuntu Medium";
   protected static final int FONT_STYLE = Font.PLAIN;
@@ -20,10 +26,13 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     super();
     _frameWidth = width;
     _frameHeight = height;
+    _isRunning = true;
+
     _entities = new ArrayList<Entity>();
+    _platforms = new ArrayList<Platform>();
+    
     initFrame();
-    addMouseListener(this);
-    initKeybinds();
+    initListeners();
   }
 
   private void initFrame() {
@@ -33,69 +42,77 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     setLayout(new GridBagLayout());    
   }
 
-  private void initKeybinds() {
+  private void initListeners() {
+    addMouseListener(this);
+    
     Action startUp = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-          _player._isJumping = true;
+          _player.setUp(true);
         }
       };
 
     Action stopUp = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-          _player._isJumping = false;
+          _player.setUp(false);
+        }
+      };
+    
+    Action startDown = new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+          _player.setDown(true);
         }
       };
     
     Action startLeft = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-          _player.setIX(_player._ix - 100);
-        }
-      };
-    
-    Action startRight = new AbstractAction() {
-        public void actionPerformed(ActionEvent e) {
-          _player.setIX(_player._ix + 100);
+          _player.setLeft(true);
         }
       };
 
     Action stopLeft = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-          _player.setIX(_player._ix + 100);
+          _player.setLeft(false);
         }
       };
-    
+        
+    Action startRight = new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+          _player.setRight(true);
+        }
+      };
+
     Action stopRight = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-          _player.setIX(_player._ix - 100);
+          _player.setRight(false);
         }
       };
     
     getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("pressed W"),
                                                        "upPressed");
-    getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("pressed A"),
-                                                       "leftPressed");
     getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("pressed S"),
                                                        "downPressed");
+    getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("pressed A"),
+                                                       "leftPressed");
     getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("pressed D"),
                                                        "rightPressed");
     
     getActionMap().put("upPressed", startUp);
+    getActionMap().put("downPressed", startDown);    
     getActionMap().put("leftPressed", startLeft);
-    //    getActionMap().put("downPressed", );
     getActionMap().put("rightPressed", startRight);
 
     getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released W"),
                                                        "upReleased");
-    getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released A"),
-                                                       "leftReleased");
     getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released S"),
                                                        "downReleased");
+    getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released A"),
+                                                       "leftReleased");
     getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released D"),
                                                        "rightReleased");
     
     getActionMap().put("upReleased", stopUp);
-    getActionMap().put("leftReleased", stopLeft);
     //    getActionMap().put("downReleased", );
+    getActionMap().put("leftReleased", stopLeft);
     getActionMap().put("rightReleased", stopRight);
   }
 
@@ -105,13 +122,15 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
   
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
-    Graphics2D g2 = (Graphics2D) g;
-    for (Entity entity : _entities) {
-      g2.setColor(entity._color);
-      g2.fill(entity);
-    }
-    g2.setColor(_player._color);
-    g2.fill(_player);
+
+    for (Entity entity : _entities)
+      entity.render(g);
+    
+
+    for (Platform platform : _platforms)
+      platform.render(g);
+    
+    _player.render(g);
   }
 
   public Dimension getPreferredSize() {
@@ -126,10 +145,30 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
   private void addEntity(Entity entity) {
     _entities.add(entity);
   }
- 
+
+  private void addPlatform(Platform platform) {
+    _platforms.add(platform);
+  }
+
   private void update(double dt) {
     for (Entity e : _entities)
       e.update(dt);
+
+    if (_player._vy + _player._iy < 0) {
+      _player._onPlatform = false;
+    } else {
+      boolean onPlatform = false;
+      
+      for (Platform p : _platforms) {
+        if (_player.onPlatform(p)) {
+          onPlatform = true;
+          break;
+        }
+      }
+
+      _player._onPlatform = onPlatform;
+    }
+    
     _player.update(dt);
   }
 
@@ -138,21 +177,22 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
   }
   
   private void loop() {
-    final int TARGET_FPS = 120;
+    final int TARGET_FPS = 240;
     final double FRAME_LENGTH = 1.0 / TARGET_FPS;
+
     boolean isRunning = true;
 
-    double nextTime = System.nanoTime() / 1000000000.0;
+    double next = System.nanoTime() / 1000000000.0;
         
     while (isRunning) {
-      double currentTime = System.nanoTime() / 1000000000.0;
+      double now = System.nanoTime() / 1000000000.0;
       
-      if (currentTime >= nextTime) {
-        nextTime += FRAME_LENGTH;
+      if (now >= next) {
+        next += FRAME_LENGTH;
         update(FRAME_LENGTH);
         render();
       } else {
-        int sleepTime = (int) (1000.0 * (nextTime - currentTime));
+        int sleepTime = (int) (1000.0 * (next - now));
 
         if (sleepTime > 0) {
           try {
@@ -181,9 +221,14 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
   
   public static void main(String[] args) {
     Game game = new Game(600, 400);
-    Player player = new Player(100, game._frameHeight - 50, 0, 0, game._frameWidth - 50, game._frameHeight - 50,
-                               50, 50, Color.BLUE);
+    Player player = new Player(100, game._frameHeight - 50,
+                               0, 0,
+                               game._frameWidth - 50, game._frameHeight - 50,
+                               0, 0,
+                               0, game.GRAVITY,
+                               20, 50, Color.BLUE);
     game.setPlayer(player);
+    game.addPlatform(new Platform(250, 340, 100, 20, Color.BLACK));
     game.repaint();
     game.display();
     game.loop();
