@@ -14,7 +14,7 @@ public class Game extends JPanel {
   protected List<Platform> _platforms;
   protected Player _player;
 
-  protected final int GRAVITY = 300;
+  protected final int GRAVITY = 325;
 
   protected final int MAX_LEVEL = 3;
   

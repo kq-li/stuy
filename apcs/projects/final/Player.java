@@ -39,7 +39,7 @@ public class Player extends Entity {
 
     MIN_INPUT_TIME = 5;
 
-    _jumpStrength = 100;
+    _jumpStrength = 125;
     _horizontalSpeed = 100;
 
     _hitbox = new Rectangle2D.Double(sx, sy, width, height);
@@ -159,7 +159,7 @@ public class Player extends Entity {
   
   protected boolean onPlatform(Platform p) {
     return (p != null &&
-            (_sx + _width >= p._sx && _sx <= p._sx + p._width &&
+            (_sx + _width / 2 >= p._sx && _sx + _width / 2 <= p._sx + p._width &&
              _sy + _height >= p._sy && _sy + _height <= p._sy + p._height));
   }
 
