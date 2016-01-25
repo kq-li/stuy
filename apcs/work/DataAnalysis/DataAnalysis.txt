@@ -1,0 +1,90 @@
+A mode is a value in an array that is larger than both the value immediately
+before it in the array and the value immediately after it. In other words, a
+mode occurs at index k in the array A  if A[k] > A[k - 1]  and A[k] > A[k + 1].
+
+The array is unimodal if the values increase until they reach a mode, then
+decrease, so that there is only one mode. For example, the array A  shown below
+is unimodal with its mode occurring at index 4.
+
+Assume that the mode does not occur at the first or last entry in the array.
+
+Index k     A[k]
+  0         3
+  1         5
+  2         9
+  3        10
+  4        12   <---mode
+  5        11
+  6         9
+  7         4
+
+Part (A)
+=========
+Write function isMode,as started below. isMode returns true if data[k] is
+larger than data[k - 1] and larger than data[k + 1]; otherwise, it returns
+false.
+
+In the example above,the call isMode(A, 4) returns true 
+and the call isMode(A, 5) returns false.
+
+Complete function isMode below.
+
+        // precondition: 0 < k < data.length
+	 public static boolean isMode(int[] data, int k){}
+
+
+
+
+Part (B)
+=========
+Write function modeIndex, as started below. modeIndex returns the index of
+the mode of data.
+
+You may assume that data is unimodal and the mode occurs at an index k,
+where 0 < k < data.length - 1.
+
+In the example above, the call modeIndex(A) returns 4.
+In writing modeIndex, you may call function isMode specified in part (a).
+Assume that isMode works as specified, regardless of what you wrote in part (a).
+
+Complete function modeIndex below.
+
+
+public static int modeIndex(int[] data)
+// precondition:  data is unimodal and data.length ≥ 3
+
+
+Part C
+=======
+Write function printHistogram, as started below.
+printHistogram prints a String histogram of a unimodal array of nonnegative
+values, data, such that the longest bar of the histogram (the mode) has
+longestBar characters barChar, and all other bars have a number of barChar 
+characters proportional to the corresponding value in the array data (rounding
+down).
+
+For example, assume that the array data contains the values shown below.
+The call
+ printHistogram(data, 20, "x") 
+
+will print the histogram shown in the Output column below.
+Index k     data[k] Length of bar Output of call
+                                  PrintHistogram (data, 20, "x")
+  0           3             5          xxxxx
+  1           5             8          xxxxxxxx
+  2           9            15          xxxxxxxxxxxxxxx
+  3          10            16          xxxxxxxxxxxxxxxx
+  4          12            20          xxxxxxxxxxxxxxxxxxxx
+  5          11            18          xxxxxxxxxxxxxxxxxx
+  6           9            15          xxxxxxxxxxxxxxx
+  7           4             6          xxxxxx
+
+In writing printHistogram,you may call functions isMode and modeIndex 
+specified in parts (a) and (b). Assume that isMode and modeIndex 
+work as specified, regardless of what you wrote in parts (a) and (b).
+Complete function printHistogram below.
+
+
+public static void printHistogram(int[] data, int longestBar, String barChar)
+// precondition:  data is unimodal and data.length ≥ 3;
+//                data[k] ≥ 0 for 0 ≤ k < data.length

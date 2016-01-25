@@ -1,0 +1,31 @@
+Due: Tues., 1/12
+
+
+1. From the Labs/Concentration folder download FooList.java and Tile.java.
+
+2. Review and run those files.
+
+3. In FooList.java, add the following methods:
+
+    a. int size()  - returns the size of a FooList.
+    b. boolean isEmpty() - returns true if a FooList is empty
+                         - false otherwise
+    c. boolean equals(Object rhs)
+         - returns true if 2 FooLists have the same size and
+	   contain the same elements in the same order.
+	   Otherwise, it returns false.
+
+4. Test these  methods in FooList.java.
+
+5. Classify the runtime complexity of all the FooList methods.
+
+6. In the main method of Tile.java, declare an ArrayList of Tiles
+   and add tiles to the list.
+
+7. Traverse through this list and turn each tile face down.
+
+8. The file Concentration.txt has been revised. Read the revision.
+
+9. Implement the Board class.
+
+10. Bring solutions to class Tuesday.

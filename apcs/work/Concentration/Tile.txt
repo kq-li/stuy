@@ -1,0 +1,39 @@
+Implement a Tile object.
+
+A Tile object is either face-up or face-down. On the face of a tile is a word.
+On the back of a tile is "X".
+
+
+
+
+public class Tile{
+       private String _image;
+       private boolean _faceUp;
+
+       // Constructs a Tile whose faceUp and show word
+       public Tile(String word){
+       	      _image = word;	
+	      _faceUp = true;
+       }
+       
+       // returns image on face of Tile
+       public String showFace(){}
+
+       // Returns true if Tile is face-up, false otherwise.
+       public boolean isFaceUp() {}
+
+       // Returns true if the image on other is the same as this image.
+       public boolean equals (Object other){}
+
+       // Postcondition: Tile is turned face-up
+       public void turnFaceUp(){}
+
+       //Postcondition: Tile is turned face-down
+       public void turnFaceDown(){}
+
+       // returns the image when the tile is face-up
+       // otherwise returns "X"
+       public String toString(){ }
+
+}
+
