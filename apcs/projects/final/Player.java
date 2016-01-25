@@ -102,10 +102,11 @@ public class Player extends Entity {
   protected void startUp() {
     _upInputControl = MIN_INPUT_TIME;
     _currentJumps--;
-    if (_iy == 0 || (_sy >= MAX_SY || _onPlatform))
+    if (_iy == 0)
       setIY(_iy - _jumpStrength);
-    else
+    if (_sy < MAX_SY && !_onPlatform) {
       setVY(0);
+    }
   }
 
   protected void stopUp() {
