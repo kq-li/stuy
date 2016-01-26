@@ -26,7 +26,7 @@ public class Game extends JPanel {
     super();
     _frameWidth = width;
     _frameHeight = height;
-    _currentLevel = 4;
+    _currentLevel = 5;
     _deaths = 0;
     
     _isRunning = true;
@@ -240,6 +240,10 @@ public class Game extends JPanel {
     _frame.setVisible(true);
   }
 
+  private double distance(double x1, double y1, double x2, double y2) {
+    return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+  }
+ 
   private void update(double dt) {
     for (Platform p : _platforms)
       p.update(dt);
@@ -247,18 +251,26 @@ public class Game extends JPanel {
     boolean won = false;
     boolean dead = false;
 
+    ArrayList<Platform> platformsPlayerOn = new ArrayList<Platform>();
+    
+    for (Platform p : _platforms)
+      if (_player.onPlatform(p) ||
+          (p == _player._currentPlatform && _player._iy >= 0 &&
+           _player.overPlatform(p) && p instanceof VerticalPlatform))
+        platformsPlayerOn.add(p);
+      
+    Platform highest = null;
+
+    for (Platform p : platformsPlayerOn) 
+      if (highest == null || p._sy < highest._sy)
+        highest = p;
+      
+    _player._currentPlatform = highest;
+    
     if (_player._sy >= _player.MAX_SY)
       dead = true;
 
-    Platform lastPlatform = _player._currentPlatform;
-    _player._currentPlatform = null;
-   
     for (Platform p : _platforms) {
-      if (_player.onPlatform(p))
-        _player._currentPlatform = p;
-      else if (lastPlatform == p && _player._iy >= 0 && _player.overPlatform(p))
-        _player._currentPlatform = p;
-
       if (p instanceof FirePlatform && _player.touching(p))
         dead = true;
 

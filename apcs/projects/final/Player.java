@@ -97,7 +97,7 @@ public class Player extends Entity {
       _vy = Math.min(0, vy);
     else if (_sy <= MIN_SY)
       _vy = Math.max(0, vy);
-    else if (_currentPlatform != null)
+    else if (_currentPlatform != null && !(_currentPlatform instanceof BouncyPlatform))
       _vy = _currentPlatform._vy;
     else
       _vy = vy;
@@ -123,9 +123,7 @@ public class Player extends Entity {
     _currentJumps--;
     if (_iy == 0)
       setIY(_iy - _jumpStrength);
-    if (_sy < MAX_SY && _currentPlatform == null) {
-      setVY(0);
-    }
+    setVY(0);
   }
 
   protected void stopUp() {
@@ -228,7 +226,7 @@ public class Player extends Entity {
     }
     
     setVX(_vx + _ax * dt);
-    setVY(_vy + _ay * dt);
+    setVY(_vy + _ay * dt);  
     setSX(_sx + (_vx + _ix) * dt);
     setSY(_sy + (_vy + _iy) * dt);
     _hitbox.setRect(_sx, _sy, _width, _height);

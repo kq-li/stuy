@@ -24,5 +24,9 @@ public class Platform extends Entity {
     g2.setColor(_hitboxColor);
     g2.fill(_hitbox);
   }
+
+  public String toString() {
+    return _sx + " " + _sy + " " + _width + " " + _height + " " + _hitboxColor;
+  }
 }
   
