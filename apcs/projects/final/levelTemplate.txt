@@ -1,9 +1,9 @@
 Line 1: Player (X, Y, W, H)
 
-Line 2: Platform overview (N)
-
-Line 3-(N + 2): Platform details (X, Y, W, H, Type)
+Line 2-(N + 2): Platform details (X, Y, W, H, Type, other type-dependent)
 - 0: Normal platform
 - 1: Fire platform
 - 2: Bouncy platform
+- 3: Vertical platform
+- 4: Horizontal platform
 - 9001: Goal platform

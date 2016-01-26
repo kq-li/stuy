@@ -1,0 +1,158 @@
+BouncyPlatform.java
+-->Methods:
+----|public BouncyPlatform(double sx, double sy, double vx, double vy, double ax, double ay,
+                        double width, double height, double bounceStrength)
+-->Variables:
+----|double _bounceStrength
+
+Platform.java
+-->Methods:
+----|public Platform(double sx, double sy, double vx, double vy, double ax, double ay,
+                  double width, double height)
+----|public Platform(double sx, double sy, double vx, double vy, double ax, double ay,
+                  double width, double height, Color color)
+----|protected void render(Graphics g)
+----|public String toString()
+-->Variables:
+----|Color _hitboxColor
+
+EntityBuilder.java
+-->Methods:
+----|public EntityBuilder()
+----|public EntityBuilder sx(double sx)
+----|public EntityBuilder sy(double sy)
+----|public EntityBuilder vx(double vx)
+----|public EntityBuilder vy(double vy)
+----|public EntityBuilder ax(double ax)
+----|public EntityBuilder ay(double ay)
+----|public EntityBuilder width(double width)
+----|public EntityBuilder height(double height)
+----|public EntityBuilder color(Color color)
+----|public Player buildPlayer(double min_sx, double min_sy, double max_sx, double max_sy)
+----|public Platform buildNormal()
+----|public Platform buildFire()
+----|public Platform buildBouncy(double bounceStrength)
+----|public Platform buildVertical(double delta)
+----|public Platform buildHorizontal(double delta)
+----|public Platform buildGoal()
+-->Variables:
+----|Color _color
+
+Game.java
+-->Methods:
+----|public Game(int width, int height)
+----|private void clearLevel()
+----|private void initFrame()
+----|private void initKeybinds()
+----|public void actionPerformed(ActionEvent e)
+----|public void actionPerformed(ActionEvent e)
+----|public void actionPerformed(ActionEvent e)
+----|public void actionPerformed(ActionEvent e)
+----|public void actionPerformed(ActionEvent e)
+----|public void actionPerformed(ActionEvent e)
+----|public void actionPerformed(ActionEvent e)
+----|private void loadLevel(int level)
+----|private void setPlayer(Player player)
+----|private Platform addPlatform(Platform platform)
+----|public void paintComponent(Graphics g)
+----|public Dimension getPreferredSize()
+----|public void display()
+----|private double distance(double x1, double y1, double x2, double y2)
+----|private void update(double dt)
+----|private long factorial(int n)
+----|private void render()
+----|private void loop()
+----|public static void main(String[] args)
+-->Variables:
+----|JFrame _frame
+----|boolean _isRunning
+----|List<Platform> _platforms
+----|Player _player
+
+Entity.java
+-->Methods:
+----|public Entity(double sx, double sy,
+                double vx, double vy,
+                double ax, double ay,
+                double width, double height)
+----|protected void update(double dt)
+----|protected void setSX(double sx)
+----|protected void setSY(double sy)
+----|protected void setVX(double vx)
+----|protected void setVY(double vy)
+----|protected abstract void render(Graphics g)
+-->Variables:
+
+FirePlatform.java
+-->Methods:
+----|public FirePlatform(double sx, double sy, double vx, double vy, double ax, double ay,
+                      double width, double height)
+-->Variables:
+
+GoalPlatform.java
+-->Methods:
+----|public GoalPlatform(double sx, double sy, double vx, double vy, double ax, double ay,
+                      double width, double height)
+-->Variables:
+
+Player.java
+-->Methods:
+----|public Player(double sx, double sy,
+                double min_sx, double min_sy,
+                double max_sx, double max_sy,
+                double vx, double vy,
+                double ax, double ay,
+                double width, double height)
+----|protected void setIX(double ix)
+----|protected void setIY(double iy)
+----|protected void setSX(double sx)
+----|protected void setSY(double sy)
+----|protected void setVX(double vx)
+----|protected void setVY(double vy)
+----|protected void setAX(double ax)
+----|protected void setAY(double ay)
+----|protected void setUp(boolean isPressingUp)
+----|protected void startUp()
+----|protected void stopUp()
+----|protected void setDown(boolean isPressingDown)
+----|protected void startDown()
+----|protected void setLeft(boolean isPressingLeft)
+----|protected void startLeft()
+----|protected void setRight(boolean isPressingRight)
+----|protected void startRight()
+----|protected void stopHorizontal()
+----|protected boolean touching(Tangible t)
+----|protected boolean overPlatform(Platform p)
+----|protected boolean onPlatform(Platform p)
+----|protected void resetJumps()
+----|protected void ground()
+----|protected void update(double dt)
+----|protected void render(Graphics g)
+-->Variables:
+----|Color _hitboxColor
+----|Platform _currentPlatform
+----|int MIN_INPUT_TIME
+
+VerticalPlatform.java
+-->Methods:
+----|public VerticalPlatform(double sx, double sy, double vx, double vy, double ax, double ay,
+                          double width, double height, double delta)
+----|protected void update(double dt)
+-->Variables:
+
+Tangible.java
+-->Methods:
+----|public Tangible(double sx, double sy, double width, double height)
+----|protected abstract void render(Graphics g)
+-->Variables:
+
+HorizontalPlatform.java
+-->Methods:
+----|public HorizontalPlatform(double sx, double sy, double vx, double vy, double ax, double ay,
+                          double width, double height, double delta)
+----|protected void update(double dt)
+-->Variables:
+
+Generator made by:
+Edward Tsang - Period 4
+Leon Loi - Period 3
