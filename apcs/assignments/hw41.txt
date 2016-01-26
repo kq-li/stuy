@@ -1,0 +1,10 @@
+Due: Wed. 1/13
+
+1. Review exam05 solutions in the exams folder.
+
+2. Reveiw the FooList.java, Tile.java and Board.java files
+   in Labs/Concentration.
+
+3. Finish Board.java
+
+4. In the Projects folder read about the Final Project.
