@@ -21,7 +21,12 @@ public abstract class Entity extends Tangible {
     _width = width;
     _height = height;
   }
-  
+
+  /**
+   * precondition: dt > 0
+   * postcondition: entity updated
+   * runtime: O(1)
+   */
   protected void update(double dt) {
     setVX(_vx + _ax * dt);
     setVY(_vy + _ay * dt);
@@ -29,18 +34,38 @@ public abstract class Entity extends Tangible {
     setSY(_sy + _vy * dt);
   }
 
+  /**
+   * precondition: none
+   * postcondition: sx updated
+   * runtime: O(1)
+   */
   protected void setSX(double sx) {
     _sx = sx;
   }
 
+  /**
+   * precondition: none
+   * postcondition: sy updated
+   * runtime: O(1)
+   */
   protected void setSY(double sy) {
     _sy = sy;
   }
 
+  /**
+   * precondition: none
+   * postcondition: vx updated
+   * runtime: O(1)
+   */
   protected void setVX(double vx) {
     _vx = vx;
   }
 
+  /**
+   * precondition: none
+   * postcondition: vy updated
+   * runtime: O(1)
+   */
   protected void setVY(double vy) {
     _vy = vy;
   }

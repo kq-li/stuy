@@ -55,14 +55,29 @@ public class Player extends Entity {
     _currentPlatform = null;
   }
 
+  /**
+   * precondition: none
+   * postcondition: sets ix
+   * runtime: O(1)
+   */
   protected void setIX(double ix) {
     _ix = ix;
   }
 
+  /**
+   * precondition: none
+   * postcondition: sets iy
+   * runtime: O(1)
+   */
   protected void setIY(double iy) {
     _iy = iy;
   }
 
+  /**
+   * precondition: none
+   * postcondition: sets SX
+   * runtime: O(1)
+   */
   protected void setSX(double sx) {
     if (_sx >= MAX_SX)
       _sx = Math.min(sx, MAX_SX);
@@ -72,6 +87,11 @@ public class Player extends Entity {
       _sx = sx;
   }
 
+  /**
+   * precondition: none
+   * postcondition: sets SY
+   * runtime: O(1)
+   */
   protected void setSY(double sy) {
     if (_sy >= MAX_SY)
       _sy = Math.min(sy, MAX_SY);
@@ -81,6 +101,11 @@ public class Player extends Entity {
       _sy = sy;
   }
 
+  /**
+   * precondition: none
+   * postcondition: sets vx
+   * runtime: O(1)
+   */
   protected void setVX(double vx) {
     if (_sx >= MAX_SX)
       _vx = Math.min(0, vx);
@@ -92,6 +117,11 @@ public class Player extends Entity {
       _vx = vx;
   }
 
+  /**
+   * precondition: none
+   * postcondition: sets vy
+   * runtime: O(1)
+   */
   protected void setVY(double vy) {
     if (_sy >= MAX_SY)
       _vy = Math.min(0, vy);
@@ -103,14 +133,29 @@ public class Player extends Entity {
       _vy = vy;
   }
 
+  /**
+   * precondition: none
+   * postcondition: sets ax
+   * runtime: O(1)
+   */
   protected void setAX(double ax) {
     _ax = ax;
   }
 
+  /**
+   * precondition: none
+   * postcondition: sets ay
+   * runtime: O(1)
+   */
   protected void setAY(double ay) {
     _ay = ay;
   }
   
+  /**
+   * precondition: none
+   * postcondition: jump setup
+   * runtime: O(1)
+   */
   protected void setUp(boolean isPressingUp) {
     if ((!_isPressingUp && isPressingUp) && _upInputControl == 0 && _currentJumps > 0)
       startUp();
@@ -118,6 +163,11 @@ public class Player extends Entity {
     _isPressingUp = isPressingUp;
   }
   
+  /**
+   * precondition: none
+   * postcondition: jump event fired
+   * runtime: O(1)
+   */
   protected void startUp() {
     _upInputControl = MIN_INPUT_TIME;
     _currentJumps--;
@@ -126,10 +176,20 @@ public class Player extends Entity {
     setVY(0);
   }
 
+  /**
+   * precondition: none
+   * postcondition: jump event stopped
+   * runtime: O(1)
+   */
   protected void stopUp() {
     setIY(0);
   }
   
+  /**
+   * precondition: none
+   * postcondition: down setup
+   * runtime: O(1)
+   */
   protected void setDown(boolean isPressingDown) {
     if (_downInputControl == 0)
       startDown();
@@ -137,10 +197,20 @@ public class Player extends Entity {
     _isPressingDown = isPressingDown;
   }
 
+  /**
+   * precondition: none
+   * postcondition down event fired:
+   * runtime: O(1)
+   */
   protected void startDown() {
     setIY(0);
   }
     
+  /**
+   * precondition: none
+   * postcondition: left setup
+   * runtime: O(1)
+   */
   protected void setLeft(boolean isPressingLeft) {
     if (_leftInputControl == 0)
       startLeft();
@@ -148,11 +218,21 @@ public class Player extends Entity {
     _isPressingLeft = isPressingLeft;
   }
   
+  /**
+   * precondition: none
+   * postcondition: left event triggered
+   * runtime: O(1)
+   */
   protected void startLeft() {
     _leftInputControl = MIN_INPUT_TIME;
     setIX(-_horizontalSpeed);
   }
-    
+   
+  /**
+   * precondition: none
+   * postcondition: right setup
+   * runtime: O(1)
+   */ 
   protected void setRight(boolean isPressingRight) {
     if (_rightInputControl == 0)
       startRight();
@@ -160,40 +240,80 @@ public class Player extends Entity {
     _isPressingRight = isPressingRight;
   }
 
+  /**
+   * precondition: none
+   * postcondition: right start
+   * runtime: O(1)
+   */
   protected void startRight() {
     _rightInputControl = MIN_INPUT_TIME;
     setIX(_horizontalSpeed);
   }
 
+  /**
+   * precondition: none
+   * postcondition: stop horizontal events
+   * runtime: O(1)
+   */
   protected void stopHorizontal() {
     setIX(0);
   }
 
+  /**
+   * precondition: t != null
+   * postcondition: returns whether a rectangle overlaps with the player
+   * runtime: O(1)
+   */
   protected boolean touching(Tangible t) {
     return (_sx <= t._sx + t._width && _sx + _width >= t._sx &&
             _sy <= t._sy + t._height & _sy + _height >= t._sy);
   }
 
+  /**
+   * precondition: p != null
+   * postcondition: returns whether the player is above a platform
+   * runtime: O(1)
+   */
   protected boolean overPlatform(Platform p) {
     return (p != null &&
             _sx + _width >= p._sx && _sx <= p._sx + p._width);
   }
   
+  /**
+   * precondition: p != null
+   * postcondition: returns whether the player is on a platform
+   * runtime: O(1)
+   */
   protected boolean onPlatform(Platform p) {
     return (p != null && _vy + _iy - p._vy >= 0 && overPlatform(p) &&
             _sy + _height >= p._sy && _sy + _height <= p._sy + p._height);
   }
 
+  /**
+   * precondition: none
+   * postcondition: resets jump count
+   * runtime: O(1)
+   */
   protected void resetJumps() {
     _currentJumps = _maxJumps;
   }
 
+  /**
+   * precondition: none
+   * postcondition: resets vertical mvoement
+   * runtime: O(1)
+   */
   protected void ground() {
     resetJumps();
     _isPressingUp = false;
     stopUp();
   }
-  
+
+  /**
+   * precondition: dt > 0
+   * postcondition: updates player
+   * runtime: O(1)
+   */
   protected void update(double dt) {
     if (_currentJumps == _maxJumps && (_sy < MAX_SY && _currentPlatform == null))
       _currentJumps--;
@@ -232,6 +352,11 @@ public class Player extends Entity {
     _hitbox.setRect(_sx, _sy, _width, _height);
   }
 
+  /**
+   * precondition: g is instance of Graphics2D
+   * postcondition: renders images
+   * runtime: O(1)
+   */
   protected void render(Graphics g) {
     Graphics2D g2 = (Graphics2D) g;
     g2.setColor(_hitboxColor);

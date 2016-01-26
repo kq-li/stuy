@@ -18,6 +18,12 @@ public class HorizontalPlatform extends Platform {
     _orig_vx = vx;
   }
 
+
+  /**
+   * precondition: dt > 0
+   * postcondition: platform physics updated
+   * runtime: O(1)
+   */
   protected void update(double dt) {
     if (_currentCooldown > 0) {
       _currentCooldown--;

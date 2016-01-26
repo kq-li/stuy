@@ -18,6 +18,11 @@ public class VerticalPlatform extends Platform {
     _orig_vy = vy;
   }
 
+  /**
+   * precondition: dt > 0
+   * postcondition: platform updated
+   * runtime: O(1)
+   */
   protected void update(double dt) {
     if (_currentCooldown > 0) {
       _currentCooldown--;

@@ -26,7 +26,7 @@ public class Game extends JPanel {
     super();
     _frameWidth = width;
     _frameHeight = height;
-    _currentLevel = 5;
+    _currentLevel = 1;
     _deaths = 0;
     
     _isRunning = true;
@@ -36,17 +36,32 @@ public class Game extends JPanel {
     initKeybinds();
   }
 
+  /**
+   * precondition: none
+   * postcondition: clears instance variables
+   * runtime: O(1)
+   */
   private void clearLevel() {
     _platforms = new ArrayList<Platform>();
     _player = null;
   }
-  
+
+  /**
+   * precondition: none
+   * postcondition: initializes frame
+   * runtime: O(1)
+   */  
   private void initFrame() {
     _frame = new JFrame(Game.TITLE);
     _frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     _frame.setContentPane(this);
   }
 
+  /**
+   * precondition: none
+   * postcondition: initializes key bindings
+   * runtime: O(1?)
+   */
   private void initKeybinds() {
     Action startUp = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
@@ -126,7 +141,12 @@ public class Game extends JPanel {
     getActionMap().put("rightReleased", stopRight);
   }
 
-  private void loadLevel(int level) {
+  /**
+   * precondition: 0 < level < MAX_LEVEL
+   * postcondition: level loeaded from text file
+   * runtime: O(n)
+   */
+  private void loadLevel(int level) { // More readable and maintainable than a 2D array
     try (Scanner scanner = new Scanner(new File("level" + level + ".txt"))) {
       String[] line = scanner.nextLine().split(" ");
       double sx = Double.parseDouble(line[0]);
@@ -212,15 +232,30 @@ public class Game extends JPanel {
     }
   }
 
+  /**
+   * precondition: player != null
+   * postcondition: sets player instance variable
+   * runtime: O(1)
+   */
   private void setPlayer(Player player) {
     _player = player;
   }
 
+  /**
+   * precondition: platform != null
+   * postcondition: adds platform to arraylist, returns the reference
+   * runtime: O(1)
+   */
   private Platform addPlatform(Platform platform) {
     _platforms.add(platform);
     return platform;
   }
  
+  /**
+   * precondition: none
+   * postcondition: objects rendered onto canvas
+   * runtime: O(n)
+   */
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
 
@@ -231,19 +266,39 @@ public class Game extends JPanel {
       _player.render(g);
   }
 
+  /**
+   * precondition: none
+   * postcondition: returns dimensions of frame
+   * runtime: O(1)
+   */
   public Dimension getPreferredSize() {
     return new Dimension(_frameWidth, _frameHeight);
   }
   
+  /**
+   * precondition: none
+   * postcondition: displays frame
+   * runtime: O(1)
+   */
   public void display() {
     _frame.pack();
     _frame.setVisible(true);
   }
 
+  /**
+   * precondition: none
+   * postcondition: returns distance between two points
+   * runtime: O(1)
+   */
   private double distance(double x1, double y1, double x2, double y2) {
     return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
   }
  
+  /**
+   * precondition: none
+   * postcondition: all objects updated
+   * runtime: O(n)
+   */
   private void update(double dt) {
     for (Platform p : _platforms)
       p.update(dt);
@@ -297,7 +352,9 @@ public class Game extends JPanel {
           System.out.println(" death.");
         else
           System.out.println(" deaths.");
-        
+
+        System.out.println("The factorial of your death count, calculated with recursion, is " + factorial(_deaths));
+        System.out.println("Thanks for playing!");
         _isRunning = false;
       } else {
         System.out.println("Promoted to level " + _currentLevel);
@@ -314,10 +371,31 @@ public class Game extends JPanel {
     }
   }
 
+  /**
+   * precondition: n >= 0
+   * postcondition: returns factorial of n
+   * runtime: O(n)
+   */
+  private long factorial(int n) {
+    if (n == 0)
+      return 1;
+    return n * factorial(n - 1);
+  }
+  
+  /**
+   * precondition: none
+   * postcondition: starts paint chain
+   * runtime: O(1)
+   */
   private void render() {
     paintImmediately(0, 0, _frameWidth, _frameHeight);
   }
   
+  /**
+   * precondition: none
+   * postcondition: calls updates and renders
+   * runtime: O(n?)
+   */
   private void loop() {
     final int TARGET_FPS = 240;
     final double FRAME_LENGTH = 1.0 / TARGET_FPS;
@@ -344,7 +422,12 @@ public class Game extends JPanel {
       }
     }
   }
-  
+
+  /**
+   * precondition: none
+   * postcondition: none
+   * runtime: O(1)
+   */
   public static void main(String[] args) {
     Game game = new Game(600, 400);
     game.loadLevel(game._currentLevel);
