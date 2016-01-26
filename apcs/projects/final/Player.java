@@ -8,21 +8,22 @@ public class Player extends Entity {
   protected int _upInputControl, _downInputControl, _leftInputControl, _rightInputControl;
   protected int _maxJumps, _currentJumps;
   protected double _jumpStrength, _horizontalSpeed;
-  protected boolean _isPressingUp, _isPressingDown, _isPressingLeft, _isPressingRight, _onPlatform;
+  protected boolean _isPressingUp, _isPressingDown, _isPressingLeft, _isPressingRight;
   
   protected Rectangle2D.Double _hitbox;
   protected Color _hitboxColor;
+  protected Platform _currentPlatform;
   
   protected final int MIN_INPUT_TIME;
+  protected final double MIN_SX, MIN_SY, MAX_SX, MAX_SY, ORIG_AX, ORIG_AY;
 
   public Player(double sx, double sy,
                 double min_sx, double min_sy,
                 double max_sx, double max_sy,
                 double vx, double vy,
                 double ax, double ay,
-                double width, double height,
-                Color color) {
-    super(sx, sy, min_sx, min_sy, max_sx, max_sy, vx, vy, ax, ay, width, height);
+                double width, double height) {
+    super(sx, sy, vx, vy, ax, ay, width, height);
     
     _maxJumps = 2;
     _currentJumps = _maxJumps;
@@ -39,11 +40,19 @@ public class Player extends Entity {
 
     MIN_INPUT_TIME = 5;
 
+    MIN_SX = min_sx;
+    MIN_SY = min_sy;
+    MAX_SX = max_sx;
+    MAX_SY = max_sy;
+    ORIG_AX = ax;
+    ORIG_AY = ay;
+
     _jumpStrength = 125;
     _horizontalSpeed = 100;
 
     _hitbox = new Rectangle2D.Double(sx, sy, width, height);
-    _hitboxColor = color;
+    _hitboxColor = Color.BLUE;
+    _currentPlatform = null;
   }
 
   protected void setIX(double ix) {
@@ -68,8 +77,6 @@ public class Player extends Entity {
       _sy = Math.min(sy, MAX_SY);
     else if (_sy <= MIN_SY)
       _sy = Math.max(sy, MIN_SY);
-    else if (_onPlatform)
-      _sy = Math.min(sy, _sy);
     else
       _sy = sy;
   }
@@ -79,17 +86,29 @@ public class Player extends Entity {
       _vx = Math.min(0, vx);
     else if (_sx <= MIN_SX)
       _vx = Math.max(0, vx);
+    else if (_currentPlatform != null)
+      _vx = _currentPlatform._vx;
     else
       _vx = vx;
   }
 
   protected void setVY(double vy) {
-    if (_sy >= MAX_SY || _onPlatform)
+    if (_sy >= MAX_SY)
       _vy = Math.min(0, vy);
     else if (_sy <= MIN_SY)
       _vy = Math.max(0, vy);
-    else 
+    else if (_currentPlatform != null)
+      _vy = _currentPlatform._vy;
+    else
       _vy = vy;
+  }
+
+  protected void setAX(double ax) {
+    _ax = ax;
+  }
+
+  protected void setAY(double ay) {
+    _ay = ay;
   }
   
   protected void setUp(boolean isPressingUp) {
@@ -104,7 +123,7 @@ public class Player extends Entity {
     _currentJumps--;
     if (_iy == 0)
       setIY(_iy - _jumpStrength);
-    if (_sy < MAX_SY && !_onPlatform) {
+    if (_sy < MAX_SY && _currentPlatform == null) {
       setVY(0);
     }
   }
@@ -156,11 +175,15 @@ public class Player extends Entity {
     return (_sx <= t._sx + t._width && _sx + _width >= t._sx &&
             _sy <= t._sy + t._height & _sy + _height >= t._sy);
   }
+
+  protected boolean overPlatform(Platform p) {
+    return (p != null &&
+            _sx + _width >= p._sx && _sx <= p._sx + p._width);
+  }
   
   protected boolean onPlatform(Platform p) {
-    return (p != null &&
-            (_sx + _width / 2 >= p._sx && _sx + _width / 2 <= p._sx + p._width &&
-             _sy + _height >= p._sy && _sy + _height <= p._sy + p._height));
+    return (p != null && _vy + _iy - p._vy >= 0 && overPlatform(p) &&
+            _sy + _height >= p._sy && _sy + _height <= p._sy + p._height);
   }
 
   protected void resetJumps() {
@@ -174,13 +197,13 @@ public class Player extends Entity {
   }
   
   protected void update(double dt) {
-    if (_currentJumps == _maxJumps && (_sy < MAX_SY && !_onPlatform))
+    if (_currentJumps == _maxJumps && (_sy < MAX_SY && _currentPlatform == null))
       _currentJumps--;
     
     if (_upInputControl > 0)
       _upInputControl--;
 
-    if (_upInputControl == 0 && (_sy >= MAX_SY || _onPlatform)) {
+    if (_upInputControl == 0 && (_sy >= MAX_SY || _currentPlatform != null)) {
       ground();
     }
 
@@ -196,6 +219,13 @@ public class Player extends Entity {
 
     if (_rightInputControl > 0)
       _rightInputControl--;
+
+    if (_currentPlatform != null) {
+      setAY(0);
+    } else {
+      setAY(ORIG_AY);
+      setVX(0);
+    }
     
     setVX(_vx + _ax * dt);
     setVY(_vy + _ay * dt);

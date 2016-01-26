@@ -5,9 +5,10 @@ import javax.swing.*;
 public class BouncyPlatform extends Platform {
   protected double _bounceStrength;
 
-  public BouncyPlatform(double sx, double sy, double width, double height) {
-    super(sx, sy, width, height, Color.PINK);
-    _bounceStrength = 500;
+  public BouncyPlatform(double sx, double sy, double vx, double vy, double ax, double ay,
+                        double width, double height, double bounceStrength) {
+    super(sx, sy, vx, vy, ax, ay, width, height, Color.PINK);
+    _bounceStrength = bounceStrength;
   }
 }
     

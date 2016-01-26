@@ -16,7 +16,7 @@ public class Game extends JPanel {
 
   protected final int GRAVITY = 325;
 
-  protected final int MAX_LEVEL = 3;
+  protected final int MAX_LEVEL = 10;
   
   protected static final String TITLE = "Platformer";
   protected static final String FONT_NAME = "Ubuntu Medium";
@@ -26,7 +26,7 @@ public class Game extends JPanel {
     super();
     _frameWidth = width;
     _frameHeight = height;
-    _currentLevel = 1;
+    _currentLevel = 4;
     _deaths = 0;
     
     _isRunning = true;
@@ -45,49 +45,55 @@ public class Game extends JPanel {
     _frame = new JFrame(Game.TITLE);
     _frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     _frame.setContentPane(this);
-    setLayout(new GridBagLayout());    
   }
 
   private void initKeybinds() {
     Action startUp = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-          _player.setUp(true);
+          if (_player != null)
+            _player.setUp(true);
         }
       };
 
     Action stopUp = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-          _player.setUp(false);
+          if (_player != null)
+            _player.setUp(false);
         }
       };
     
     Action startDown = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-          _player.setDown(true);
+          if (_player != null)
+            _player.setDown(true);
         }
       };
     
     Action startLeft = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-          _player.setLeft(true);
+          if (_player != null)
+            _player.setLeft(true);
         }
       };
 
     Action stopLeft = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-          _player.setLeft(false);
+          if (_player != null)
+            _player.setLeft(false);
         }
       };
         
     Action startRight = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-          _player.setRight(true);
+          if (_player != null)
+            _player.setRight(true);
         }
       };
 
     Action stopRight = new AbstractAction() {
         public void actionPerformed(ActionEvent e) {
-          _player.setRight(false);
+          if (_player != null)
+            _player.setRight(false);
         }
       };
     
@@ -122,33 +128,82 @@ public class Game extends JPanel {
 
   private void loadLevel(int level) {
     try (Scanner scanner = new Scanner(new File("level" + level + ".txt"))) {
-      double[] playerData = new double[4];
+      String[] line = scanner.nextLine().split(" ");
+      double sx = Double.parseDouble(line[0]);
+      double sy = Double.parseDouble(line[1]);
+      double width = Double.parseDouble(line[2]);
+      double height = Double.parseDouble(line[3]);
 
-      for (int i = 0; i < 4; i++) 
-        playerData[i] = scanner.nextDouble();
+      setPlayer(new EntityBuilder()
+                .sx(sx)
+                .sy(sy)
+                .width(width)
+                .height(height)
+                .ay(GRAVITY)
+                .buildPlayer(0, 0, _frameWidth, _frameHeight));
+     
+      while ((line = scanner.nextLine().split(" ")).length > 0) {
+        sx = Double.parseDouble(line[0]);
+        sy = Double.parseDouble(line[1]);
+        width = Double.parseDouble(line[2]);
+        height = Double.parseDouble(line[3]);
+        int type = Integer.parseInt(line[4]);
 
-      setPlayer(playerData);
-
-      int numPlatforms = scanner.nextInt();
-      double[][] platforms = new double[numPlatforms][5];
-
-      for (int i = 0; i < numPlatforms; i++)
-        for (int j = 0; j < 5; j++) 
-          platforms[i][j] = scanner.nextDouble();
-
-      for (double[] data : platforms) {
-        switch ((int) data[4]) {
+        switch (type) {
         case 0:
-          addNormalPlatform(data);
+          addPlatform(new EntityBuilder()
+                      .sx(sx)
+                      .sy(sy)
+                      .width(width)
+                      .height(height)
+                      .buildNormal());
           break;
         case 1:
-          addFirePlatform(data);
+          addPlatform(new EntityBuilder()
+                      .sx(sx)
+                      .sy(sy)
+                      .width(width)
+                      .height(height)
+                      .buildFire());
           break;
         case 2:
-          addBouncyPlatform(data);
+          double bounceStrength = Double.parseDouble(line[5]);
+          addPlatform(new EntityBuilder()
+                      .sx(sx)
+                      .sy(sy)
+                      .width(width)
+                      .height(height)
+                      .buildBouncy(bounceStrength));
+          break;
+        case 3:
+          double vy = Double.parseDouble(line[5]);
+          double deltay = Double.parseDouble(line[6]);
+          addPlatform(new EntityBuilder()
+                      .sx(sx)
+                      .sy(sy)
+                      .width(width)
+                      .height(height)
+                      .vy(vy)
+                      .buildVertical(deltay));
+          break;
+        case 4:
+          double vx = Double.parseDouble(line[5]);
+          double deltax = Double.parseDouble(line[6]);
+          addPlatform(new EntityBuilder()
+                      .sx(sx)
+                      .sy(sy)
+                      .width(width)
+                      .height(height)
+                      .vx(vx)
+                      .buildHorizontal(deltax));
           break;
         case 9001:
-          addGoalPlatform(data);
+          addPlatform(new EntityBuilder()
+                      .sx(sx)
+                      .sy(sy)
+                      .width(width)
+                      .height(height)
+                      .buildGoal());
           break;
         }
       }
@@ -161,46 +216,19 @@ public class Game extends JPanel {
     _player = player;
   }
 
-  private void setPlayer(double sx, double sy, double width, double height) {
-    _player = new Player(sx, sy, 0, 0, _frameWidth - width, _frameHeight - height,
-                              0, 0,
-                              0, GRAVITY,
-                              width, height,
-                              Color.BLUE);
-  }
-
-  private void setPlayer(double[] data) {
-    setPlayer(data[0], data[1], data[2], data[3]);
-  }
-  
   private Platform addPlatform(Platform platform) {
     _platforms.add(platform);
     return platform;
   }
-
-  private Platform addNormalPlatform(double[] data) {
-    return addPlatform(new Platform(data[0], data[1], data[2], data[3]));
-  }
-
-  private Platform addFirePlatform(double[] data) {
-    return addPlatform(new FirePlatform(data[0], data[1], data[2], data[3]));
-  }
-
-  private Platform addBouncyPlatform(double[] data) {
-    return addPlatform(new BouncyPlatform(data[0], data[1], data[2], data[3]));
-  }
-  
-  private Platform addGoalPlatform(double[] data) {
-    return addPlatform(new GoalPlatform(data[0], data[1], data[2], data[3]));
-  }
-  
+ 
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
 
-    for (Platform platform : _platforms)
-      platform.render(g);
-    
-    _player.render(g);
+    for (Platform p : _platforms)
+      p.render(g);
+
+    if (_player != null)
+      _player.render(g);
   }
 
   public Dimension getPreferredSize() {
@@ -213,36 +241,35 @@ public class Game extends JPanel {
   }
 
   private void update(double dt) {
+    for (Platform p : _platforms)
+      p.update(dt);
+    
     boolean won = false;
     boolean dead = false;
 
-    if (_player._sy >= _player.MAX_SY) {
+    if (_player._sy >= _player.MAX_SY)
       dead = true;
-    }
 
-    if (_player._vy + _player._iy < 0) {
-      _player._onPlatform = false;
-    } else {
-      boolean onPlatform = false;
+    Platform lastPlatform = _player._currentPlatform;
+    _player._currentPlatform = null;
+   
+    for (Platform p : _platforms) {
+      if (_player.onPlatform(p))
+        _player._currentPlatform = p;
+      else if (lastPlatform == p && _player._iy >= 0 && _player.overPlatform(p))
+        _player._currentPlatform = p;
+
+      if (p instanceof FirePlatform && _player.touching(p))
+        dead = true;
+
+      if (p instanceof BouncyPlatform && _player._currentPlatform == p)
+        _player.setVY(-((BouncyPlatform) p)._bounceStrength);
+
+      if (p instanceof GoalPlatform && _player._currentPlatform == p)
+        won = true;
       
-      for (Platform p : _platforms) {
-        if (_player.onPlatform(p))
-          onPlatform = true;
-
-        if (p instanceof GoalPlatform && onPlatform)
-          won = true;
-
-        if (p instanceof BouncyPlatform && onPlatform)
-          _player.setVY(-((BouncyPlatform) p)._bounceStrength);
-        
-        if (p instanceof FirePlatform && _player.touching(p))
-          dead = true;
-
-        if (onPlatform || dead || won)
-          break;
-      }
-
-      _player._onPlatform = onPlatform;
+      if (dead || won)
+        break;
     }
     
     _player.update(dt);
