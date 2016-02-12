@@ -1,6 +1,6 @@
 import java.lang.ArithmeticException;
 
-public class Roman {
+public class Roman extends Number implements Comparable<Roman> {
   private int _n;
   private String _numeral;
 
@@ -46,14 +46,39 @@ public class Roman {
   }
 
   public boolean equals(Object o) {
-    return (this == other) || (o instanceof Roman &&
+    return (this == o) || (o instanceof Roman &&
                                ((Roman) o)._n == _n);
+  }
+
+  public int compareTo(Roman r) {
+    return _n - r._n;
+  }
+
+  public int intValue() {
+    return _n;
+  }
+
+  public long longValue() {
+    return (long) _n;
+  }
+  
+  public float floatValue() {
+    return (float) _n;
+  }
+
+  public double doubleValue() {
+    return (double) _n;
   }
   
   public static void main(String[] args) {
-    int[] test = {149, 59, 1005, 2, 7, 29, 3999, 4071, 5000};
+    int[] test = {149, 59, 1005, 2, 7, 29, 3999};
     for (int t : test)
       System.out.println(t + " -> " + new Roman(t));
+    Roman r = new Roman(14);
+    System.out.println(r.equals("XIV"));
+    System.out.println(r.equals(r));
+    System.out.println(r.equals(new Roman(14)));
+    System.out.println(r.equals(new Roman(15)));
   }
 }
     

@@ -1,0 +1,17 @@
+Consider the Eight (N) Queens problem. It requires determining the
+various ways in which eight queens could be configured on a chessboard
+so that none of them could capture any other queen. (The rules of 
+chess allow a queen to move in an arbitrary number of squares in 
+horizontal, vertical, or diagonal fashion.) The figure below illustrates
+one such configuration.
+
+-------q
+---q----
+q-------
+--q-----
+-----q--
+-q------
+------q-
+----q---
+
+Bulid a program to solve the Eight Queens problem.
