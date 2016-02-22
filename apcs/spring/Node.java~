@@ -1,0 +1,10 @@
+public class Node {
+  private String _value;
+  private Node _node;
+
+  public Node(String value, Node reference) {
+    _value = value;
+    _node = node;
+  }
+
+  

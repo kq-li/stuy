@@ -1,0 +1,13 @@
+public class SLinkedList {
+  private Node _head, _tail;
+  private int _size;
+
+  public SLinkedList() {
+    _head = null;
+    _tail = null;
+    _size = 0;
+  }
+
+  public void addFirst(String value) {
+    _tail = _head;
+    _head = new Node(value
