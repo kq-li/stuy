@@ -1,0 +1,80 @@
+1. Review the code for the to String method.
+
+ public String toString(){
+	String ans = "";
+	DNode current = _header.getNext();
+	while (current != _trailer){
+	    ans += current.getValue() + ", ";
+	    current = current.getNext();
+	}
+	int len = ans.length();
+	if (len > 0) ans = ans.substring(0,len - 2);
+	ans = "[" + ans + " ]";
+	return ans;
+    }
+    
+
+
+2. Complete the method addAfter(DNode, DNode) started below.
+   Test your code.
+
+    //*******************************************************************
+    // inserts node b after node a
+    // throw exception if a is the trailer node
+    public void addAfter(DNode a, DNode b){
+
+    }
+
+    public void addFirst(DNode current){
+	addAfter(_header,current);
+    }
+
+    public void addFirst(String value){
+	addFirst(new DNode(value,null,null));
+    }
+
+3. Complete the method String get(int).
+   Test your code.
+    //*******************************************************************
+    // postcondition: returns the ith String in the list.
+    //                get(0) is the first string
+    //                get(size() - 1) is the last string
+    //                Throw an exception if index < 0 || index >= size()
+    public String get(int i){
+
+
+    }
+4. Complete the method remove(DNode).
+   Test your code.
+    //*******************************************************************
+    //precondition: v != null and v refers to a node in the list
+    //postconditon: removes the node v refers to. v is completely unlinked
+    //              from the list.
+    //              Throws exception if v is header or trailer.
+    public void remove(DNode v){
+	
+    }
+
+5. Complete the method removeFirst().
+   Test your code.
+    //*******************************************************************
+    // postcondition: removes the first Node and returns its string.
+    //                Throws an exception if the list is empty.   
+  public String removeFirst(){
+
+    }
+
+
+6. Complete the method removeLast().
+    Test your code.
+    //*******************************************************************
+    // postcondition: removes the last node and returns its string.
+    // 		      Throws an exception if the list is empty.
+    public String removeLast(){
+
+    }
+       
+
+
+   
+   

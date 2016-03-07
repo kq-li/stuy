@@ -1,0 +1,17 @@
+#! /usr/bin/python
+
+import sys
+import os
+
+path = 'prob' + sys.argv[1] + '.py'
+
+if os.path.isfile(path):
+  os.system('chmod +x ' + path)
+  os.system('./' + path + ' '.join(sys.argv[2:]))
+else:
+  f = open(path, 'w+')
+  f.write('#! /usr/bin/python\n\n')
+  f.close()
+  os.system('chmod +x ' + path)
+  os.system('emacs ' + path + '&')
+
