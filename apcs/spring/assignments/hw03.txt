@@ -1,0 +1,27 @@
+Due: Tues., 3/1
+
+1. Exam Friday 3/4
+  - Recursion
+  - Node class
+  - SLinkedLink class
+
+2. Complete the constructor for the DLinkedList class.
+
+3. Write the Accessor methods.
+   // postcondition : returns the size of the list
+   public int size()
+
+
+   // postcondition: return true if the list is empty false otherwise
+   public boolean isEmpty()
+
+
+
+   // postcondition: returns the first node in the list
+   // throws an IllegalStateException if the list is empty.
+   public Node getFirst()
+
+
+   // postcondition: returns the last node in the list
+   // throws an IllegalStateException if the list is empty
+   public Node getLast();

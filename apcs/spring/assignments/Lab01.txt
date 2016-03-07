@@ -1,0 +1,58 @@
+Due: Thurs. 2/ 25
+
+Add the following methods to the SLinkedList class.
+
+1. Write the method getFirst() that returns the value stored in the 
+   first node.
+
+   // postcondition: throws an  Illegal State Exception if the list is empty
+   //                otherwise returns the first value.
+    public String getFirst(){    }
+
+
+2. Write the method getLast that returns the value stored at the tail.
+   // postcondition: throws an Illegal State Exception if the list is empty
+   //                otherwise returns the last value.
+    public String getLast(){}
+
+
+3. Write the the method get(int i) that returns the value at the ith position.
+   
+    // postcondition: throw an exception if i < 0 or i >= size.
+    //                if L = [a,b,c,d]
+    //                L.get(0) returns a
+    //                L.get(1) returns b
+    //                L.get(2) returns c
+    //                L.get(3) returns d
+    public String get(int i){    }
+
+
+4. Write the method append(SLinkedList L) that concatenates two lists.
+   Here's an example, 
+     S = [ a,b]
+     M = [ c,d,e]
+     S.append(M) -> [a,b,c,d,e]
+     M.append(S) -> [c,d,e,a,b]
+     Neither S nor M should be modified (no side effects). 
+
+    public SLinkedList append(SLinkedList L){}
+
+
+
+5. Write a recursive reverse() method that reverses the nodes (not just the
+   values) of a list. reverse() should modifiy the list it is invoked on.
+
+   Here's an example:
+    L = [ c,a,t]
+    After L.reverse(), L becomes [ t,a,c].
+        
+
+    public void reverse(){    }
+
+
+6. Write the method search(String) that returns the Node that stores the 
+   first occurrence of key in the list.
+
+   // postcondition: returns null if key is not in the list.
+    public Node search(String key){    }
+
