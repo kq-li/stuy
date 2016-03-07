@@ -78,16 +78,22 @@ public class DLinkedList {
     return dn.getValue();
   }
   
-  public String removeFirst(String value) {
-    DNode dnode = searchFirst(value);
-    remove(dnode);
-    return dnode.getValue();
+  public String removeFirst() {
+    if (_size == 0)
+      throw new IllegalStateException();
+
+    DNode first = _head.getNext();
+    remove(first);
+    return first.getValue();
   }
 
-  public String removeLast(String value) {
-    DNode dnode = searchLast(value);
-    remove(dnode);
-    return dnode.getValue();
+  public String removeLast() {
+    if (_size == 0)
+      throw new IllegalStateException();
+
+    DNode last = _tail.getPrev();
+    remove(last);
+    return last.getValue();
   }
 
   public void remove(DNode dnode) {
@@ -122,6 +128,21 @@ public class DLinkedList {
 
     return false;
   }
+
+  public DNode getMiddle() {
+    if (_size == 0)
+      throw new IllegalStateException();
+    
+    DNode front = _head;
+    DNode back = _tail;
+
+    while (front != back && front != back.getPrev()) {
+      front = front.getNext();
+      back = back.getPrev();
+    }
+
+    return back;
+  }
   
   public String toString() {
     String ret = "";
@@ -152,10 +173,11 @@ public class DLinkedList {
     L.addLast("y");
     L.addLast("z");
     System.out.println(L);
-    L.removeFirst("w");
-    L.removeLast("x");
+    L.removeFirst();
+    L.removeLast();
     System.out.println(L);
     System.out.println(L.get(3));
+    System.out.println(L.getMiddle());
   }
 }
   
