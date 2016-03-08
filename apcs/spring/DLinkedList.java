@@ -143,6 +143,11 @@ public class DLinkedList {
 
     return back;
   }
+
+  public void swap(DNode a, DNode b) {
+    a.setPrev(b.setPrev(a.getPrev()));
+    a.setNext(b.setNext(a.getNext()));
+  }
   
   public String toString() {
     String ret = "";
@@ -178,6 +183,8 @@ public class DLinkedList {
     System.out.println(L);
     System.out.println(L.get(3));
     System.out.println(L.getMiddle());
+    L.swap(L.searchFirst("y"), L.searchLast("a"));
+    System.out.println(L);
   }
 }
   
