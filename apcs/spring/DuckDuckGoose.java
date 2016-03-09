@@ -25,6 +25,10 @@ public class DuckDuckGoose {
     return _circle.remove();
   }
 
+  public String toString() {
+    return _circle.toString();
+  }
+  
   public static void main(String [] args){
     String[] n = {"Abe", "Cal", "Jen", "Eve", "Pam", "Vern", "Joe", "Quin", "Yuki"};
 
@@ -41,6 +45,8 @@ public class DuckDuckGoose {
     // Declare and instantiate a DuckDuckGoose object.
     // The constructor's argument will be an ArrayList of Strings.
     DuckDuckGoose d = new DuckDuckGoose(L);
-    
+    System.out.println(d);
+    System.out.println(d.chooseIt());
+    System.out.println(d);
   }
 }
