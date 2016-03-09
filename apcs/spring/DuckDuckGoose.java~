@@ -1,0 +1,36 @@
+import java.util.ArrayList;
+
+public class DuckDuckGoose{
+
+    private CircleList _circle;
+
+    // *** Question 4 ****
+    // Transfer the names from the ArrayList into a CircleList.
+    public DuckDuckGoose(ArrayList<String> names){}
+
+
+
+    // *** Question 5 ****
+    // Returns a randomly selected child to be it.
+    // The child is removed from the circle and its node is returned.
+    public Node chooseIt(){}
+
+
+
+
+
+    public static void main(String [] args){
+	String [] n = {"Abe","Cal","Jen","Eve","Pam","Vern", "Joe", "Quin", "Yuki"};
+	// *** Question 1 *** 
+	// Declare and instanciate an ArrayList of strings.
+	// *** Question 2 ***
+	// Copy the items of the String [] into an ArrayList of Strings.
+	// *** Question 3 ****
+	// Declare and instantiate a DuckDuckGoose object.
+	// The constructor's argument will be an ArrayList of Strings.    
+
+    }
+
+
+
+}

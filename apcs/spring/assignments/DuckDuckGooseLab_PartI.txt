@@ -1,0 +1,65 @@
+Use a CircleList to build a game that simulates the classic Children's game
+Duck, Duck, Goose.
+
+In the game, the children sit in a circle. A child is chosen at random to 
+be designated as "IT". "It" is removed from the circle then walks around
+the circle declaring each child A "Duck" or a "Goose". If a child is declared
+a "Goose", the "Goose" is removed from the circle. The "Goose's" position is
+noted, then the "IT" and "Goose" race around the circle, whoever reaches 
+the noted position first, occupies the noted position. The other child
+remains as "IT" or becomes "IT" for the next round.
+
+Ex. 
+
+kids: Abe, Cal, Jen, Eve, Pam, Vern, Joe, Quin, Yuki
+it: Jen
+kids: Cal, Eve, Pam, Vern, Joe, Quin, Yuki, Abe 
+Duck : Cal      
+Duck : Eve
+Duck: Pam
+Goose: Vern
+Race between Jen and Vern
+kids:  Pam, Jen, Joe, Quin, Yuki, Abe, Cal, Eve
+it : Vern
+
+and the game continues.
+
+Write the class DuckDuckGoose started below.
+//********************************************************************
+import java.util.ArrayList;
+
+public class DuckDuckGoose{
+
+    private CircleList _circle;
+
+    // *** Question 4 ****
+    // Transfer the names from the ArrayList into a CircleList.
+    public DuckDuckGoose(ArrayList<String> names){}
+
+
+
+    // *** Question 5 ****
+    // Returns a randomly selected child to be it.
+    // The child is removed from the circle and its node is returned.
+    public Node chooseIt(){}
+
+
+
+
+
+    public static void main(String [] args){
+	String [] n = {"Abe","Cal","Jen","Eve","Pam","Vern", "Joe", "Quin", "Yuki"};
+	// *** Question 1 *** 
+	// Declare and instanciate an ArrayList of strings.
+	// *** Question 2 ***
+	// Copy the items of the String [] into an ArrayList of Strings.
+	// *** Question 3 ****
+	// Declare and instantiate a DuckDuckGoose object.
+	// The constructor's argument will be an ArrayList of Strings.    
+
+    }
+
+
+
+}
+

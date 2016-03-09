@@ -35,6 +35,10 @@ public class CLinkedList {
     _size++;
   }
 
+  public void advance() {
+    _cursor = _cursor.getNext();
+  }
+  
   public String toString() {
     if (isEmpty())
       return "[]";
@@ -46,6 +50,13 @@ public class CLinkedList {
 
     return "[" + ret.substring(0, ret.length() - 2) + "]";
   }
+
+  public CNode remove() {
+    CNode ret = _cursor.getNext();
+    _cursor.setNext(ret.setNext(null));
+    _size--;
+    return ret;
+  }
   
   public static void main(String[] args) {
     CLinkedList L = new CLinkedList();
@@ -53,6 +64,10 @@ public class CLinkedList {
     L.add(new CNode("A", null));
     L.add(new CNode("B", null));
     L.add(new CNode("C", null));
+    System.out.println(L);
+    L.advance();
+    System.out.println(L);
+    L.remove();
     System.out.println(L);
   }
 }
