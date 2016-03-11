@@ -1,0 +1,6 @@
+public class Cult {
+  public static void main(String[] args) {
+    int M = Integer.parseInt(args[0]);
+    int k = Integer.parseInt(args[1]);
+    CLinkedList L = new CLinkedList();
+    
