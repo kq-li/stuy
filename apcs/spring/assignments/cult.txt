@@ -1,0 +1,42 @@
+Due: Tues. 3/15
+
+Email to : rickPlatek@stuycs.org
+
+Write a program that simulates M people sitting in a circle. Each person
+is numberd from 1 to M. Then remove every kth person until there is only
+1 person remaining in the list.
+
+Your program should read M and k from the command line.
+Use a CircleList to store the people.
+Then print out the order of removals.
+
+
+Below is are 3 sample runs:
+
+
+$java cult 5 2
+
+[5, 1, 2, 3, 4]
+poisoned: 2
+poisoned: 4
+poisoned: 1
+poisoned: 5
+survivor: 3
+
+$java cult 5 3
+[5, 1, 2, 3, 4]
+poisoned: 3
+poisoned: 1
+poisoned: 5
+poisoned: 2
+survivor: 4
+
+$java cult 7 4
+[7, 1, 2, 3, 4, 5, 6]
+poisoned: 4
+poisoned: 1
+poisoned: 6
+poisoned: 5
+poisoned: 7
+poisoned: 3
+survivor: 2

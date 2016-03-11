@@ -1,0 +1,61 @@
+Due: Fri. 3/11
+
+Email solution to : rick.platek@stuycs.org
+
+
+Add to the DuckDuckGoose class a method to play the games N times.
+
+The method heading should be :
+ 
+      public void play(int n);
+
+
+
+
+Whoever is "It" designates a kid as a Duck with probability 0.75; otherwise
+the designation is Goose with probability 0.25.
+
+Below is a sample run after 5 rounds:
+
+kids: [Abe, Yuki, Quin, Joe, Vern, Pam, Eve, Jen, Cal]
+It: Abe
+kids: [Cal, Yuki, Quin, Joe, Vern, Pam, Eve, Jen]
+Duck: Yuki
+Duck: Quin
+Duck: Joe
+Duck: Vern
+Duck: Pam
+Goose: Eve
+Race between: Abe and Eve
+Abe wins race.
+kids: [Abe, Jen, Cal, Yuki, Quin, Joe, Vern, Pam]
+It: Eve
+kids: [Abe, Jen, Cal, Yuki, Quin, Joe, Vern, Pam]
+Goose: Jen
+Race between: Eve and Jen
+Eve wins race.
+kids: [Eve, Cal, Yuki, Quin, Joe, Vern, Pam, Abe]
+It: Jen
+kids: [Eve, Cal, Yuki, Quin, Joe, Vern, Pam, Abe]
+Duck: Cal
+Duck: Yuki
+Duck: Quin
+Duck: Joe
+Goose: Vern
+Race between: Jen and Vern
+Vern wins race.
+kids: [Vern, Pam, Abe, Eve, Cal, Yuki, Quin, Joe]
+It: Jen
+kids: [Vern, Pam, Abe, Eve, Cal, Yuki, Quin, Joe]
+Duck: Pam
+Goose: Abe
+Race between: Jen and Abe
+Abe wins race.
+kids: [Abe, Eve, Cal, Yuki, Quin, Joe, Vern, Pam]
+It: Jen
+kids: [Abe, Eve, Cal, Yuki, Quin, Joe, Vern, Pam]
+Duck: Eve
+Goose: Cal
+Race between: Jen and Cal
+Jen wins race.
+kids: [Jen, Yuki, Quin, Joe, Vern, Pam, Abe, Eve]

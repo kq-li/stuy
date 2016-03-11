@@ -38,6 +38,13 @@ public class CLinkedList {
   public void advance() {
     _cursor = _cursor.getNext();
   }
+
+  public CNode remove() {
+    CNode ret = _cursor.getNext();
+    _cursor.setNext(ret.setNext(null));
+    _size--;
+    return ret;
+  }
   
   public String toString() {
     if (isEmpty())
@@ -49,13 +56,6 @@ public class CLinkedList {
       ret += cn + ", ";
 
     return "[" + ret.substring(0, ret.length() - 2) + "]";
-  }
-
-  public CNode remove() {
-    CNode ret = _cursor.getNext();
-    _cursor.setNext(ret.setNext(null));
-    _size--;
-    return ret;
   }
   
   public static void main(String[] args) {

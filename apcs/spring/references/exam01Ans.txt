@@ -1,0 +1,230 @@
+
+Name : __________________________		Period: _______________
+
+
+Part I: (25 points)
+=======
+
+Give the following code:
+
+     Node t = new Node("a",new Node("b",new Node("c", null)));
+    
+     
+  a. (5pts) Write code to access the second node. The node with value "b".
+  
+     t.getNext();
+
+  b. (5pts) Write code to swap the values of the 1st and last nodes.
+
+     t.setValue(t.getNext().getNext().setValue(t.getValue()));
+
+  c. (5pts) Write code to add a new node with the value "d" to the end of 
+     collection of nodes referred to by t.
+
+     t.getNext().getNext().setNext(new Node("d",null));
+
+
+  d. (10pts) Write the function static function count(Node v) that counts 
+     the nodes starting at node v. For example, count(t) is 3 before part (c.)
+     and 4 after part(c.).
+
+
+     // version 1
+     // preconditon : v != null
+     public static int count (Node v){
+           int ans = 0;
+	   while ( v != null){
+	   	 ans++;
+		 v = v.getNext();
+	   }
+	   return ans;
+     }
+
+
+     // version 2
+     public static int count(Node v){
+         int ans = 1;
+	 while (v.getNext() != null){
+	      ans++;
+	      v = v.getNext();
+	 }
+	 return ans;
+     }
+
+
+     // version 3
+     public static int count(Node v){
+     	   if (v == null) return 0;
+	   return 1 + count(v.getNext());
+
+     }
+
+
+
+Part II: (25 points)
+=======
+ 
+ Write a method of the class SLinkedList named searchL(Node t, String key). 
+ The method returns a reference to the node that contains the first occurrence 
+ of key in the singly linked list. If the key is not found, the function 
+ returns null. The function should run on the order of O(n).
+ 
+
+  
+  public Node searchL(String key){
+            return searchL(_head, key);
+  }
+
+  // version 1
+  public Node searchL(Node t, String key){
+          while( t != null){
+	  	 if (t.getValue().equals(key)) return t;
+		 t = t.getNext();
+          }
+	  return t;
+  }
+
+  // version 2
+  public Node searchL(Node t, String key){
+  	 if (t == null || t.getValue().equals(key)) return t;
+	 return searchL(t.getNext(),key);
+  }
+
+
+Part III: (25 points / 5pt each)
+=========
+   In the SLinkedList Class, use Big O notation to classify the expected
+   runtime of the following methods from the SLinkedList class. Circle the
+   best answer.
+
+   1. void addFirst(String)
+
+       a.  O(1)    b. O(logN)   c. O(N)  d. O(NlogN)    e. O(N*N)
+
+
+   Ans:  a. O(1)
+
+   2. void addLast(String)
+
+        a.  O(1)    b. O(logN)   c. O(N)  d. O(NlogN)    e. O(N*N)
+
+
+    Ans:  a. O(1)
+
+   3. String removeFirst()
+   
+        a.  O(1)    b. O(logN)   c. O(N)  d. O(NlogN)    e. O(N*N) 
+
+
+   Ans:  a. O(1) 
+ 
+  4. String removeLast()
+
+         a.  O(1)    b. O(logN)   c. O(N)  d. O(NlogN)    e. O(N*N)
+
+
+   Ans:  c. O(N)
+
+   5. String get(int)
+
+          a.  O(1)    b. O(logN)   c. O(N)  d. O(NlogN)    e. O(N*N)
+
+   Ans:  c. O(N)
+
+
+Part IV: (15 points/ 5pts. each)
+========
+
+Given the following code for a reverse method of the SLinkedList class.
+
+1.  // version #1:
+    // postcondition: reverses the values of a list
+    public void reverse(){
+        if (size() > 1){
+            String v  = removeFirst() ;
+            reverse();
+            addLast(v);  
+        }
+    }
+
+    Using Big O notation, classify the expected runtime of the reverse method.
+    Circle the best answer.
+
+    a.  O(1)    b. O(logN)   c. O(N)  d. O(NlogN)    e. O(N*N)
+
+
+   Ans:  c. O(N)
+
+
+2.  // version #2:
+    // postcondition: reverses the values of a list
+    public void reverse(){
+        if (size() > 1){
+            String v  = removeLast();
+            reverse();
+            addFirst(v)
+        }
+
+    }
+
+
+    Using Big O notation, classify the expected runtime of the reverse method.
+    Circle the best answer.
+
+    a.  O(1)    b. O(logN)   c. O(N)  d. O(NlogN)    e. O(N*N)
+
+
+   Ans:  e. O(N*N)
+
+3.   // version #3:
+     // postcondition: reverses the values of a list
+     public void reverse(){
+       for (int i = 0; i < size() / 2; i++){
+          int j = size() - 1 - i;
+	  String a = get(i);
+	  String b = get(j);
+	  get(i).setValue(b);
+	  get(j).setValue(a);
+       }	   
+     }
+
+
+    Using Big O notation, classify the expected runtime of the reverse method.
+    Circle the best answer.
+
+    a.  O(1)    b. O(logN)   c. O(N)  d. O(NlogN)    e. O(N*N)
+
+
+   Ans:  e. O(N*N)
+
+
+
+Part V: (10 points)
+=======
+	
+ Use recursion to write a method of the class SLinkedList named 
+ searchR(Node t, String key). 
+ The method returns a reference to the node that contains the last occurrence 
+ of key in the singly linked list. If the key is not found, the function 
+ returns null. The function should run on the order of O(n).
+ 
+
+  
+  public Node searchR(String key){
+            return searchR(_head, key);
+  }
+  
+
+  // version 1
+  public Node searchR(Node t, String key){
+  	 Node ans = null;
+	 if ( t != null){
+	    ans = searchR(t.getNext(),key);
+	    if (ans == null && t.getValue().equals(key))
+	       ans = t;
+         }
+	 return ans;
+  }
+
+  
+       

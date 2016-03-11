@@ -25,6 +25,40 @@ public class DuckDuckGoose {
     return _circle.remove();
   }
 
+  public void play(int n) {
+    System.out.println("Kids: " + _circle);
+    CNode it = chooseIt();
+
+    for (int i = 0; i < n; i++) {
+      System.out.println("It: " + it);
+      System.out.println("Kids: " + _circle);
+      
+      while (Math.random() < 0.75) {
+        System.out.println("Duck: " + _circle.getCursor());
+        _circle.advance();
+      }
+      
+      CNode goose = _circle.getCursor();
+      System.out.println("Goose: " + goose);
+      System.out.println("Race between " + it + " and " + goose + ".");
+      double r = Math.random();
+      
+      if (r < 0.6) {
+        System.out.println(it + " wins race.");
+
+        while (_circle.getCursor().getNext() != goose)
+          _circle.advance();
+
+        _circle.remove();
+        _circle.add(it);
+        it = goose;
+        _circle.advance();
+      } else {
+        System.out.println(goose + " wins race.");
+      }
+    }
+  }
+  
   public String toString() {
     return _circle.toString();
   }
@@ -45,8 +79,6 @@ public class DuckDuckGoose {
     // Declare and instantiate a DuckDuckGoose object.
     // The constructor's argument will be an ArrayList of Strings.
     DuckDuckGoose d = new DuckDuckGoose(L);
-    System.out.println(d);
-    System.out.println(d.chooseIt());
-    System.out.println(d);
+    d.play(5);
   }
 }
