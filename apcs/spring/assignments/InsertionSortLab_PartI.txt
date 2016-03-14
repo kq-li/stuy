@@ -1,0 +1,72 @@
+Insertion Sort Revisited.
+
+
+Recreate the following output, that sorts, in ascending order, an ArrayList
+of Strings. Use only AP ArrayList methods of the order O(1) listed below.
+
+ArrayList Methods.
+   int size()
+   Object get(int)
+   Object set(int, Object)
+   boolean add(Object)
+
+
+
+Your program should read a integer from the command line to determine
+the size of the list.
+
+
+For example,
+
+$ java InsertionSort 10 
+
+Produces the following:
+
+
+Random: [6, 8, 9, 3, 0, 5, 2, 1, 4, 7]
+start pass: 1 [6, 8, 9, 3, 0, 5, 2, 1, 4, 7]
+ walk down 8
+start pass: 2 [6, 8, 9, 3, 0, 5, 2, 1, 4, 7]
+ walk down 9
+start pass: 3 [6, 8, 9, 3, 0, 5, 2, 1, 4, 7]
+ walk down 3
+ [6, 8, 3, 9, 0, 5, 2, 1, 4, 7]
+ [6, 3, 8, 9, 0, 5, 2, 1, 4, 7]
+ [3, 6, 8, 9, 0, 5, 2, 1, 4, 7]
+start pass: 4 [3, 6, 8, 9, 0, 5, 2, 1, 4, 7]
+ walk down 0
+ [3, 6, 8, 0, 9, 5, 2, 1, 4, 7]
+ [3, 6, 0, 8, 9, 5, 2, 1, 4, 7]
+ [3, 0, 6, 8, 9, 5, 2, 1, 4, 7]
+ [0, 3, 6, 8, 9, 5, 2, 1, 4, 7]
+start pass: 5 [0, 3, 6, 8, 9, 5, 2, 1, 4, 7]
+ walk down 5
+ [0, 3, 6, 8, 5, 9, 2, 1, 4, 7]
+ [0, 3, 6, 5, 8, 9, 2, 1, 4, 7]
+ [0, 3, 5, 6, 8, 9, 2, 1, 4, 7]
+start pass: 6 [0, 3, 5, 6, 8, 9, 2, 1, 4, 7]
+ walk down 2
+ [0, 3, 5, 6, 8, 2, 9, 1, 4, 7]
+ [0, 3, 5, 6, 2, 8, 9, 1, 4, 7]
+ [0, 3, 5, 2, 6, 8, 9, 1, 4, 7]
+ [0, 3, 2, 5, 6, 8, 9, 1, 4, 7]
+ [0, 2, 3, 5, 6, 8, 9, 1, 4, 7]
+start pass: 7 [0, 2, 3, 5, 6, 8, 9, 1, 4, 7]
+ walk down 1
+ [0, 2, 3, 5, 6, 8, 1, 9, 4, 7]
+ [0, 2, 3, 5, 6, 1, 8, 9, 4, 7]
+ [0, 2, 3, 5, 1, 6, 8, 9, 4, 7]
+ [0, 2, 3, 1, 5, 6, 8, 9, 4, 7]
+ [0, 2, 1, 3, 5, 6, 8, 9, 4, 7]
+ [0, 1, 2, 3, 5, 6, 8, 9, 4, 7]
+start pass: 8 [0, 1, 2, 3, 5, 6, 8, 9, 4, 7]
+ walk down 4
+ [0, 1, 2, 3, 5, 6, 8, 4, 9, 7]
+ [0, 1, 2, 3, 5, 6, 4, 8, 9, 7]
+ [0, 1, 2, 3, 5, 4, 6, 8, 9, 7]
+ [0, 1, 2, 3, 4, 5, 6, 8, 9, 7]
+start pass: 9 [0, 1, 2, 3, 4, 5, 6, 8, 9, 7]
+ walk down 7
+ [0, 1, 2, 3, 4, 5, 6, 8, 7, 9]
+ [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+Sorted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
