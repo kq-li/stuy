@@ -1,0 +1,10 @@
+public class Entry {
+  private String _name;
+  private int _score;
+
+  public Entry(String name, int score) {
+    _name = name;
+    _score = score;
+  }
+
+  

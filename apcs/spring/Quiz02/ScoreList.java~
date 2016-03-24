@@ -1,0 +1,10 @@
+public class ScoreList {
+  private Node _cursor;
+  private int _size;
+
+  public ScoreList() {
+    _cursor = null;
+    _size = 0;
+  }
+
+  

@@ -1,0 +1,92 @@
+Due: 3/23
+
+1. Quiz Thurs. 3/24
+   Topics :
+    - CircleList
+    - Node
+    - DNode
+
+2. Review GameEntry.java.
+
+   Note the methods randomScore(int), randomInitials(int) and 
+   randomEntry(int, int) were moved from the ScoresArray to the GameEntry
+   class.
+
+
+3. Consider the following 3 versions of the add(GameEntry) method.
+
+  I. *****   Version 1   *****
+
+   
+    public boolean addV1(GameEntry entry){
+	boolean ans = false;
+	for (int i = 0; i < _scores.length; i++){
+	    if (entry.compareTo(_scores[i]) > 0){
+		GameEntry t = _scores[i];
+		_scores[i] = entry;
+		ans = true;
+		entry = t;
+	    }
+	}
+	return ans;
+    }
+
+  II. *****   Version 2   *****
+    
+    public boolean addV2(GameEntry entry){
+	for (int i = 0; i < _scores.length; i++){
+	    if (entry.compareTo(_scores[i]) > 0){
+		GameEntry t = _scores[i];
+		_scores[i] = entry;
+		while ( ++i < _scores.length){
+		    entry = t;
+		    t = _scores[i];
+		    _scores[i] = entry;
+		}
+		return true;
+	    }
+	}
+	return false;
+    }
+
+  III. *****   Version 3   *****
+    
+    public boolean addV3(GameEntry entry){
+	int N = _scores.length;
+	if (entry.compareTo(_scores[N-1]) <= 0)
+	    return false;
+	for(int i = N-1; i > 0; i--){
+	    _scores[i] = _scores[i-1];
+	    if (entry.compareTo(_scores[i]) < 0){
+		_scores[i] = entry;
+		return true;
+	    }
+	}
+	_scores[0] = entry;
+	return true;
+    }
+
+
+4. Are all the versions on the order of O(n)? Where n is the length
+   of the array.
+
+5. Which version do you think is best? Why?     
+ 
+
+
+
+6. Write a fourth version of addBS(GameEntry) that uses a modified 
+   binary search to find the insertion point.
+
+    // use a modified binary search to find the insertion point
+    public boolean addBS(GameEntry entry){}
+
+
+
+7. What is the expected runtime of addBS(GameEntry)?
+
+8. Is this version better than any of the other versions? If so, when?
+
+9. Consdier all 4 versions, which is best? 
+
+

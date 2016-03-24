@@ -1,0 +1,92 @@
+1. Add the following methods to the DLinkedList class.
+
+   a. public boolean hasPrevious(DNode v){
+      	    return v != _header;
+     }
+
+
+
+  b. public boolean hasNext(DNode v){
+     	    return v != _trailer;
+     }
+
+
+
+2. Implement an insertion sort that sorts a doubly linked list 
+   object in ascending order.
+
+   First transfer the data from the shuffled arraylist into a
+   doubly linked list.
+
+   Then sort the doubly linked list. 
+
+
+Here's a sample run: $java InsertionSort 10
+
+
+shuffled arraylist: [5, 7, 0, 6, 3, 9, 4, 2, 8, 1]
+Doubly linked list: [5, 7, 0, 6, 3, 9, 4, 2, 8, 1 ]
+ pivot: 7
+ end: 0
+ insert after: 5
+ sorting: [5, 7, 0, 6, 3, 9, 4, 2, 8, 1 ]
+ pivot: 0
+ end: 6
+ find insertion point : 7
+ find insertion point : 5
+ insert after: null
+ sorting: [0, 5, 7, 6, 3, 9, 4, 2, 8, 1 ]
+ pivot: 6
+ end: 3
+ find insertion point : 7
+ insert after: 5
+ sorting: [0, 5, 6, 7, 3, 9, 4, 2, 8, 1 ]
+ pivot: 3
+ end: 9
+ find insertion point : 7
+ find insertion point : 6
+ find insertion point : 5
+ insert after: 0
+ sorting: [0, 3, 5, 6, 7, 9, 4, 2, 8, 1 ]
+ pivot: 9
+ end: 4
+ insert after: 7
+ sorting: [0, 3, 5, 6, 7, 9, 4, 2, 8, 1 ]
+ pivot: 4
+ end: 2
+ find insertion point : 9
+ find insertion point : 7
+ find insertion point : 6
+ find insertion point : 5
+ insert after: 3
+ sorting: [0, 3, 4, 5, 6, 7, 9, 2, 8, 1 ]
+ pivot: 2
+ end: 8
+ find insertion point : 9
+ find insertion point : 7
+ find insertion point : 6
+ find insertion point : 5
+ find insertion point : 4
+ find insertion point : 3
+ insert after: 0
+ sorting: [0, 2, 3, 4, 5, 6, 7, 9, 8, 1 ]
+ pivot: 8
+ end: 1
+ find insertion point : 9
+ insert after: 7
+ sorting: [0, 2, 3, 4, 5, 6, 7, 8, 9, 1 ]
+ pivot: 1
+ end: null
+ find insertion point : 9
+ find insertion point : 8
+ find insertion point : 7
+ find insertion point : 6
+ find insertion point : 5
+ find insertion point : 4
+ find insertion point : 3
+ find insertion point : 2
+ insert after: 0
+ sorting: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+Sorted DLinkedList: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+
+

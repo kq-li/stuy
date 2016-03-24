@@ -1,0 +1,82 @@
+Due: Thurs. 3/24
+
+Email your solution to : rick.platek@stuycs.org
+
+You may work in groups of 2 or work alone. 
+
+
+
+Write a class that maintains the top 10 scores for a game application.
+
+Use a linked list that is both circularly linked and doubly linked.
+
+
+You must include the method : 
+   
+   public boolean add(GameEntry entry).
+
+
+
+Have your main method demo that your program works.
+
+A sample output might be:
+
+Rank	Initials	Score
+1.	AAA..........0
+2.	AAA..........0
+3.	AAA..........0
+4.	AAA..........0
+5.	AAA..........0
+6.	AAA..........0
+7.	AAA..........0
+8.	AAA..........0
+9.	AAA..........0
+10.	AAA..........0
+
+adding ENM..........1363
+adding DJQ..........3507
+adding JIA..........4376
+adding EDU..........4526
+adding XUE..........331
+adding VIB..........1285
+adding OFI..........4967
+adding JTA..........4664
+adding HHV..........2216
+adding XFB..........2659
+
+Rank	Initials	Score
+1.	OFI..........4967
+2.	JTA..........4664
+3.	EDU..........4526
+4.	JIA..........4376
+5.	DJQ..........3507
+6.	XFB..........2659
+7.	HHV..........2216
+8.	ENM..........1363
+9.	VIB..........1285
+10.	XUE..........331
+
+adding ACA..........2627
+MPP..........1279 not added
+THL..........706 not added
+adding GHO..........2436
+adding XWQ..........2607
+NQV..........866 not added
+EVC..........1855 not added
+adding GUD..........3381
+WPM..........2026 not added
+EJV..........9 not added
+
+Rank	Initials	Score
+1.	OFI..........4967
+2.	JTA..........4664
+3.	EDU..........4526
+4.	JIA..........4376
+5.	DJQ..........3507
+6.	GUD..........3381
+7.	XFB..........2659
+8.	ACA..........2627
+9.	XWQ..........2607
+10.	GHO..........2436
+
+
