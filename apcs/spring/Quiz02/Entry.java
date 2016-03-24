@@ -1,4 +1,4 @@
-public class Entry {
+public class Entry implements Comparable<Entry>{
   private String _name;
   private int _score;
 
@@ -19,6 +19,13 @@ public class Entry {
     return _score;
   }
 
+  public int compareTo(Entry o) {
+    if (getScore() == o.getScore())
+      return getName().compareTo(o.getName());
+    
+    return getScore() - o.getScore();
+  }
+  
   public String toString() {
     return _name + Util.duplicate(".", 10 - _name.length()) + _score;
   }

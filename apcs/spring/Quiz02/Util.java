@@ -20,8 +20,16 @@ public class Util {
     return ret;
   }
 
-  public static int randomScore(int max) {
+  public static int randomInt(int max) {
     return (int) (Math.random() * max);
+  }
+
+  public static Entry randomEntry(int len, int max) {
+    return new Entry(randomString(len), randomInt(max));
+  }
+
+  public static Node randomNode(int len, int max) {
+    return new Node(randomEntry(len, max), null, null);
   }
 }
     
