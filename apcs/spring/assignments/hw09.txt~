@@ -1,0 +1,27 @@
+Due: Tues., 3/29
+===
+
+1. Exam 4/8
+
+2. In the Classwork folder, review the ArrayStack class.
+
+3. Use big O notation to describe the expected run time 
+   of the following methods from the ArrayStack class.
+
+  a. push(E)
+  b. pop()
+  c. top()
+  d. size()
+  e. isEmpty()
+
+
+
+4. Write the body of the reverse function, that uses a Stack to reverse the 
+   elements in a List.
+
+   public static void reverse(List<Integer> L){
+ 
+
+
+
+   }

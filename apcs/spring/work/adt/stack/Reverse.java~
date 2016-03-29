@@ -1,0 +1,14 @@
+import java.util.List;
+import java.util.ArrayList;
+
+public class Reverse {
+  public static<E> void reverse(List<E> L) {
+    Stack<E> S = new ArrayStack<E>(L.size());
+
+    while (L.size() > 0)
+      S.push(L.remove(0));
+
+    while (S.size() > 0)
+      L.add(S.pop());
+
+  }

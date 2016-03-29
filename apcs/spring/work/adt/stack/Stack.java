@@ -1,6 +1,6 @@
 public interface Stack<E> {
   // place an element on top of the stack
-  void push(E element) throws FullStackException;
+  void push(E element);
 
   // remove and return the element on top of the stack
   E pop() throws EmptyStackException;

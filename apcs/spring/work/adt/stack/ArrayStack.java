@@ -11,37 +11,43 @@ public class ArrayStack<E> implements Stack<E> {
     _top = -1;
   }
 
+  // O(1)
   public void push(E element) throws FullStackException {
     if (size() == _capacity) 
-      throw new FullStackException();
+      throw new FullStackException("Stack full");
     
     _stack[++_top] = element;
   }
-  
+
+  // O(1)
   public E pop() throws EmptyStackException {
     if (isEmpty())
-      throw new EmptyStackException();
+      throw new EmptyStackException("Stack empty");
 
     E ret = top();
     _stack[_top--] = null;
     return ret;
   }
 
+  // O(1)
   public E top() throws EmptyStackException {
     if (isEmpty())
-      throw new EmptyStackException();
+      throw new EmptyStackException("Stack empty");
     
     return _stack[_top];
   }
 
+  // O(1)
   public int size() {
     return _top + 1;
   }
 
+  // O(1)
   public boolean isEmpty() {
     return (size() == 0);
   }
 
+  // O(n)
   public String toString() {
     String ret = "";
 
@@ -53,17 +59,12 @@ public class ArrayStack<E> implements Stack<E> {
     
     return ret.substring(0, ret.length() - 1);
   }  
-  
+     
   public static void main(String[] args) {
     ArrayStack<Integer> S = new ArrayStack<Integer>(ArrayStack.CAPACITY);
 
-    for (int i = 0; i < 20; i++) {
-      try {
-        S.push(i);
-      } catch (FullStackException e) {
-        e.printStackTrace();
-      }
-    }
+    for (int i = 0; i < 20; i++)
+      S.push(i);
     
     System.out.println(S);
   }

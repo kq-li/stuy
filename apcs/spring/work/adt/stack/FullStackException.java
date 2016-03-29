@@ -1,5 +1,5 @@
-public class FullStackException extends Exception {
-  public FullStackException() {
-    super();
+public class FullStackException extends RuntimeException {
+  public FullStackException(String error) {
+    super(error);
   }
 }
