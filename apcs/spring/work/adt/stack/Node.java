@@ -28,6 +28,6 @@ public class Node<E> {
   }
 
   public String toString() {
-    return _value.toString();
+    return getValue().toString();
   }
 }

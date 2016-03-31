@@ -1,0 +1,15 @@
+Due: Wed. 3/30
+
+1. Exam 4/8
+
+2. From the Stack Folder review: Node.java, NodeStack.java, Reverse.java.
+
+3. Complete the NodeStack class.
+
+4. Test NodeStack by using it in Reverse.java.
+
+5. Write a static generic method that takes a Stack s and a value and returns true if the value
+   is in the stack. The order of Stack s should remain the same after the function is completed.
+
+
+

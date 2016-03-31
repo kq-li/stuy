@@ -1,0 +1,9 @@
+Due: Thurs., 3/31
+===
+
+
+1. Exam : 4/8
+
+2. Review the code : NodeStack.java, InStack.java.
+
+3. Complete questions 2 and 3 in the Matching Parentheses Lab.
