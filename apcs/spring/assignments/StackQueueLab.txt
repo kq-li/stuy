@@ -1,0 +1,15 @@
+
+
+1. Simulate the Hot Potato Game
+   ============================
+   In this game, children form a circle then pass a hot potato
+   around the circle while music plays. As the object is passed from 
+   one child to another, an adult will randomly stop the music. Upon which,
+   the child holding the hot potato is removed from the circle. The game
+   continues with the next child until there is one child remaining.
+
+   Use a Round Robin Scheduler to simulate the child's game Hot Potato.
+
+
+
+2. Create the class Stackq that uses 2 queues to implement a stack.

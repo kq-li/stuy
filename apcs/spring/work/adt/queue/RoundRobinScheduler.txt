@@ -1,0 +1,11 @@
+=======================
+ Round Robin Scheduler
+=======================
+
+A popular use of a queue data structure is to implement a Round Robin Scheduler,
+where we iterate through a collection of elements in a circular fashion and
+"service" each element by performing a given action on it.
+
+1. c <- Q.dequeue()
+2. Service element c
+3. Q.enqueue(c)
