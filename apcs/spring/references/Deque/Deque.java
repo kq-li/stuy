@@ -14,5 +14,15 @@ public interface Deque<E>{
    
     public E removeFirst() throws EmptyDequeException;
     public E removeLast()  throws EmptyDequeException;
+
+    public boolean offerFirst(E val);
+    public boolean offerLast(E val);
+    
+    public E pollFirst();
+    public E pollLast();
+    
+    public E peekFirst();
+    public E peekLast();
+
     
 }

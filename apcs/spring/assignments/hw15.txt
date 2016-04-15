@@ -1,0 +1,16 @@
+Due: Wed., 4/13
+
+1. Exam 4/22
+
+2. Review Deque Folder in Classwork.
+   
+3. Complete the following methods in NodeDeque.java.
+    a. getLast()
+    b. addLast(e)
+    c. removeLast()
+    d. offerLast(e)
+    e. peekLast()
+    f. pollLast()
+
+4. Think about implementing a limited capcity ArrayDeque where
+   all the methods are O(1).
