@@ -1,0 +1,82 @@
+===========
+Inheritance
+===========
+
+The object-oriented paradigm provides a modular and hierarchical organizing
+structure for reusing code through a technique called inheritance.
+
+Inheritance allows the design of general classes that can be specialized to more particular classes, with the specialized classes reusing the code from the general class.
+
+The general class is also knowna s the base class or superclass.
+
+A class that specializes, or extends, or inherits from a general class is known as the superclass.
+
+Ex:
+
+public class S {
+  private int _x;
+
+  public void a() {
+    ...
+  }
+
+  public void b() {
+    ...
+  }
+
+  public void c() {
+    ...
+  }
+
+  public String toString() {
+    return "S class";
+  }
+}
+
+public class T extends S {
+  private int _y;
+  
+  public void d() {
+    ...
+  }
+  
+  public void e() {
+    ...
+  }
+  
+  public String toString() {
+    return "T class";
+  }
+}
+
+==================================
+Dynamic Dispatch (Dynamic Binding)
+==================================
+
+Ex:
+
+T ref = new T();
+ref.a();
+
+The call ref.a() directs the runtime environment to examine ref's class T for
+the method a(). If the method is found, then it is executed; if not, then the
+superclass is examined. The process is repeated: if the method is found, then
+it is executed; otherwise the runtime proceeds to the superclass.
+
+============
+Polymorphism
+============
+
+Literally: "many forms"
+
+In the context of object-oriented programming, it refers to the ability of an
+object variable to take different forms.
+
+Below, note the ref variable can take on many forms: S, T, or any subclass of T.
+
+Ex:
+
+S ref = new T();
+System.out.println(ref.toString());
+
+Output: "T class" (Dynamic binding in action)
