@@ -8,6 +8,6 @@ public class Bear extends Animal {
   }
 
   public String toString() {
-    return "Bear";
+    return "Bear" + (_gender ? "M" : "F") + _strength;
   }
 }

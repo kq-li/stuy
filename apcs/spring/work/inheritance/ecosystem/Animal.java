@@ -1,12 +1,20 @@
 public abstract class Animal {
   protected Ecosystem _ecosystem;
   protected int _position;
-  protected boolean _moved;
+  protected boolean _moved, _gender;
+  protected double _strength;
+  
 
-  public Animal(Ecosystem ecosystem, int position) {
+  public Animal(Ecosystem ecosystem, int position, boolean gender, double strength) {
     _ecosystem = ecosystem;
     _position = position;
     _moved = false;
+    _gender = gender;
+    _strength = strength;
+  }
+
+  public Animal(Ecosystem ecosystem, int position) {
+    this(ecosystem, position, (Math.random() < 0.5 ? true : false), ((int) (Math.random() * 100) / 10.0));
   }
 
   public void move(int d) {
@@ -27,7 +35,15 @@ public abstract class Animal {
     } else {
       if (this instanceof Bear && other instanceof Bear ||
           this instanceof Fish && other instanceof Fish) {
-        reproduce();
+        if (_gender != other._gender) {
+          reproduce();
+        } else if (_strength > other._strength) {
+          _ecosystem.emptyEmpty(dest);
+          _ecosystem._river[dest] = null;
+        } else if (_strength < other._strength) {
+          _ecosystem.emptyEmpty(_position);
+          _ecosystem._river[_position] = null;
+        }
       } else if (this instanceof Fish) {
         _ecosystem.emptyEmpty(_position);
         _ecosystem._river[_position] = null;

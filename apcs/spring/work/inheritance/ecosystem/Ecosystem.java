@@ -38,6 +38,8 @@ public class Ecosystem {
   }
 
   public void move() {
+    System.out.println(this);
+    
     for (int i = 0; i < _river.length; i++) {
       if (_river[i] != null && !_river[i]._moved) {
         int r = (int) (Math.random() * 3) - 1;
@@ -74,7 +76,7 @@ public class Ecosystem {
 
     for (int i = 0; i < _river.length; i++) {
       if (_river[i] == null)
-        ret += "____ ";
+        ret += "________ ";
       else
         ret += _river[i].toString() + " ";
     }
