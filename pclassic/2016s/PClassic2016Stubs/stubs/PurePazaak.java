@@ -1,0 +1,61 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Arrays;
+
+
+public class PurePazaak {
+  // Before submitting, make sure the main method hasn't been changed!
+  public static void main(String[] args) throws IOException {
+    BufferedReader br = new BufferedReader(new FileReader("PurePazaakIN.txt"));
+    while (br.ready()) {
+      String[] data = br.readLine().split(" ");
+      int n = Integer.parseInt(data[0]);
+      int[] cards = new int[n];
+      for (int i = 0; i < n; i++) {
+        cards[i] = Integer.parseInt(data[i+1]);
+      }
+      System.out.println(score(cards));
+    }
+    br.close();
+  }
+
+  //Fill out the body of this method
+  public static int score(int[] cards) {
+    ArrayList<Integer> a = new ArrayList<Integer>();
+
+    for (int i : cards)
+      a.add(i);
+    
+    return score(0, a);
+  }
+
+  public static int score(int total, ArrayList<Integer> cards) {
+    int n = cards.size();
+
+    if (n == 2)
+      return total + Math.max(cards.get(0), cards.get(1));
+
+    ArrayList<Integer> a = new ArrayList<Integer>();
+    ArrayList<Integer> b = new ArrayList<Integer>();
+
+    for (int i : cards) {
+      a.add(i);
+      b.add(i);
+    }
+
+    return Math.max(total + a.remove(0) + sum(a) - score(total, a),
+                    total + b.remove(n - 1) + sum(b) - score(total, b));
+  }
+
+  private static int sum(ArrayList<Integer> a) {
+    int ret = 0;
+    
+    for (i : a)
+      ret += i;
+
+    return ret;
+  }
+}

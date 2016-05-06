@@ -1,0 +1,167 @@
+Due: Mon. 4/18
+
+You may work with others.
+
+
+Implement the following classes stated below:
+  - Disk.java
+  - Tower.java
+  - ProductionLine.java
+
+
+You will need to add methods to the classes to make them fully functional.
+
+Create a main function to fully test your code.
+
+
+
+
+
+
+
+This question involves a simulation of a production line for assemblying 
+pyramids made of disks. A disk is represented by an object of the class
+Disk. The Disk class has one constructor, which takes one int parameter,
+the radius of the disk. Disk objects are Comparable: a disk with a smaller
+radius is considered smaller. A Tower object represents a stack of disks
+(the class Tower implements the Stack interface). Tower's no-args constructor
+creates an empty tower. In this application, all "towers are "pyramids" of
+disks arranged by size. In a "regular" pyramid, the sizes of the disks
+increase from top to bottom; in an "inverted" pyramid the sizes decrease,
+as shown below:
+  Regular Pyramid		Inverted Pyramid
+     x 	  		          xxxxx
+    xxx                            xxx
+   xxxxx                            x
+Disks arrive on an assembly line and are assembled into pyramids by a robot.
+The assembly line is represented by a Queue that contains Disk objects. The
+robot can temporarily build and hold an inverted pyramid of disks, represented
+by a Tower object. Eventually the robot "flips" over" the pyramid it is holding
+and places it into the output assembly line, also represented by a Queue. This
+output queue contains regular pyramids, representd by Tower objects. This 
+process is illustrated below.
+                                                            x
+                            xxx               xxx          xxx
+   xxxx  xxx  x xxxxx x      x               xxxxx  xxx  xxxxxxx
+   Assembly Line         Inverted Pyramid    Output Assembly Line
+                            held by 
+			 the Robot Arm
+    The simulation is implemented in the following class ProductionLine:
+
+ public class ProductionLine{
+       private Queue<Disk> _assemblyLineIn;
+       private Queue<Tower> _assemblyLineOut;
+       private Tower _robotArm;
+
+       // constructor
+       public ProductionLine (int nDisks, int maxRadius){ Part (a)}
+       private void unloadRobot() { Part (b) }
+       public void process() { Part (c) }
+       < other constructors and methods not shown >
+ }
+Part (a)
+========
+Write a constructor of the ProductionLine class that takes two parameters, 
+the number of disks, nDisks, and the maximum radius of a disk, maxRadius.
+The constructor should place nDisks with random radii, ranging from 1 to 
+maxRadius, into the _assemblyLineIn queue. The constructor should initialize
+_robotArm to an empty tower and _assemblyLineOut to an empty queue. You may
+use either an ArrayQueue or NodeQueue. Finish the ProductionLine constructor
+as started below.
+
+// postconditon: _assemblyLineIn contains nDisks with random radii ranging
+//               from 1 to maxRadius; _assemblyLineOut is initialized to 
+//		 an empty Queue; _robotArm is initatialized to an empty Tower.
+public ProductionLine(int nDisks, int maxRadius){
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+} 
+Part (b)
+========
+Write the unloadRobot method of the ProductionLine class, as started below.
+The method assumes that _robotArm holds a non-empty "inverted" pyramid. The
+robot "flips the pyramid over" and places it into the _assemblyLineOut queue.
+The method leaves _robotArmEmpty.
+
+//precondition: _robotArm is not empty and holds an inverted pyramid of disks.
+//postcondition: The pyramid in the _robotArm is "flipped over" and added to
+//               the _assemblyLineOUt queue
+private void unloadRobot(){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+Part (c)
+========
+Write the process() method of the ProductionLine class, as started below. The
+method extracts disks form the _assemblyLineIn queue and processes them one
+by one. At the end, all disks are arranged into pyramids in the _assemblyLineOut
+queue, _assemblyLineIn is empty, and _robotArm is empty.
+
+The disks are processed in the following manner. If _robotArm is empty or if
+the next disk can be placed on the top of _robotArm, preserving its inverted
+pyramid order, then the disk is picked up by _robotArm. Otherwise, _robotArm
+is unloaded first. _robotArm is also unloaded when all the disks have been
+processed. Assume that unloadRobot works as specified, regardless of what
+you wrote in Part (b).
+
+// precondition: _assemblyLineIn holds Disk objects;
+// 		 _robotArm is empty;
+//		 _assemblyLineOut is empty;
+// postcondition: all disks from _assemblyLineIn have been processed.
+// 		  A disk is processed as follows: if _robotArm is not empty
+//		  and the next disk does not fit on the top of _robotArm
+//		  (which must be an inverted pyramid) then _robotArm is
+//		  unloaded first; the disk from _assemblyLinIn is added to
+//		  _robotArm. When all the disks have been retrieved from
+//		  _assemblyLineIn, _robotArm is unloaded.
+public void process(){
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

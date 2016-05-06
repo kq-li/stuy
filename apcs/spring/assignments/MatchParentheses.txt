@@ -1,0 +1,46 @@
+1. Download StdIn.java and StdOut.java.
+
+2. Complete the class MathParen that verifies if a String 
+   contains matching pairs of parentheses.
+  
+   Assume the parentheses are (),[], and {}.
+
+
+  Here's a sample run.
+
+> []
+Match
+> ()
+Match
+> {}
+Match
+> ((()))
+Match
+> ( [] {} () )
+Match
+> [[)
+Don't match
+> }{
+Don't match
+> (((((())))))
+Match
+> -1
+
+3. When working with Strings, only use AP String methods.
+
+ int	compareTo(Object other) 
+          Compares two strings lexicographically.
+ boolean	equals(Object other) 
+          Returns true if and only if this String represents the same
+	   character sequence as the argument string.
+ int	indexOf(String s) 
+          Returns the index within this String of the first occurrence of s.
+ int	length() 
+          Returns the number of (Unicode) characters in this string.
+ String	substring(int firstIndex) 
+          Returns a new String that is a substring of this String.
+ String	substring(int firstIndex, int lastIndex) 
+          Returns a new String consisting of the characters with indexes
+	  in the range [from..to) from this String object.
+
+4. Complete the 3 questions in MatchParen.java.

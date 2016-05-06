@@ -1,0 +1,50 @@
+Due. Thurs. 4/15
+
+1. In the Java Math class look up floorMod(int, int).
+
+2. Evaluate the following:
+
+   a. floorMod(-1,5) 
+
+   b. floorMod(-2,5)
+	
+   c. floorMod(-3,5)
+
+
+3. Given the ArrayDeque implementation discussed in class.
+   Note the following:   
+	Let the capacity be one less then the length of the array.
+   In other words, if the capacity is 5 then the length of the 
+   array will be 6. One location will not be given a value.
+   
+	
+        Let _head be the index position of the first open location 
+   to store a new head and _tail to be first open location to store
+   a new tail.
+
+   If _head = 0, _tail = 1, _capacity = 5 and the following 
+   methods are called:
+   
+    addFirst("a");
+    addFirst("b");
+    offerLast("c");
+    offerFirst("d");
+    pollFirst();
+    offerLast("e");
+   
+   What are the values of _head and _tail?
+
+
+   What will the ArrayDeque look like?
+
+   What will the array representing the Deque look like?
+
+4. You will be given time in class tomorrow to complete the ArrayDeque.
+
+
+ 
+
+
+	   Array          _head       _tail         ArrayDeque	
+	   		     0            1             []
+		

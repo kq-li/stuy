@@ -1,0 +1,32 @@
+
+
+
+
+
+Write a program to simulate an ecosystem containing two types of creatures,
+bears and fish. The ecosystem consists of a river, which is modeled as
+a relatively large array. Each cell of the array should contain an Animal
+object, which can be a Bear object, a Fish object, or null. In each step,
+bears and fish attempt to move into adjacent array cells or they can stay
+where they are, at random. If two animals of the same type are about to 
+collide in the same cell, then they stay where they are, but they create
+a new instance of that type of animal, which is placed in a random empty
+cell in the array. If a bear and a fish collide, however, then the fish
+dies. Use actual object creation, via the new operator, to model the creation
+of new objects, and provide a visualization of the array after each time
+step.
+
+
+***** TRY NOT TO USE THE instanceof OPERATOR ******
+Instead use classes, subclasses, interfaces, and polymorphism.
+
+Suggestions:
+ Create classes Animal, Bear, Fish, and Ecosystem.
+ Use the following is a relationships:
+   Bear is an Animal
+   Fish is an Animal
+ Use the following has a relationship:
+   Animal has an Ecosystem such that each Animal keeps track
+   of its river and position in the river.
+
+  

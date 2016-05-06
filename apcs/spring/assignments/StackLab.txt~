@@ -1,0 +1,28 @@
+
+
+1. Write the ArrayStack method transferTo(ArrayStack<E> rhs) that transfers
+   the elements from the stack to rhs until either the stack is empty
+   or rhs is full.
+
+  public void transferTo(ArrayStack<E> rhs){
+  	 < your code goes here>     
+  }
+
+2. Assume there are 3 array stacks, A, B and C. 
+   A has a capacity of 100 and is full.
+   B has a capacity of 5 and is empty.
+   C has a capacity or 3 and is also empty.
+
+   Using only the transferTo method, how would you get 4 elements into 
+   Stack B
+			 // 100 0 0
+	A.transferTo(B); // 95 5 0
+	B.transferTo(C); // 95 2 3
+	C.transferTo(A); // 98 2 0
+	B.transferTo(C); // 98 0 2
+	A.transferTo(B); // 93 5 2
+	B.transferTo(C); // 93 4 3
+
+
+3. Implement the stack ADT using the Java ArrayList class.
+   Using only AP ArrayList methods in your solution.

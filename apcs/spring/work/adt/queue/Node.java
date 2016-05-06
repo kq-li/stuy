@@ -11,14 +11,14 @@ public class Node<E> {
     return _value;
   }
 
+  public Node<E> getNext() {
+    return _next;
+  }
+
   public E setValue(E value) {
     E ret = _value;
     _value = value;
     return ret;
-  }
-
-  public Node<E> getNext() {
-    return _next;
   }
 
   public Node<E> setNext(Node<E> next) {
@@ -28,6 +28,6 @@ public class Node<E> {
   }
 
   public String toString() {
-    return getValue().toString();
+    return _value.toString();
   }
 }

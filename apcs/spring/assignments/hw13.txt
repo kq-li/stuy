@@ -1,0 +1,9 @@
+Due: Tues., 4/5
+
+1. Exam : 4/8
+
+2. Review the ArrayQueue class.
+3. Add a toString() method to the ArrayQueue class.
+
+4. Add a main() method to test your code.
+
