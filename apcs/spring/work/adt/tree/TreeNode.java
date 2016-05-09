@@ -19,7 +19,7 @@ public class TreeNode<E> {
   public TreeNode<E> getLeft() {
     return _left;
   }
-
+  
   public TreeNode<E> getRight() {
     return _right;
   }
