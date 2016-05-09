@@ -1,0 +1,125 @@
+============
+Binary Trees
+============
+
+In a binary tree, each node has one parent except the root node. Each node
+contains references to its left and right children; a null value indicates that
+the corresponding child is not in the tree. A node that has no children is
+called a leaf. Each node is the root of a smaller binary tree.
+
+Ex.               1
+                /   \
+              2       3
+               \     / \
+                4   5   6
+                   / \
+                  7   8
+
+Questions:
+
+1. How many nodes are in this tree? 8
+2. What is the root node? 1
+3. How many leaves are in this tree? 4
+4. Which nodes are leaves? 4, 7, 8, 6
+5. What is the parent node of 5? 3
+6. What are the children of 2? 4
+
+Definition: The height of a tree is the length of the longest path from root to
+            leaf (the number of links from root to leaf).j
+
+7. What is the height of the tree? 3
+
+** Trees are almost always handled recursively. **
+
+===============
+Tree Traversals
+===============
+
+A traversal occurs when each node of a tree is visited.
+
+There are 3 common types of tree traversals: inorder, preorder, and postorder.
+
+An inorder traversal recursively follows these 3 steps:
+  1. go left if possible
+  2. process the node
+  3. go right if possible
+
+What is the inorder traversal of the above tree? 2 4 1 7 5 8 3 6
+
+A preorder traversal recursively follows these 3 steps:
+  1. process the node
+  2. go left if possible
+  3. go right if possible
+
+What is the preorder traversal of the above tree? 1 2 4 3 5 7 8 6
+
+A postorder traversal recursively follows these 3 steps:
+  1. go left if possible
+  2. go right if possible
+  3. process the node
+
+What is the postorder traversal of the above tree? 4 2 7 8 5 6 3 1
+
+Given the following traversals, construct the corresponding binary tree:
+inorder: 3, 10, 8, 4, 9, 7, 11
+preorder: 4, 8, 3, 10, 7, 9, 11
+postorder: 10, 3, 8, 9, 11, 7, 4
+
+           4
+         /   \
+       8       7
+     /       /   \
+   3       9       11
+     \
+       10
+
+===========
+Definitions
+===========
+
+A balanced tree is a tree with the minimum possible maximum height.
+
+A binary search tree is a binary tree with an ordering property.
+  - We will use the following ordering property:
+    - Given a root, the items contained in the left subtree are less than the root;
+      the items in the right subtree are greater than or equal to the root.
+  - The benefit of a BST is that in a balanced BST, the following operations are
+    O(log n), where n is the number of elements in the tree.
+    - find(x)
+    - insert(x)
+    - remove(x)
+
+==============
+BST Algorithms
+==============j
+
+Insertion
+- Given a value x, start at the root and insert x as a leaf following these steps.
+  1. If the tree is empty, x is the root.
+  2. If x is less than the current root, go left.
+  3. If x is greater than or equal to the current root, go right.
+
+Draw the tree resulting from the insertion of 4, 8, 12, 5, 14, 21, 2, 1.
+
+              4
+             / \
+            2   8
+           /   / \
+          1   5   12
+                   \
+                    14
+                     \
+                      21
+
+Is this BST balanced? No
+
+Rearrange the sequence to produce a balanced tree.
+4, 12, 8, 5, 14, 21, 2, 1
+
+              4
+             / \
+            2   12
+           /   / \
+          1   8   14
+             /     \
+            5       21
