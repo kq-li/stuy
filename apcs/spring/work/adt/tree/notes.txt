@@ -123,3 +123,16 @@ Rearrange the sequence to produce a balanced tree.
           1   8   14
              /     \
             5       21
+
+Draw the BST resulting from the insertion of the following data.
+12, 10, 8, 11, 25, 17, 5, 25
+
+              12
+            /    \
+         10        25
+        /  \      /  \
+       8    11  17    25
+      /
+     5
+
+Is the tree balanced? Yes
