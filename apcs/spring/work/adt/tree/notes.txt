@@ -15,6 +15,14 @@ Ex.               1
                    / \
                   7   8
 
+                      00
+                 /          \
+           00                    00
+         /    \                /    \
+      00        00          00        00
+     /  \      /  \        /  \      /  \
+   00    00  00    00    00    00  00    00
+                  
 Questions:
 
 1. How many nodes are in this tree? 8
@@ -136,3 +144,159 @@ Draw the BST resulting from the insertion of the following data.
      5
 
 Is the tree balanced? Yes
+
+================
+Remove Algorithm
+================
+
+In order to remove a value from a BST:
+  1. If the tree is empty, then stop.
+  2. If the value is a leaf, then remove the leaf.
+  3. If the value is an internal node with no right subtree, then transfer the
+     maximum value, max, from the left subtree into the node that contains val,
+     then remove max from the left subtree.
+  4. Otherwise, transfer the minimum value, min, from the right subtree into
+     the node that contains val, then remove min from the right subtree.
+
+Draw the BST from this sequence: 10, 25, 5, 4, 13, 11, 7, 12
+
+                  10
+                /    \
+              5        25
+             / \      /
+            4   7    13
+                    /
+                   11
+                    \
+                     12
+
+Write the preorder, postorder, and inorder traversals.
+Preorder: 10 5 4 7 25 13 11 12
+Postorder: 4 7 5 12 11 13 25 10
+Inorder: 4 5 7 10 11 12 13 25
+
+Remove 11:
+
+                  10
+                /    \
+              5        25
+             / \      /
+            4   7    13
+                    /
+                   12
+                    \
+                     12
+
+                  10
+                /    \
+              5        25
+             / \      /
+            4   7    13
+                    /
+                   12
+
+Remove 5:
+
+                  10
+                /    \
+              7        25
+             / \      /
+            4   7    13
+                    /
+                   12
+
+                  10
+                /    \
+              7        25
+             /        /
+            4        13
+                    /
+                   12
+Remove 10:
+
+                  25
+                /    \
+              7        25
+             /        /
+            4        13
+                    /
+                   12
+
+                  25
+                /    \
+              7        13
+             /        /
+            4        13
+                    /
+                   12
+
+                  25
+                /    \
+              7        13
+             /        /
+            4        12
+                    /
+                   12
+
+                  25
+                /    \
+              7        13
+             /        /
+            4        12
+
+BST from 6, 12, 3, 16, 14, 2, 7, 1, 21, 18, 5, 4
+
+                       6
+                 /          \
+            3                    12
+         /    \                /    \
+       2         5           7        16
+     /         /                     /  \
+    1         4                    14    21
+                                        /
+                                      18
+
+Remove 14:
+                       6
+                 /          \
+            3                    12
+         /    \                /    \
+       2         5           7        16
+     /         /                        \
+    1         4                          21
+                                        /
+                                      18
+
+Remove 6:
+                       7
+                 /          \
+            3                    12
+         /    \                     \
+       2         5                    16
+     /         /                     /  \
+    1         4                    14    21
+                                        /
+                                      18
+
+Remove 5:
+                       7
+                 /          \
+            3                    12
+         /    \                     \
+       2         4                    16
+     /                               /  \
+    1                              14    21
+                                        /
+                                      18
+
+Remove 12:
+                       7
+                 /          \
+            3                    14
+         /    \                     \
+       2         4                    16
+     /                                  \
+    1                                    21
+                                        /
+                                      18
+

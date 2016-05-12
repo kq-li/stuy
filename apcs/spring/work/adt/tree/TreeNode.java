@@ -42,6 +42,10 @@ public class TreeNode<E> {
     return ret;
   }
 
+  public boolean isLeaf() {
+    return getLeft() == null && getRight() == null;
+  }
+
   public String toString() {
     return getValue().toString();
   }

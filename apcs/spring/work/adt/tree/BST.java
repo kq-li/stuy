@@ -104,26 +104,22 @@ public class BST<E extends Comparable> {
     return find(e) != null;
   }
 
-  public TreeNode<E> maxNode() {
-    return maxNode(_root);
-  }
-
   private TreeNode<E> maxNode(TreeNode<E> root) {
     if (root == null || root.getRight() == null)
       return root;
 
     return maxNode(root.getRight());
   }
-  
-  public E maxValue() throws IllegalStateException {
-    if (maxNode() == null)
-      throw new IllegalStateException();
 
-    return maxNode().getValue();
+  public E maxValue() throws IllegalStateException {
+    return maxValue(_root);
   }
 
-  public TreeNode<E> minNode() {
-    return minNode(_root);
+  public E maxValue(TreeNode<E> root) throws IllegalStateException {
+    if (maxNode(root) == null)
+      throw new IllegalStateException();
+
+    return maxNode(root).getValue();
   }
 
   private TreeNode<E> minNode(TreeNode<E> root) {
@@ -134,10 +130,14 @@ public class BST<E extends Comparable> {
   }
 
   public E minValue() throws IllegalStateException {
-    if (minNode() == null)
+    return minValue(_root);
+  }
+
+  public E minValue(TreeNode<E> root) throws IllegalStateException {
+    if (minNode(root) == null)
       throw new IllegalStateException();
 
-    return minNode().getValue();
+    return minNode(root).getValue();
   }
   
   public boolean isBalanced() {
@@ -152,6 +152,39 @@ public class BST<E extends Comparable> {
       return root.getLeft() != null && root.getRight() != null;
 
     return isBalanced(root.getLeft()) && isBalanced(root.getRight());
+  }
+
+  public boolean remove(E e) {
+    if (isFound(e)) {
+      _root = remove(_root, e);
+      _size--;
+      return true;
+    }
+
+    return false;
+  }
+
+  private TreeNode<E> remove(TreeNode<E> root, E e) {
+    if (root.isLeaf())
+      return null;
+
+    if (e.equals(root.getValue())) {
+      if (root.getRight() == null) {
+        E max = maxValue(root.getLeft());
+        root.setValue(max);
+        root.setLeft(remove(root.getLeft(), max));
+      } else {
+        E min = minValue(root.getRight());
+        root.setValue(min);
+        root.setRight(remove(root.getRight(), min));
+      }
+    } else if (e.compareTo(root.getValue()) < 0) {
+      root.setLeft(remove(root.getLeft(), e));
+    } else {
+      root.setRight(remove(root.getRight(), e));
+    }
+
+    return root;
   }
 
   public ArrayList<TreeNode<E>> nodesAtHeight(int height) {
@@ -203,9 +236,7 @@ public class BST<E extends Comparable> {
       bst.insert(i);
 
     System.out.println(bst);
-    System.out.println(bst.isBalanced());
-    System.out.println(bst.minValue());
-    System.out.println(bst.maxValue());
-    System.out.println(bst.find(12));
+    bst.remove(12);
+    System.out.println(bst);
   }
 }
