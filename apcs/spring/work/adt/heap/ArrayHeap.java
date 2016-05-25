@@ -48,9 +48,41 @@ public class ArrayHeap<E> {
     }
   }
 
+  public static int minChildPos(int pos, ArrayList<Integer> heap) {
+    int left = 2 * pos + 1;
+    int right = 2 * pos + 2;
+
+    if (left >= heap.size())
+      return -1;
+
+    if (right >= heap.size())
+      return left;
+
+    if (heap.get(left) <= heap.get(right))
+      return left;
+
+    return right;
+  }
+
   public static int removeMin(ArrayList<Integer> heap) {
     int ret = heap.get(0);
-    remove(ret, heap);
+    int x = heap.remove(heap.size() - 1);
+
+    if (heap.size() > 0) {
+      heap.set(0, x);
+      int pos = 0;
+      int mcPos = minChildPos(pos, heap);
+
+      while (mcPos != -1) {
+        if (heap.get(pos) <= heap.get(mcPos))
+          break;
+
+        heap.set(pos, heap.set(mcPos, heap.get(pos)));
+        pos = mcPos;
+        mcPos = minChildPos(pos, heap);
+      }
+    }
+
     return ret;
   }
                    

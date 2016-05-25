@@ -2,29 +2,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class HeapPriorityQueue<K, V> implements PriorityQueue<K, V> {
-  private static class HeapEntry<K, V> implements Entry<K, V> {
-    private K _key;
-    private V _value;
-
-    public HeapEntry(K key, V value) {
-      _key = key;
-      _value = value;
-    }
-
-    public K getKey() {
-      return _key;
-    }
-
-    public V getValue() {
-      return _value;
-    }
-
-    public String toString() {
-      return "{" + _key + ":" + _value + "}";
-    }
-  }
-
-  private ArrayList<HeapEntry<K, V>> _list;
+  private ArrayList<Entry<K, V>> _list;
   private Comparator<K> _c;
 
   public HeapPriorityQueue() {
@@ -32,7 +10,7 @@ public class HeapPriorityQueue<K, V> implements PriorityQueue<K, V> {
   }
 
   public HeapPriorityQueue(Comparator<K> c) {
-    _list = new ArrayList<HeapEntry<K, V>>();
+    _list = new ArrayList<Entry<K, V>>();
     _c = c;
   }
 
@@ -43,7 +21,7 @@ public class HeapPriorityQueue<K, V> implements PriorityQueue<K, V> {
   public void add(K key, V value) {
     int index = _list.size();
     int parent = (index - 1) / 2;
-    HeapEntry<K, V> entry = new HeapEntry<K, V>(key, value);
+    Entry<K, V> entry = new Entry<K, V>(key, value);
     _list.add(entry);
 
     while (index != 0 && _c.compare(key, _list.get(parent).getKey()) < 0) {
@@ -53,8 +31,42 @@ public class HeapPriorityQueue<K, V> implements PriorityQueue<K, V> {
     }
   }
 
+  private int minChild(int index) {
+    int left = 2 * index + 1;
+    int right = 2 * index + 2;
+
+    if (left >= _list.size())
+      return -1;
+
+    if (right >= _list.size())
+      return left;
+
+    if (_c.compare(_list.get(left).getKey(), _list.get(right).getKey()) <= 0)
+      return left;
+
+    return right;
+  }
+
   public Entry<K, V> removeMin() {
-    return null;
+    if (_list.size() <= 1) {
+      return _list.remove(0);
+    } else {
+      Entry<K, V> entry = _list.remove(_list.size() - 1);
+      _list.set(0, entry);
+      int cur = 0;
+      int mc = minChild(cur);
+
+      while (mc != -1) {
+        if (_c.compare(_list.get(cur).getKey(), _list.get(mc).getKey()) <= 0)
+          break;
+
+        _list.set(cur, _list.set(mc, _list.get(cur)));
+        cur = mc;
+        mc = minChild(cur);
+      }
+
+      return entry;
+    }      
   }
 
   public Entry<K, V> peekMin() {
@@ -77,7 +89,9 @@ public class HeapPriorityQueue<K, V> implements PriorityQueue<K, V> {
     pq.add(2, "grapes");
     pq.add(1, "watermelon");
 	
-    System.out.println(pq);    
+    System.out.println(pq);
+    pq.removeMin();
+    System.out.println(pq);
   }
 }
 
