@@ -1,0 +1,260 @@
+==============
+Priority Queue
+==============
+
+A priority queue is an abstract data type (ADT) for storing a collection of
+priortized elements that supports arbitrary element insertion but supports
+removal of elements in order of priority, that is, the element with first
+priority can be removed at any time.
+
+
+============
+Applications
+============
+
+1. Boarding airplane
+2. Emergency room waiting list
+3. Print jobs
+
+
+=================================
+Java Collections PriorityQueue<E>
+=================================
+
+Java provides a PriorityQueue<E> that utilizes a heap to store the data.
+
+To use it, import java.util.PriorityQueue
+
+A subset of the methods
+  1. Constructor: public PriorityQueue();
+                  public PriorityQueue(Comparator<E> comp);
+  2. Accessors: public int size();
+            	  E peek();
+  3. Mutators: boolean add(E obj);
+          		 E poll(); // removes the element with highest priority
+
+A PQ needs a comparison rule to determine priority.
+
+
+=====
+Heaps
+=====
+
+A full binary tree is a tree in which every node either has 0 or 2 children.
+
+        x
+	     / \
+	    x   x
+ 	   / \	 
+	  x   x  
+
+A complete binary tree is a binary tree in which every level, except possibly the
+last, is completely filled, and all nodes are as far left as possible.
+
+ 	      x
+	    /   \
+	  x       x
+   / \	   / 
+  x   x   x 
+
+A heap is a complete binary tree in which each parent node is less than (greater
+than) or equal to each of its children.
+
+       	  3
+        /   \
+      4       5
+     / \     / \
+    6   7   5   7 
+
+
+===================
+Heap Implementation
+===================
+Heaps can be implemented by using an ArrayList where the root of the heap is at
+index 0 and the children of the parent at index i reside at indices 2i + 1 (left
+child) and 2i + 2 (right child).
+
+      	  0
+      	/   \
+      1       2
+     / \     / \
+    3   4   5   6
+
+Inversely, the parent of the node at index i has index int((i - 1) / 2).
+
+
+========================
+Heap Insertion Algorithm
+========================
+
+Assumes the minimum value is at the root.
+
+Steps to add v to the heap:
+  1. Add v as a leaf. (Make sure the tree is complete.)
+  2. If v is at the root or is greater than or equal to its parent then stop.
+  3. Otherwise, swap with its parent.
+  4. Repeat from step 2.
+
+Example: Add 3 to the heap [4, 8, 7, 9, 10, 8, 11]:
+
+         4
+       /   \
+     8       7
+    / \     / \
+   9   10  8   11
+
+Array                                     v current index         parent index
+[4, 8, 7, 9, 10, 8, 11]                   -1                      -1
+[4, 8, 7, 9, 10, 8, 11, 3]                7                       (7 - 1) / 2 = 3
+[4, 8, 7, 3, 10, 8, 11, 9]                3                       (3 - 1) / 2 = 1
+[4, 3, 7, 8, 10, 8, 11, 9]                1                       (1 - 1) / 2 = 0
+[3, 4, 7, 8, 10, 8, 11, 9]                0                       (0 - 1) / 2 = -1
+
+Add 5:
+Array                                     v current index         parent index
+[3, 4, 7, 8, 10, 8, 11, 9]                -1                      -1
+[3, 4, 7, 8, 10, 8, 11, 9, 5]             8                       (8 - 1) / 2 = 3
+[3, 4, 7, 5, 10, 8, 11, 9, 8]             3                       (3 - 1) / 2 = 1
+
+
+Expected runtime of insertion: O(log n)
+
+Build a heap with [23, 2, 19, 21, 3, 18, 21, 30, 6]
+
+                      23
+
+                       2
+                     /
+                   23
+
+                       2
+                     /  \
+                   23    19
+
+                       2
+                    /    \
+                 21        19
+                /
+              23  
+
+                       2
+                    /    \
+                  3        19
+                /  \
+              23    21
+
+                       2
+                    /    \
+                  3        18
+                /  \      /
+              23    21  19
+
+                       2
+                    /    \
+                  3        18
+                /  \      /  \
+              23    21  19    21
+
+                       2
+                   /      \
+                3            18
+             /    \        /    \
+          23        21  19        21
+         /
+       30
+
+                       2
+                   /      \
+                3            18
+             /    \        /    \
+           6        21  19        21
+         /  \
+       30    23
+
+
+================
+Remove Algorithm
+================
+
+Assume the minimum value is at the root and all removals occur at the root.
+
+Steps to remove v from the heap:
+  1. If the size of the heap is 1, then remove v and stop.
+  2. Remove the rightmost child of the last level, x, then replace v with it.
+  3. If x is a leaf or x <= than its children then stop.
+  4. Swap x with its smallest child.
+  5. Repeat from step 3.
+
+                       3
+                    /    \
+                  4         7
+                /  \      /  \
+               5    10   8    11
+             /  \
+            9     8
+
+Remove 3:
+
+                       8
+                    /    \
+                  4         7
+                /  \      /  \
+               5    10   8    11
+             /  
+            9   
+
+                       4
+                    /    \
+                  8         7
+                /  \      /  \
+               5    10   8    11
+             /  
+            9
+
+                       4
+                    /    \
+                  5         7
+                /  \      /  \
+               8    10   8    11
+             /  
+            9   
+
+Remove 4:
+
+                       9
+                    /    \
+                  5         7
+                /  \      /  \
+               8    10   8    11
+               
+                       5
+                    /    \
+                  9         7
+                /  \      /  \
+               8    10   8    11
+
+                       5
+                    /    \
+                  8         7
+                /  \      /  \
+               9    10   8    11
+
+Remove 5:
+
+                      11
+                    /    \
+                  8         7
+                /  \      /  
+               9    10   8   
+
+                       7
+                    /    \
+                  8        11
+                /  \      /  
+               9    10   8   
+
+                       7
+                    /    \
+                  8        8
+                /  \      /  
+               9    10   11

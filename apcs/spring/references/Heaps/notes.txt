@@ -1,0 +1,73 @@
+Priority Queue
+================
+Def: A priority queue is an abstract data type (ADT) for storing a collection of priortized elements that supports arbitrary element insertion but supports removal of elements in order of priority, that is, the element with first priority can be removed at any time.
+
+
+Applications:
+===============
+1. Boarding airplane
+2. Emergency room waiting list
+3. Print jobs, 
+
+Java Collections PriorityQueue<E>
+===================================
+
+Java provides a PriorityQueue<E> that utilizes a heap to store the data. We will discuss heaps below.
+
+To use it you need to import java.util.PriorityQueue
+
+A subset of the methods
+    1. Constructor: public PriorityQueue();
+       		    public PriorityQueue(Comparator<E> comp);
+    2. Accessors: public int size();
+          	  E peek();
+    3. Mutators: boolean add(E obj);
+       		 E poll(); // removes the element with highest priority
+
+A PQ needs a comparison rule to determine priority.
+
+Heaps
+========
+
+Def: Full binary tree
+======
+A full binary tree is a tree in which every node either has 0 or 2 children.
+
+       	      x
+	     / \
+	    x   x
+ 	   / \	 
+	  x   x  
+
+Def: Complete binary tree
+=====
+A complete binary tree is a binary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible.
+
+       	      x
+	    /   \
+	   x     x
+ 	  / \	/ 
+	 x   x x 
+
+Def: Heap
+============
+A heap is a complete binary tree in which each parent node is less than (greater than) or equal to each of its children.
+
+       	  3
+	/   \
+       4     5
+      / \   / \
+     6   7 5   7 
+
+
+Heap Implementation
+==================
+Heaps can be implemented by using an ArrayList where the root of the heap is at index 0 and the children of the parent at index i reside at indices 2i+1 (left child) and 2i+2 (right child).
+
+      	  0
+  	/   \
+       1     2
+      / \   / \
+     3   4 5   6
+
+
