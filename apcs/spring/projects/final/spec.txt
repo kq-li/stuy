@@ -1,0 +1,5 @@
+Hex grid
+Two players
+Each player chooses action, then actions take place
+Players may move or attack
+Moves and attacks are in the form of a path through the hex tiles of a certain length
