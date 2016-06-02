@@ -1,0 +1,439 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import java.io.File;
+import javax.swing.*;
+
+public class Game extends JPanel {
+  protected JFrame _frame;
+  protected int _frameWidth, _frameHeight, _currentLevel, _deaths;
+  protected boolean _isRunning;
+  protected List<Platform> _platforms;
+  protected Player _player;
+
+  protected final int GRAVITY = 325;
+
+  protected final int MAX_LEVEL = 10;
+  
+  protected static final String TITLE = "Platformer";
+  protected static final String FONT_NAME = "Ubuntu Medium";
+  protected static final int FONT_STYLE = Font.PLAIN;
+
+  public Game(int width, int height) {
+    super();
+    _frameWidth = width;
+    _frameHeight = height;
+    _currentLevel = 1;
+    _deaths = 0;
+    
+    _isRunning = true;
+
+    clearLevel();
+    initFrame();
+    initKeybinds();
+  }
+
+  /**
+   * precondition: none
+   * postcondition: clears instance variables
+   * runtime: O(1)
+   */
+  private void clearLevel() {
+    _platforms = new ArrayList<Platform>();
+    _player = null;
+  }
+
+  /**
+   * precondition: none
+   * postcondition: initializes frame
+   * runtime: O(1)
+   */  
+  private void initFrame() {
+    _frame = new JFrame(Game.TITLE);
+    _frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    _frame.setContentPane(this);
+  }
+
+  /**
+   * precondition: none
+   * postcondition: initializes key bindings
+   * runtime: O(1?)
+   */
+  private void initKeybinds() {
+    Action startUp = new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+          if (_player != null)
+            _player.setUp(true);
+        }
+      };
+
+    Action stopUp = new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+          if (_player != null)
+            _player.setUp(false);
+        }
+      };
+    
+    Action startDown = new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+          if (_player != null)
+            _player.setDown(true);
+        }
+      };
+    
+    Action startLeft = new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+          if (_player != null)
+            _player.setLeft(true);
+        }
+      };
+
+    Action stopLeft = new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+          if (_player != null)
+            _player.setLeft(false);
+        }
+      };
+        
+    Action startRight = new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+          if (_player != null)
+            _player.setRight(true);
+        }
+      };
+
+    Action stopRight = new AbstractAction() {
+        public void actionPerformed(ActionEvent e) {
+          if (_player != null)
+            _player.setRight(false);
+        }
+nn      };
+    
+    getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("pressed W"),
+                                                       "upPressed");
+    getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("pressed S"),
+                                                       "downPressed");
+    getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("pressed A"),
+                                                       "leftPressed");
+    getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("pressed D"),
+                                                       "rightPressed");
+    
+    getActionMap().put("upPressed", startUp);
+    getActionMap().put("downPressed", startDown);    
+    getActionMap().put("leftPressed", startLeft);
+    getActionMap().put("rightPressed", startRight);
+
+    getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released W"),
+                                                       "upReleased");
+    getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released S"),
+                                                       "downReleased");
+    getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released A"),
+                                                       "leftReleased");
+    getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(KeyStroke.getKeyStroke("released D"),
+                                                       "rightReleased");
+    
+    getActionMap().put("upReleased", stopUp);
+    //    getActionMap().put("downReleased", );
+    getActionMap().put("leftReleased", stopLeft);
+    getActionMap().put("rightReleased", stopRight);
+  }
+
+  /**
+   * precondition: 0 < level < MAX_LEVEL
+   * postcondition: level loeaded from text file
+   * runtime: O(n)
+   */
+  private void loadLevel(int level) { // More readable and maintainable than a 2D array
+    try (Scanner scanner = new Scanner(new File("level" + level + ".txt"))) {
+      String[] line = scanner.nextLine().split(" ");
+      double sx = Double.parseDouble(line[0]);
+      double sy = Double.parseDouble(line[1]);
+      double width = Double.parseDouble(line[2]);
+      double height = Double.parseDouble(line[3]);
+
+      setPlayer(new EntityBuilder()
+                .sx(sx)
+                .sy(sy)
+                .width(width)
+                .height(height)
+                .ay(GRAVITY)
+                .buildPlayer(0, 0, _frameWidth, _frameHeight));
+     
+      while ((line = scanner.nextLine().split(" ")).length > 0) {
+        sx = Double.parseDouble(line[0]);
+        sy = Double.parseDouble(line[1]);
+        width = Double.parseDouble(line[2]);
+        height = Double.parseDouble(line[3]);
+        int type = Integer.parseInt(line[4]);
+
+        switch (type) {
+        case 0:
+          addPlatform(new EntityBuilder()
+                      .sx(sx)
+                      .sy(sy)
+                      .width(width)
+                      .height(height)
+                      .buildNormal());
+          break;
+        case 1:
+          addPlatform(new EntityBuilder()
+                      .sx(sx)
+                      .sy(sy)
+                      .width(width)
+                      .height(height)
+                      .buildFire());
+          break;
+        case 2:
+          double bounceStrength = Double.parseDouble(line[5]);
+          addPlatform(new EntityBuilder()
+                      .sx(sx)
+                      .sy(sy)
+                      .width(width)
+                      .height(height)
+                      .buildBouncy(bounceStrength));
+          break;
+        case 3:
+          double vy = Double.parseDouble(line[5]);
+          double deltay = Double.parseDouble(line[6]);
+          addPlatform(new EntityBuilder()
+                      .sx(sx)
+                      .sy(sy)
+                      .width(width)
+                      .height(height)
+                      .vy(vy)
+                      .buildVertical(deltay));
+          break;
+        case 4:
+          double vx = Double.parseDouble(line[5]);
+          double deltax = Double.parseDouble(line[6]);
+          addPlatform(new EntityBuilder()
+                      .sx(sx)
+                      .sy(sy)
+                      .width(width)
+                      .height(height)
+                      .vx(vx)
+                      .buildHorizontal(deltax));
+          break;
+        case 9001:
+          addPlatform(new EntityBuilder()
+                      .sx(sx)
+                      .sy(sy)
+                      .width(width)
+                      .height(height)
+                      .buildGoal());
+          break;
+        }
+      }
+    } catch (Exception e) {
+
+    }
+  }
+
+  /**
+   * precondition: player != null
+   * postcondition: sets player instance variable
+   * runtime: O(1)
+   */
+  private void setPlayer(Player player) {
+    _player = player;
+  }
+
+  /**
+   * precondition: platform != null
+   * postcondition: adds platform to arraylist, returns the reference
+   * runtime: O(1)
+   */
+  private Platform addPlatform(Platform platform) {
+    _platforms.add(platform);
+    return platform;
+  }
+ 
+  /**
+   * precondition: none
+   * postcondition: objects rendered onto canvas
+   * runtime: O(n)
+   */
+  public void paintComponent(Graphics g) {
+    super.paintComponent(g);
+
+    for (Platform p : _platforms)
+      p.render(g);
+
+    if (_player != null)
+      _player.render(g);
+  }
+
+  /**
+   * precondition: none
+   * postcondition: returns dimensions of frame
+   * runtime: O(1)
+   */
+  public Dimension getPreferredSize() {
+    return new Dimension(_frameWidth, _frameHeight);
+  }
+  
+  /**
+   * precondition: none
+   * postcondition: displays frame
+   * runtime: O(1)
+   */
+  public void display() {
+    _frame.pack();
+    _frame.setVisible(true);
+  }
+
+  /**
+   * precondition: none
+   * postcondition: returns distance between two points
+   * runtime: O(1)
+   */
+  private double distance(double x1, double y1, double x2, double y2) {
+    return Math.sqrt((x1 - x2) * (x1 - x2) + (y1 - y2) * (y1 - y2));
+  }
+ 
+  /**
+   * precondition: none
+   * postcondition: all objects updated
+   * runtime: O(n)
+   */
+  private void update(double dt) {
+    for (Platform p : _platforms)
+      p.update(dt);
+    
+    boolean won = false;
+    boolean dead = false;
+
+    ArrayList<Platform> platformsPlayerOn = new ArrayList<Platform>();
+    
+    for (Platform p : _platforms)
+      if (_player.onPlatform(p) ||
+          (p == _player._currentPlatform && _player._iy >= 0 &&
+           _player.overPlatform(p) && p instanceof VerticalPlatform))
+        platformsPlayerOn.add(p);
+      
+    Platform highest = null;
+
+    for (Platform p : platformsPlayerOn) 
+      if (highest == null || p._sy < highest._sy)
+        highest = p;
+      
+    _player._currentPlatform = highest;
+    
+    if (_player._sy >= _player.MAX_SY)
+      dead = true;
+
+    for (Platform p : _platforms) {
+      if (p instanceof FirePlatform && _player.touching(p))
+        dead = true;
+
+      if (p instanceof BouncyPlatform && _player._currentPlatform == p)
+        _player.setVY(-((BouncyPlatform) p)._bounceStrength);
+
+      if (p instanceof GoalPlatform && _player._currentPlatform == p)
+        won = true;
+      
+      if (dead || won)
+        break;
+    }
+    
+    _player.update(dt);
+    
+    if (won) {
+      System.out.println("Victory!");
+      _currentLevel++;
+      
+      if (_currentLevel > MAX_LEVEL) {
+        System.out.print("Congratulations! You have completed the game with " + _deaths);
+        
+        if (_deaths == 1)
+          System.out.println(" death.");
+        else
+          System.out.println(" deaths.");
+
+        System.out.println("The factorial of your death count, calculated with recursion, is " + factorial(_deaths));
+        System.out.println("Thanks for playing!");
+        _isRunning = false;
+      } else {
+        System.out.println("Promoted to level " + _currentLevel);
+        clearLevel();
+        loadLevel(_currentLevel);
+      }
+    }
+    
+    if (dead) {
+      _deaths++;
+      System.out.println("Deaths: " + _deaths);
+      clearLevel();
+      loadLevel(_currentLevel);
+    }
+  }
+
+  /**
+   * precondition: n >= 0
+   * postcondition: returns factorial of n
+   * runtime: O(n)
+   */
+  private long factorial(int n) {
+    if (n == 0)
+      return 1;
+    return n * factorial(n - 1);
+  }
+  
+  /**
+   * precondition: none
+   * postcondition: starts paint chain
+   * runtime: O(1)
+   */
+  private void render() {
+    paintImmediately(0, 0, _frameWidth, _frameHeight);
+  }
+  
+  /**
+   * precondition: none
+   * postcondition: calls updates and renders
+   * runtime: O(n?)
+   */
+  private void loop() {
+    final int TARGET_FPS = 240;
+    final double FRAME_LENGTH = 1.0 / TARGET_FPS;
+
+    double next = System.nanoTime() / 1000000000.0;
+        
+    while (_isRunning) {
+      double now = System.nanoTime() / 1000000000.0;
+      
+      if (now >= next) {
+        next += FRAME_LENGTH;
+        update(FRAME_LENGTH);
+        render();
+      } else {
+        int sleepTime = (int) (1000.0 * (next - now));
+
+        if (sleepTime > 0) {
+          try {
+            Thread.sleep(sleepTime);
+          } catch (Exception e) {
+
+          }
+        }
+      }
+    }
+  }
+
+  /**
+   * precondition: none
+   * postcondition: none
+   * runtime: O(1)
+   */
+  public static void main(String[] args) {
+    Game game = new Game(600, 400);
+    game.loadLevel(game._currentLevel);
+    game.repaint();
+    game.display();
+    game.loop();
+  }
+}
+
