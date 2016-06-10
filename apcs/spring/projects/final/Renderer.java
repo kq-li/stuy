@@ -21,15 +21,23 @@ public class Renderer {
     return _g2;
   }
 
-  public void renderHex(Hex hex) {
-    _g2.setColor(hex.getColor());
+  public void renderCurHex(Hex hex) {
+    renderHex(hex, Hex.HOVER, Hex.OUTLINE_HOVER);
+  }
+
+  public void renderRegHex(Hex hex) {
+    renderHex(hex, hex.getColor(), hex.getOutlineColor());
+  }
+
+  public void renderHex(Hex hex, Color color, Color outlineColor) {
+    _g2.setColor(color);
     _g2.fill(hex.getShape());
-    _g2.setColor(hex.getOutlineColor());
+    _g2.setColor(outlineColor);
     _g2.draw(hex.getShape());
 
-    if ((hex.getColor().getRed() +
-         hex.getColor().getBlue() +
-         hex.getColor().getGreen()) / 3 > 127)
+    if ((color.getRed() +
+         color.getBlue() +
+         color.getGreen()) / 3 > 127)
       _g2.setColor(Color.BLACK);
     else
       _g2.setColor(Color.WHITE);
@@ -45,5 +53,12 @@ public class Renderer {
     _g2.drawString(text,
                    (float) (xcor - fm.stringWidth(text) / 2.0),
                    (float) (ycor - fm.getHeight() / 2.0) + fm.getAscent());
+  }
+
+  public void renderPlayer(Player player) {
+    _g2.setColor(player.getColor());
+    _g2.fill(player.getShape());
+    _g2.setColor(player.getOutlineColor());
+    _g2.draw(player.getShape());
   }
 }

@@ -34,7 +34,7 @@ public class Grid {
     }
   }
 
-  private int numHexes(int r) {
+  public int numHexes(int r) {
     if (r == 1)
       return 1;
 
@@ -55,6 +55,10 @@ public class Grid {
     return _grid[x][y][z];
   }
 
+  public double getHexRadius() {
+    return _hexRadius;
+  }
+  
   public double[] cubeToPixel(int x, int y, int z) {
     double[] ret = new double[2];
     ret[0] = _centerX + x * 1.5 * _hexRadius;
@@ -65,7 +69,7 @@ public class Grid {
   public int[] pixelToCube(double xcor, double ycor) {
     int[] ret = new int[3];
     ret[0] = (int) ((xcor - _centerX) / (1.5 * _hexRadius));
-    ret[1] = (int) ((-xcor / 3 + ycor * Math.sqrt(3) / 3) / _hexRadius);
+    ret[1] = (int) ((ycor - _centerY) * (2 * _hexRadius / Math.sqrt(3)) - 2 * ret[0]);
     ret[2] = -ret[0] - ret[1];
     return ret;
   }

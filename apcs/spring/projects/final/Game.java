@@ -84,9 +84,24 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
   }
 
   public void mouseClicked(MouseEvent e) {
-    if (e.getButton() == 1) {
-      Hex cur = _grid.whichHex(e.getX(), e.getY());
+    Hex cur = _grid.whichHex(e.getX(), e.getY());
 
+    switch (e.getButton()) {
+    case 1:
+      if (cur != null) {
+        if (_player == null) {
+          _player = new Player(cur.getCenterX(), cur.getCenterY(), _grid.getHexRadius() / 2.0, 
+                               Color.GREEN, Color.WHITE, cur);
+        } else if (_player.getCur() == cur) {
+          PriorityQueue<Hex> pq = _grid.gridToPQ(cur);
+
+          for (int i = 0; i < _grid.numHexes(_player.getMoves()); i++)
+            pq.poll().setColor(Color.CYAN);
+        }
+      }
+          
+      break;
+    case 2:
       if (cur != null) {
         for (Hex hex : _grid.gridToPQ(cur)) {
           int colorVal = cur.distanceTo(hex) * 255 / (2 * _grid.getRadius() + 1);
@@ -97,6 +112,8 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
             hex.setColor(color);
         }
       }
+
+      break;
     }
   }
 
@@ -119,19 +136,8 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
   public void mouseMoved(MouseEvent e) {
     Hex cur = _grid.whichHex(e.getX(), e.getY());
 
-    if (_curHex != cur) {
-      if (_curHex != null) {
-        _curHex.setColor(_curHex.getDefaultColor());
-        _curHex.setOutlineColor(_curHex.getOutlineDefaultColor());
-      }
-        
+    if (cur != null)
       _curHex = cur;
-
-      if (_curHex != null) {
-        _curHex.setColor(Hex.HOVER);
-        _curHex.setOutlineColor(Hex.OUTLINE_HOVER);
-      }
-    }
   }
 
   public void mouseDragged(MouseEvent e) {
@@ -140,21 +146,47 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
   
   public void renderGrid() {
     for (Hex hex : _grid.gridToAL())
-      _renderer.renderHex(hex);
+      _renderer.renderRegHex(hex);
 
-    if (_curHex != null)
-      _renderer.renderHex(_curHex);
+    if (_curHex != null) 
+      _renderer.renderCurHex(_curHex);
   }
 
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
     _renderer.setGraphics((Graphics2D) g);
     renderGrid();
+    
+    if (_player != null) 
+      _renderer.renderPlayer(_player);
+  }
+  
+  public void printArray(Object[] a) {
+    for (Object o : a)
+      System.out.print(o + " ");
+
+    System.out.println();
+  }
+
+  public void printArray(double[] a) {
+    for (double d : a)
+      System.out.print(d + " ");
+
+    System.out.println();
+  }
+
+  public void printArray(int[] a) {
+    for (int i : a)
+      System.out.print(i + " ");
+
+    System.out.println();
   }
   
   public static void main(String[] args) {
     Game game = new Game(3);
     System.out.println(Integer.toHexString((new Color(0, 0, 0)).getRGB()));
+    game.printArray(game._grid.cubeToPixel(0, 0, 0));
+    game.printArray(game._grid.pixelToCube(800, 600));
     game.start();
   }
 }
