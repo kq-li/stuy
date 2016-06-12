@@ -6,13 +6,13 @@ import java.util.List;
 import javax.swing.*;
 
 public class Hex {
-  private int _x, _y, _z;
-  private int[] _cube, _axial;
-  private double _centerX, _centerY, _radius;
-  private double[] _pixel;
-  private double[][] _vertices;
-  private Color _color, _defaultColor, _outlineColor, _outlineDefaultColor;
-  private Path2D.Double _shape;
+  protected int _x, _y, _z;
+  protected double _centerX, _centerY, _radius;
+  protected double[][] _vertices;
+  protected Player _player;
+  protected ArrayList<Projectile> _projectiles;
+  protected Color _color, _defaultColor, _outlineColor, _outlineDefaultColor;
+  protected Path2D.Double _shape;
 
   public static final Color DEFAULT = Color.BLACK;
   public static final Color HOVER = Color.WHITE;
@@ -33,6 +33,8 @@ public class Hex {
       _vertices[i][1] = centerY + radius * Math.sin(i * Math.PI / 3);
     }                   
 
+    _player = null;
+    _projectiles = new ArrayList<Projectile>();
     _defaultColor = DEFAULT;
     _color = _defaultColor;
     _outlineDefaultColor = OUTLINE_DEFAULT;
@@ -67,6 +69,30 @@ public class Hex {
     return _centerY;
   }
 
+  public Player getPlayer() {
+    return _player;
+  }
+
+  public void setPlayer(Player p) {
+    _player = p;
+  }
+
+  public void removePlayer() {
+    _player = null;
+  }
+
+  public ArrayList<Projectile> getProjectiles() {
+    return _projectiles;
+  }
+
+  public void addProjectile(Projectile e) {
+    _projectiles.add(e);
+  }
+
+  public void removeProjectile(Projectile e) {
+    _projectiles.remove(e);
+  }
+
   public Color getColor() {
     return _color;
   }
@@ -99,31 +125,25 @@ public class Hex {
     _outlineDefaultColor = color;
   }
 
+  public void resetColor() {
+    _color = _defaultColor;
+  }
+
+  public void resetOutlineColor() {
+    _outlineColor = _outlineDefaultColor;
+  }
+
+  public void reset() {
+    resetColor();
+    resetOutlineColor();
+  }
+
   public Path2D.Double getShape() {
     return _shape;
   }
 
   public boolean contains(double x, double y) {
-    boolean contains = true;
-
-    for (int i = 0; i < 6; i++) {
-      double x1 = _vertices[i % 6][0];
-      double y1 = _vertices[i % 6][1];
-      double x2 = _vertices[(i + 1) % 6][0];
-      double y2 = _vertices[(i + 1) % 6][1];
-      double slope = (y2 - y1) / (x2 - x1);
-      double edgeY = slope * (x - x1) + y1;
-
-      if (i < 3) 
-        contains = contains && (edgeY - y > 0);
-      else
-        contains = contains && (edgeY - y < 0);
-
-      if (!contains)
-        return false;
-    }
-
-    return true;
+    return getShape().contains(x, y);
   }
 
   public int distanceTo(Hex other) {

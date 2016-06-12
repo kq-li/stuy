@@ -5,16 +5,17 @@ import java.util.*;
 import javax.swing.*;
 
 public class Grid {
-  private int _radius, _hexCount;
-  private double _centerX, _centerY, _hexRadius;
-  private Hex[][][] _grid;
-  private ArrayList<Hex> _list;
+  protected int _radius, _hexCount;
+  protected double _centerX, _centerY, _hexRadius;
+  protected Hex[][][] _grid;
+  protected ArrayList<Hex> _list, _active;
 
   public Grid(int radius, int width, int height) {
     _radius = radius;
     _hexCount = numHexes(radius);
     _grid = new Hex[2 * radius + 1][2 * radius + 1][2 * radius + 1];
     _list = new ArrayList<Hex>();
+    _active = new ArrayList<Hex>();
     _centerX = width / 2.0;
     _centerY = height / 2.0;
     _hexRadius = (double) (Math.min(width, height) * 0.75) / (4 * radius);
@@ -35,10 +36,10 @@ public class Grid {
   }
 
   public int numHexes(int r) {
-    if (r == 1)
+    if (r == 0)
       return 1;
 
-    return 6 * r - 6 + numHexes(r - 1);
+    return 6 * r + numHexes(r - 1);
   }
 
   public boolean isHex(int x, int y, int z) {
@@ -51,6 +52,10 @@ public class Grid {
     return _radius;
   }
 
+  public int getHexCount() {
+    return _hexCount;
+  }
+
   public Hex getHex(int x, int y, int z) {
     return _grid[x][y][z];
   }
@@ -61,7 +66,7 @@ public class Grid {
   
   public double[] cubeToPixel(int x, int y, int z) {
     double[] ret = new double[2];
-    ret[0] = _centerX + x * 1.5 * _hexRadius;
+    ret[0] = _centerX + (x - _radius) * 1.5 * _hexRadius;
     ret[1] = _centerY + (y - z) * Math.sqrt(3) / 2 * _hexRadius;
     return ret;
   }
@@ -71,6 +76,10 @@ public class Grid {
     ret[0] = (int) ((xcor - _centerX) / (1.5 * _hexRadius));
     ret[1] = (int) ((ycor - _centerY) * (2 * _hexRadius / Math.sqrt(3)) - 2 * ret[0]);
     ret[2] = -ret[0] - ret[1];
+
+    for (int i = 0; i < 3; i++)
+      ret[i] += _radius;
+    
     return ret;
   }
   
@@ -86,6 +95,22 @@ public class Grid {
     return _list;
   }
 
+  public ArrayList<Hex> getActive() {
+    return _active;
+  }
+
+  public void addActive(Hex hex) {
+    _active.add(hex);
+  }
+
+  public void removeActive(Hex hex) {
+    _active.remove(hex);
+  }
+  
+  public void resetActive() {
+    _active = new ArrayList<Hex>();
+  }
+
   public PriorityQueue<Hex> gridToPQ(Hex center) {
     Comparator<Hex> c = new HexComparator(center);
     PriorityQueue<Hex> ret = new PriorityQueue<Hex>(_hexCount, c);
@@ -93,6 +118,20 @@ public class Grid {
     for (Hex hex : _list) 
       ret.offer(hex);
 
+    return ret;
+  }
+
+  public ArrayList<Hex> hexesInRadius(Hex hex, int r) {
+    PriorityQueue<Hex> pq = gridToPQ(hex);
+    ArrayList<Hex> ret = new ArrayList<Hex>();
+
+    Hex cur = pq.poll();
+
+    while (cur != null && cur.distanceTo(hex) <= r) {
+      ret.add(cur);
+      cur = pq.poll();
+    }
+    
     return ret;
   }
 }

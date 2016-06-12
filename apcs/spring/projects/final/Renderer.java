@@ -5,7 +5,7 @@ import java.util.*;
 import javax.swing.*;
 
 public class Renderer {
-  private Graphics2D _g2;
+  protected Graphics2D _g2;
 
   public Renderer() {
     _g2 = null;
@@ -56,9 +56,16 @@ public class Renderer {
   }
 
   public void renderPlayer(Player player) {
-    _g2.setColor(player.getColor());
+    _g2.setColor(Player.PLAYER_COLOR);
     _g2.fill(player.getShape());
-    _g2.setColor(player.getOutlineColor());
+    _g2.setColor(Player.PLAYER_OUTLINE_COLOR);
     _g2.draw(player.getShape());
+  }
+
+  public void renderOther(Player other) {
+    _g2.setColor(Player.OTHER_COLOR);
+    _g2.fill(other.getShape());
+    _g2.setColor(Player.OTHER_OUTLINE_COLOR);
+    _g2.draw(other.getShape());
   }
 }

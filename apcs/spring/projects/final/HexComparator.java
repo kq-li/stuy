@@ -5,7 +5,7 @@ import java.util.*;
 import javax.swing.*;
 
 public class HexComparator implements Comparator {
-  private Hex _center;
+  protected Hex _center;
 
   public HexComparator(Hex center) {
     _center = center;
