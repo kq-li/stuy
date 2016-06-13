@@ -26,7 +26,7 @@ public class Game extends JPanel {
     super();
     _frameWidth = width;
     _frameHeight = height;
-    _currentLevel = 4;
+    _currentLevel = 1;
     _deaths = 0;
     
     _isRunning = true;
