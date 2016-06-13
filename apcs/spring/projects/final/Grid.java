@@ -26,7 +26,7 @@ public class Grid {
           if (isHex(x, y, z)) {
             double hexCenterX = _centerX + (x - radius) * 1.5 * _hexRadius;
             double hexCenterY = _centerY + (y - z) * Math.sqrt(3) / 2 * _hexRadius;
-            _grid[x][y][z] = new Hex(x - _radius, y - _radius, z - _radius,
+            _grid[x][y][z] = new Hex(x, y, z,
                                      hexCenterX, hexCenterY, _hexRadius);
             _list.add(_grid[x][y][z]);
           }
@@ -66,7 +66,7 @@ public class Grid {
   
   public double[] cubeToPixel(int x, int y, int z) {
     double[] ret = new double[2];
-    ret[0] = _centerX + (x - _radius) * 1.5 * _hexRadius;
+    ret[0] = _centerX + x * 1.5 * _hexRadius;
     ret[1] = _centerY + (y - z) * Math.sqrt(3) / 2 * _hexRadius;
     return ret;
   }
@@ -76,10 +76,6 @@ public class Grid {
     ret[0] = (int) ((xcor - _centerX) / (1.5 * _hexRadius));
     ret[1] = (int) ((ycor - _centerY) * (2 * _hexRadius / Math.sqrt(3)) - 2 * ret[0]);
     ret[2] = -ret[0] - ret[1];
-
-    for (int i = 0; i < 3; i++)
-      ret[i] += _radius;
-    
     return ret;
   }
   

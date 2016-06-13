@@ -81,16 +81,16 @@ public class Hex {
     _player = null;
   }
 
+  public void addProjectile(Projectile projectile) {
+    _projectiles.add(projectile);
+  }
+
+  public void removeProjectile(Projectile projectile) {
+    _projectiles.remove(projectile);
+  }
+
   public ArrayList<Projectile> getProjectiles() {
     return _projectiles;
-  }
-
-  public void addProjectile(Projectile e) {
-    _projectiles.add(e);
-  }
-
-  public void removeProjectile(Projectile e) {
-    _projectiles.remove(e);
   }
 
   public Color getColor() {
