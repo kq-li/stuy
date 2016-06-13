@@ -5,7 +5,7 @@ import java.util.*;
 import javax.swing.*;
 
 public class Player extends Entity {
-  protected int _curHealth, _maxHealth, _curMoves, _maxMoves, _range, _damage;
+  protected int _curHealth, _maxHealth, _curMoves, _maxMoves, _range, _damage, _number;
   protected Tracer _tracer;
   protected ArrayList<Projectile> _projectiles;
   protected Projectile _projectile;
@@ -19,8 +19,11 @@ public class Player extends Entity {
     this(10, 10, 1, 1, 5, 5, xcor, ycor, radius, cur);
   }
 
-  public Player(int curHealth, int maxHealth, int curMoves, int maxMoves, int range, int damage,
-                double xcor, double ycor, double radius, Hex cur) {
+  public Player(int curHealth, int maxHealth,
+                int curMoves, int maxMoves,
+                int range, int damage,
+                double xcor, double ycor,
+                double radius, Hex cur) {
     super(xcor, ycor, radius, cur);
     _curHealth = curHealth;
     _maxHealth = maxHealth;
@@ -48,7 +51,7 @@ public class Player extends Entity {
   public int getDamage() {
     return _damage;
   }    
-
+  
   public int getMoves() {
     return _curMoves;
   }

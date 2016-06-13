@@ -81,6 +81,7 @@ public class Renderer {
     _g2.fill(player.getShape());
     _g2.setColor(outlineColor);
     _g2.draw(player.getShape());
+    renderString(Integer.toString(player.getHealth()), player.getX(), player.getY());
   }
 
   public void renderSelfProjectile(Projectile projectile) {

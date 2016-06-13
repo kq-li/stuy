@@ -24,6 +24,14 @@ public abstract class Entity {
     return _shouldExist;
   }
 
+  public double getX() {
+    return _xcor;
+  }
+
+  public double getY() {
+    return _ycor;
+  }
+
   public Ellipse2D.Double getShape() {
     return _shape;
   }

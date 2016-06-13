@@ -6,11 +6,11 @@ import javax.swing.*;
 
 public class Game extends JPanel implements MouseListener, MouseMotionListener {
   protected boolean _isRunning;
-  protected int _state, _turn;
+  protected int _state, _initialTurn, _turn;
   protected Grid _grid;
   protected Hex _curHex;
   protected JFrame _frame;
-  protected Player _player, _other;
+  protected Player[] _players;
   protected Renderer _renderer;
 
   public static final int WIDTH = 800;
@@ -38,21 +38,23 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     _isRunning = false;
     _state = State.PLAYER_WAIT;
     _turn = 0;
+    _initialTurn = 0;
     _grid = new Grid(radius, WIDTH, HEIGHT);
     _curHex = null;
     _frame = new JFrame(Game.TITLE);
 
     Hex top = _grid.getHex(radius, 0, 2 * radius);
     Hex bottom = _grid.getHex(radius, 2 * radius, 0);
-    
-    _player = new Player(top.getCenterX(),
-                         top.getCenterY(),
-                         0.5 * _grid.getHexRadius(),
-                         top);
-    _other = new Player(bottom.getCenterX(),
-                        bottom.getCenterY(),
-                        0.5 * _grid.getHexRadius(),
-                        bottom);
+
+    _players = new Player[2];
+    _players[0] = new Player(top.getCenterX(),
+                             top.getCenterY(),
+                             0.5 * _grid.getHexRadius(),
+                             top);
+    _players[1] = new Player(bottom.getCenterX(),
+                             bottom.getCenterY(),
+                             0.5 * _grid.getHexRadius(),
+                             bottom);
     _renderer = new Renderer();
   }
 
@@ -70,6 +72,9 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     addMouseMotionListener(this);
     _frame.pack();
     _frame.setVisible(true);
+    _turn = (int) (Math.random() * 2);
+    _initialTurn = _turn;
+    System.out.println("Player " + (_turn + 1) + " starts!");
     _isRunning = true;
   }
 
@@ -101,6 +106,22 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     render();
   }
 
+  public Player self() {
+    return _players[_turn % 2];
+  }
+
+  public void self(Player p) {
+    _players[_turn % 2] = p;
+  }
+
+  public Player other() {
+    return _players[(_turn + 1) % 2];
+  }
+
+  public void other(Player p) {
+    _players[(_turn + 1) % 2] = p;
+  }
+  
   protected void render() {
     repaint();
   }
@@ -121,7 +142,7 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
 
       switch (e.getButton()) {
       case MouseEvent.BUTTON1:
-        if (cur == _player.getTracer().getCur()) {
+        if (cur == self().getTracer().getCur()) {
           playerMove();
           _state = State.PLAYER_MOVE;
         } else {
@@ -130,13 +151,13 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
          
         break;
       case MouseEvent.BUTTON3:
-        if (cur == _player.getCur()) {
-          _player.setCurProjectile(new Projectile(cur.getCenterX(),
+        if (cur == self().getCur()) {
+          self().setCurProjectile(new Projectile(cur.getCenterX(),
                                                   cur.getCenterY(),
                                                   0.3 * _grid.getHexRadius(),
                                                   cur,
-                                                  _player));
-          _player.addProjectile(_player.getCurProjectile());
+                                                  self()));
+          self().addProjectile(self().getCurProjectile());
           playerAttack();
           _state = State.PLAYER_ATTACK;
           break;
@@ -148,14 +169,14 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
       break;
     case State.PLAYER_MOVE:
       if (_grid.getActive().contains(cur)) {
-        _player.moveTracer(cur);
+        self().moveTracer(cur);
 
         for (Hex hex : _grid.getActive())
           hex.reset();
 
         _grid.resetActive();
 
-        if (_player.getMoves() == 0) {
+        if (self().getMoves() == 0) {
           nextTurn();
           _state = State.PLAYER_WAIT;
         } else {
@@ -166,22 +187,22 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
           hex.reset();
         
         _grid.resetActive();
-        _player.resetTracer();
+        self().resetTracer();
         _state = State.PLAYER_WAIT;
       }
       
       break;
     case State.PLAYER_ATTACK:
       if (_grid.getActive().contains(cur)) {
-        _player.getCurProjectile().moveTracer(cur);
+        self().getCurProjectile().moveTracer(cur);
 
         for (Hex hex : _grid.getActive())
           hex.reset();
 
         _grid.resetActive();
 
-        if (_player.getCurProjectile().getMoves() == 0) {
-          _player.resetCurProjectile();
+        if (self().getCurProjectile().getMoves() == 0) {
+          self().resetCurProjectile();
           nextTurn();
           _state = State.PLAYER_WAIT;
         } else {
@@ -192,9 +213,9 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
           hex.reset();
 
         _grid.resetActive();
-        _player.getCurProjectile().resetTracer();
-        _player.removeProjectile(_player.getCurProjectile());
-        _player.resetCurProjectile();
+        self().getCurProjectile().resetTracer();
+        self().removeProjectile(self().getCurProjectile());
+        self().resetCurProjectile();
         _state = State.PLAYER_WAIT;
       }      
       
@@ -206,8 +227,8 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     for (Hex hex : _grid.getActive())
       hex.reset();
     
-    ArrayList<Hex> hexes = _grid.hexesInRadius(_player.getTracer().getCur(),
-                                               _player.getTracer().getMoves());
+    ArrayList<Hex> hexes = _grid.hexesInRadius(self().getTracer().getCur(),
+                                               self().getTracer().getMoves());
 
     for (Hex hex : hexes) {
       hex.setColor(Color.CYAN);
@@ -219,8 +240,8 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     for (Hex hex : _grid.getActive())
       hex.reset();
 
-    ArrayList<Hex> hexes = _grid.hexesInRadius(_player.getCurProjectile().getTracer().getCur(),
-                                               _player.getCurProjectile().getTracer().getMoves());
+    ArrayList<Hex> hexes = _grid.hexesInRadius(self().getCurProjectile().getTracer().getCur(),
+                                               self().getCurProjectile().getTracer().getMoves());
 
     for (Hex hex : hexes) {
       hex.setColor(Color.RED);
@@ -229,51 +250,47 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
   }
 
   public void nextTurn() {
-    Player temp = _player;
-    _player = _other;
-    _other = temp;
-
-    if (++_turn % 2 == 0) {
-      for (Projectile p : _player.getProjectiles()) 
+    if (++_turn % 2 == _initialTurn) {
+      for (Projectile p : self().getProjectiles()) 
         p.move();
       
-      for (Projectile p : _other.getProjectiles()) 
+      for (Projectile p : other().getProjectiles()) 
         p.move();
 
-      _player.move();
-      _other.move();
+      self().move();
+      other().move();
       
       ArrayList<Projectile> shouldNotExist = new ArrayList<Projectile>();
 
-      for (Projectile p : _player.getProjectiles()) {
+      for (Projectile p : self().getProjectiles()) {
         p.update();
 
         if (!p.shouldExist())
           shouldNotExist.add(p);
       }
       
-      for (Projectile p : _other.getProjectiles()) {
+      for (Projectile p : other().getProjectiles()) {
         p.update();
 
         if (!p.shouldExist())
           shouldNotExist.add(p);
       }
 
-      _player.update();
-      _other.update();
+      self().update();
+      other().update();
 
       for (Projectile p : shouldNotExist) {
         p.getOwner().removeProjectile(p);
         p.getCur().removeProjectile(p);
       }
 
-      if (!_player.shouldExist()) {
-        _player = null;
+      if (!self().shouldExist()) {
+        self(null);
         _isRunning = false;
       }
 
-      if (!_other.shouldExist()) {
-        _other = null;
+      if (!other().shouldExist()) {
+        other(null);
         _isRunning = false;
       }      
     }
@@ -320,56 +337,56 @@ public class Game extends JPanel implements MouseListener, MouseMotionListener {
     renderGrid();
 
     if (DEBUG) {
-      if (_other != null) {
-        _renderer.renderOtherTracer(_other.getTracer());
-        _renderer.renderOtherPlayer(_other);
+      if (other() != null) {
+        _renderer.renderOtherTracer(other().getTracer());
+        _renderer.renderOtherPlayer(other());
       }
 
-      if (_player != null) {
-        _renderer.renderSelfTracer(_player.getTracer());
-        _renderer.renderSelfPlayer(_player);
+      if (self() != null) {
+        _renderer.renderSelfTracer(self().getTracer());
+        _renderer.renderSelfPlayer(self());
 
-        for (Projectile p : _player.getProjectiles()) {
+        for (Projectile p : self().getProjectiles()) {
           _renderer.renderSelfTracer(p.getTracer());
           _renderer.renderSelfProjectile(p);
         }
       }
 
-      if (_other != null) {
-        for (Projectile p : _other.getProjectiles()) {
+      if (other() != null) {
+        for (Projectile p : other().getProjectiles()) {
           _renderer.renderOtherTracer(p.getTracer());
           _renderer.renderOtherProjectile(p);
         }
       }
     } else {
-      if (_player != null) {
+      if (self() != null) {
         if (_state == State.PLAYER_MOVE)
-          _renderer.renderSelfTracer(_player.getTracer());
+          _renderer.renderSelfTracer(self().getTracer());
 
-        if (_curHex != null && _curHex.getPlayer() == _player)
-          _renderer.renderSelfTracer(_player.getTracer());
+        if (_curHex != null && _curHex.getPlayer() == self())
+          _renderer.renderSelfTracer(self().getTracer());
 
         if (_state == State.PLAYER_ATTACK)
-          _renderer.renderSelfTracer(_player.getCurProjectile().getTracer());
+          _renderer.renderSelfTracer(self().getCurProjectile().getTracer());
 
         if (_curHex != null) 
           for (Projectile p : _curHex.getProjectiles())
-            if (p.getOwner() == _player)
+            if (p.getOwner() == self())
               _renderer.renderSelfTracer(p.getTracer());
       }
 
-      if (_other != null)
-        _renderer.renderOtherPlayer(_other);
+      if (other() != null)
+        _renderer.renderOtherPlayer(other());
 
-      if (_player != null) {
-        _renderer.renderSelfPlayer(_player);
+      if (self() != null) {
+        _renderer.renderSelfPlayer(self());
       
-        for (Projectile p : _player.getProjectiles())
+        for (Projectile p : self().getProjectiles())
           _renderer.renderSelfProjectile(p);
       }
 
-      if (_other != null)
-        for (Projectile p : _other.getProjectiles())
+      if (other() != null)
+        for (Projectile p : other().getProjectiles())
           _renderer.renderOtherProjectile(p);
     }
   }
