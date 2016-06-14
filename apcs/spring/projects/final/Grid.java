@@ -1,7 +1,9 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
+import java.io.*;
 import java.util.*;
+import javax.imageio.*;
 import javax.swing.*;
 
 public class Grid {
@@ -19,7 +21,8 @@ public class Grid {
     _centerX = width / 2.0;
     _centerY = height / 2.0;
     _hexRadius = (double) (Math.min(width, height) * 0.75) / (4 * radius);
-    
+
+    // Uses hex coordinates; see http://www.redblobgames.com/grids/hexagons
     for (int x = 0; x < 2 * radius + 1; x++) {
       for (int y = 0; y < 2 * radius + 1; y++) { 
         for (int z = 0; z < 2 * radius + 1; z++) { 
@@ -35,6 +38,7 @@ public class Grid {
     }
   }
 
+  // Recursive method to find number of hexes in a grid of a given radius
   public int numHexes(int r) {
     if (r == 0)
       return 1;
@@ -42,6 +46,7 @@ public class Grid {
     return 6 * r + numHexes(r - 1);
   }
 
+  // Determines whether (x, y, z) point to a valid hex
   public boolean isHex(int x, int y, int z) {
     return ((x >= 0 && x < 2 * _radius + 1) &&
             (y >= 0 && y < 2 * _radius + 1) &&
@@ -63,7 +68,8 @@ public class Grid {
   public double getHexRadius() {
     return _hexRadius;
   }
-  
+
+  // Converts cube coordinates to pixel coordinates; unused
   public double[] cubeToPixel(int x, int y, int z) {
     double[] ret = new double[2];
     ret[0] = _centerX + x * 1.5 * _hexRadius;
@@ -71,6 +77,7 @@ public class Grid {
     return ret;
   }
 
+  // Converts pixel coordinates to cube coordinates; unused
   public int[] pixelToCube(double xcor, double ycor) {
     int[] ret = new int[3];
     ret[0] = (int) ((xcor - _centerX) / (1.5 * _hexRadius));
@@ -78,7 +85,8 @@ public class Grid {
     ret[2] = -ret[0] - ret[1];
     return ret;
   }
-  
+
+  // Determines which hex is being hovered over
   public Hex whichHex(double xcor, double ycor) {
     for (Hex hex : _list)
       if (hex.contains(xcor, ycor))
@@ -107,6 +115,7 @@ public class Grid {
     _active = new ArrayList<Hex>();
   }
 
+  // Returns a priority queue of hexes ordered by distance from a center hex 
   public PriorityQueue<Hex> gridToPQ(Hex center) {
     Comparator<Hex> c = new HexComparator(center);
     PriorityQueue<Hex> ret = new PriorityQueue<Hex>(_hexCount, c);
@@ -117,6 +126,7 @@ public class Grid {
     return ret;
   }
 
+  // Returns a list of hexes in a given radius
   public ArrayList<Hex> hexesInRadius(Hex hex, int r) {
     PriorityQueue<Hex> pq = gridToPQ(hex);
     ArrayList<Hex> ret = new ArrayList<Hex>();

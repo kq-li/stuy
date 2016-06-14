@@ -1,8 +1,11 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
+import java.io.*;
+import java.util.*;
+import javax.imageio.*;
 import javax.swing.*;
 
 public class Hex {
@@ -15,6 +18,8 @@ public class Hex {
   protected Path2D.Double _shape;
 
   public static final Color DEFAULT = Color.BLACK;
+  public static final Color MOVE = Color.CYAN;
+  public static final Color ATTACK = Color.RED;
   public static final Color HOVER = Color.WHITE;
   public static final Color OUTLINE_DEFAULT = Color.WHITE;
   public static final Color OUTLINE_HOVER = Color.GREEN;
@@ -146,6 +151,7 @@ public class Hex {
     return getShape().contains(x, y);
   }
 
+  // Math to find distance between two hexes using cube coordinates
   public int distanceTo(Hex other) {
     return (Math.abs(other.getX() - getX()) +
             Math.abs(other.getY() - getY()) +

@@ -1,7 +1,9 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.*;
+import java.io.*;
 import java.util.*;
+import javax.imageio.*;
 import javax.swing.*;
 
 public class Player extends Entity {
@@ -10,20 +12,20 @@ public class Player extends Entity {
   protected ArrayList<Projectile> _projectiles;
   protected Projectile _projectile;
 
-  public static final Color PLAYER_COLOR = Color.GREEN;
-  public static final Color PLAYER_OUTLINE_COLOR = Color.BLACK;
-  public static final Color OTHER_COLOR = Color.RED;
-  public static final Color OTHER_OUTLINE_COLOR = Color.BLACK;
+  public static final Color PLAYER = Color.GREEN;
+  public static final Color PLAYER_OUTLINE = Color.BLACK;
+  public static final Color OTHER = Color.RED;
+  public static final Color OTHER_OUTLINE = Color.BLACK;
   
-  public Player(double xcor, double ycor, double radius, Hex cur) {
-    this(10, 10, 1, 1, 5, 5, xcor, ycor, radius, cur);
+  public Player(double xcor, double ycor, double radius, Hex cur, int number) {
+    this(10, 10, 1, 1, 5, 5, xcor, ycor, radius, cur, number);
   }
 
   public Player(int curHealth, int maxHealth,
                 int curMoves, int maxMoves,
                 int range, int damage,
                 double xcor, double ycor,
-                double radius, Hex cur) {
+                double radius, Hex cur, int number) {
     super(xcor, ycor, radius, cur);
     _curHealth = curHealth;
     _maxHealth = maxHealth;
@@ -31,9 +33,11 @@ public class Player extends Entity {
     _maxMoves = maxMoves;
     _range = range;
     _damage = damage;
+    _number = number;
     _tracer = new Tracer(xcor, ycor, 0.5 * radius, cur);
     _projectiles = new ArrayList<Projectile>();
     _projectile = null;
+    _cur.setPlayer(this);
   }
 
   public int getHealth() {
@@ -60,21 +64,42 @@ public class Player extends Entity {
     return _range;
   }
 
+  public int getNumber() {
+    return _number;
+  }
+
+  // Move the player to its tracer
   public void move() {
     followTracer();
     _tracer.reset();
     resetMoves();
   }
 
+  // Update various player states
   public void update() {
     if (_curHealth <= 0)
       _shouldExist = false;
+
+    resetCurProjectile();
   }
 
+  // Wrapper for canceling movement
+  public void resetMove() {
+    resetMoves();
+    resetTracer();
+  }
+
+  // Wrapper for canceling attack
+  public void resetAttack() {
+    if (_projectile != null)
+      _projectile.destroy();
+  }
+  
   public void resetMoves() {
     _curMoves = _maxMoves;
   }
 
+  // Overriden moveTo method
   public void moveTo(Hex hex) {
     _cur.removePlayer();
     super.moveTo(hex);
@@ -82,12 +107,10 @@ public class Player extends Entity {
   }
 
   public void followTracer() {
-    Hex hex = _tracer.advance();
-
-    while (hex != null) {
+    Hex hex;
+    
+    while ((hex = _tracer.advance()) != null) 
       moveTo(hex);
-      hex = _tracer.advance();
-    }
   }
 
   public Tracer getTracer() {
@@ -125,5 +148,8 @@ public class Player extends Entity {
 
   public void removeProjectile(Projectile projectile) {
     _projectiles.remove(projectile);
+
+    if (projectile == _projectile)
+      _projectile = null;
   }
 }
