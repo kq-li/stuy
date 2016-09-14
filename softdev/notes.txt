@@ -1,0 +1,7 @@
+09/13/2016
+Aim: Take a trip down memory lane
+Do Now: In small groups (~4), discuss some of the similarities and differences between Java and Python.
+
+09/14/2016
+Aim: Git up! Git on up!
+Do Now: Go to the workshop page on github
