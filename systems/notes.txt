@@ -1,0 +1,19 @@
+09/14/2016
+Aim: Variables are the spice of life.
+Do Now: What are the primitive variable types in Java?
+
+C primitives:
+int         4B        -2^31 to 2^31 - 1    ~2.1b
+short       2B        -2^15 to 2^15 - 1    32768
+long        8B        -2^63 to 2^63 - 1    big
+char        1B        -2^7 to 2^7 - 1      256
+
+float       4B        7 digits of precision
+double      8B        14 digits of precision
+
+All primitives in C are numeric - the only differences between them are floating
+point vs integer and size of variable.
+
+Size can be platform-dependent.
+sizeof(<TYPE>) can be used to find the size in bytes
+    ex: sizeof(int)
