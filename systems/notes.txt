@@ -1,4 +1,5 @@
 09/14/2016
+                                                
 Aim: Variables are the spice of life.
 Do Now: What are the primitive variable types in Java?
 
@@ -17,3 +18,31 @@ point vs integer and size of variable.
 Size can be platform-dependent.
 sizeof(<TYPE>) can be used to find the size in bytes
     ex: sizeof(int)
+
+09/13/2016
+Aim: Don't forget to read the fine print
+Do Now: What is the smallest variable type that could be used to store the
+        following values (using standard sizes)?
+
+1) 5 - char
+2) -30,000 - long
+3) 255 - int
+4) 5,000,000,000 - long
+
+C Primitive Variable Types
+  All boolean values are numbers
+    0 -> false
+    anything else -> true
+
+printf
+  The most important C function!
+
+  Prints formatted strings
+
+  printf(<string literal>, [<var1>, <var2>, ...])
+
+  
+
+  
+  
+        
