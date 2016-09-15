@@ -5,3 +5,4 @@ Do Now: In small groups (~4), discuss some of the similarities and differences b
 09/14/2016
 Aim: Git up! Git on up!
 Do Now: Go to the workshop page on github
+
