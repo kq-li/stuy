@@ -1,47 +1,50 @@
 09/14/2016
-                                                
-Aim: Variables are the spice of life.
-Do Now: What are the primitive variable types in Java?
+  Aim: Variables are the spice of life.
+  Do Now: What are the primitive variable types in Java?
 
-C primitives:
-int         4B        -2^31 to 2^31 - 1    ~2.1b
-short       2B        -2^15 to 2^15 - 1    32768
-long        8B        -2^63 to 2^63 - 1    big
-char        1B        -2^7 to 2^7 - 1      256
+  C primitives:
+  int         4B        -2^31 to 2^31 - 1    ~2.1b
+  short       2B        -2^15 to 2^15 - 1    32768
+  long        8B        -2^63 to 2^63 - 1    big
+  char        1B        -2^7 to 2^7 - 1      256
 
-float       4B        7 digits of precision
-double      8B        14 digits of precision
+  float       4B        7 digits of precision
+  double      8B        14 digits of precision
 
-All primitives in C are numeric - the only differences between them are floating
-point vs integer and size of variable.
+  All primitives in C are numeric - the only differences between them are floating
+  point vs integer and size of variable.
 
-Size can be platform-dependent.
-sizeof(<TYPE>) can be used to find the size in bytes
+  Size can be platform-dependent.
+  sizeof(<TYPE>) can be used to find the size in bytes
     ex: sizeof(int)
 
 09/13/2016
-Aim: Don't forget to read the fine print
-Do Now: What is the smallest variable type that could be used to store the
+  Aim: Don't forget to read the fine print
+  Do Now: What is the smallest variable type that could be used to store the
         following values (using standard sizes)?
 
-1) 5 - char
-2) -30,000 - long
-3) 255 - int
-4) 5,000,000,000 - long
+  1) 5 - char
+  2) -30,000 - long
+  3) 255 - int
+  4) 5,000,000,000 - long
 
-C Primitive Variable Types
-  All boolean values are numbers
-    0 -> false
-    anything else -> true
+  C Primitive Variable Types
+    All boolean values are numbers
+      0 -> false
+      anything else -> true
 
-printf
-  The most important C function!
+  printf
+    The most important C function!
 
-  Prints formatted strings
+    Prints formatted strings
 
-  printf(<string literal>, [<var1>, <var2>, ...])
+    printf(<string literal>, [<var1>, <var2>, ...])
 
-  
+09/19/2016
+  Aim: A vast array of possibilities
+  Do Now: Turn to your neighbors and discuss the things that came up
+          while you were working on the euler assignment. What did you
+          find surprising or confusing, helpful or harmful?
 
   
   
