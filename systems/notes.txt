@@ -21,7 +21,7 @@
 09/13/2016
   Aim: Don't forget to read the fine print
   Do Now: What is the smallest variable type that could be used to store the
-        following values (using standard sizes)?
+          following values (using standard sizes)?
 
   1) 5 - char
   2) -30,000 - long
@@ -46,6 +46,6 @@
           while you were working on the euler assignment. What did you
           find surprising or confusing, helpful or harmful?
 
-  
-  
-        
+
+
+
