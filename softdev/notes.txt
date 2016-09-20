@@ -32,3 +32,8 @@
         jinja2
           HTML template engine.
           Easily create multiple pages that share styles and content.
+
+09/20/2016
+  Aim: There's a webserver in my flask?
+  Do Now: Write a python function that simply prints a message
+          to standard out. Then call the function in the same program.
