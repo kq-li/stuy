@@ -46,6 +46,15 @@
           while you were working on the euler assignment. What did you
           find surprising or confusing, helpful or harmful?
 
+09/20/2016
+  Aim: What's the point of it all?
+  Do Now: Declare a regular variable and an array in a C program.
+          Then print out the size of each.
 
-
+  Pointers - Now the fun really starts
+    Variables designed to store memory addresses (think references in java)
+    * is used to declare a variable as a pointer type
+      int *p
+      double *q
+      char *r
 
