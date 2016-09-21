@@ -37,3 +37,16 @@
   Aim: There's a webserver in my flask?
   Do Now: Write a python function that simply prints a message
           to standard out. Then call the function in the same program.
+
+09/21/2016
+  Aim: HTML Jinja Warrior
+  Do Now: Write a basic HTML file with the correct headers and sections.
+          
+  HTML Templates (jinja2)
+    Takes a lot of the HTML out of your python code.
+    Template files must be stored in a templates directory at the same level
+    as your Flask app file.
+
+    render_template(file, var1, var2, ...)
+      Flask function to take a template file and return it as a string
+      Jinja2 has its own language to make templates more powerful
