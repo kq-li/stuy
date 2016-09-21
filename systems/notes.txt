@@ -57,4 +57,30 @@
       int *p
       double *q
       char *r
+      
+09/21/2016
+  Aim: Try not to hurt yourself, the point is sharp.
+
+  More Pointer Fun
+    Pointer arithmetic
+      Declaring a pointer as a specific type allows you to add to and subtract
+      from the pointer by the size of its associated type.
+
+        int *ip;
+        long *lp;
+        ip++; // adds 4 to ip
+        lp++; // adds 8 to lp
+
+      Pointer arithmetic only works with + and - of integers.
+    Array variables are immutable pointers.
+
+    De-reference
+      * is also used as the de-reference operator. It accesses the value at the
+      memory location stored in a pointer
+
+        int i = 5;
+        int *ip = &i;
+        *ip++; // this sets i to 6
+
+      Dereferencing takes priority over most operations, barring only ++/--.
 
