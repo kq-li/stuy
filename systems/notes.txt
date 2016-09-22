@@ -84,3 +84,28 @@
 
       Dereferencing takes priority over most operations, barring only ++/--.
 
+09/22/2016
+  Aim: How to write functioning code
+  Do Now: Write a c program with a simple function.
+          Call the function in main()
+
+  Writing functions
+    Function headers:
+      <return type> <name>(<parameters>)
+
+    You must declare a function before you use it.
+
+    This can be done in a few ways:
+      Write the entire function at the top of your code,
+      making sure to keep the order correct.
+
+      Write the function headers at the top of your code,
+      and provide the full definition later.cz-shortcut-listen
+
+      Put all the function headers in a separate header
+      file (file extension .h). Then include that file in
+      your .c file and provide the definitions there.
+
+    All C functions are "pass by value"
+      A parameter is a copy of the variable passed into
+      the function. The original variable is not touched.
