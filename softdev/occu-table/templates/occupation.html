@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Occu-Table
+    </title>
+    <link rel="stylesheet" type="text/css"
+          href="{{url_for('static', filename='css/occupation.css')}}">
+  </head>
+  <body>
+    <table>
+      <tr>
+        <td>
+          <b>
+            Occupation
+          </b>
+        </td>
+        <td>
+          <b>
+            Weight
+          </b>
+        </td>
+      </tr>
+      {% for key in dic %}
+      <tr>
+        <td>
+          {{key}}
+        </td>
+        <td>
+          {{dic[key]}}
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
