@@ -24,10 +24,16 @@
       {% for key in dic %}
       <tr>
         <td>
+          {% if dic[key]|length == 2 %}
+          <a href={{dic[key][1]}}>
+            {{key}}
+          </a>
+          {% else %}
           {{key}}
+          {% endif %}
         </td>
         <td>
-          {{dic[key]}}
+          {{dic[key][0]}}
         </td>
       </tr>
       {% endfor %}
