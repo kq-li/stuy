@@ -100,7 +100,7 @@
       making sure to keep the order correct.
 
       Write the function headers at the top of your code,
-      and provide the full definition later.cz-shortcut-listen
+      and provide the full definition later.
 
       Put all the function headers in a separate header
       file (file extension .h). Then include that file in
@@ -109,3 +109,36 @@
     All C functions are "pass by value"
       A parameter is a copy of the variable passed into
       the function. The original variable is not touched.
+
+09/23/2016
+  Aim: Time to stop stringing you along.
+  Do Now: Create a char array of a reasonable size.
+          Print it out using %s as the formatting character.
+
+  C strings
+    Strings are character arrays that end with a null character ('', 0, '\0')
+
+    The terminating null character is a convention, but string functions
+    will not work correctly without it.
+
+    When you create a literal string using "", an immutable string is created
+    in memory, so if you create the same string literal again, the computer does
+    not need to allocate more memory. These strings are always null terminated.
+
+  Valid ways to declare strings:
+    char s[256];
+      Normal array declaration, allocates 256 bytes, nothing
+      is set automatically.
+
+    char s[256] = "Imagine";
+      Allocates 256 bytes. Creates the immutable string "Imagine" and then
+      copies it (including the terminating null) into the array.
+
+    char s[] = "Tuesday";
+      Allocates 8 bytes. Creates the immutable string "Tuesday" and then
+      copies it (including the terminating null) into the array.
+
+    char *s = "Mankind";
+      Creates the immutable string "Mankind", and returns a pointer to that
+      string. Since the pointer is to an immutable piece of memory, you
+      cannot modify things created in this way.
