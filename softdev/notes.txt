@@ -50,3 +50,13 @@
     render_template(file, var1, var2, ...)
       Flask function to take a template file and return it as a string
       Jinja2 has its own language to make templates more powerful
+
+09/26/2016
+  Aim: Your desktop might not be organized, but your code will be!
+
+  Example Flask Organization
+    flask-app/
+      app.py      the actual flask application
+      templates/  all your templates
+      utils/      extra python modules
+      data/       data files
