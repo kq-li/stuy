@@ -142,3 +142,8 @@
       Creates the immutable string "Mankind", and returns a pointer to that
       string. Since the pointer is to an immutable piece of memory, you
       cannot modify things created in this way.
+
+09/26/2016
+  Aim: A string of functions.
+  Do Now: Write a function that returns the length of a string,
+          assuming it is null-terminated.
