@@ -1,9 +1,6 @@
 import random
 import urllib
 import collections
-from flask import Flask, render_template;
-
-app = Flask(__name__);
 
 def parseLine(line):
   comma = line.rfind(',')
@@ -11,7 +8,7 @@ def parseLine(line):
   value = line[comma + 1:]
   return (key, value)
 
-def genDict(filename = 'occupations.csv'):
+def genDict(filename = 'data/occupations.csv'):
   s = open(filename).read()
   lines = s.split('\r\n')[1:-1]
   dic = collections.OrderedDict()
@@ -29,13 +26,3 @@ def genDict(filename = 'occupations.csv'):
   dic[key] = [value]
 
   return dic
-  
-@app.route('/occupations')
-def renderOccupationTable():
-  dic = genDict()
-  print dic
-  return render_template('occupation.html', dic = dic)  
-
-if __name__ == '__main__':
-  app.debug = True
-  app.run()

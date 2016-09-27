@@ -60,3 +60,18 @@
       templates/  all your templates
       utils/      extra python modules
       data/       data files
+
+09/27/2016
+  Aim: Flask: serving artisanal web pages since 2010
+
+  File paths and the flask server
+    When a flask app runs, the directory where the flask file exists
+    is considered the root directory of the web server.
+
+    The flask web server is configured to serve pages only when:
+      1   The requested page is a route in the flask app
+      2   The requested page/resource is in the static directory
+
+    All these considerations are based on using Flask's built in webserver
+    and are valid during development. When deploying on an existing webserver
+    (apache2, nginx), these settings may be different.
