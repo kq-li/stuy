@@ -75,3 +75,13 @@
     All these considerations are based on using Flask's built in webserver
     and are valid during development. When deploying on an existing webserver
     (apache2, nginx), these settings may be different.
+
+09/28/2016
+  Aim: Requesting assistance
+  Do Now: Write an html file that contains a form with a single text box
+          and a submit button.
+
+          Write a flask app where the root route renders the
+          html form as a template.
+
+  Request object
