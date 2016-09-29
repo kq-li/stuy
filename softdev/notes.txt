@@ -84,4 +84,21 @@
           Write a flask app where the root route renders the
           html form as a template.
 
+09/29/2016
+  Aim: Don't forget to include POSTage
+  Do Now: Open up your form flask app from yesterday.
+  
   Request object
+    Stores information about incoming requests.
+
+    Notable fields
+      request.headers
+        HTML headers sent from the browser
+      request.method
+        The request method (GET or POST)
+      request.args
+        The arguments in a query string from a GET request
+      request.form
+        The arguments sent in a POST request
+
+      request.args and request.form are immutable

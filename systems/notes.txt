@@ -147,3 +147,15 @@
   Aim: A string of functions.
   Do Now: Write a function that returns the length of a string,
           assuming it is null-terminated.
+
+09/29/2016
+  Aim: Make it so
+
+  Make
+    Create compiling instructions and setup dependencies
+
+    Standard name for the file is makefile
+
+    Syntax:
+      <target>: <dependencies>
+      <tab><rules>
