@@ -102,3 +102,49 @@
         The arguments sent in a POST request
 
       request.args and request.form are immutable
+
+10/04/2016
+  Aim: C is for Cookie, but Sessions are Secure
+
+  Cookies
+    Cookies are files that websites will save to your web browser to store
+    information on a local machine.
+
+    They are useful for keeping track of persistent information, like
+    login credentials.
+
+  Sessions
+    Flask sessions are securely signed cookies.
+
+    Since they are encrypted, they cannot be modified by the user of the
+    local machine.
+
+    The session object works exactly like a dictionary
+      Add data to a session:
+        session[<key>] = <data>
+      Remove data from a session:
+        session.pop(<key>)
+
+    To encrypt a session, set a private key in the app:
+      app.secret_key = <private key>
+
+      A good way to get random data: os.urandom(32) returns 32 bits of random
+      data as a string
+
+      Never publish the secret key in a public place (GitHub)!!
+
+10/05/2016
+  Aim: Url binding is the
+
+  url_for
+    Flask function that will build the correct url for a particular function.
+
+    Syntax: url_for(<function>)
+
+  redirect
+    Flask function that will redirect a call to one route to a
+    different response.
+
+    Often used in combination with url_for.
+
+    Example: return redirect(url_for('login'))

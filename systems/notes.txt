@@ -160,3 +160,43 @@
       <target>: <dependencies>
       <tab><rules>
 
+10/04/2016
+  Aim: If these files won't behave, we'll have to separate them!
+
+  Separate compilation
+    You can combine multiple c files into a c program by including them all in
+    one gcc command.
+    
+      gcc test.c string.c foo.c woohoo.c
+
+    You cannot have duplicate function or global variable names across the files.
+
+  gcc -c
+    Generate a compiled "object", or .o file
+
+    Does not create a fully functional program, but is compiled code
+
+    .o files can be linked with .c files through gcc
+
+10/05/2016
+  Aim: malloc & free: the dynamic duo!
+
+  0: malloc, free
+  1: calloc, realloc
+
+  malloc(int x)
+    Allocates x bytes of memory (from the heap).
+
+  calloc(int n, int x)
+    Allocates n * x bytes of memory, ensuring that each part is set to 0.
+
+  realloc(void *p, int x)
+    Changes the amount of memory allocated to a given block.
+
+    p must be a pointer to the beginning of an allocated block of memory,
+    but it does not have to be the original pointer.
+
+  free(void *p)
+    Releases dynamically allocated memory.
+
+  
