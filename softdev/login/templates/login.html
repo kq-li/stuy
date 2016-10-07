@@ -8,8 +8,9 @@
   </head>
   <body>
     <form action="login" method="POST">
-      Login
-      <br>
+      <h1>
+        Login
+      </h1>
       {{message}}
       <br>
       <input type="text" class="text-box" name="username" placeholder="Username" />
@@ -20,6 +21,6 @@
     </form>
     <br>
     Don't have an account? Register
-    <a href={{url_for('registerForm')}}> here.</a>
+    <a href={{url_for('registerForm')}}> here</a>.
   </body>
 </html>
