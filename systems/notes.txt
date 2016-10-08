@@ -160,7 +160,7 @@
       <target>: <dependencies>
       <tab><rules>
 
-10/04/2016
+10/05/2016
   Aim: If these files won't behave, we'll have to separate them!
 
   Separate compilation
@@ -178,7 +178,7 @@
 
     .o files can be linked with .c files through gcc
 
-10/05/2016
+10/06/2016
   Aim: malloc & free: the dynamic duo!
 
   0: malloc, free
@@ -198,5 +198,34 @@
 
   free(void *p)
     Releases dynamically allocated memory.
+    
+10/07/2016
+  Aim: Structured programming
 
-  
+  void *
+    The dynamic memory functions deal in arbitrary blocks of memory.
+    There is no regular type associated with the block.
+
+    void * is considered to be a pointer to a 1 byte block of memory,
+    so pointer arithmetic will be based on 1.
+
+    Whenever possible you should typecast void * values to the appropriate type.
+
+      int *ip;
+      ip = (int *) malloc(5 * sizeof(int));
+
+  struct
+    A collection of values in a single data type
+
+    struct {
+      int a;
+      char x;
+    } s;
+
+      Here, s is a variable of type
+        struct {
+          int a;
+          char x;
+        }.
+
+      
