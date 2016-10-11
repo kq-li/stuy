@@ -228,4 +228,29 @@
           char x;
         }.
 
-      
+10/11/2016
+  Aim: Get Dem Bugs
+  Do Now: What's wrong with this function?
+
+  struct node *insert_front(struct node *n, int i) {
+    struct node new;
+
+    new.i = i;
+    new.next = n;
+
+    return &new;
+  }
+
+  
+  typedef
+    Provide a new name for an existing data type.
+
+    typedef <real type> <new name>;
+      typedef unsigned long size_t;
+      typedef struct {
+        int a;
+        char x;
+      } bar;
+
+    gdb - GNU Debugger
+      Allows you to get detailed information about a program while running.
