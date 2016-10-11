@@ -254,3 +254,5 @@
 
     gdb - GNU Debugger
       Allows you to get detailed information about a program while running.
+
+      Add the -g flag to gcc to generate debugging symbols.
