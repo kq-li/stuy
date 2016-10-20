@@ -256,3 +256,65 @@
       Allows you to get detailed information about a program while running.
 
       Add the -g flag to gcc to generate debugging symbols.
+
+      Basic usage: $ gdb <program>
+
+      Commands in gdb shell
+        run: runs the program until it ends/crashes
+        list: show the lines of code run around a crash
+        print <var>: print a variable
+        backtrace: show the current stack
+
+10/13/2016
+  Aim:
+
+  valgrind to find memory errors
+
+10/18/2016
+  Aim: C, the ultimate hipster, using # decades before it was cool
+
+  #
+    Used to provide preprocessor instructions.
+    These directives are handled before the compiler really kicks in.
+
+    #include <<library>> OR #include "<library>"
+      Link libraries to your code.
+
+    #define <name> <value>
+      Replace all occurrences of NAME with VALUE
+
+      #define TRUE 1
+
+      #define SQUARE(x) x * x
+      ...
+      int y = SQUARE(9); --> int y = 9 * 9;
+
+    #ifndef <identifier>
+    <code>
+    #endif
+      If the identefier has been defined, itnore all the code
+      up until the endif statement.
+
+10/19/2016
+  Aim: A bit of wisdom
+
+  Do Now: >> and << are binary operators, test them out with small integers
+          and see if you can figure out what they do.
+      
+  Bitwise operators
+    << left shift, >> right shift
+      Move all bits to the left/right.
+      Left shift pads with 0s, right shift truncates.
+      Left and right shift do not overflow end bits into adjacent memory.
+
+    ~ negation
+      Flip every bit.
+
+    | or
+      Perform or for each pair of bits in (a, b).
+
+    & and
+      Perform and for each pair of bits in (a, b).
+
+    ^ xor
+      Perform xor for each pair of bits in (a, b).

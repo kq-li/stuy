@@ -148,3 +148,105 @@
     Often used in combination with url_for.
 
     Example: return redirect(url_for('login'))
+
+10/13/2016
+  Aim: All your data are belong to us
+
+  Relational database
+    Database that stores information as a collection of tables.
+
+    Field: Column data in a relational DB
+    Record: Row in an RDB
+
+    Data can be linked between tables based on field values.
+
+  SQL (Structured Query Language)
+    Standard language designed to work with relational databases.
+
+    SQL is used for many major db programs, though the implementations
+    may not be (mostly are not) compatible.
+
+    MySQL, PostgreSQL, SQLite, Oracle are different SQL implementations
+
+  SQLite
+    SQL implementation that relies entirely on function calls in the parent
+    program. There is no database server.
+
+    All database information is stored in a single file.
+
+    Data is dynamically typed as values are inserted into a table.
+
+  Basic SQLite Operations
+    CREATE TABLE <name> (<column name> <data type>, ...)
+      Add a table to a database
+
+      The data type will help to convert entered values to a suggested type.
+        TEXT, INTEGER, REAL, NUMERIC, BLOB
+          NUMERIC defaults to an integer, but can also be a floating point.
+          BLOB means no suggested type.
+
+        Columns can be given a PRIMARY KEY attribute, denoting that every entry
+        in that column is unique and cannot be NULL.
+
+        Columns can be given a NOT NULL attribute, denoting that no entry can
+        be NULL.
+
+    INSERT INTO <table name> VALUES (<field1>, <field2>, ...)
+      Insert record into table, matching respective values.
+
+    SELECT <column> FROM <name>
+
+  SQLite Shell Commands
+    .quit
+    .tables
+    .header on|off
+    .mode column|csv|list|html|insert|line|tabs
+
+10/17/2016
+  Aim: SQLite, the low-fat alternative to SQL
+      
+  python sqlite module
+    import sqlite3
+
+    connect
+      Open/create an sqlite database.
+
+      If the database does not exist, create it.
+
+      db = sqlite3.connect(<db name>)
+
+    cursor
+      Create a database cursor object that will allow
+      you to perform operation on the database.
+
+      c = db.cursor()
+
+    execute
+      Cursor method to perform the provided SQL operation, given as a string.
+  
+      c.execute(<SQL query>)
+
+  SQL SELECT statement
+    Used to get data from a database.
+
+    Creates a results table based on the query.
+
+    SELECT <column 1>, ... FROM <table 1>, ...;
+      Returns a new table containing only the requested columns from
+      the request tables.
+
+      SELECT name FROM students;
+
+10/18/2016
+  Aim: WHERE did I put that data?
+
+  Do Now: Using the database from the last assignment, write SELECT
+          statements to do the following:
+
+          1. Generate a table containing course codes and grades
+          2. Generate a table with student names, ids, and grades
+
+  WHERE
+    Allows you to put restrictions on the results of a SELECT statement.
+
+    SELECT * FROM courses WHERE mark < 65;
