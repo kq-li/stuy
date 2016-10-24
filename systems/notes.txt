@@ -318,3 +318,36 @@
 
     ^ xor
       Perform xor for each pair of bits in (a, b).
+
+10/21/2016
+  Aim: File this under useful information.
+
+  Do Now: What are the different kinds of file permissions?
+
+  File permissions
+    3 types:
+      read, write, execute
+
+    Permissions can be represented as 3 digit binary or 1 digit octal numbers.
+      100 = 4 -> read-only
+      111 = 7 -> read, write, execute
+
+    There are three permission areas: user, group, others.
+      Each can have its own permissions.
+        644 -> user: read+write, group: read, other: read
+
+  File Table
+    A list of all files used by a program while it is running.
+    
+    Contains basic information like the file's location and size.
+      
+    The file table has a limited size (power of 2), usually 256.
+      The size is returned by getdtablesize()
+
+    Each file is given an integer index, starting at 0; this is referred
+    to as the file descriptor.
+
+    There are three files always open in the table:
+      0 or STDIN_FILENO: stdin
+      1 or STDOUT_FILENO: stdout
+      2 or STDERR_FILENO: stderr
