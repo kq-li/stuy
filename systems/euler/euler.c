@@ -81,7 +81,7 @@ long problem4() {
   
   for (i = 100; i < 1000; i++) 
     for (j = 100; j < 1000; j++)
-      if (i * j > max)
+      if (i * j > max && isPalindrome(i * j))
         max = i * j;
 
   return max;
@@ -91,8 +91,6 @@ int main() {
   printf("%ld\n", problem1());
   printf("%ld\n", problem2());
   printf("%ld\n", problem3());
-  printf("%ld\n", isPalindrome(900009));
-  printf("%ld\n", isPalindrome(9000009));
-  printf("%ld\n", isPalindrome(9000008));
+  printf("%ld\n", problem4());
   return 0;
 }
