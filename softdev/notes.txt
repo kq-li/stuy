@@ -250,3 +250,179 @@
     Allows you to put restrictions on the results of a SELECT statement.
 
     SELECT * FROM courses WHERE mark < 65;
+
+11/01/2016
+  Aim: Extending your template knowledge.
+
+  Do Now: Write a flask app with a single route and a simple HTML template.
+
+  Extending HTML templates
+    Any template can be "inherited" by others.
+
+    To extend a template: {% extends "<TEMPLATE>" %}
+
+    You can define sections to override inside:
+      {% block <NAME> %}
+      {% endblock %}
+
+11/15/2016
+	Aim: Stuylin'
+
+	Cascading Style Sheets (CSS)
+		Created to separate the presentation of an HTML/XML page and its content.
+		Basic syntax:
+			<PROPERTY>: <VALUE>;
+
+			color: lightsteelblue;
+			text-align: center;
+			border: 10px;
+
+		There are 3 ways to incorporate CSS into a page: inline, internal
+		stylesheet, and external stylesheet.
+
+		Inline CSS
+			Add CSS to the style attribute of a tag
+
+			<TAG style="<CSS>">
+
+			<p style="color: green; font-size: 2em">...</p>
+
+		Internal Style Sheet
+			Add a <style> element to the <head> section of the page.
+			Include all your CSS inside the <style> block.
+
+			Internal and external style sheets require the addition of a selector
+			so that it is clear which element you are styling.
+
+			<SELECTOR> {
+				<CSS>
+			}
+
+			h1 {
+				color: #FF00FF;
+			}
+
+		External Style Sheet
+			Create a separate .css file the contains all your CSS.
+			It cannot contain any other kind of code, including HTML or XML.
+
+			Include a link to the CSS file inside the <head> block.
+
+			<head>
+				<link rel="stylesheet" type="text/css" href="<PATH>">
+			</head>
+
+		Styles will generally be inherited by elements inside other elements.
+			body {
+				color: green;
+			}
+
+			h1 {
+				position: fixed;
+				top: 10px;
+			}
+				
+			h1 elements will be green.
+
+11/17/2016
+	Aim: Stay classy, CSS.
+
+	<div> tag
+		divs are container elements whose sole purpose is to define a section on
+		the page that should be considered one group.
+
+	class attribute
+		All HTML elements can have a class attribute. It is an identifier that can
+		be applied to multiple elements.
+			<div class="navbar">
+			<h2 class="new_chapter bold">
+
+		Classes can be used as CSS selectors by putting a . before the class name.
+			.new_chapter {
+				font-family: "Times New Roman", Times, serif;
+				text-align: center;
+			}
+
+	id attribute
+		All HTML attributes can have an id attribute. It is an identifier that
+		should only be applied to a single element.
+			<div id="main_content">
+
+		id names can be used in <a> tags as the href target.
+			<a href="#main_content">
+
+		ids can be used as CSS selectors by putting a # before the id name.
+			#main_content {
+				border: 2px solid goldenrod;
+			}
+
+11/28/2016
+	Aim: After being framed, you might need to take a REST
+
+	Tips for using frameworks
+		Many files have .min equivalents, which contains the same code without any
+		extra formatting.
+
+		jQuery is a popular JavaScript library used in many frameworks.
+
+		The order in which you include JavaScript files is important.
+
+		JavaScript in <head> or at the end of <body>?
+			Yet another programmer holy war
+
+			<head>
+				Advantages
+					Scripts will definitely be loaded before anything else, so page
+					elements that need scripting will be attached
+
+				Disadvantages
+					Loading scripts will take longer and the entire page will be delayed
+
+			<body>
+				Advantages
+					Page content loads much faster
+
+				Disadvantages
+					Page might be fully loaded while script files continue to be
+					downloaded and parsed
+
+	REST APIs
+		API (Application Program Interface)
+			A published set of protocols that can be used to have your program interact
+			with another program/service.
+
+		REST (REpresentational State Transfer)
+			APIs that transmit data back after receiving an HTTP[S] request.
+
+			Returned data can be in various formats: HTML, XML, JSON, etc.
+
+			JSON (JavaScript Object Notation)
+				Standard way of representing data. Can be easily translated into a
+				python dictionary.
+
+11/29/2016
+	Aim: Web crawling pythons
+
+	Making and parsing a REST call in Python
+		urllib2
+			Library to handle URLs
+
+			u = urllib2.urlopen(url)
+				Opens a URL to be read by your program.
+
+				u.geturl()
+					Returns the actual URL (in case of redirects).
+
+				u.info()
+					Returns the HTTP[S] header information.
+
+				u.read()
+					Returns the contents of the target webpage.
+		json
+			Library to work with JSON data.
+
+			d = json.loads(s)
+				Turns a JSON object string into a dictionary.
+
+			s = json.dumps(d)
+				Turns a Python dictionary into a JSON object string.

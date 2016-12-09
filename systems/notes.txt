@@ -365,7 +365,7 @@
   open(<path>, <flags>, <mode>) -  <fcntl.h>
     Add a file to the file table and returns its file descriptor.
 
-    If open fails, it retursn -1, storing extra error info (code) in errno.
+    If open fails, it returns -1, storing extra error info (code) in errno.
 
       errno is an int variable that can be found in <errno.h>; using strerror
       (in <string.h>) on errno will return a string description of the error.
@@ -438,8 +438,518 @@
 
     Buffer must be a pointer.
       
-
-
+11/01/2016
+  Aim: Where do compsci priests live? In directory!
     
-      
+  Directories
+    A Unix directory is a file containign the names of the files withi
+    the directory, along with basic information like file type.
+
+    Moving files into/out of a directory means changing the directory file,
+    not actually moving any data.
+
+  opendir(<path>) - <dirent.h>
+    Open a directory file, returning a pointer to a directory stream (DIR *).
+
+    This will not change the cwd, it only allows your program to read the
+    contents of the directory file.
   
+  closedir(<directory stream>) - <dirent.h>
+    Closes the directory stream and frees the associated pointer.
+
+  readdir(<directory stream>) - <dirent.h>
+    Returns a pointer to the next entry in a directory stream, or NULL
+    if all entries have already been returned.
+
+  struct dirent - <sys/types.h>
+    Directory struct that contains the information stored in a directory file.
+
+    Some of the data members:
+      d_name: Name of file
+      d_type: File type as an int
+
+11/03/2016
+  Aim: Input? fgets about it!
+
+  getcwd(char *buffer, int n) - <unistd.h>
+    Get the current working directory (cwd) of a program.
+
+    Copies up to n characters of the path of the cwd into buffer.
+
+  chdir(char *path) - <unistd.h>
+    Change the working directory of a program.
+
+    Returns 0 if successful, -1 (and errno) if not.
+
+    Keep track of file paths while using chdir!
+
+  Command line arguments: int main(int argc, char *argv[])
+    Program name is considered the first command line argument.
+
+    argc: number of command line arguments
+    argv: array of command line arguments
+  
+  scanf(char *format, ...)
+    Reads in data from stdin using the format string to determine types.
+    Puts the data in each variable.
+    Variables must be pointers.
+
+    Example:
+      int i;
+      float f;
+      double d;
+
+      scanf("%d %f %lf", &i, &f, &d);
+
+11/04/2016
+  Aim: Sending mixed signals
+
+  fgets(char *s, int n, FILE *fp) - <stdio.h>
+    Read in from a file stream and store it in a stream.
+
+    Reads at most n - 1 characters from file stream fp and stores it in s.
+
+    File pointer
+      FILE * type, more complex than a file descriptor
+      stdin, stdout, stderror already file pointers
+
+11/07/2016
+	Aim: Are your processes running? - Then you should go out and catch them!
+
+	Processes
+		Every running program is a process. A process can create subprocesses,
+		but these are no different from regular processes.
+
+		A processor can handle 1 process per cyccle (per core). "Multitasking"
+		appears to happen because the processor switches between all the active
+		processes quickly.
+
+		pid
+			Every process has a unique identifier called the pid.
+			pid 1 is the init process.
+			Each entry is the /proc directory is a current pid.
+
+		getpid() - <unistd.h>
+			Returns pid of current process
+
+		getppid() - <unistd.h>
+			Returns pid of parent process
+
+	Signals
+		Limited way of sending information to a process.
+
+		$ kill <PID>
+			Command line utility to send a signal to a process.
+			Sends signal 15 (SIGTERM) to PID.
+
+		$ kill -<SIGNAL> <PID>
+			Sends SIGNAL to PID.
+
+		$ killall [-<SIGNAL>] <PROCESS>
+			Sends SIGTERM (or SIGNAL if provided) to all processes named PROCESS.
+
+		kill(int pid, int signal) - <signal.h>
+			Returns 0 on success or -1 (errno) on failure.
+
+		static void sighandler(int signo) - <signal.h>
+			Signal handler, necessary to handle signals.
+	
+11/10/2016
+	Aim: What the fork?
+
+	fork() - <unistd.h>
+		Creates a separate process based on the current one.
+
+		The new process is the child, the original is the parent.
+
+		The child process is a duplicate of the parent process. All parts of the
+		parent process are copied, including stack and heap memory and the file
+		table.
+
+		Returns 0 to the child and the child's PID to the parent or -1 (errno).
+
+		If a parent process ends before the child, the child's new parent PID is 1.
+	
+11/15/2016
+	Aim: Wait for it...
+
+	But what about threads you ask?
+		A quick note on threads: A thread is a separate executable entity similar
+		to a child process, except that a thread is not a standalone process.
+
+		It does not have its own memory space; instead, it shares its parent's
+		memory.
+
+	wait(int *status) - <unistd.h>
+		Stops a parent process from running until any child has provided status
+		information to the parent via a signal. (Usually the child has exited.)
+
+		Returns the pid of the child that exited, or -1 (errno).
+
+11/16/2016
+	Aim: Time to make an executive decision
+
+	Do Now: Look up execlp, execvp
+
+	execlp(char *path, char *arg, ...) - <unistd.h>
+	execvp(char *path, char *argv[]) - <unistd.h>
+		Runs an executable file, replacing the calling process.
+
+		execlp accepts arguments as a series of strings, the last of which must
+		be NULL.
+
+		execvp accepts arguments as an array of strings, which must be terminated
+		by (char *) NULL.
+
+11/17/2016
+	Aim: Let's take this to delimit!
+
+	strsep(char **src, char *delimiter) - <string.h>
+		Used for parsing a string with a common delimiter.
+
+		Locates the first occurrence of any of the delimiters specified and replaces
+		it with NULL.
+
+		Returns the beginning of the original string, setting the source string to
+		the string starting at 1 index past the location of the new NULL.
+
+11/22/2016
+	Aim: Redirection - how does it ... SQUIRREL
+
+	File Redirection
+		Changing the usual input/output behavior of a program.
+
+		Command line redirection
+			<COMMAND> > <FILE>
+				Redirects stdout to a file, overwriting the contents of that file.
+
+				ls > file_list
+
+			<command> >> <file>
+				Redirects stdout to a file, appending to the contents of that file.
+
+			<command> 2> <file>
+				Redirects stderr to a file, overwriting the contents of that file.
+
+			<command> 2>> <file>
+				Redirects stderror to a file, appending to the contents of the file.
+
+			<command> &> <file>
+				Redirect stdout and stderr.
+
+			<command> < <file>
+				Redirects stdin from a file.
+
+			<command> | <command>
+				Redirects stdout from one command to stdin of the next
+
+				ls | wc
+
+		Redirection in C programs
+			dup2(fd1, fd2) - <unistd.h>
+				Duplicates the behavior for fd1 at fd2, redirecting fd2 to fd1.
+				You will lose any reference to fd2 -- that file is closed.
+
+			dup(fd) - <unistd.h>
+				Duplicates an existing entry in the file table.
+				Returns a new file descriptor for the duplicate entry.
+
+11/29/2016
+	Aim: Sharing is caring!
+
+	Do Now:
+		Write a simple C program that creates a child process and have the
+		parent wait for the child to exit.
+
+		Create a primitive variable in the parent before forking, then modify
+		that variable in the child and print it out in both the child and
+		parent.
+
+	Shared Memory - <sys/shm.h>, <sys/ipc.h>, <sys/types.h>
+		A segment of heap memory that can be accessed by multiple processes.
+
+		Shared memory is accessed via some key that is known by any process that
+		needs to access it.
+
+		Shared memory does not get released when a program exits.
+
+		5 shared memory operations:
+			Create the segment (once)
+			Access the segment (once per process)
+			Attach the segment to a variable (once per process)
+			Detach the segment from a variable (once per process)
+			Remove the segment (once)
+
+		shmget(key_t key, size_t size, int flags)
+			Create or access a shared memory segment.
+
+			Returns a shared memory descriptor (similar idea to a file descriptor),
+			or -1 and sets errno if it fails.
+
+			key
+				Unique integer identifier for the shared memory segment (like a file
+				name).
+
+			size
+				Amount of memory to request.
+
+			flags
+				Includes permissions for the segment.
+
+				Combine with bitwise or.
+
+				IPC_CREAT
+					Create and zero out segment if it does not exist, otherwise grant
+					access to it.
+									
+				IPC_EXCL
+					Fail if the segment already exists and IPC_CREAT is on.
+
+			int sd = shmget(24601, 1024, IPC_CREAT | 0664);
+
+		shmat(int descriptor, void *address, int flags)
+			Attach a shared memory segment to a variable.
+
+			Returns a pointer to the segment or -1 (errno).
+
+			key
+				The return value of shmget.
+				
+			address
+				If 0, the OS will provide the appropriate address.
+
+			flags
+				Usually 0. There is one useful flag.
+
+				SHM_RDONLY
+					Make memory read only.
+
+11/30/2016
+	Aim: Memes
+
+	ipcs
+		Prints shared memory segments, among other information.
+
+	More shared memory
+		shmdt(void *pointer)
+			Detach a variable from a shared memory segment.
+
+			Returns 0 upon success, -1 upon failure.
+
+			pointer is the address used to access the segment.
+
+		shmctl(int descriptor, int command, struct shmid_ds *buffer)
+			Perform operations on the shared memory segment.
+
+			Each shared memory segment has metadata that can be stored in a struct
+			(struct shmid_ds).
+
+			Some of that data stored: last access time, size, creator pid, most recent
+			access pid.
+
+			descriptor
+				Return value of shmget.
+
+			command
+				IPC_RMID
+					Remove a shared memory segment.
+
+					Buffer argument can be 0.
+
+				IPC_STAT
+					Populate the buffer (struct shmid_ds) with information.
+
+				IPC_SET
+					Set some of th einformation for the segment to the info in buffer.
+
+		ftok(char *path, int x) - <sys/ipc.h>
+			Generate a key useful for IPC functions.
+
+			path
+				A path to some file that must be accessible by the program.
+
+			x
+				An int used to generate the key.
+
+			The same path and same x will always generate the same key.
+
+			int sd = shmget(ftok("dir/file", 12), 1024, IPC_CREAT | 0664);
+			
+12/05/2016
+	Aim: How do we flag down a resource?
+
+	Semaphores
+		Created by Edgser Dijkstra.
+
+		IPC construct used to control access to a shared resource (like a file or
+		shared memory).
+
+		Essentially, a semaphore is a counter that represents how many processes
+		can access a resource at any given time.
+			If a semaphore has a value of 3, then it can have 3 active "users".
+			If a semaphore has a value of 0, then it is "unavailable".
+			Mutexes are semaphores with a value of 1.
+
+		Most semaphore operations are "atomic", meaning they will not be split up
+		into multiple processor instructions.
+
+	Semaphore operations
+		Create a semaphore
+		
+		Set an initial value
+		
+		Up(S) / V(S)
+			Release the semaphore to signal you are done with its associated resource.
+
+			S++
+		Down(S) / P(S)
+			Attempt to take the semaphore.
+
+			If the semaphore is 0, wait for it to be available.
+
+			while (S == 0)
+				block
+
+			S--
+
+		Remove a semaphore
+
+	Sempahores in C - <sys/types.h>, <sys/ipc.h> <sys/sem.h>
+		semget(int key, int amount, int flags)
+			Create/Get access to a semaphore.
+
+			This is not the same as Up(S) or Down(S) - it does not modify the
+			semaphore.
+
+			Returns a semaphore descriptor or -1 (errno).
+
+			key
+				Unique semaphore identifier (use ftok).
+
+			amount
+				Semaphores are stored as sets with potentially many semaphores
+				together. This parameter sets the number of semaphores to
+				create/get.
+
+			flags
+				Includes permissions for the semaphore.
+
+				Combine with bitwise or.
+
+				IPC_CREAT
+					Create the semaphore at set value to 0.
+
+				IPC_EXCL
+					Fail if the semaphore already exists and IPC_CREAT is on.
+
+12/06/2016
+	Aim: What's a semaphore? To control resources!
+
+	ipcs to see current semaphores
+
+	Semaphores in C, cont'd.
+		semctl(int descriptor, int index, int operation[, union semun data])
+			Control the semaphore, including:
+				Set the semaphore's value
+				Remove the semaphore
+				Get the current value
+				Get information about the semaphore
+
+			These operations are not atomic.
+
+			descriptor
+				Return value of semget.
+
+			index
+				The index of the semaphore you want to control in the semaphore set
+				identified by the descriptor.
+
+				0 in a single semaphore set.
+
+			operation
+				A constant.
+
+				IPC_RMID
+					Remove the semaphore.
+
+				SETVAL
+					Set the value (requires data).
+
+				SETALL
+					Set the value of every semaphore in the set (requires data).
+
+				GETVAL
+					Return the value.
+
+				IPC_STAT
+					Populate buffer with information about the semaphore (requires data).
+
+			data
+				Requires union semun to be defined in the calling program as follows.
+
+				union semun {
+					int val; // Value for SETVAL
+					struct semid_ds; // Buffer for IPC_STAT, IPC_SET
+					unsigned short *array; // Array for GETALL, SETALL
+					struct seminfo *__buf; // Buffer for IPC_INFO (Linux-specific)
+				};
+
+				Unions are like structs, but are designed to hold only one of its children at once.
+
+		semop(int descriptor, int operation, struct sembuf *amount)
+			Perform semaphore operations.
+
+			All operations performed via semop are atomic!
+
+			descriptor
+				Return value of semget.
+
+			amount
+				The amount of semaphores you want to operate on in the semaphore set.
+
+				1 for a single semaphore set.
+
+			operation
+				A pointer to a struct sembuf value.
+
+				struct sembuf {
+					short sem_op;
+					short sem_num;
+					short sem_flag;
+				};
+
+				sem_num
+					The index of the semaphore you want to work on.
+
+				sem_op
+					-1: Down(S)
+					1: Up(S)
+
+					Any -/+ will work; you will be requesting/releasing that value from
+					the semaphore.
+
+					0: Block until the semaphore reaches 0
+
+				sem_flag
+					Provide further options.
+
+					SEM_UNDO
+						Allow the OS to undo the given operation. Useful in the event that
+						the program exits before it can release a semaphore.
+
+					IPC_NOWAIT
+						Instead of waiting for the semaphore to be available, return an
+						error.
+						
+12/07/2016
+	Aim: What goes Up really should come Down.
+
+	Do Now
+		Write a semaphore control program like the one developed in class yesterday.
+
+		It should be able to:
+			Create a semaphore and set an initial value.
+			View the current value.
+			Remove the semaphore.
+
+		The program behavior should be determined by a command line argument.
