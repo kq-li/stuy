@@ -896,7 +896,7 @@
 
 				Unions are like structs, but are designed to hold only one of its children at once.
 
-		semop(int descriptor, int operation, struct sembuf *amount)
+		semop(int descriptor, struct sembuf *operation, int amount)
 			Perform semaphore operations.
 
 			All operations performed via semop are atomic!
@@ -953,3 +953,452 @@
 			Remove the semaphore.
 
 		The program behavior should be determined by a command line argument.
+
+12/12/2016
+	Aim: Ceci n'est pas une pipe
+
+	Pipe
+		A conduit between 2 separate processes on the same computer.
+
+		Pipes have 2 ends, a read end and a write end.
+
+		Pipes are unidirectional (a single pipe must be either read or write only
+		in a process).
+
+		Pipes act just like files.
+
+		You can transfer any data you like through a pipe using read/write.
+
+		Unnamed pipes have no external identification.
+
+		pipe(int descriptors[2]) - <unistd.h>
+			Creates an unnamed pipe.
+
+			Returns 0 if the pipe was created, -1 if not.
+
+			Opens both ends of the pipes as files.
+
+			descriptors
+				Array that will contain descriptors for each end of the pipe.
+				
+12/13/2016
+	Aim: A pipe by any other name...
+
+	Named pipes
+		Also known as FIFOs.
+
+		Same as unnamed pipes, except FIFOs have a name that can be used to identify
+		them via different programs.
+
+		Like unnamed pipes, FIFOs are unidirectional.
+
+		$ mkfifo <pipe name>
+			Shell command to make a FIFO.
+
+		mkfifo(char *name, int permissions) - <sys/types.h>, <sys/stat.h>
+			C function to create a FIFO.
+
+			Returns 0 on success, -1 on failure.
+
+			Once created, the FIFO acts like a regular file, and we can use open, read,
+			write, and close on it.
+
+			FIFOs will block on open until both ends of the pipe have a connection.
+
+12/14/2016
+	Aim: Always remember to tip your servers
+
+	Do Now:
+		Design a program that has 2 executable files.
+
+		One is designed to ask a user for input and send that input to the second.
+
+		The second should take input from the first, "process" it in some way, and
+		send a response to the first.
+
+		Do not write this program, design how it would work. How many pipes would
+		you need? What kind of pipes?
+
+		How will you ensure that both programs can send and receive data from each other?
+
+		2 FIFOs, one for 1->2, other for 2->1
+		
+	Server/Client Program Paradigms
+		Handshake
+			A procedure to ensure that a connection has been established.
+
+			Both ends of the connection must verify that they can send and receive
+			data to and from each other.
+
+			Basic procedure
+				1. Server creates a FIFO (Well Known Pipe).
+				2. Server waits for a connection.
+				3. Client creates a private FIFO.
+				4. Client connects to server and sends the private FIFO name.
+				5. Client waits for a message from the server.
+				6. Server receives the client message and removes the well known pipe.
+				7. Server connects to client FIFO and sends an initial acknowledgement.
+				8. Client receives the server message and removes its private pipe.
+				9. Client sends a message back to server.
+
+12/20/2016
+	Aim: Cisco in an hour(tm)
+
+	Do Now: What is needed in order for 2 computers to communicate with each other?
+		- Physical connection
+		- Identification
+		- Protocol/common language/common packaging for data
+		- Routing 
+		- Security
+		- Data validation
+		- User experience
+
+	OSI 7-Layer Model
+		Used to help conceptualize the different parts of network connections.
+
+		The top layer is the most concrete, with each subsequent layer becoming more
+		abstract (relying less on the physical connections and more on code). The
+		last layer is the application layer.
+
+		The layers:
+			1. Physical
+			2. Data Link
+			3. Network
+			4. Transport
+			5. Session
+			6. Presentation
+			7. Application
+
+		If you are working on a particular layer, you should not have to think too
+		much about the other layers.
+
+		Physical Layer
+			How computers are physically connected.
+
+			Things like electrons running across wires, radio signals pulsing through
+			the air...
+
+			A brief history of wired connections
+				Thicknet
+					A single coaxial cable runs throughout the network; "vampire taps" go
+					into the cable and leech the data out.
+	
+				Thinnet
+					A single coaxial cable runs throughout the network; T-junctions are
+					used to splice connections.
+
+				In both Thicknet and Thinnet, all data is sent to all computers.
+
+				Each computer added increases the power drain on the entire system,
+				degrading service.
+
+12/21/2016
+	Aim: Cisco in an hour(tm) Part II: Electric Boogaloo
+
+	Physical Layer (cont'd.)
+		Token Ring
+			Each computer connects to the next computer, forming a connection ring.
+
+			Only one computer in the ring can transmit data at any given time. 
+
+			The network sends a "token" throughout the ring, which contains the
+			identity of the computer allowed to use the network. All other computers
+			must wait to use the network.
+
+			No possibility of collisions.
+
+		Ethernet
+			Multiple computers connect to a single hub or switch.
+
+			Hub
+				Broadcasts all received data to all other computers.
+
+			Switch
+			  Sends data to a specific computer.
+
+			The more computers you add to an ethernet network, the greater the
+			chance of collisions.
+
+12/22/2016
+	Aim: Cisco in an hour(tm) Part III: In 3D!
+
+	Data Link Layer
+		Point-to-point transmission between devices on the same local network.
+
+		Ethernet Connections
+			Each device is given a unique 6-byte MAC (Media Access Control) address;
+			this is set on each network card when it is made.
+
+			Data is packaged into frames
+				Ethernet Frame: <prefix><dest><source><...><data><checksum>
+
+					prefix
+						8 bytes
+						10101010 * 7 + 10101011
+
+					dest/source
+						6 bytes
+						MAC address of destination/source
+
+					...
+						8 bytes
+						Information about frame type
+
+					data
+						46-1500 bytes
+						Data to send/receive
+
+					checksum
+						4 bytes
+						Verifies data integrity
+
+			MTU
+				Maximum Transmission Unit
+				1500 bytes for Ethernet
+
+01/03/2017
+	Aim: Cisco in an hour(tm) IV: A New Hope
+
+	Network Layer
+		The layer that transmits data between two separate networks.
+
+		It is not concerned with whether data was sent successfully or not (connectionless).
+
+		Major features include addressing, routing, and packet forwarding.
+
+		IP (Internet Protocol) Addresses
+			IPv4: 4-byte address
+				[0-255].[0-255].[0-255].[0-255]
+
+			Routing is made easier by having IP addresses distributed in blocks.
+
+01/04/2017
+	Aim: Cisco in an hour(tm) V for Vendetta
+
+	Network Layer
+		Data is broken into packets (IPv4).
+
+		IPv4 packet: <header info><packet length><fragment info><time to live>
+								 <protocol><header checksum><source><destination><...><data>
+
+			header info
+				2 bytes
+
+				Type of packet, length of header
+
+			packet length
+				2 bytes
+
+				length of packet
+
+			fragment info
+				4 bytes
+
+				Full payloads may be broken up; this contains total number of fragments
+				and which fragment this packet is.
+
+			time to live
+				1 byte
+
+				Maximum number of hops before the packet dies.
+
+			protocol
+				1 byte
+
+				TCP/UDP/....
+
+			header checksum
+				2 bytes
+
+				Checksum to verify header information.
+
+			source
+				4 bytes
+
+			destination
+				4 bytes
+
+			...
+				4 bytes
+
+				Optional information depending on protocol, type, etc.
+
+			data
+				20 - 65535 bytes
+
+			IPv4 MTU is 65535 B.
+		
+		IPv6
+			Biggest difference is the address space goes from 2^32 to 2^128.
+
+			Addresses are written as 8 groups of 4 hexadecimal digits.
+				87ab:301c:73ab:8731:ff87:abcd:dead:feed
+
+				Leading 0s are ignored, consecutive 0-groups can be replaced with
+				::, but only once in an address
+
+			IPv4 addresses can be represented with 5 0-groups, 1 f-group (96 bits)
+			followed by the regular IPv4 address (32 bits).
+				::ffff:149.89.150.100
+
+			Jumbograms
+				Increases the MTU to ~4.3 billion (2^32)
+
+			Other improvements in IPv6 make the protocol incompatible with IPv4.
+
+01/05/2017
+	Aim: Cisco in an hour(tm) VI: The Undiscovered Country
+
+	Transport Layer
+		Computer to computer connection over a network.
+
+		Unconcerned with the individual hops of layer 3 traffic.
+
+		Each destination address has multiple ports -- 65,535 ports, to be exact.
+
+		Each port corresponds to a particular service.
+
+		Ports <1024 are well known, reserved ports.
+
+		Ports are regulated by the Internet Assigned Numbers Authority (IANA).
+
+		Transmission Control Protocol (TCP)
+			Reliable connection that guarantees data delivery.
+
+			Data is considered a continuous stream that arrives in the order it is
+			sent (which may not be true in the network layer).
+
+			Connections are established using a 3-way handshake
+				0. Server binds to a port and waits.
+				1. Client sends a SYN message to the server.
+				2. Server sends the client a SYN_ACK message.
+				3. Client sends an ACK message to the server.
+
+		User Datagram Protocol (UDP)
+			Does not require an explicit connection.
+
+			Data is sent as discrete datagrams with a set size (as opposed to a
+			continuous stream).
+
+			Datagrams may be dropped or received out of order.
+
+			Assumes that any kind of error checking is handled at a later level.
+
+01/06/2017
+	Aim: Cisco in an hour(tm) VII: Adrian's Revenge
+
+	Remaining Layers
+		5. Session
+		6. Presentation
+		7. Application
+
+		These layers are incorporated into programs that use network connections.
+
+		Session layer represents end-to-end connectioms in a program (sockets).
+
+		Presentation layer represents how programs package transmitted data.
+
+		Application layer represents the programs that users interact with.
+
+	Sockets
+		<sys/socket.h>, <sys/types.h>
+
+		A socket is a network connection between two programs.
+
+		A socket has 2 ends, each one consisting of an IP Address/Port pair.
+
+		To use a socket:
+			1. Create the socket
+			2. Bind it to an address and a port
+			3. Listen/initiate a connection
+			4. Send/receive data
+
+		socket(<domain>, <type>, <protocol>) - <sys/socket.h>
+			Creates a socket and returns its descriptor (an entry in the file table).
+
+			domain
+				Type of address - IPv4, IPv6, etc.
+
+				AF_INET = IPv4
+
+			type
+				TCP/UDP/etc.
+
+				SOCK_STREAM = TCP
+				SOCK_DGRAM = UDP
+
+			protocol
+				Combination of domain and type settings.
+
+				If set to 0, the OS will set to correct protocol.
+
+			int sd = socket(AF_INET, SOCK_STREAM, 0);
+
+		bind(<socket descriptor>, <address>, <address length>) - <sys/socket.h>
+			Binds the socket to an address and port.
+
+			Returns 0 on success, -1 (errno) on failure.
+
+			socket descriptor
+				Return value of socket().
+
+			address
+				Pointer to a struct sockaddr_in (struct sockaddr_in6 for IPv6).
+
+				struct sockaddr_in {
+					int sin_family; // address domain (AF_INET, etc.)
+					int sin_addr;   // IP address in binary -- INADDR_ANY for any incoming connection
+				}
+
+					sin_family
+						Address domain, like AF_INET.
+
+					sin_addr
+						IP address in binary.
+
+						INADDR_ANY takes any incoming connections.
+
+						inet_aton(<string>, <address variable>) - <arpa/inet.h>
+							Converts a string representing an IP address to the correct format
+							and places it in the second parameter.
+
+					sin_port
+						htons(int port)
+							Returns the port in the correct order (endianness).
+
+							big endian: most significant byte first
+							little endian: least significant byte first
+
+01/10/2017
+	Aim: Socket to me
+
+	listen(<socket descriptor>, <queue length>) - <sys/socket.h>
+		TCP server will listen to a socket and wait for an incoming connection.
+
+		listen() is server only.
+
+		socket descriptor
+			Return value of socket().
+
+		queue length
+			Number of connections that can wait.
+
+			Deprecated; no longer used.
+
+		Returns 0 on success, -1 (errno) on failure.
+
+	accept - <sys/socket.h>
+		Set up a TCP connection (server only).
+
+		Handles the required 3-way handshake.
+
+		A complete socket has 5 pieces of information: IP Address and port # for
+		both the client and the server and the protocol (TCP/UDP).
+
+		Once a client connection gets past listen(), accept() creates a new socket
+		with client information added, and returns a descriptor to the new socket.
+		
+01/11/2017
+	Aim: Get more power from your sockets
+
+	

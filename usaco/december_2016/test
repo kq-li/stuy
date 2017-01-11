@@ -1,0 +1,2006 @@
+0: (1, 3, 5)
+1: (5, 4, 5)
+2: (7, 2, 1)
+3: (6, 1, 1)
+Traceback (most recent call last):
+  File "moocast.py", line 64, in <module>
+    reachable = cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 43, in reachableCows
+    cowsSoFar |= cow.reachableCows(cows)
+  File "moocast.py", line 40, in reachableCows
+    cowsSoFar = set([self])
+RuntimeError: maximum recursion depth exceeded while calling a Python object
