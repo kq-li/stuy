@@ -1372,33 +1372,61 @@
 01/10/2017
 	Aim: Socket to me
 
-	listen(<socket descriptor>, <queue length>) - <sys/socket.h>
-		TCP server will listen to a socket and wait for an incoming connection.
+	Sockets in C
+		listen(<socket descriptor>, <queue length>) - <sys/socket.h>
+			TCP server will listen to a socket and wait for an incoming connection.
 
-		listen() is server only.
+			listen() is server only.
 
-		socket descriptor
-			Return value of socket().
+			socket descriptor
+				Return value of socket().
 
-		queue length
-			Number of connections that can wait.
+			queue length
+				Number of connections that can wait.
 
-			Deprecated; no longer used.
+				Deprecated; no longer used.
 
-		Returns 0 on success, -1 (errno) on failure.
+			Returns 0 on success, -1 (errno) on failure.
 
-	accept - <sys/socket.h>
-		Set up a TCP connection (server only).
+		accept(<socket descriptor>, <socket address>, <address length>) - <sys/socket.h>
+			Set up a TCP connection (server only).
 
-		Handles the required 3-way handshake.
+			Handles the required 3-way handshake.
 
-		A complete socket has 5 pieces of information: IP Address and port # for
-		both the client and the server and the protocol (TCP/UDP).
+			A complete socket has 5 pieces of information: IP Address and port # for
+			both the client and the server and the protocol (TCP/UDP).
 
-		Once a client connection gets past listen(), accept() creates a new socket
-		with client information added, and returns a descriptor to the new socket.
-		
+			Once a client connection gets past listen(), accept() creates a new socket
+			with client information added, and returns a descriptor to the new socket.
+
+			socket descriptor
+				Return value of socket.
+
+			address
+				Pointer to a struct sockaddr.
+
+				Will contain the correct address information after the connection is made.
+
+			length
+				Pointer to a variable with the size of the address.
+
+				Will be set after the connection is made.
+
 01/11/2017
 	Aim: Get more power from your sockets
 
+	More sockets in C
+		connect(<socket descriptor>, <address>, <address length>) - <sys/socket.h> <sys/types.h>
+			Connect to another program over a socket (client side).
+
+			Handles the client end of the 3 way handshake.
+
+			socket descriptor
+				Return value of socket().
+
+			address
+				See bind().
+
+			address length
+				Size of address argument.
 	
