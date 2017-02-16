@@ -1,269 +1,269 @@
 09/13/2016
-  Aim: Take a trip down memory lane
-  Do Now: In small groups (~4), discuss some of the similarities and differences
-          between Java and Python.
+    Aim: Take a trip down memory lane
+    Do Now: In small groups (~4), discuss some of the similarities and differences
+                    between Java and Python.
 
 09/14/2016
-  Aim: Git up! Git on up!
-  Do Now: Go to the workshop page on github
+    Aim: Git up! Git on up!
+    Do Now: Go to the workshop page on github
 
 09/19/2016
-  Aim: What are we keeping in that flask?
-  Do Now: In your discussion groups, recall what things were necessary to
-          write web based programs in python.
+    Aim: What are we keeping in that flask?
+    Do Now: In your discussion groups, recall what things were necessary to
+                    write web based programs in python.
 
-  Softdev toolbox part 1:
-    python 2.7
-    pip
-      Python package manager
-      Basic usage: $ pip install <package>
-    virtualenv
-      Creates a sandbox for your python environment.
-      Allows you to maintain a specific python environment without messing with
-      the system version.
-      Can install packages wiwthout root access to a system.
-    flask
-      "Microframework" for developing web applications.
-      Has its own development web server (no more public_html).
-      Contains the following two modules
-        werkzeug
-          WSGI (Web Server Gateway Interface) implementation.
-          Allows our web apps to respond to web requests.
-        jinja2
-          HTML template engine.
-          Easily create multiple pages that share styles and content.
+    Softdev toolbox part 1:
+        python 2.7
+        pip
+            Python package manager
+            Basic usage: $ pip install <package>
+        virtualenv
+            Creates a sandbox for your python environment.
+            Allows you to maintain a specific python environment without messing with
+            the system version.
+            Can install packages wiwthout root access to a system.
+        flask
+            "Microframework" for developing web applications.
+            Has its own development web server (no more public_html).
+            Contains the following two modules
+                werkzeug
+                    WSGI (Web Server Gateway Interface) implementation.
+                    Allows our web apps to respond to web requests.
+                jinja2
+                    HTML template engine.
+                    Easily create multiple pages that share styles and content.
 
 09/20/2016
-  Aim: There's a webserver in my flask?
-  Do Now: Write a python function that simply prints a message
-          to standard out. Then call the function in the same program.
+    Aim: There's a webserver in my flask?
+    Do Now: Write a python function that simply prints a message
+                    to standard out. Then call the function in the same program.
 
 09/21/2016
-  Aim: HTML Jinja Warrior
-  Do Now: Write a basic HTML file with the correct headers and sections.
-          
-  HTML Templates (jinja2)
-    Takes a lot of the HTML out of your python code.
-    Template files must be stored in a templates directory at the same level
-    as your Flask app file.
+    Aim: HTML Jinja Warrior
+    Do Now: Write a basic HTML file with the correct headers and sections.
+                    
+    HTML Templates (jinja2)
+        Takes a lot of the HTML out of your python code.
+        Template files must be stored in a templates directory at the same level
+        as your Flask app file.
 
-    render_template(file, var1, var2, ...)
-      Flask function to take a template file and return it as a string
-      Jinja2 has its own language to make templates more powerful
+        render_template(file, var1, var2, ...)
+            Flask function to take a template file and return it as a string
+            Jinja2 has its own language to make templates more powerful
 
 09/26/2016
-  Aim: Your desktop might not be organized, but your code will be!
+    Aim: Your desktop might not be organized, but your code will be!
 
-  Example Flask Organization
-    flask-app/
-      app.py      the actual flask application
-      templates/  all your templates
-      utils/      extra python modules
-      data/       data files
+    Example Flask Organization
+        flask-app/
+            app.py            the actual flask application
+            templates/    all your templates
+            utils/            extra python modules
+            data/             data files
 
 09/27/2016
-  Aim: Flask: serving artisanal web pages since 2010
+    Aim: Flask: serving artisanal web pages since 2010
 
-  File paths and the flask server
-    When a flask app runs, the directory where the flask file exists
-    is considered the root directory of the web server.
+    File paths and the flask server
+        When a flask app runs, the directory where the flask file exists
+        is considered the root directory of the web server.
 
-    The flask web server is configured to serve pages only when:
-      1   The requested page is a route in the flask app
-      2   The requested page/resource is in the static directory
+        The flask web server is configured to serve pages only when:
+            1     The requested page is a route in the flask app
+            2     The requested page/resource is in the static directory
 
-    All these considerations are based on using Flask's built in webserver
-    and are valid during development. When deploying on an existing webserver
-    (apache2, nginx), these settings may be different.
+        All these considerations are based on using Flask's built in webserver
+        and are valid during development. When deploying on an existing webserver
+        (apache2, nginx), these settings may be different.
 
 09/28/2016
-  Aim: Requesting assistance
-  Do Now: Write an html file that contains a form with a single text box
-          and a submit button.
+    Aim: Requesting assistance
+    Do Now: Write an html file that contains a form with a single text box
+                    and a submit button.
 
-          Write a flask app where the root route renders the
-          html form as a template.
+                    Write a flask app where the root route renders the
+                    html form as a template.
 
 09/29/2016
-  Aim: Don't forget to include POSTage
-  Do Now: Open up your form flask app from yesterday.
-  
-  Request object
-    Stores information about incoming requests.
+    Aim: Don't forget to include POSTage
+    Do Now: Open up your form flask app from yesterday.
+    
+    Request object
+        Stores information about incoming requests.
 
-    Notable fields
-      request.headers
-        HTML headers sent from the browser
-      request.method
-        The request method (GET or POST)
-      request.args
-        The arguments in a query string from a GET request
-      request.form
-        The arguments sent in a POST request
+        Notable fields
+            request.headers
+                HTML headers sent from the browser
+            request.method
+                The request method (GET or POST)
+            request.args
+                The arguments in a query string from a GET request
+            request.form
+                The arguments sent in a POST request
 
-      request.args and request.form are immutable
+            request.args and request.form are immutable
 
 10/05/2016
-  Aim: C is for Cookie, but Sessions are Secure
+    Aim: C is for Cookie, but Sessions are Secure
 
-  Cookies
-    Cookies are files that websites will save to your web browser to store
-    information on a local machine.
+    Cookies
+        Cookies are files that websites will save to your web browser to store
+        information on a local machine.
 
-    They are useful for keeping track of persistent information, like
-    login credentials.
+        They are useful for keeping track of persistent information, like
+        login credentials.
 
-  Sessions
-    Flask sessions are securely signed cookies.
+    Sessions
+        Flask sessions are securely signed cookies.
 
-    Since they are encrypted, they cannot be modified by the user of the
-    local machine.
+        Since they are encrypted, they cannot be modified by the user of the
+        local machine.
 
-    The session object works exactly like a dictionary
-      Add data to a session:
-        session[<key>] = <data>
-      Remove data from a session:
-        session.pop(<key>)
+        The session object works exactly like a dictionary
+            Add data to a session:
+                session[<key>] = <data>
+            Remove data from a session:
+                session.pop(<key>)
 
-    To encrypt a session, set a private key in the app:
-      app.secret_key = <private key>
+        To encrypt a session, set a private key in the app:
+            app.secret_key = <private key>
 
-      A good way to get random data: os.urandom(32) returns 32 bits of random
-      data as a string
+            A good way to get random data: os.urandom(32) returns 32 bits of random
+            data as a string
 
-      Never publish the secret key in a public place (GitHub)!!
+            Never publish the secret key in a public place (GitHub)!!
 
 10/06/2016
-  Aim: Url binding is the
+    Aim: Url binding is the
 
-  url_for
-    Flask function that will build the correct url for a particular function.
+    url_for
+        Flask function that will build the correct url for a particular function.
 
-    Syntax: url_for(<function>)
+        Syntax: url_for(<function>)
 
-  redirect
-    Flask function that will redirect a call to one route to a
-    different response.
+    redirect
+        Flask function that will redirect a call to one route to a
+        different response.
 
-    Often used in combination with url_for.
+        Often used in combination with url_for.
 
-    Example: return redirect(url_for('login'))
+        Example: return redirect(url_for('login'))
 
 10/13/2016
-  Aim: All your data are belong to us
+    Aim: All your data are belong to us
 
-  Relational database
-    Database that stores information as a collection of tables.
+    Relational database
+        Database that stores information as a collection of tables.
 
-    Field: Column data in a relational DB
-    Record: Row in an RDB
+        Field: Column data in a relational DB
+        Record: Row in an RDB
 
-    Data can be linked between tables based on field values.
+        Data can be linked between tables based on field values.
 
-  SQL (Structured Query Language)
-    Standard language designed to work with relational databases.
+    SQL (Structured Query Language)
+        Standard language designed to work with relational databases.
 
-    SQL is used for many major db programs, though the implementations
-    may not be (mostly are not) compatible.
+        SQL is used for many major db programs, though the implementations
+        may not be (mostly are not) compatible.
 
-    MySQL, PostgreSQL, SQLite, Oracle are different SQL implementations
+        MySQL, PostgreSQL, SQLite, Oracle are different SQL implementations
 
-  SQLite
-    SQL implementation that relies entirely on function calls in the parent
-    program. There is no database server.
+    SQLite
+        SQL implementation that relies entirely on function calls in the parent
+        program. There is no database server.
 
-    All database information is stored in a single file.
+        All database information is stored in a single file.
 
-    Data is dynamically typed as values are inserted into a table.
+        Data is dynamically typed as values are inserted into a table.
 
-  Basic SQLite Operations
-    CREATE TABLE <name> (<column name> <data type>, ...)
-      Add a table to a database
+    Basic SQLite Operations
+        CREATE TABLE <name> (<column name> <data type>, ...)
+            Add a table to a database
 
-      The data type will help to convert entered values to a suggested type.
-        TEXT, INTEGER, REAL, NUMERIC, BLOB
-          NUMERIC defaults to an integer, but can also be a floating point.
-          BLOB means no suggested type.
+            The data type will help to convert entered values to a suggested type.
+                TEXT, INTEGER, REAL, NUMERIC, BLOB
+                    NUMERIC defaults to an integer, but can also be a floating point.
+                    BLOB means no suggested type.
 
-        Columns can be given a PRIMARY KEY attribute, denoting that every entry
-        in that column is unique and cannot be NULL.
+                Columns can be given a PRIMARY KEY attribute, denoting that every entry
+                in that column is unique and cannot be NULL.
 
-        Columns can be given a NOT NULL attribute, denoting that no entry can
-        be NULL.
+                Columns can be given a NOT NULL attribute, denoting that no entry can
+                be NULL.
 
-    INSERT INTO <table name> VALUES (<field1>, <field2>, ...)
-      Insert record into table, matching respective values.
+        INSERT INTO <table name> VALUES (<field1>, <field2>, ...)
+            Insert record into table, matching respective values.
 
-    SELECT <column> FROM <name>
+        SELECT <column> FROM <name>
 
-  SQLite Shell Commands
-    .quit
-    .tables
-    .header on|off
-    .mode column|csv|list|html|insert|line|tabs
+    SQLite Shell Commands
+        .quit
+        .tables
+        .header on|off
+        .mode column|csv|list|html|insert|line|tabs
 
 10/17/2016
-  Aim: SQLite, the low-fat alternative to SQL
-      
-  python sqlite module
-    import sqlite3
+    Aim: SQLite, the low-fat alternative to SQL
+            
+    python sqlite module
+        import sqlite3
 
-    connect
-      Open/create an sqlite database.
+        connect
+            Open/create an sqlite database.
 
-      If the database does not exist, create it.
+            If the database does not exist, create it.
 
-      db = sqlite3.connect(<db name>)
+            db = sqlite3.connect(<db name>)
 
-    cursor
-      Create a database cursor object that will allow
-      you to perform operation on the database.
+        cursor
+            Create a database cursor object that will allow
+            you to perform operation on the database.
 
-      c = db.cursor()
+            c = db.cursor()
 
-    execute
-      Cursor method to perform the provided SQL operation, given as a string.
-  
-      c.execute(<SQL query>)
+        execute
+            Cursor method to perform the provided SQL operation, given as a string.
+    
+            c.execute(<SQL query>)
 
-  SQL SELECT statement
-    Used to get data from a database.
+    SQL SELECT statement
+        Used to get data from a database.
 
-    Creates a results table based on the query.
+        Creates a results table based on the query.
 
-    SELECT <column 1>, ... FROM <table 1>, ...;
-      Returns a new table containing only the requested columns from
-      the request tables.
+        SELECT <column 1>, ... FROM <table 1>, ...;
+            Returns a new table containing only the requested columns from
+            the request tables.
 
-      SELECT name FROM students;
+            SELECT name FROM students;
 
 10/18/2016
-  Aim: WHERE did I put that data?
+    Aim: WHERE did I put that data?
 
-  Do Now: Using the database from the last assignment, write SELECT
-          statements to do the following:
+    Do Now: Using the database from the last assignment, write SELECT
+                    statements to do the following:
 
-          1. Generate a table containing course codes and grades
-          2. Generate a table with student names, ids, and grades
+                    1. Generate a table containing course codes and grades
+                    2. Generate a table with student names, ids, and grades
 
-  WHERE
-    Allows you to put restrictions on the results of a SELECT statement.
+    WHERE
+        Allows you to put restrictions on the results of a SELECT statement.
 
-    SELECT * FROM courses WHERE mark < 65;
+        SELECT * FROM courses WHERE mark < 65;
 
 11/01/2016
-  Aim: Extending your template knowledge.
+    Aim: Extending your template knowledge.
 
-  Do Now: Write a flask app with a single route and a simple HTML template.
+    Do Now: Write a flask app with a single route and a simple HTML template.
 
-  Extending HTML templates
-    Any template can be "inherited" by others.
+    Extending HTML templates
+        Any template can be "inherited" by others.
 
-    To extend a template: {% extends "<TEMPLATE>" %}
+        To extend a template: {% extends "<TEMPLATE>" %}
 
-    You can define sections to override inside:
-      {% block <NAME> %}
-      {% endblock %}
+        You can define sections to override inside:
+            {% block <NAME> %}
+            {% endblock %}
 
 11/15/2016
 	Aim: Stuylin'
@@ -548,4 +548,3 @@
 			
 			$.post(<url>, <callback function>);
 
-		

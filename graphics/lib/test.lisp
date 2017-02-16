@@ -1,0 +1,22 @@
+(load 'draw)
+(let* ((xres 500)
+       (yres 500)
+       (x 250)
+       (y 250)
+       (r 200)
+       (n 256)
+       (color1 '(243 144 79))
+       (color2 '(0 0 0))
+       (array (init-image xres yres color2))
+       (filename "image.ppm")
+       (color-function (generate-radial-gradient-function x y r color1 color2)))
+  (loop
+     for k from 0 to (- n 1)
+     do
+       ;;(format t "drawing line with angle ~a * pi / ~a~%" k (/ n 2))
+       (draw-line array x y 
+                  (+ x (round (* r (cos (* pi (/ k (/ n 2)))))))
+                  (+ y (round (* r (sin (* pi (/ k (/ n 2)))))))
+                  color-function))
+  (create-ppm filename array)
+  (format t "Saved ~a~%" filename))

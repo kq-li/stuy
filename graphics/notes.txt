@@ -1,0 +1,205 @@
+02/01/2017
+	Aim: Bits o' pixels?
+
+	How would you represent color data if you only had the following amount of
+	space for each pixel?
+
+	1. 1 bit  - 1 bit for color
+	2. 2 bits - 1 bit for color, 1 bit for intensity
+	3. 3 bits - 1 bit for each color (RGB)
+	4. 4 bits - 1 bit for each color (RGB), 1 bit for intensity
+	5. 6 bits - 2 bits for each color (RGB); 1 bit for color, 1 bit for intensity
+
+	Color depth - number of bits used per pixel
+
+	Image File Formats
+		Lossless vs. lossy, compressed vs. uncompressed
+
+		JPG - compressed, lossy
+		PNG - compressed, lossless
+		BMP - uncompressed, lossless
+		TIFF - uncompressed, lossless
+		RAW - uncompressed, lossless
+		GIF - uncompressed, lossless
+		
+02/02/2017
+	Aim:
+
+	RUn Length Encoding
+		GGGRPPPP -> 3G1R4P (2 bytes shorter)
+
+	Rasters vs Vectors
+		Raster: data corresponds to pixels
+		Vector: image data encoded as list of commands
+
+	Net PBM
+		Family of formats
+
+		We will use .ppm
+			All whitespace is the same
+
+			Header
+				P3
+				XRES YRES
+                Scale factor
+
+			Pixel Data
+				3 numbers, 0-255 (RGB)
+
+02/06/2017
+    Aim: Bresenham's Line Algorithm
+
+    y = mx + b
+    y = (Δy/Δx)x + b
+    Δyx - Δxy + Δxb
+    A = Δy
+    B = -Δx
+    C = Δxb
+    Ax + By + C = 0
+    f(x, y) = Ax + By + C
+
+    f(x, y) = 0: (x, y) on the line
+    f(x, y) < 0: (x, y) above the line
+    f(x, y) > 0: (x, y) below the line
+    f(x, y) ~ distance from (x, y) to line
+
+    0 < m <= 1: only look at pixel to right and upper right
+
+02/07/2017
+    Aim: Bresenham's Line Algorithm, continued
+
+    Evaluate f at both pixels -> inefficient
+    Evaluate f at midpoint
+        If midpoint above line, plot bottom pixel
+        If midpoint below line, plot top pixel
+
+    Two pixels: (x + 1, y), (x + 1, y + 1)
+    Midpoint: (x + 1, y + 0.5)
+    f(x + 1, y + 0.5) < 0: midpoint above line, plot bottom pixel
+    f(x + 1, y + 0.5) > 0: midpoint below line, plot top pixel
+    f(x + 1, y + 0.5) = 0: plot either, be consistent
+
+
+    Pseudocode
+        y = y0
+
+        for x: x0 to x1
+            plot(x, y)
+            
+            d = f(x + 1, y + 0.5)
+
+            if (d > 0)
+                y++
+
+            x++
+
+02/08/2017
+    Aim: Optimization
+
+    f(x, y) = Ax + By + C
+            = Δyx - Δxy + Δxb
+
+    (x0, y0) -> (x1, y1)
+
+    Problems
+        Expensive "f" calculations
+        Floating point calculations
+
+    Octant 1 Algorithm
+        x = x0
+        y = y0
+        d = 2A + B
+
+        while (x <= x1)
+            plot(x, y)
+
+            if (d > 0)
+                y++
+                d += 2B
+
+            x++
+            d += 2A
+
+02/13/2017
+    Octant 8 Algorithm
+        x = x0
+        y = y0
+        d = 2A - B
+
+        while (x <= x1)
+            plot(x, y)
+
+            if (d < 0)
+                y--
+                d -= 2B
+
+            x++
+            d += 2A
+
+    Octant 2 Algorithm
+        x = x0
+        y = y0
+        d = A + 2B
+
+        while (y <= y1)
+            plot(x, y)
+
+            if (d < 0)
+                x++
+                d += 2A
+
+            y++
+            d += 2B
+
+    Octant 7 Algorithm
+        x = x0
+        y = y0
+        d = A - 2B
+
+        while (y >= y1)
+            plot(x, y)
+
+            if (d > 0)
+                x++
+                d += 2A
+
+            y--
+            d -= 2B
+
+02/16/2017
+    To allow efficient transformations, store images as a list of edges.
+    
+    Each pair of points in the list will define an edge.
+        [P0, P1, P2, P3, P4, ...] defines edges P0P1, P1P2, P2P3, P3P4, etc.
+
+    Call draw-line with consecutive points in the list.
+
+    Transformations can be applied to the edge list before drawing.
+
+    Storing the edge list
+        Each point has 3 floating point components x, y, z.
+
+        Points can be stored in a 4 x n matrix.
+            [  x0  x1  x2  ...  xn  ]
+            [  y0  y1  y2  ...  yn  ]
+            [  z0  z1  z2  ...  zn  ]
+            [  1.0 1.0 1.0 ...  1.0 ]
+
+
+    Matrix Math Review
+        Scalar multiplication
+            5 x [ a b ] = [ 5a 5b ]
+                [ c d ] = [ 5c 5d ]
+                
+        Matrix multiplication
+            A: m x n matrix
+            B: n x p matrix
+            AB: m x p matrix
+            
+            Columns in first must match rows in second.
+
+            In order to multiply a transformation matrix T with an edge matrix,
+            T must be a 4 x 4 matrix.
+            
+        Inverse
+    
