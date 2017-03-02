@@ -1,114 +1,115 @@
-(defun square (x)
-  (* x x))
+(defclass point ()
+  ((array :accessor point-array
+          :initform (make-array 4 :initial-contents '(0 0 0 1.0) :adjustable t))))
 
-(defun distance (x1 y1 x2 y2)
-  (sqrt (+ (square (- x2 x1)) (square (- y2 y1)))))
+(defun make-point (&key initial-list initial-array)
+  (let ((point (make-instance 'point)))
+    (cond
+      (initial-list
+       (adjust-array (point-array point) 4 :initial-contents (append initial-list '(1.0))))
+      (initial-array
+       (loop
+          for i from 0 to 3
+          do (setf (aref (point-array point) i)
+                   (aref initial-array i)))))
+    point))
 
-(defun bound (x bound1 bound2)
-  (if (< bound1 bound2)
-      (max (min x bound2) bound1)
-      (max (min x bound1) bound2)))
+(defmethod point-x ((point point))
+  (aref (point-array point) 0))
 
-(defun create-ppm (filename array)
-  (with-open-file (stream filename
-                          :direction :output
-                          :if-exists :supersede
-                          :if-does-not-exist :create)
-    (format stream "P3 ~{~d ~d ~} 255~%" (array-dimensions array))
-    (let ((xres (first (array-dimensions array)))
-          (yres (second (array-dimensions array))))
-      (dotimes (x xres)
-        (dotimes (y yres)
-          (format stream "~{~d ~d ~d ~}" (aref array x y)))
-        (format stream "~%")))))
+(defmethod point-y ((point point))
+  (aref (point-array point) 1))
 
-(defun init-image (xres yres &optional (initial-color '(255 255 255)))
-  (make-array (list xres yres) :initial-element initial-color)) 
+(defmethod point-z ((point point))
+  (aref (point-array point) 2))
 
-(defun plot-pixel (array x y color)
-  (setf (aref array y x) color))
+(defun add-point-to-matrix (matrix point)
+  (matrix-add-column matrix (point-array point)))
+                                               
+(defun add-edge-to-matrix (matrix point1 point2)
+  (add-point-to-matrix matrix point1)
+  (add-point-to-matrix matrix point2))
 
-(defun random-color ()
+(defun draw-lines-from-matrix (screen matrix &key color-function)
   (loop
-     repeat 3
-     collect (random 255)))
+     for i from 0 to (- (matrix-dimension matrix 1) 1) by 2
+     do (draw-line screen
+                   (make-point :initial-array (matrix-get-column matrix i))
+                   (make-point :initial-array (matrix-get-column matrix (+ i 1)))
+                   :color-function color-function)))
 
-(defun generate-radial-gradient-function (xcenter ycenter radius startcolor endcolor)
-  (function
-   (lambda (x y)
-    (let* ((startr (first startcolor))
-           (startg (second startcolor))
-           (startb (third startcolor))
-           (endr (first endcolor))
-           (endg (second endcolor))
-           (endb (third endcolor))
-           (rscale (/ (- endr startr) radius))
-           (gscale (/ (- endg startg) radius))
-           (bscale (/ (- endb startb) radius))
-           (current (distance xcenter ycenter x y)))
-      (list (bound (round (+ startr (* rscale current))) startr endr)
-            (bound (round (+ startg (* gscale current))) startg endg)
-            (bound (round (+ startb (* bscale current))) startb endb))))))
-
-(defun draw-line (array x1 y1 x2 y2 color-function)
-  (let* ((x x1)
-         (y y1)
-         d
-         (dx (- x2 x1))
-         (dy (- y2 y1))
-         (A dy)
-         (B (* -1 dx)))
-    (if (>= dx 0)
-        (cond
-          ((and (>= dy 0) (< dy dx)) ; octant 1
-           ;;(format t "octant 1~%")
-           (setq d (+ (* A 2) B))
-           (loop
-              for x from x1 to x2
-              do
+(defun draw-line (screen point1 point2 &key (color '(0 0 0)) color-function)
+  (let ((x1 (point-x point1))
+        (y1 (point-y point1))
+        (z1 (point-z point1))
+        (x2 (point-x point2))
+        (y2 (point-y point2))
+        (z2 (point-z point2))
+        (get-color
+         (lambda (&optional x y)
+           (if color-function
+               (funcall color-function x y)
+               color))))
+    (let* ((x x1)
+           (y y1)
+           d
+           (dx (- x2 x1))
+           (dy (- y2 y1))
+           (A dy)
+           (B (* -1 dx)))
+      (if (>= dx 0)
+          (cond
+            ((and (>= dy 0) (< dy dx)) ; octant 1
+             ;;(format t "octant 1~%")
+             (setf d (+ (* A 2) B))
+             (loop
+                for x from x1 to x2
+                do
                 ;;(format t "x: ~a y: ~a d: ~a~%" x y d)
-                (plot-pixel array x y (funcall color-function x y))
-                (when (> d 0)
-                  (incf y)
-                  (incf d (* B 2)))
-                (incf d (* A 2))))
-          ((>= dy dx) ; octant 2
-           ;;(format t "octant 2~%")
-           (setq d (+ A (* B 2)))
-           (loop
-              for y from y1 to y2
-              do
+                  (plot-pixel screen x y (funcall get-color x y))
+                  (when (> d 0)
+                    (incf y)
+                    (incf d (* B 2)))
+                  (incf d (* A 2))))
+            ((>= dy dx) ; octant 2
+             ;;(format t "octant 2~%")
+             (setf d (+ A (* B 2)))
+             (loop
+                for y from y1 to y2
+                do
                 ;;(format t "x: ~a y: ~a d: ~a~%" x y d)
-                (plot-pixel array x y (funcall color-function x y))
-                (when (< d 0)
-                  (incf x)
-                  (incf d (* A 2)))
-                (incf d (* B 2))))
-          ((and (< dy 0) (<= (* -1 dy) dx))
-           ;;(format t "octant 8~%")
-           (setq d (- (* A 2) B))
-           (loop
-              for x from x1 to x2
-              do
+                  (plot-pixel screen x y (funcall get-color x y))
+                  (when (< d 0)
+                    (incf x)
+                    (incf d (* A 2)))
+                  (incf d (* B 2))))
+            ((and (< dy 0) (<= (* -1 dy) dx))
+             ;;(format t "octant 8~%")
+             (setf d (- (* A 2) B))
+             (loop
+                for x from x1 to x2
+                do
                 ;;(format t "x: ~a y: ~a d: ~a~%" x y d)
-                (plot-pixel array x y (funcall color-function x y))
-                (when (< d 0)
-                  (decf y)
-                  (decf d (* B 2)))
-                (incf d (* A 2))))
-          ((> (* -1 dy) dx)
-           ;;(format t "octant 7~%")
-           (setq d (- A (* B 2)))
-           (loop
-              for y from y1 downto y2
-              do
+                  (plot-pixel screen x y (funcall get-color x y))
+                  (when (< d 0)
+                    (decf y)
+                    (decf d (* B 2)))
+                  (incf d (* A 2))))
+            ((> (* -1 dy) dx)
+             ;;(format t "octant 7~%")
+             (setf d (- A (* B 2)))
+             (loop
+                for y from y1 downto y2
+                do
                 ;;(format t "x: ~a y: ~a d: ~a~%" x y d)
-                (plot-pixel array x y (funcall color-function x y))
-                (when (> d 0)
-                  (incf x)
-                  (incf d (* A 2)))
-                (decf d (* B 2)))))
-        (draw-line array x2 y2 x1 y1 color-function))))
-      
-                   
-         
+                  (plot-pixel screen x y (funcall get-color x y))
+                  (when (> d 0)
+                    (incf x)
+                    (incf d (* A 2)))
+                  (decf d (* B 2)))))
+          (draw-line screen point2 point1
+                     :color color
+                     :color-function color-function)))))
+  
+  
+  

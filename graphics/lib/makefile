@@ -1,15 +1,8 @@
-run: draw.lisp test.lisp
+run: test.lisp
 	clisp test.lisp
-	convert image.ppm image.png
 
-clean:
+clean: clean-images
 	rm -f *~
 
 clean-images:
 	rm *.png *.ppm
-
-display-png: image.png
-	display image.png
-
-display-ppm: image.ppm
-	display image.ppm

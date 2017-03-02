@@ -146,3 +146,64 @@
             Fills the interior of the path.
 
             Will not work if the path has less than 3 points in it.
+
+02/16/2017
+    Aim:
+
+    Use requestAnimationFrame instead of setInterval
+        requestAnimationFrame tells the browser to run a specified function
+        before drawing the next frame.
+
+        The browser will attempt to run ~60 frames per second.
+
+        It lets the browser handle when the code should be executed (as opposed
+        to setInterval, which is based on specific times).
+
+        It also allows the browser to pause animation when a page is not in the
+        foreground.
+
+        window.requestAnimationFrame(<function>)
+
+02/27/2017
+    Aim: What's your vector victor?
+
+    XML
+        eXtensible Markup Language
+
+        It is not a formatting language (but HTML is).
+
+        A framework for creating markup based grammars.
+
+        Uses some of the syntatic standards of HTML, like tags and attributes,
+        with a focus on storing and representing data instead of rendering and
+        displaying it.
+
+        An XML namespace is defined by the tags and attributes associated
+        with a specific XML language.
+
+    SVG
+        Scalable Vector Graphics
+
+        SVG is a specific XML based vector graphics format.
+
+        Vector graphics are images that are not represented as a 2D grid of
+        pixels (raster) but instead as a list of drawing commands (line,
+        circle, rectangle, curve, etc.)
+
+        The <svg> element is designed to store SVG code (SVG XML elements).
+            <svg xmlns="http://www.w3.org/2000/svg">
+                SVG CODE HERE
+            </svg>
+
+02/28/2017
+    Aim: Vectorize me
+
+    Creating SVG elements in JavaScript
+        document.createElementNS(<namespace>, <element>);
+            Creates an element from a specified XML namespace.
+
+            var cl = document.createElementNS('http://www.w3.org/2000/svg/', 'circle');
+
+            Once created, you can modify it with setAttribute calls.
+
+            cl.setAttribute('cx', '200');

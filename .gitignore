@@ -2,3 +2,5 @@ intro2/Thumbs.db
 .emacs.desktop
 .emacs.desktop.lock
 venv
+*.fas
+*.lib

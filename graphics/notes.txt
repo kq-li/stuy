@@ -200,6 +200,122 @@
 
             In order to multiply a transformation matrix T with an edge matrix,
             T must be a 4 x 4 matrix.
+
+            [ a b c ] [ g h ] = [ (ag + bi + ck) (ah + bj + cl) ]
+            [ d e f ] [ i j ]   [ (dg + ei + fk) (dh + ej + fl) ]
+                      [ k l ]
+
+            (AB)_ij = Σ(A_ik x B_kj)
+
+        Multiplicative identity
+            I_n is the n x n identity matrix
+
+            Given M, an m x n matrix I_m * M = M = M * I_n.
+
+            If m = n, then multiplication by the identity is commutative.
+
+            I is always square, with the principal diagonal containing all
+            1s and the rest of the matrix all 0s.
+
+            I_4 = [ 1 0 0 0 ]
+                  [ 0 1 0 0 ]
+                  [ 0 0 1 0 ]
+                  [ 0 0 0 1 ]
             
         Inverse
     
+03/01/2017
+    Transformations
+        Translation
+                       T(a, b, c)
+            (x, y, z) -----------> (x + a, y + b, z + c)
+
+            [ 1 0 0 a ] [ x ] = [ x + a ]
+            [ 0 1 0 b ] [ y ]   [ y + b ]
+            [ 0 0 1 c ] [ z ]   [ z + c ]
+            [ 0 0 0 1 ] [ 1 ]   [   1   ]
+            
+        Scale
+                       S(a, b, c)
+            (x, y, z) -----------> (ax, by, cz)
+
+            [ a 0 0 0 ] [ x ] = [ ax ]
+            [ 0 b 0 0 ] [ y ]   [ by ]
+            [ 0 0 c 0 ] [ z ]   [ cz ]
+            [ 0 0 0 1 ] [ 1 ]   [  1 ]
+        
+        Rotation
+                       R(A, axis)
+            (x, y, z) ---------------> (?, ?, ?)
+
+            Rotate (x, y, 0) at angle B from x-axis A around the z-axis
+
+                x = r cos B
+                y = r sin B
+                x1 = r cos (B + A)
+                   = r cos B cos A - r sin B sin A
+                   = x cos A - y sin A
+                y1 = r sin (B + A)
+                   = r sin B cos A + r cos B sin A
+                   = x sin A + y cos A
+
+                           R(A, z)
+                (x, y, z) --------> (x cos A - y sin A, x sin A + y cos A, z)
+
+                [ (cos A) (-sin A) 0 0 ] [ x ] = [ x cos A - y sin A ]
+                [ (sin A)  (cos A) 0 0 ] [ y ]   [ x sin A + y cos A ]
+                [    0        0    1 0 ] [ z ]   [         z         ]
+                [    0        0    0 1 ] [ 1 ]   [         1         ]
+
+
+            Rotate (0, y, z) at angle B from y-axis A around the x-axis
+
+                y = r cos B
+                z = r sin B
+                y1 = r cos (B + A)
+                   = r cos B cos A - r sin B sin A
+                   = y cos A - z sin A
+                z1 = r sin (B + A)
+                   = r sin B cos A + r cos B sin A
+                   = y sin A + z cos A
+
+                           R(A, x)
+                (x, y, z) --------> (x, y cos A - z sin A, y sin A + z cos A)
+
+                [ 1    0        0    0 ] [ x ] = [         x         ]
+                [ 0 (cos A) (-sin A) 0 ] [ y ]   [ y cos A - z sin A ]
+                [ 0 (sin A)  (cos A) 0 ] [ z ]   [ y sin A + z cos A ]
+                [ 0    0        0    1 ] [ 1 ]   [         1         ]
+
+
+            Rotate (x, 0, z) at angle B from x-axis A around the y-axis
+
+                x = r cos B
+                z = r sin B
+                x1 = r cos (B + A)
+                   = r cos B cos A - r sin B sin A
+                   = x cos A - z sin A
+                z1 = r sin (B + A)
+                   = r sin B cos A + r cos B sin A
+                   = x sin A + z cos A
+
+                           R(A, y)
+                (x, 0, z) --------> (x sin A + z cos A, 0, x cos A - z sin A)
+
+                [ (sin A) 0  (cos A) 0 ] [ x ] = [ x sin A + z cos A ]
+                [    0    1     0    0 ] [ y ]   [         y         ]
+                [ (cos A) 0 (-sin A) 0 ] [ z ]   [ x cos A - z sin A ]
+                [    0    0     0    1 ] [ 1 ]   [         1         ]
+
+            Can compound any of the above with a translation to translate an
+            arbitrary point
+
+03/02/2017
+    Combining Transformations
+        S, T, R, E0
+        S * E0 = E1
+        D * E1 = E2
+        T * E2 = E3
+
+        E3 = T * D * S * E0
+           = (T * D * S) * E0
