@@ -9,3 +9,12 @@
       (max (min x bound2) bound1)
       (max (min x bound1) bound2)))
 
+(defun split-string (string delimiter)
+  (loop
+     for beg = 0 then (+ end 1)
+     for end = (position delimiter string :start beg)
+     then (position delimiter string :start (+ end 1))
+     while beg
+     collect (subseq string beg end)
+     while end))
+

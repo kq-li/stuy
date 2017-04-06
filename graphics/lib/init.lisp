@@ -1,5 +1,0 @@
-(load 'util)
-(load 'matrix)
-(load 'color)
-(load 'draw)
-(load 'display)

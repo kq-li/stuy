@@ -1,3 +1,5 @@
+(load 'util)
+
 (defun random-color ()
   (loop
      repeat 3

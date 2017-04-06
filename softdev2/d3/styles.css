@@ -1,0 +1,40 @@
+html, body {
+    margin: 50px;
+    font-size: 12px;
+    font-family: sans-serif;
+}
+
+#revenue .bar {
+    background-color: #33cc33;
+}
+
+#spend .bar {
+    background-color: blue;
+}
+
+#deficit .bar {
+    background-color: red;
+}
+
+#gdp .bar {
+    background-color: #eecc44;
+}
+
+.data {
+    display: block;
+
+}
+
+.label {
+    width: 30px;
+    display: inline-block;
+}
+
+.bar {
+    width: 0px;
+    display: inline-block;
+    text-align: right;
+    padding: 3px;
+    margin: 1px;
+    color: white;
+}

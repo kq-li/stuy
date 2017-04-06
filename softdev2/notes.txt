@@ -207,3 +207,48 @@
             Once created, you can modify it with setAttribute calls.
 
             cl.setAttribute('cx', '200');
+
+03/06/2017
+    JavaScript Event Propagation
+        Events initially propagate downward from the topmost node in the DOM
+        tree to the target element. This is known as event capturing.
+
+        After an event reaches a target, it then propagates back up the DOM
+        tree. This is known as event bubbling.
+
+        By default, event listeners do not trigger until the event 
+        bubbling phase.
+
+        Triggering events at the capture phase can be done by adding true as
+        the third argument to addEventListener.
+
+        x.addEventListener('click', foo, true);
+        Cancel with e.stopPropagation(); 
+
+        1. An element intercepts an event
+        2. Browser collects DOM node path of the event from the starting element to the root
+        3. Capture: the event propagates down the path from step 2
+        4. Bubble: the event propagates up the path from step 3
+
+03/10/2017
+    Aim: r3d3?
+
+    d3.js
+        JavaScript framework designed for working with data.
+
+        The Basics
+            Include http://d3js.org/d3.v3.min.js in a script tag to use d3, or
+            download the source and link that instead.
+
+        Binding Data
+            You can bind data to elements in d3 using the .data method.
+                var info = [23, 45, 10, 17];
+                d3.selectAll('p').data(info);
+
+            Binding data allows us to use it in other d3 calls.
+
+            Many of the methods that can use anonymous functions allow for
+            parameters to those functions. The first parameter represents
+            an item in the bound data, and the second represents the index
+            of the item in the data set.
+
