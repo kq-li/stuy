@@ -1,6 +1,6 @@
 (defvar *max-s-step* 100)
-(defvar *max-u-step* 25)
-(defvar *max-v-step* 25)
+(defvar *max-u-step* 10)
+(defvar *max-v-step* 10)
 
 (defun add-point (point &key matrix)
   (if (= (length point) 3)
@@ -109,6 +109,26 @@
   (add-point point2 :matrix matrix)
   (add-point point3 :matrix matrix))
 
+(defun cross-product (vector1 vector2)
+  `#(,(- (* (aref vector1 1) (aref vector2 2))
+         (* (aref vector1 2) (aref vector2 1)))
+     ,(- (* (aref vector1 2) (aref vector2 0))
+         (* (aref vector1 0) (aref vector2 2)))
+     ,(- (* (aref vector1 0) (aref vector2 1))
+         (* (aref vector1 1) (aref vector2 0)))))
+
+(defun displacement-vector (point1 point2)
+  `#(,@(loop
+          for i from 0 to 2
+          collect (- (aref point2 i)
+                     (aref point1 i)))))
+
+(defun triangle-normal (vertex1 vertex2 vertex3)
+  (let* ((vector1 (displacement-vector vertex1 vertex2))
+         (vector2 (displacement-vector vertex2 vertex3))
+         (normal (cross-product vector1 vector2)))
+    normal))
+
 (defun add-box (x y z width height depth &key (matrix *triangle-matrix*))
   (let ((vertices (make-matrix :dimensions '(4 0))))
     (add-xyz x y z :matrix vertices)
@@ -120,9 +140,14 @@
     (add-xyz (+ x width) y (+ z depth) :matrix vertices)
     (add-xyz (+ x width) y z :matrix vertices)
     (loop
-       for (first second third) in '((0 1 2) (2 3 0) (3 2 5) (5 4 3)
-                                     (4 5 6) (6 7 4) (7 6 1) (1 0 7)
-                                     (1 2 5) (5 6 1) (0 3 4) (4 7 0))
+       for (first second third) in '(
+                                        ;(0 1 2) (2 3 0) ;; left
+                                        ;(3 2 5) (5 4 3) ;; top
+                                        ;(4 5 6) (6 7 4) ;; right
+                                        ;(7 6 1) (1 0 7) ;; bottom
+                                        (1 6 5) (5 2 1) ;; front
+                                        ;(0 3 4) (4 7 0) ;; back
+                                     )
        do
          (add-triangle (matrix-get-column vertices first)
                        (matrix-get-column vertices second)
@@ -225,13 +250,18 @@
   (loop
      for i from 0 to (- (matrix-dimension matrix 1) 1) by 3
      do
-       (let ((point1 (matrix-get-column matrix i))
-             (point2 (matrix-get-column matrix (+ i 1)))
-             (point3 (matrix-get-column matrix (+ i 2))))
-         (draw-line point1 point2)
-         (draw-line point2 point3)
-         (draw-line point3 point1))))
+       (let* ((point1 (matrix-get-column matrix i))
+              (point2 (matrix-get-column matrix (+ i 1)))
+              (point3 (matrix-get-column matrix (+ i 2)))
+              (normal (triangle-normal point1 point2 point3)))
+         (when (> (aref normal 2) 0)
+           (draw-triangle point1 point2 point3)))))
 
+(defun draw-triangle (point1 point2 point3)
+  (draw-line point1 point2)
+  (draw-line point2 point3)
+  (draw-line point3 point1))       
+       
 (defun draw-lines (&key (matrix *edge-matrix*) color-function)
   (loop
      for i from 0 to (- (matrix-dimension matrix 1) 1) by 2
