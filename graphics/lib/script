@@ -53,8 +53,6 @@
 #clear
 #torus
 #0 0 0 25 150
-box
-0 0 0 100 150 200
 #display
 #rotate 90 degrees about y to check lines
 #ident
@@ -77,14 +75,18 @@ box
 #apply
 #display
 #reset torus, rotate to make it look cool
-ident
-move
--250 -250 0
+#ident
+#move
+#-250 -250 0
+torus
+0 0 0 50 200
 rotate
 x 70
-#rotate
-#y 20
+rotate
+y 10
 move
-250 250 0
+250 150 0
 apply
+torus
+250 350 0 50 200
 display

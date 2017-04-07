@@ -1,6 +1,6 @@
 (defvar *max-s-step* 100)
-(defvar *max-u-step* 10)
-(defvar *max-v-step* 10)
+(defvar *max-u-step* 25)
+(defvar *max-v-step* 25)
 
 (defun add-point (point &key matrix)
   (if (= (length point) 3)
@@ -141,12 +141,12 @@
     (add-xyz (+ x width) y z :matrix vertices)
     (loop
        for (first second third) in '(
-                                        ;(0 1 2) (2 3 0) ;; left
-                                        ;(3 2 5) (5 4 3) ;; top
-                                        ;(4 5 6) (6 7 4) ;; right
-                                        ;(7 6 1) (1 0 7) ;; bottom
+                                        (0 1 2) (2 3 0) ;; left
+                                        (3 2 5) (5 4 3) ;; top
+                                        (4 5 6) (6 7 4) ;; right
+                                        (7 6 1) (1 0 7) ;; bottom
                                         (1 6 5) (5 2 1) ;; front
-                                        ;(0 3 4) (4 7 0) ;; back
+                                        (0 3 4) (4 7 0) ;; back
                                      )
        do
          (add-triangle (matrix-get-column vertices first)
