@@ -183,7 +183,6 @@
 
 (defmethod matrix-string ((matrix matrix))
   (with-output-to-string (stream)
-    (format stream "~%")
     (matrix-funcall matrix
                     (lambda (row col)
                       (format stream "~a " (matrix-get-element matrix row col)))
@@ -199,8 +198,7 @@
   (format t "~a" (matrix-string matrix)))
 
 (defmethod print-object ((matrix matrix) stream)
-  (print-unreadable-object (matrix stream :type t)
-    (format stream "~%~s" (matrix-string matrix))))
+  (format stream "~%~a" (matrix-string matrix)))
 
 (defmacro matrix-test (operation &optional description)
   `(progn

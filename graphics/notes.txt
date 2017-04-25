@@ -417,8 +417,8 @@
         Generate by rotating circle about x or y axis
         
         [     1        0        0    ] [ r cos A ]   [    r cos A    ]
-        [     0     (cos B) (-sin B) ] [ r sin A ] = [ r sin A sin B ]
-        [     0     (sin B)  (cos B) ] [    0    ]   [ r sin A cos B ]
+        [     0     (cos B) (-sin B) ] [ r sin A ] = [ r sin A cos B ]
+        [     0     (sin B)  (cos B) ] [    0    ]   [ r sin A sin B ]
                 x-rotation             circle            sphere
 
         A from 0 to 2pi
@@ -455,8 +455,26 @@
         Add 3 points at a time to a polygon list
         Points must be added counterclockwise
 
- 03/31/2017
+03/31/2017
     how many points per slice? n = 11
     semicircles or regular circles? semicircles
     point i, i + 1, i + 11 = i + n, i + 12 = i + n + 1
                         
+04/19/2017
+    Relative Coordinate System
+        Transformations modify the coordinate system
+        When drawing, always apply the current transformation
+        Each object can be independently drawn
+        We can explicitly define related objects
+    
+04/20/2017
+    Relative Coordinate System (cont'd.)
+        Maintain a stack of coordinate systems
+            push: add a (deep) copy of the top to the stack
+            pop
+        All transformations are immediately applied to the top of the stack
+        Drawing commands:
+            1. Generate a polygon list
+            2. Apply the top coordinate system
+            3. Draw to the screen
+            4. Clear the polygon list

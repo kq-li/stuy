@@ -1,6 +1,6 @@
 (defvar *max-s-step* 100)
-(defvar *max-u-step* 25)
-(defvar *max-v-step* 25)
+(defvar *max-u-step* 15)
+(defvar *max-v-step* 15)
 
 (defun add-point (point &key matrix)
   (if (= (length point) 3)
@@ -131,27 +131,27 @@
 
 (defun add-box (x y z width height depth &key (matrix *triangle-matrix*))
   (let ((vertices (make-matrix :dimensions '(4 0))))
+    (add-xyz x y (- z depth) :matrix vertices)
     (add-xyz x y z :matrix vertices)
-    (add-xyz x y (+ z depth) :matrix vertices)
-    (add-xyz x (+ y height) (+ z depth) :matrix vertices)
-    (add-xyz x (+ y height) z :matrix vertices)
-    (add-xyz (+ x width) (+ y height) z :matrix vertices)
-    (add-xyz (+ x width) (+ y height) (+ z depth) :matrix vertices)
-    (add-xyz (+ x width) y (+ z depth) :matrix vertices)
+    (add-xyz x (- y height) z :matrix vertices)
+    (add-xyz x (- y height) (- z depth) :matrix vertices)
+    (add-xyz (+ x width) (- y height) (- z depth) :matrix vertices)
+    (add-xyz (+ x width) (- y height) z :matrix vertices)
     (add-xyz (+ x width) y z :matrix vertices)
+    (add-xyz (+ x width) y (- z depth) :matrix vertices)
     (loop
        for (first second third) in '(
-                                        (0 1 2) (2 3 0) ;; left
-                                        (3 2 5) (5 4 3) ;; top
-                                        (4 5 6) (6 7 4) ;; right
-                                        (7 6 1) (1 0 7) ;; bottom
-                                        (1 6 5) (5 2 1) ;; front
-                                        (0 3 4) (4 7 0) ;; back
+                                        (0 3 2) (2 1 0) ;; left
+                                        (3 4 5) (5 2 3) ;; top
+                                        (4 7 6) (6 5 4) ;; right
+                                        (7 0 1) (1 6 7) ;; bottom
+                                        (1 2 5) (5 6 1) ;; front
+                                        (0 7 4) (4 3 0) ;; back
                                      )
        do
          (add-triangle (matrix-get-column vertices first)
                        (matrix-get-column vertices second)
-                       (matrix-get-column vertices third)))))
+                       (matrix-get-column vertices third) :matrix matrix))))
 
 (defun generate-nested-parametric-curve (x-function y-function z-function
                                          &key
@@ -181,7 +181,7 @@
    (lambda (u v)
      (+ z (* r (sin (* PI u)) (cos (* 2 PI v)))))))
 
-(defun add-sphere (x y z r)
+(defun add-sphere (x y z r &key (matrix *triangle-matrix*))
   (let* ((n *max-u-step*)
          (sphere (generate-sphere x y z r)))
     (loop
@@ -189,11 +189,11 @@
        do
          (let ((triangle1 (list i (+ i 1) (+ i n 1)))
                (triangle2 (list i (+ i n 1) (+ i n))))
-           (apply 'add-triangle
+           (apply (lambda (v1 v2 v3) (add-triangle v1 v2 v3 :matrix matrix))
                   (loop
                      for vertex in triangle1
                      collect (matrix-get-column sphere vertex)))
-           (apply 'add-triangle
+           (apply (lambda (v1 v2 v3) (add-triangle v1 v2 v3 :matrix matrix))
                   (loop
                      for vertex in triangle2
                      collect (matrix-get-column sphere vertex)))))))
@@ -221,11 +221,11 @@
        do
          (let ((triangle1 (list i (+ i 1) (+ i n 1)))
                (triangle2 (list i (+ i n 1) (+ i n))))
-           (apply 'add-triangle
+           (apply (lambda (v1 v2 v3) (add-triangle v1 v2 v3 :matrix matrix))
                   (loop
                      for vertex in triangle1
                      collect (matrix-get-column torus vertex)))
-           (apply 'add-triangle
+           (apply (lambda (v1 v2 v3) (add-triangle v1 v2 v3 :matrix matrix))
                   (loop
                      for vertex in triangle2
                      collect (matrix-get-column torus vertex)))))))
@@ -247,6 +247,8 @@
   nil)
 
 (defun draw-triangles (&key (matrix *triangle-matrix*) color-function)
+  (format t "~a~%" (get-coordinate-system))
+  (setf matrix (matrix-matrix-mult (get-coordinate-system) matrix))
   (loop
      for i from 0 to (- (matrix-dimension matrix 1) 1) by 3
      do
@@ -263,12 +265,25 @@
   (draw-line point3 point1))       
        
 (defun draw-lines (&key (matrix *edge-matrix*) color-function)
+  (setf matrix (matrix-matrix-mult (get-coordinate-system) matrix))
   (loop
      for i from 0 to (- (matrix-dimension matrix 1) 1) by 2
      do
        (let ((point1 (matrix-get-column matrix i))
              (point2 (matrix-get-column matrix (+ i 1))))
          (draw-line point1 point2 :color-function color-function))))
+
+(defun push-coordinate-system ()
+  (setf *coordinate-systems* (cons (matrix-copy (car *coordinate-systems*)) *coordinate-systems*)))
+
+(defun pop-coordinate-system ()
+  (setf *coordinate-systems* (cdr *coordinate-systems*)))
+
+(defun get-coordinate-system ()
+  (car *coordinate-systems*))
+
+(defun set-coordinate-system (system)
+  (setf (car *coordinate-systems*) system))
 
 (defun draw-line (point1 point2 &key (color '(0 255 0)) color-function)
   (let ((x1 (aref point1 0))

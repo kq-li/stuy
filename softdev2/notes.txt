@@ -252,3 +252,24 @@
             an item in the bound data, and the second represents the index
             of the item in the data set.
 
+04/19/2017
+    Aim: Lists, comprendo?
+
+    List comprehensions
+        Programming construct for building lists out of existing lists
+
+04/25/2017
+    Aim: Let's get some closure (not Clojure).
+
+    Closures
+        1. A function is declared inside another function.
+        2. The inner function accesses a variable from the outer function
+           (outside of the local scope of the inner function)
+        3. The external function binds a value to the variable and finishes (or
+           closes) before the inner function can be completed.
+
+        def repeat(s):
+            def times(x):
+                return s * x
+
+            return times

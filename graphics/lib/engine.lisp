@@ -1,5 +1,5 @@
 (load 'util)
-(load 'matrix)
+(load 'math)
 (load 'color)
 (load 'draw)
 (load 'display)
@@ -8,6 +8,8 @@
 (defvar *edge-matrix* (make-matrix :dimensions '(4 0)))
 
 (defvar *triangle-matrix* (make-matrix :dimensions '(4 0)))
+
+(defvar *coordinate-systems* (list (make-identity-matrix)))
 
 (defvar *transformation-matrix* (make-identity-matrix))
 
