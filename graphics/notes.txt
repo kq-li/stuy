@@ -478,3 +478,76 @@
             2. Apply the top coordinate system
             3. Draw to the screen
             4. Clear the polygon list
+
+04/27/2017
+    Compiliers
+                         [ Compiler ]
+        Source code ---------------------> Machine code
+
+    Components of compilers
+        Lexer
+            Performs lexical analysis
+            Identifies the language tokens present in the source code
+            Input: source code
+            Output: token list
+
+            int main() {                 int
+                long x = 5 + 6;          main - ident
+                printf("%d", x);  ---->  (
+                return 5;                )
+            }                            {
+                                         long
+                                         x - ident
+                                         =
+                                         5
+                                         ...
+            
+        Parser
+            Performs syntax analysis
+            Knows the grammar of the language
+            Input: token list
+            Output: syntax tree
+
+                                int
+                                 |
+                                main
+                             /   |   \
+                          =    print   return
+                       /    \   / \      |
+                     long   + "%d" x     5
+                      |    / \
+                      x   5   6
+                      
+        Semantic analyzer
+            Knows how tokens should be combined
+            Can map syntax to operations, values, and variables
+            Input: syntax tree
+            Output: operations list, symbol table (list of variables)
+
+            Operation list                  Symbol table
+                +: 5 + 6                        main    int
+                =: x, ^                         x       long
+                                                printf  void
+        
+        Optimizer
+        
+        Code generator
+            Goes through the operation list and symbol table and creates the
+            machine code instructions
+        
+05/01/2017
+    Things to design before writing a compiler
+        Valid tokens
+        Language structure (grammar)
+        How to apply tokens
+        How to map operations to machine code
+
+    Motion Description Language
+        Compiler Tools
+            lex
+                Creates a lexer
+
+            yacc
+                Creates a parser and semantic analyzer
+
+            flex/bison (javacc, lex.py/yacc.py)

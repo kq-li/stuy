@@ -1,0 +1,1 @@
+(time (parse-file "script"))

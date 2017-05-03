@@ -273,3 +273,41 @@
                 return s * x
 
             return times
+
+04/26/2017
+    Lambda expressions
+        Anonymous functions can be created using lambda
+            lambda <arguments>: <definition>
+
+05/01/2017
+    No functional programming toolbox would be complete without the
+    following concepts:
+        Memoization, Map, Filter, Reduce
+
+    Memoization
+        Reducing the time it takes to complete an (often recursive) algorithm
+        by saving previously computed values to be used later.
+
+        Can be easily created using decorators.
+
+    Map/Filter/Reduce
+        The holy trinity of list processing
+
+        Reduce
+            Compute some value based on a list (i.e. reducing the list to a
+            single value)
+
+            reduce(<function>, <list>)
+                Function must take 2 parameters and return 1
+
+        Map
+            Creates a new list by applying a function to all elements of an
+            existing list
+            
+            map(<function>, <list>)
+
+        Filter
+            Creates a new list by applying a boolean condition to all
+            elements of an existing list
+
+            filter(<function>, <list>)

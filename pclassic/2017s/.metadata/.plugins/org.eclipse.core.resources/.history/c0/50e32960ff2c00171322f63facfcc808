@@ -1,0 +1,92 @@
+import java.util.*; 
+import java.io.*; 
+
+public class GetawayPath {
+	
+
+  /** This is for you to fill out. 
+	* @param matrix is a 2D array of integers
+	* @return a single integer denoting the length of the longest path. 
+	*/
+	public static int longestPath(int[][] matrix) {
+		int N = matrix.length;
+		ArrayList<Integer> [] adj = new ArrayList[N * N + 1];
+		for(int i = 1; i <= N * N; i++) adj[i] = new ArrayList<Integer>();
+		int [] indegree = new int[N * N + 1];
+		
+		//create the adjacency list
+		for(int i = 0; i < N; i++)
+		{
+			for(int j = 0; j < N; j++)
+			{
+				int v = matrix[i][j];
+				if(i != 0 && matrix[i - 1][j] < matrix[i][j]) adj[v].add(matrix[i - 1][j]);
+				if(i != N - 1 && matrix[i + 1][j] < matrix[i][j]) adj[v].add(matrix[i + 1][j]);
+				if(j != 0 && matrix[i][j - 1] < matrix[i][j]) adj[v].add(matrix[i][j - 1]);
+				if(j != N - 1 && matrix[i][j + 1] < matrix[i][j]) adj[v].add(matrix[i][j + 1]);
+			}
+		}
+		
+		for(int i = 1; i <= N * N; i++)
+		{
+			for(Integer v2 : adj[i]) indegree[v2]++;
+		}
+		
+		//do topological sort of the graph
+		ArrayList<Integer> ordering = new ArrayList<Integer>();
+		ArrayDeque<Integer> queue = new ArrayDeque<Integer>();
+		for(int v = 1; v <= N * N; v++)
+			if(indegree[v] == 0) queue.addLast(v);
+		
+		while(!queue.isEmpty())
+		{
+			int currentV = queue.removeFirst();
+			ordering.add(currentV);
+			
+			for(Integer v2 : adj[currentV])
+			{
+				indegree[v2]--;
+				if(indegree[v2] == 0) queue.addLast(v2);
+			}
+		}
+		
+		System.out.println("adjacency");
+		for(int i = 1; i <= N * N; i++) System.out.println(i + " " + adj[i]);
+		System.out.println("====");
+		
+		System.out.println(ordering);
+		int [] DP = new int[N * N + 1];
+		int result = 0;
+		for(int index = ordering.size() - 1; index >= 0; index--)
+		{
+			int currentV = ordering.get(index);
+			int maxCount = 1;
+			for(Integer v2 : adj[currentV])
+			{
+				maxCount = Math.max(maxCount, DP[v2] + 1);
+			}
+			DP[currentV] = maxCount;
+			result = Math.max(result, DP[currentV]);
+		}
+		System.out.println("DP: " + Arrays.toString(DP));
+		
+		return result;
+	}
+  // Make sure none of this has changed before submitting!
+	public static void main(String[] args) throws IOException {
+		Scanner sc = new Scanner(new InputStreamReader(System.in));
+		//Scanner sc = new Scanner(new FileReader("GetawayPathIN.txt"));
+		while (sc.hasNext()) {
+			int N = sc.nextInt();
+			int matrix[][] = new int[N][N];
+
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) { 
+					matrix[i][j] = sc.nextInt();
+				}
+			}
+			System.out.println(longestPath(matrix));	    
+		}
+	}
+
+}

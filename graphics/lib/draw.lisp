@@ -1,6 +1,6 @@
 (defvar *max-s-step* 100)
-(defvar *max-u-step* 15)
-(defvar *max-v-step* 15)
+(defvar *max-u-step* 12)
+(defvar *max-v-step* 12)
 
 (defun add-point (point &key matrix)
   (if (= (length point) 3)
@@ -213,7 +213,7 @@
            (B (* 2 PI v)))
        (+ z (* -1 cr (cos A) (sin B)) (* -1 tr (sin B)))))))
 
-(defun add-torus (x y z cr tr)
+(defun add-torus (x y z cr tr &key (matrix *triangle-matrix*))
   (let ((n *max-u-step*)
         (torus (generate-torus x y z cr tr)))
     (loop

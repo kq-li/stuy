@@ -1,0 +1,16 @@
+import java.util.*;
+import java.io.*;
+
+public class test {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		int test = 5;
+		int test2 = 10;
+		System.out.println(test + test2 + 5 + 10 + 200 + test + test2);
+	}
+
+}

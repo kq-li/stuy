@@ -1,0 +1,21 @@
+import java.util.*;
+import java.io.*;
+
+public class test {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		String s1 = "I am figuring out how to type on this new computer, but I am getting used to it.";
+		String s2 = "Right now, my main difficulty is getting used to the position of the arrow keys, but I hope I will figure that out too.";
+		String s3 = "I think what I should do whenever I try to use the arrows is to move my arm a little. Then I can use the arrow keys quickly.";
+		System.out.println(s1);
+		System.out.println(s2);
+		System.out.println(s3);
+		TreeSet<Integer> testSet = new TreeSet<Integer>();
+		
+	}
+
+}
