@@ -1,3 +1,5 @@
+(in-package :graphics)
+
 (defun init-image (&optional (initial-color '(255 255 255)))
   (make-array (list *x-resolution* *y-resolution*) :initial-element initial-color)) 
 
@@ -43,4 +45,3 @@
   (run-shell-command "display tmp.ppm")
   (run-shell-command "rm tmp.ppm"))
   ;;(format t "~a~%" (run-shell-command (concatenate 'string "echo \"" (create-ppm-data) "\" | display"))))
-

@@ -1,3 +1,5 @@
+(in-package :graphics)
+
 (defvar *max-s-step* 100)
 (defvar *max-u-step* 12)
 (defvar *max-v-step* 12)
@@ -108,26 +110,6 @@
   (add-point point1 :matrix matrix)
   (add-point point2 :matrix matrix)
   (add-point point3 :matrix matrix))
-
-(defun cross-product (vector1 vector2)
-  `#(,(- (* (aref vector1 1) (aref vector2 2))
-         (* (aref vector1 2) (aref vector2 1)))
-     ,(- (* (aref vector1 2) (aref vector2 0))
-         (* (aref vector1 0) (aref vector2 2)))
-     ,(- (* (aref vector1 0) (aref vector2 1))
-         (* (aref vector1 1) (aref vector2 0)))))
-
-(defun displacement-vector (point1 point2)
-  `#(,@(loop
-          for i from 0 to 2
-          collect (- (aref point2 i)
-                     (aref point1 i)))))
-
-(defun triangle-normal (vertex1 vertex2 vertex3)
-  (let* ((vector1 (displacement-vector vertex1 vertex2))
-         (vector2 (displacement-vector vertex2 vertex3))
-         (normal (cross-product vector1 vector2)))
-    normal))
 
 (defun add-box (x y z width height depth &key (matrix *triangle-matrix*))
   (let ((vertices (make-matrix :dimensions '(4 0))))
@@ -247,7 +229,6 @@
   nil)
 
 (defun draw-triangles (&key (matrix *triangle-matrix*) color-function)
-  (format t "~a~%" (get-coordinate-system))
   (setf matrix (matrix-matrix-mult (get-coordinate-system) matrix))
   (loop
      for i from 0 to (- (matrix-dimension matrix 1) 1) by 3
@@ -264,7 +245,7 @@
   (draw-line point2 point3)
   (draw-line point3 point1))       
        
-(defun draw-lines (&key (matrix *edge-matrix*) color-function)
+(defun draw-edges (&key (matrix *edge-matrix*) color-function)
   (setf matrix (matrix-matrix-mult (get-coordinate-system) matrix))
   (loop
      for i from 0 to (- (matrix-dimension matrix 1) 1) by 2
@@ -350,5 +331,7 @@
                      :color color
                      :color-function color-function)))))
 
-
-
+(let ((package (find-package :graphics-draw)))
+  (do-all-symbols (sym package)
+    (when (eql (symbol-package sym) package)
+      (export sym))))

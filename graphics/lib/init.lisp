@@ -1,7 +1,3 @@
-(load "quicklisp/setup")
-
-(ql:quickload "cl-lex")
-(ql:quickload "yacc")
-
-(load "engine")
-(load "run")
+(load 'packages)
+(load 'engine)
+(load 'run)

@@ -1,9 +1,10 @@
 (load 'util)
-(load 'math)
-(load 'color)
+(load 'matrix)
 (load 'draw)
 (load 'display)
-(load 'parser)
+(load 'mdl)
+
+(in-package :graphics)
 
 (defvar *edge-matrix* (make-matrix :dimensions '(4 0)))
 

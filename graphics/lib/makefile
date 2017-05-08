@@ -4,13 +4,13 @@ run: init.lisp
 clean: clean-images clean-slime clean-temp
 
 clean-images:
-	rm *.png *.ppm
+	rm -f *.png *.ppm
 
 clean-slime:
-	rm *.fas *.lib
+	rm -f *.fas *.lib
 
 clean-temp:
-	rm *~ \#*
+	rm -f *~ \#*
 
 generate-script: generate.py
 	python generate.py > script

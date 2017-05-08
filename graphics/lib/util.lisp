@@ -1,3 +1,5 @@
+(in-package :graphics)
+
 (defun square (x)
   (* x x))
 
@@ -17,4 +19,24 @@
      while beg
      collect (subseq string beg end)
      while end))
+
+(defun cross-product (vector1 vector2)
+  `#(,(- (* (aref vector1 1) (aref vector2 2))
+         (* (aref vector1 2) (aref vector2 1)))
+     ,(- (* (aref vector1 2) (aref vector2 0))
+         (* (aref vector1 0) (aref vector2 2)))
+     ,(- (* (aref vector1 0) (aref vector2 1))
+         (* (aref vector1 1) (aref vector2 0)))))
+
+(defun displacement-vector (point1 point2)
+  `#(,@(loop
+          for i from 0 to 2
+          collect (- (aref point2 i)
+                     (aref point1 i)))))
+
+(defun triangle-normal (vertex1 vertex2 vertex3)
+  (let* ((vector1 (displacement-vector vertex1 vertex2))
+         (vector2 (displacement-vector vertex2 vertex3))
+         (normal (cross-product vector1 vector2)))
+    normal))
 
